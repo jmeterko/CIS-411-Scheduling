@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="Javascript.js"></script>
+    <link rel="stylesheet" href="Stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="http://chancejs.com/chance.min.js"></script>
+    <!--for proper mobile scaling-->
+    <title>Class Scheduler</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <center><h1>Course Scheduler</h1></center>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>New Student Question</title>
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    </head>
+    <body onload="fetchIssues()">
+    <div class="container">
+        <h1>New Student Question</h1>
+        <div class="jumbotron">
+            <form id="issueInputForm">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown1">
+                        <option value="" selected disabled hidden>Select Category</option>
+                        <option value="Program">Program</option>
+                        <option value="Location">Location</option>
+                        <option value="courses">---courses---</option>
+                        <option value="Taking">Taking</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Taking/Completed">Taking/Completed</option>
+                        <option value="Scheduled For">Scheduled For</option>
+                        <option value="Not Taking">Not Taking</option>
+                        <option value="Not Completed">Not Completed</option>
+                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
+                        <option value="Not Scheduled For">Not Scheduled For</option>
+                    </select>
+                    <button id="or1" class="btn btn-primary">Or</button>
+                    <br/>
+                <button id="and1" class="btn btn-primary">And</button>
+                <br/>
+                <br/>
+                </div>
+
+                <div class="form-group" >
+                    <label>Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown2">
+                        <option value="" selected disabled hidden>Select Category</option>
+                        <option value="Program">Program</option>
+                        <option value="Location">Location</option>
+                        <option value="courses">---courses---</option>
+                        <option value="Taking">Taking</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Taking/Completed">Taking/Completed</option>
+                        <option value="Scheduled For">Scheduled For</option>
+                        <option value="Not Taking">Not Taking</option>
+                        <option value="Not Completed">Not Completed</option>
+                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
+                        <option value="Not Scheduled For">Not Scheduled For</option>
+                    </select>
+                    <button id="or2" class="btn btn-primary">Or</button>
+                    <br/>
+                <button id="and2" class="btn btn-primary">And</button>
+                <br/>
+                <br/>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown3">
+                        <option value="" selected disabled hidden>Select Category</option>
+                        <option value="Program">Program</option>
+                        <option value="Location">Location</option>
+                        <option value="courses">---courses---</option>
+                        <option value="Taking">Taking</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Taking/Completed">Taking/Completed</option>
+                        <option value="Scheduled For">Scheduled For</option>
+                        <option value="Not Taking">Not Taking</option>
+                        <option value="Not Completed">Not Completed</option>
+                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
+                        <option value="Not Scheduled For">Not Scheduled For</option>
+                    </select>
+                    <button id="or3" class="btn btn-primary">Or</button>
+                    <br/>
+                <button id="and3" class="btn btn-primary">And</button>
+                <br/>
+                <br/>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown4">
+                        <option value="" selected disabled hidden>Select Category</option>
+                        <option value="Program">Program</option>
+                        <option value="Location">Location</option>
+                        <option value="courses">---courses---</option>
+                        <option value="Taking">Taking</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Taking/Completed">Taking/Completed</option>
+                        <option value="Scheduled For">Scheduled For</option>
+                        <option value="Not Taking">Not Taking</option>
+                        <option value="Not Completed">Not Completed</option>
+                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
+                        <option value="Not Scheduled For">Not Scheduled For</option>
+                    </select>
+                    <button id="or4" class="btn btn-primary">Or</button>
+                    <br/>
+                <button id="and4" class="btn btn-primary">And</button>
+                <br/>
+                <br/>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown5">
+                        <option value="" selected disabled hidden>Select Category</option>
+                        <option value="Program">Program</option>
+                        <option value="Location">Location</option>
+                        <option value="courses">---courses---</option>
+                        <option value="Taking">Taking</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Taking/Completed">Taking/Completed</option>
+                        <option value="Scheduled For">Scheduled For</option>
+                        <option value="Not Taking">Not Taking</option>
+                        <option value="Not Completed">Not Completed</option>
+                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
+                        <option value="Not Scheduled For">Not Scheduled For</option>
+                    </select>
+                    <button id="or5" class="btn btn-primary">Or</button>
+                    <br/>
+                <button id="and5" class="btn btn-primary">And</button>
+                <br/>
+                <br/>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown6">
+                        <option value="" selected disabled hidden>Select Category</option>
+                        <option value="Program">Program</option>
+                        <option value="Location">Location</option>
+                        <option value="courses">---courses---</option>
+                        <option value="Taking">Taking</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Taking/Completed">Taking/Completed</option>
+                        <option value="Scheduled For">Scheduled For</option>
+                        <option value="Not Taking">Not Taking</option>
+                        <option value="Not Completed">Not Completed</option>
+                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
+                        <option value="Not Scheduled For">Not Scheduled For</option>
+                    </select>
+                    <button id="or6" class="btn btn-primary">Or</button>
+                    <br/>
+                <button id="and6" class="btn btn-primary">And</button>
+                <br/>
+                <br/>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown7">
+                        <option value="" selected disabled hidden>Select Category</option>
+                        <option value="Program">Program</option>
+                        <option value="Location">Location</option>
+                        <option value="courses">---courses---</option>
+                        <option value="Taking">Taking</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Taking/Completed">Taking/Completed</option>
+                        <option value="Scheduled For">Scheduled For</option>
+                        <option value="Not Taking">Not Taking</option>
+                        <option value="Not Completed">Not Completed</option>
+                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
+                        <option value="Not Scheduled For">Not Scheduled For</option>
+                    </select>
+                    <button id="or7" class="btn btn-primary">Or</button>
+                    <br/>
+                <button id="and7" class="btn btn-primary">And</button>
+                <br/>
+                <br/>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown8">
+                        <option value="" selected disabled hidden>Select Category</option>
+                        <option value="Program">Program</option>
+                        <option value="Location">Location</option>
+                        <option value="courses">---courses---</option>
+                        <option value="Taking">Taking</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Taking/Completed">Taking/Completed</option>
+                        <option value="Scheduled For">Scheduled For</option>
+                        <option value="Not Taking">Not Taking</option>
+                        <option value="Not Completed">Not Completed</option>
+                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
+                        <option value="Not Scheduled For">Not Scheduled For</option>
+                    </select>
+                    <button id="or8" class="btn btn-primary">Or</button>
+                    <br/>
+                <button id="and8" class="btn btn-primary">And</button>
+                <br/>
+                <br/>
+                </div>
+
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="issuesList">
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
+</div>
+</div>
+</body>
+</html>
