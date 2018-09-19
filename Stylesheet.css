@@ -56,6 +56,19 @@
 
 .containerDiv
 {
-    border: 2px solid black;
     padding: 5px;
+    margin: 5px auto;
+}
+
+.hiddenDiv{
+    visibility: hidden;
+    display:none;
+}
+
+.visibleDiv{
+    visibility: visible;
+}
+
+.blackBorderDiv{
+    border: 2px black;
 }
