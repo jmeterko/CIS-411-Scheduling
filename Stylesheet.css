@@ -72,3 +72,7 @@
 .blackBorderDiv{
     border: 2px black;
 }
+
+.inline{
+    display:inline;
+}

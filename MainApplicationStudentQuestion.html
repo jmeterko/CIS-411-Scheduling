@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -42,9 +41,9 @@
         <h1>New Student Question</h1>
         <div class="jumbotron" style="margin:0px auto">
             <form id="issueInputForm" >
-                <div class="form-group" style="margin:0px auto">
+                <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown1">
+                    <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="makeDivVisibleOr()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program" id="Program">Program</option>
                         <option value="Location">Location</option>
@@ -58,13 +57,9 @@
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or1" class="btn btn-primary">Or</button>
+                    <div class="inline" id="attach0">
 
-                    <select class="dropdownboxWidth, hiddenDiv" id="dropdownOr1">
-                       <option value="" selected disabled hidden></option>
-                       <option value="Any Major">Any Major</option>
-                       <option value="Any Major">Any Minor</option>
-                    </select>
+                    </div>
                 <br/>
                 <button type="button" id="and1" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
@@ -87,7 +82,7 @@
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or2" class="btn btn-primary">Or</button>
+                    <button type="button" id="or1" class="btn btn-primary">Or</button>
                     <br/>
                 <button type="button" id="and2" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
@@ -110,7 +105,7 @@
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or3" class="btn btn-primary">Or</button>
+                    <button type="button" id="or2" class="btn btn-primary">Or</button>
                     <br/>
                 <button type="button" id="and3" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
@@ -133,7 +128,7 @@
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or4" class="btn btn-primary">Or</button>
+                    <button type="button" id="or3" class="btn btn-primary">Or</button>
                     <br/>
                 <button type="button" id="and4" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
@@ -156,7 +151,7 @@
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or5" class="btn btn-primary">Or</button>
+                    <button type="button" id="or4" class="btn btn-primary">Or</button>
                     <br/>
                 <button type="button" id="and5" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
@@ -179,7 +174,7 @@
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or6" class="btn btn-primary">Or</button>
+                    <button type="button" id="or5" class="btn btn-primary">Or</button>
                     <br/>
                 <button type="button" id="and6" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
@@ -202,7 +197,7 @@
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or7" class="btn btn-primary">Or</button>
+                    <button type="button" id="or6" class="btn btn-primary">Or</button>
                     <br/>
                 <button type="button" id="and7" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
@@ -225,7 +220,7 @@
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or8" class="btn btn-primary">Or</button>
+                    <button type="button" id="or7" class="btn btn-primary">Or</button>
                     <br/>
                 <br/>
                 <br/>
