@@ -8,10 +8,13 @@ require '../view/headerInclude.php';
     Upload files:
     <br><br>
 
+    Students:
     <input name="userfilestudents" type="file" value="Students"/>
     <br>
+    Classes:
     <input name="userfileclasses" type="file" value="Classes" />
     <br>
+    Students-Classes:
     <input name="ufstudclass" type="file" value="StudentsClasses"/>
     <br>
     <input type="submit" value="Send Files" />

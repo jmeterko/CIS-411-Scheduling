@@ -5,9 +5,9 @@ require '../view/headerInclude.php';
 
 <?php
 
-
+echo "Delete all rows in students-classes first to avoid foreign key constraints." . "<br>";
 clearTable("studentsclasses");   //IMPORTANT must be cleared first
-                                          //foreign key constraint
+echo "<br>";                                          //foreign key constraint
 
 
 //////////////////////////////////////////////////////////////////
@@ -30,7 +30,7 @@ while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at
     //INSERT INTO Student <each field>
     $rowCount += addNewStudent($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7],$data[8],$data[9],$data[10],$data[11],$data[12],$data[13],$data[14],$data[15],$data[16],$data[17],$data[18],$data[19],$data[20],$data[21],$data[22],$data[23],$data[24],$data[25],$data[26],$data[27],$data[28],$data[29]);
 }   //rowcount increments when a row is affected, addNewStudent returns 1
-$errorMessage = "The insert affected $rowCount rows.";
+$errorMessage = "Inserted $rowCount rows into table Students.";
 echo $errorMessage;
 //AddNewStudent^^^
 //print 10 rows to screen for convenience
@@ -69,7 +69,7 @@ while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at
     //INSERT INTO Classes <each field>
     $rowCount += addNewCourse($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7],$data[8],$data[9],$data[10],$data[11],$data[12],$data[13]);
 }   //rowcount increments when a row is affected, addNewStudent returns 1
-$errorMessage = "The insert affected $rowCount rows.";
+$errorMessage = "Inserted $rowCount rows into table Classes.";
 echo $errorMessage;
 
 //print 10 rows to screen for convenience
@@ -114,7 +114,7 @@ while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at
     //INSERT INTO StudentsClasses <each field>
     $rowCount += addNewStudentCourse($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7],$data[8],$data[9]);
 }                                           //addNewStudentsClasses^^^
-$errorMessage = "The insert affected $rowCount rows.";
+$errorMessage = "Inserted $rowCount rows into table Students-Classes.";
 echo $errorMessage;
 
 //print 10 rows to screen for convenience
