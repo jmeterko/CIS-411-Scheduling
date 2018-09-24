@@ -24,6 +24,7 @@ loadStudents();
 
 
 function checkIfCSV($fileToCheck){
+    // pass in: $_FILES['file']['type']
     $csv_mimetypes = array(
         'text/csv',
         'text/plain',
@@ -48,23 +49,22 @@ function loadStudents(){
     /// STUDENTS
     //////////////////////////////////////////////////////////////////
     //make sure we have a file
-        if ($_FILES['userfilestudents']['error'] == UPLOAD_ERR_NO_FILE) {
-            echo "<p>Please choose a file first and then try again...</p>";
-        }  else if ($_FILES['userfilestudents']['error'] != UPLOAD_ERR_OK){
-            echo "File Read Error\n Debugging info:"; //any other error
-            print_r($_FILES);
+    if ($_FILES['userfilestudents']['error'] == UPLOAD_ERR_NO_FILE) {
+        echo "<p>Please choose a file first and then try again...</p>";
+    }  else if ($_FILES['userfilestudents']['error'] != UPLOAD_ERR_OK){
+        echo "File Read Error\n Debugging info:"; //any other error
+        print_r($_FILES);
+    }
+
+    //check if its a CSV file
+        if (checkIfCSV($_FILES['userfilestudents']['type'])){
+            echo "This file is compatible as a CSV" . "<br>";
         }
-    //begin reading csv file
+        else echo "this file is not compatible as a CSV" . "<br>";
+
+    //open file and validate that it is the right file
         $file = fopen($_FILES['userfilestudents']['tmp_name'], "r");
-        //echo $file->getExtension();
-        $ext = filetype($_FILES['userfilestudents']['tmp_name']);
-        echo $ext;
-        echo $ext;
-        echo $ext;
-        echo $ext;
-        //clearTable("students");  //deletes all rows in Students
         $headerRow = fgetcsv($file); //load first line before looping, skips first line for output
-    // Name,Last Term,Current,Location,Total,GPA,Plan 1,Plan 1 Descr
         if ($headerRow[6] == "GPA"){
             if($headerRow[2] == "Last Term")
                 if($headerRow[3] == "Current")
@@ -75,8 +75,7 @@ function loadStudents(){
                                     if($headerRow[8] == "Plan 1 Descr")
                                         echo "Student file has been chosen correctly." . "<br>";
         } else echo "Please choose an accurate *STUDENT* file." . "<br>";
-        echo "<br>";
-        print_r($headerRow);
+    //clearTable("students");  //deletes all rows in Students
         die;
 
         $rowCount = 0;
@@ -117,9 +116,14 @@ function loadClasses()
         print_r($_FILES);
     }
 
-    //begin reading csv file
+    //check if its a CSV file
+    if (checkIfCSV($_FILES['userfilestudents']['type'])){
+        echo "This file is compatible as a CSV" . "<br>";
+    }
+    else echo "this file is not compatible as a CSV" . "<br>";
+
+    ////open file and validate that it is the right file
     $file = fopen($_FILES['userfileclasses']['tmp_name'], "r");
-    clearTable("Classes");  //deletes all rows in Classes
     $headerRow = fgetcsv($file); //load first line before looping, skips first line for output
     if ($headerRow[8] == "Count ID"){
         if ($headerRow[9] == "Acad Org")
@@ -129,7 +133,7 @@ function loadClasses()
                         if ($headerRow[13] == "Cap Enrl")
         echo "Classes file has been chosen correctly." . "<br>";
     } else echo "Please choose an accurate *CLASSES* file." . "<br>";
-    print_r($headerRow);
+    //clearTable("Classes");  //deletes all rows in Classes
     die;
 
     $rowCount = 0;
@@ -174,13 +178,19 @@ function loadStudentsClasses()
         print_r($_FILES);
     }
 
-    //begin reading csv file                                                //Maximum File Size Unknown
+    //check if its a CSV file
+    if (checkIfCSV($_FILES['userfilestudents']['type'])){
+        echo "This file is compatible as a CSV" . "<br>";
+    }
+    else echo "this file is not compatible as a CSV" . "<br>";
+
+    ////open file and validate that it is the right file                              //Maximum File Size Unknown
     $file = fopen($_FILES['ufstudclass']['tmp_name'], "r");
-    clearTable("StudentsClasses");  //deletes all rows in StudentsClasses
     $headerRow = fgetcsv($file); //load first line before looping, skips first line for output$headerRow = fgetcsv($file); //load first line before looping, skips first line for output
     if ($headerRow[8] != "Grade" or $headerRow[9] != "Type"){
         echo "Please choose an accurate *STUDENTSCLASSES* file." . "<br>";
     } else echo "StudentsClasses file has been chosen correctly." . "<br>"; echo "<br>";
+    //clearTable("StudentsClasses");  //deletes all rows in StudentsClasses
     print_r($headerRow);
     die;
     $rowCount = 0;
