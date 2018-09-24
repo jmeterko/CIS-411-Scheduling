@@ -1,0 +1,38 @@
+<?php
+require_once '../model/model.php';
+
+if (isset($_POST['action'])) {  // check get and post
+    $action = $_POST['action'];
+} else if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+} else {
+    include('../view/LoginPage.php');  // default action
+    exit();
+}
+switch ($action) {
+    case 'FileUpload':
+        include '../view/fileUploadPage.php';
+        break;
+    case 'ImportData':
+        include '../view/importData.php';
+        break;
+    case 'Login':
+        include '../view/LoginPage.php';
+        break;
+    case 'StudentQuestion':
+        include '../view/mainApplicationStudentQuestion.php';
+        break;
+    case 'Home':
+        include '../view/LoginPage.php';
+        break;
+    case 'ProcessImportData':
+        include '../view/processImportData.php';
+        break;
+    case 'Wireframe':
+        include '../view/wireframe.php';
+        break;
+    default:
+        include('../view/LoginPage.php');   // default
+}
+
+?>
