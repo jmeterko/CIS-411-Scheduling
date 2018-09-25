@@ -11,7 +11,7 @@ echo "<br>";                                          //foreign key constraint*/
 
 //call the file load functions
 loadStudents();
-//loadClasses();
+loadClasses();
 //loadStudentsClasses();
 
 ///
@@ -43,7 +43,7 @@ function checkIfCSV($fileToCheck){
         return true;
     } else return false;
 }
-
+//
 function loadStudents(){
     //////////////////////////////////////////////////////////////////
     /// STUDENTS
@@ -75,8 +75,7 @@ function loadStudents(){
                                     if($headerRow[8] == "Plan 1 Descr")
                                         echo "Student file has been chosen correctly." . "<br>";
         } else echo "Please choose an accurate *STUDENT* file." . "<br>";
-    //clearTable("students");  //deletes all rows in Students
-        die;
+    clearTable("student");  //deletes all rows in Students
 
         $rowCount = 0;
         while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
@@ -108,6 +107,12 @@ function loadClasses()
     //////////////////////////////////////////////////////////////////
     /// CLASSES
     //////////////////////////////////////////////////////////////////
+    ///
+    /// Handles the Courses file to populate Course table and CourseOffering table
+    /// Courses may repeat, this is avoided by storing each course identifier in a string
+    /// Later, explode the string to process as an array when calling addNewCourse
+    ///
+    ///
     //make sure we have a file
     if ($_FILES['userfileclasses']['error'] == UPLOAD_ERR_NO_FILE) {
         echo "<p>Please choose a file first and then try again...</p>";
@@ -133,15 +138,60 @@ function loadClasses()
                         if ($headerRow[13] == "Cap Enrl")
         echo "Classes file has been chosen correctly." . "<br>";
     } else echo "Please choose an accurate *CLASSES* file." . "<br>";
-    //clearTable("Classes");  //deletes all rows in Classes
-    die;
 
+    //clear CourseOffering and Course tables
+    clearTable("CourseOffering");  //deletes all rows in CourseOffering
+    clearTable("Course");           //delete all rows in Course after FK constraints are cleared
+
+    //collect unique Courses, load Course Table
+    //assumes file won't use the " | " character (pipe)
+    $courseArray = array(); //hash table implementation
+    //$courseToAdd = array();
+    while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
+                            //Subject    Catalog       Name         Descr       Acad_Org
+        $courseItemString = $data[4]."|".$data[5]."|".$data[1]."|".$data[7]."|".$data[9]; //assemble a string unique to the course
+        $courseArray[$courseItemString] = 3;      //add it as a key to the AssociativeArray, key value is meaningless
+        //echo "courseItemString is " . $courseItemString . "<br>";
+    }
+
+    //Process courseArray with a ForEach loop, add to database
+    //echo "<br> Now to process courseArray with a foreach loop: <br>";
+    $rowCount = 0;
+    foreach ($courseArray as $courseItem => $keyThrowaway){
+        $courseToAdd = explode("|", $courseItem);
+        $rowCount += addNewCourse($courseToAdd[0],$courseToAdd[1],$courseToAdd[2],$courseToAdd[3],$courseToAdd[4]);
+    }
+    echo    "There are " . count($courseArray) . " items in courseArray. <br>".
+        "There should be " . count($courseArray) . " rows inserted into table Course. <br>";
+    $errorMessage = "Inserted $rowCount rows into table Course. <br>";
+    echo $errorMessage . "<br>";
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //               ****Why are we only inserting 82 out of 162?****
+    //
+    //                                                          //idk wtf is up
+    //                                                          //Is our Course table right?  PK's are alright?
+    //                                                          //can a CIS 202 exist with multiple teachers in the table?
+    //                                                          //I think our table should just be Subject, Catalog
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///
+    //print courseArray for debugging
+    echo "Printing out the courseArray: <br>";
+    ?>
+    <pre>
+        <?php print_r($courseArray); ?>  <!--  Print the array, where are our missing classes?  -->
+    </pre>
+    <?php
+
+    //INSERT COURSEOFFERING
+    //Rewind file, add course offerings after foreign key constraints (course table) are added
+    rewind($file);
     $rowCount = 0;
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //INSERT INTO Classes <each field>
-        $rowCount += addNewCourse($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9], $data[10], $data[11], $data[12], $data[13]);
+        $rowCount += addNewCourseOffering($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9], $data[10], $data[11], $data[12], $data[13]);
     }   //rowcount increments when a row is affected, addNewStudent returns 1
-    $errorMessage = "Inserted $rowCount rows into table Classes.";
+    $errorMessage = "Inserted $rowCount rows into table CourseOffering.";
     echo $errorMessage;
 
     //print 10 rows to screen for convenience
@@ -191,8 +241,6 @@ function loadStudentsClasses()
         echo "Please choose an accurate *STUDENTSCLASSES* file." . "<br>";
     } else echo "StudentsClasses file has been chosen correctly." . "<br>"; echo "<br>";
     //clearTable("StudentsClasses");  //deletes all rows in StudentsClasses
-    print_r($headerRow);
-    die;
     $rowCount = 0;
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //INSERT INTO StudentsClasses <each field>

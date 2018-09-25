@@ -1,23 +1,47 @@
 <?php
-
-function addNewCourse($Instructor, $Name, $Term, $Session, $Subject, $Catalog, $Section, $Descr, $Count_ID, $Acad_Org, $Start_Time, $End_Time, $Days, $Cap_Enrl ) {
+//Instructor,Name,Term,Session,Subject,Catalog,Section,Descr,Count ID,Acad Org,Start Time,End Time,Days,Cap Enrl
+function addNewCourse($Subject, $Catalog, $Name, $Descr,$Acad_Org) {
     try {
         $db = getDBConnection();
-        $query = "INSERT INTO `cis411_csaApp`.`Classes` 
-                      (`Instructor`, `Name`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Descr`, `Count_ID`, `Acad_Org`, `Start_Time`, `End_Time`, `Days`, `Cap_Enrl`) 
-                      VALUES (:instructor, :name, :term, :session, :subject, :catalog, :section, :descr, :count_id, :acad_org, :start_time, :end_time, :days, :cap_enrl)";
+        $query = "INSERT INTO `cis411_csaApp`.`Course` 
+                      ( `Subject`, `Catalog`, `Name`, `Descr`,`Acad_Org`) 
+                      VALUES (:subject, :catalog, :name, :descr, :acad_org)";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
         //echo $query;
-        $statement->bindValue(':instructor', "$Instructor");
+        //$statement->bindValue(':instructor', "$InstructorName");
         $statement->bindValue(':name', "$Name");
+        $statement->bindValue(':subject', "$Subject");
+        $statement->bindValue(':catalog', "$Catalog");
+        $statement->bindValue(':descr', "$Descr");
+        $statement->bindValue(':acad_org', "$Acad_Org");
+        $statement->execute();
+        $statement->closeCursor();
+        //$statement->debugDumpParams();
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+function addNewCourseOffering($Instructor, $InstructorName, $Term, $Session, $Subject, $Catalog, $Section, $Descr, $Count_ID, $Acad_Org, $Start_Time, $End_Time, $Days, $Cap_Enrl) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`CourseOffering` 
+                      ( `Term`, `Session`, `Subject`, `Catalog`, `Section`, `InstructorName`, `Count_ID`,`Start_Time`, `End_Time`, `Days`, `Cap_Enrl`) 
+                      VALUES (:term, :session, :subject, :catalog, :section,:instructorname, :count_id, :start_time, :end_time, :days, :cap_enrl)";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        //echo $query;
+        //$statement->bindValue(':instructor', "$InstructorName");
+        $statement->bindValue(':instructorname', "$InstructorName");
         $statement->bindValue(':term', "$Term");
         $statement->bindValue(':session', "$Session");
         $statement->bindValue(':subject', "$Subject");
         $statement->bindValue(':catalog', "$Catalog");
         $statement->bindValue(':section', "$Section");
-        $statement->bindValue(':descr', "$Descr");
+        //$statement->bindValue(':descr', "$Descr");
         $statement->bindValue(':count_id', "$Count_ID");
-        $statement->bindValue(':acad_org', "$Acad_Org");
+        //$statement->bindValue(':acad_org', "$Acad_Org");
         $statement->bindValue(':start_time', "$Start_Time");
         $statement->bindValue(':end_time', "$End_Time");
         $statement->bindValue(':days', "$Days");
@@ -36,9 +60,9 @@ function addNewCourse($Instructor, $Name, $Term, $Session, $Subject, $Catalog, $
 function addNewStudent($ID, $Name, $Last_Term, $Current, $Location,$Total, $GPA, $Plan_1, $Plan_1_Descr, $Plan_2, $Plan_2_Descr, $Plan_3, $Plan_3_Descr, $Plan_4, $Plan_4_Descr, $Plan_5, $Plan_5_Descr, $Phone, $EagleMail_ID, $Advisor_1, $Advisor_1_Email, $Advisor_2, $Advisor_2_Email, $Degree_Term, $Degree, $Deg_Plan_1, $Deg_Plan_2, $Deg_Plan_3, $Deg_Plan_4, $Deg_Plan_5 ) {
     try {
         $db = getDBConnection();
-        $query = "INSERT INTO `cis411_csaApp`.`Students` 
-                      (`ID`, `Name`, `Last_Term`, `Current`, `Location`, `Total`, `GPA`, `Plan_1`, `Plan_1_Descr`, `Plan_2`, `Plan_2_Descr`, `Plan_3`, `Plan_3_Descr`, `Plan_4`, `Plan_4_Descr`, `Plan_5`, `Plan_5_Descr`, `Phone`, `EagleMail_ID`, `Advisor_1`, `Advisor_1_Email`, `Advisor_2`, `Advisor_2_Email`, `Degree_Term`, `Degree`, `Deg_Plan_1`, `Deg_Plan_2`, `Deg_Plan_3`, `Deg_Plan_4`, `Deg_Plan_5`) 
-                      VALUES (:id, :name, :last_term, :current, :location, :total, :gpa, :plan_1, :plan_1_descr, :plan_2, :plan_2_descr, :plan_3, :plan_3_descr, :plan_4, :plan_4_descr, :plan_5, :plan_5_descr, :phone, :eaglemail_id, :advisor_1, :advisor_1_email, :advisor_2, :advisor_2_email, :degree_term, :degree, :deg_plan_1, :deg_plan_2, :deg_plan_3, :deg_plan_4, :deg_plan_5)";
+        $query = "INSERT INTO `cis411_csaApp`.`Student` 
+                      (`ID`, `Name`, `Last_Term`, `Current`, `Location`, `Total`, `GPA`, `Phone`, `EagleMail_ID`, `Advisor_1`, `Advisor_1_Email`, `Advisor_2`, `Advisor_2_Email`, `Degree_Term`, `Degree`, `Graduated_Plan_1`, `Graduated_Plan_2`, `Graduated_Plan_3`, `Graduated_Plan_4`, `Graduated_Plan_5`) 
+                      VALUES (:id, :name, :last_term, :current, :location, :total, :gpa, :phone, :eaglemail_id, :advisor_1, :advisor_1_email, :advisor_2, :advisor_2_email, :degree_term, :degree, :deg_plan_1, :deg_plan_2, :deg_plan_3, :deg_plan_4, :deg_plan_5)";
         //$queryTest = "INSERT INTO `cis411_csaApp`.`Students`
         //              (`ID`, `Name`, `Last_Term`, `Current`, `Location`, `Total`, `GPA`, `Plan_1`, `Plan_1_Descr`, `Plan_2`, `Plan_2_Descr`, `Plan_3`, `Plan_3_Descr`, `Plan_4`, `Plan4_Descr`, `Plan_5`, `Plan_5_Descr`, `Phone`, `EagleMail_ID`, `Advisor_1`, `Advisor_1_Email`, `Advisor_2`, `Advisor_2_Email`, `Degree_Term`, `Degree`, `Deg_Plan_1`, `Deg_Plan_2`, `Deg_Plan_3`, `Deg_Plan_4`, `Deg_Plan_5`) VALUES ('11111132', 'David', '11', 'David', 'David', '11', '11', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', '11', 'David', 'David', 'David', 'David', 'David', 'David');";
         $statement = $db->prepare($query);
@@ -49,7 +73,7 @@ function addNewStudent($ID, $Name, $Last_Term, $Current, $Location,$Total, $GPA,
         $statement->bindValue(':current', "$Current");
         $statement->bindValue(':location', "$Location");
         $statement->bindValue(':total', "$Total");
-        $statement->bindValue(':gpa', "$GPA");
+        $statement->bindValue(':gpa', "$GPA");/*
         $statement->bindValue(':plan_1', "$Plan_1");
         $statement->bindValue(':plan_1_descr', "$Plan_1_Descr");
         $statement->bindValue(':plan_2', "$Plan_2");
@@ -59,7 +83,7 @@ function addNewStudent($ID, $Name, $Last_Term, $Current, $Location,$Total, $GPA,
         $statement->bindValue(':plan_4', "$Plan_4");
         $statement->bindValue(':plan_4_descr', "$Plan_4_Descr");
         $statement->bindValue(':plan_5', "$Plan_5");
-        $statement->bindValue(':plan_5_descr', "$Plan_5_Descr");
+        $statement->bindValue(':plan_5_descr', "$Plan_5_Descr");*/
         $statement->bindValue(':phone', "$Phone");
         $statement->bindValue(':eaglemail_id', "$EagleMail_ID");
         $statement->bindValue(':advisor_1', "$Advisor_1");
