@@ -4,6 +4,7 @@ var or=0;
 var flag=true;
 var freshlyChanged=true;
 var orButton=false;
+var firstAnd=false;
 
 //var $=document.getElementById();
 
@@ -26,6 +27,10 @@ window.onclick = function(event) {
             }
         }
     }
+}
+
+function firstAndPress(){
+
 }
 
 function makeDivVisibleAnd(){
@@ -59,6 +64,7 @@ function makeDivVisibleOr(){
     //or=attachDiv.children.length+1;
     var dynamicDiv=document.createElement("div");
     $(dynamicDiv).addClass("inline");
+    $(dynamicDiv).addClass("fixedWidthToPreventBreakup");
     if(freshlyChanged || orButton) {
         if ($('#dropdown1 option:selected').text() == "Program") {
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
@@ -70,12 +76,15 @@ function makeDivVisibleOr(){
                 "selected disabled hidden>Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
                 "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
         }
-        else if ($('#dropdown1 option:selected').text() == "Taking" || "Scheduled For" || "Not Taking" || "Not Completed" || "Not Taking/Not Completed" || "Not Scheduled For") { +
+        else if ($('#dropdown1 option:selected').text() == "Taking" || $('#dropdown1 option:selected').text() == "Scheduled For" ||
+            $('#dropdown1 option:selected').text() == "Not Taking" || $('#dropdown1 option:selected').text() == "Not Completed" ||
+            $('#dropdown1 option:selected').text() == "Not Taking/Not Completed" ||
+            $('#dropdown1 option:selected').text() == "Not Scheduled For") { +
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
                 "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='dropdown'+and+or>" +
                 "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
         }
-        else if ($('#dropdown1 option:selected').text() == "Completed" || "Taking/Completed") {
+        else if ($('#dropdown1 option:selected').text() == "Completed" || $('#dropdown1 option:selected').text() == "Taking/Completed") {
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
                 "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='dropdown'+and+or>" +
                 "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp;<select style='20%;' id='dropdown'+and+or>\" +\n" +
@@ -97,16 +106,18 @@ function makeDivVisibleOr(){
                     "selected disabled hidden>Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
                     "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
             }
-            else if ($('#dropdown1 option:selected').text() == "Taking" || "Scheduled For" || "Not Taking" || "Not Completed" || "" +
-                "Not Taking/Not Completed" || "Not Scheduled For") {
+            else if ($('#dropdown1 option:selected').text() == "Taking" || $('#dropdown1 option:selected').text() == "Scheduled For" ||
+                $('#dropdown1 option:selected').text() == "Not Taking" || $('#dropdown1 option:selected').text() == "Not Completed" ||
+                $('#dropdown1 option:selected').text() == "Not Taking/Not Completed" ||
+                $('#dropdown1 option:selected').text() == "Not Scheduled For") { +
                 $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
                     "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='dropdown'+and+or>" +
                     "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
             }
-            else if ($('#dropdown1 option:selected').text() == "Completed" || "Taking/Completed") {
+            else if ($('#dropdown1 option:selected').text() == "Completed" || $('#dropdown1 option:selected').text() == "Taking/Completed") {
                 $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
                     "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='dropdown'+and+or>" +
-                    "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp<select style='20%;' id='dropdown'+and+or>\" +\n" +
+                    "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp;<select style='20%;' id='dropdown'+and+or>\" +\n" +
                     "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                     "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
             }
