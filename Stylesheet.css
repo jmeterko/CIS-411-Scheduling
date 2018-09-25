@@ -51,7 +51,12 @@
 
 .dropdownboxWidth
 {
-    width: 250px;
+    width: 22%;
+}
+
+.dropdownboxWidthSmall
+{
+    width:8%
 }
 
 .containerDiv

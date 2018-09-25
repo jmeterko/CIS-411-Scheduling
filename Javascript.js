@@ -2,6 +2,8 @@
 var and=0;
 var or=0;
 var flag=true;
+var freshlyChanged=true;
+var orButton=false;
 
 //var $=document.getElementById();
 
@@ -39,46 +41,12 @@ function makeDivInvisible(){
     document.getElementById("divAnd" + and).setAttribute("class","hiddenDiv");
 }
 
-/*
-function makeDivVisibleOr(){
-    //alert("Main Function");
-    var dynamicOrButton = document.createElement("button");
-    var dynamicSelectBox = document.createElement("select");
-    var xButton=document.createElement("button");
-    $(dynamicOrButton).addClass("btn btn-danger");
-    $(dynamicOrButton).click(makeDivVisibleOr);
-    dynamicOrButton.innerHTML = "Or";
-    dynamicOrButton.type="button";
-    dynamicOrButton.id="or"+or;
-    dynamicSelectBox.id = "SelectBoxOr" + or;
-    $(xButton).addClass("glyphicon glyphicon-remove");
-    xButton.type="button";
-    $(xButton).click(removeOrDropdown);
-    if($('#dropdown1 option:selected').text()=="Program") {
-        //alert("Program Called");
-        dynamicSelectBox.innerHTML = "<select class='dropdownboxWidth'><option value=''selected disabled hidden></option>" +
-            "<option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
-            "</select>";
-        document.getElementById('attach'+ and).appendChild(xButton);
-        document.getElementById('attach' + and).appendChild(dynamicSelectBox);
-        document.getElementById('attach' + and).appendChild(dynamicOrButton);
-    }
-    else if($('#dropdown1 option:selected').text()=="Location") {
-        dynamicSelectBox.innerHTML = "<select class='dropdownboxWidth'><option value=''selected disabled hidden></option>" +
-            "<option value='Clarion'>Clarion</option><option value='Online'>Online</option><option value='Venango'>Venango</option>" +
-            "</select>";
-        document.getElementById('attach'+ and).appendChild(xButton);
-        document.getElementById('attach' + and).appendChild(dynamicSelectBox);
-        document.getElementById('attach' + and).appendChild(dynamicOrButton);
-    }
-    or++;
-}
-*/
-
 function removeOrDiv(){
     var attachDiv=document.getElementById('attach'+and);
-    attachDiv.removeChild(attachDiv.childNodes[or-1]);
-    or--;
+    if(attachDiv.children.length > 1) {
+        attachDiv.removeChild(attachDiv.childNodes[or - 1]);
+        or--;
+    }
 }
 
 function howManyChildren(){
@@ -87,22 +55,70 @@ function howManyChildren(){
 }
 
 function makeDivVisibleOr(){
+    var attachDiv=document.getElementById('attach'+and);
+    //or=attachDiv.children.length+1;
     var dynamicDiv=document.createElement("div");
-    dynamicDiv.innerHTML="dynamicOrDiv";
     $(dynamicDiv).addClass("inline");
-    if($('#dropdown1 option:selected').text()=="Program") {
-        $(dynamicDiv).html("<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth'><option value=''" +
-            "selected disabled hidden></option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
-            "</select>&nbsp;<button type='button' class='btn btn-danger' onclick='makeDivVisibleOr()'>Or</button>&nbsp;&nbsp;");
+    if(freshlyChanged || orButton) {
+        if ($('#dropdown1 option:selected').text() == "Program") {
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+                "selected disabled hidden>Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
+                "</select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+        }
+        else if ($('#dropdown1 option:selected').text() == "Location") {
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+                "selected disabled hidden>Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
+                "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+        }
+        else if ($('#dropdown1 option:selected').text() == "Taking" || "Scheduled For" || "Not Taking" || "Not Completed" || "Not Taking/Not Completed" || "Not Scheduled For") { +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='dropdown'+and+or>" +
+                "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+        }
+        else if ($('#dropdown1 option:selected').text() == "Completed" || "Taking/Completed") {
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='dropdown'+and+or>" +
+                "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp;<select style='20%;' id='dropdown'+and+or>\" +\n" +
+                "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
+                "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+        }
+        freshlyChanged=false;
     }
-    else if($('#dropdown1 option:selected').text()=="Location") {
-        $(dynamicDiv).html("<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth'><option value=''" +
-            "selected disabled hidden></option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
-            "<option value='Venango'>Venango</option></select>");
+    else{
+        while(attachDiv.firstChild) {
+            attachDiv.removeChild(attachDiv.firstChild);
+            if ($('#dropdown1 option:selected').text() == "Program") {
+                $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+                    "selected disabled hidden>Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
+                    "</select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+            }
+            else if ($('#dropdown1 option:selected').text() == "Location") {
+                $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+                    "selected disabled hidden>Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
+                    "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+            }
+            else if ($('#dropdown1 option:selected').text() == "Taking" || "Scheduled For" || "Not Taking" || "Not Completed" || "" +
+                "Not Taking/Not Completed" || "Not Scheduled For") {
+                $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+                    "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='dropdown'+and+or>" +
+                    "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+            }
+            else if ($('#dropdown1 option:selected').text() == "Completed" || "Taking/Completed") {
+                $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+                    "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='dropdown'+and+or>" +
+                    "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp<select style='20%;' id='dropdown'+and+or>\" +\n" +
+                    "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
+                    "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+            }
+            or=0;
+        }
     }
-    else if($('#dropdown1 option:selected').text()=="Taking") {
-        
-    }
-    document.getElementById('attach'+ and).appendChild(dynamicDiv);
+    attachDiv.appendChild(dynamicDiv);
     or++;
+    orButton=false;
+}
+
+function orButtonPressed(){
+    orButton=true;
+    makeDivVisibleOr();
 }
