@@ -126,6 +126,35 @@ function addNewStudent($ID, $Name, $Last_Term, $Current, $Location,$Total, $GPA,
 }
 
 //rowtotal is just for debugging info
+function addNewProgram($rowTotal, $Plan, $PlanDescr) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`acad_program` 
+                      (`Plan`, `Plan_Descr`) 
+                      VALUES (:plan, :descr)";
+
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':plan', "$Plan");
+        $statement->bindValue(':descr', "$PlanDescr");
+        //echo $query;
+        $statement->execute();
+        $statement->closeCursor();
+        //$statement->debugDumpParams();
+        $errorCode = $statement->errorCode();
+        if ($errorCode != "00000")
+            echo "Error code $errorCode:  Integrity Constraint Violation:   "
+                . $Plan . " " .  $PlanDescr . " <br>"
+                . "On line " . $rowTotal . " <br><br>";
+        //echo $rowTotal . " has error code: " . $errorCode . "<br>";
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
+//rowtotal is just for debugging info
 function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section) {
     try {
         $db = getDBConnection();
@@ -175,8 +204,8 @@ function clearTable($tableName ) {
 }
 function getDBConnection() {
     $dsn = 'mysql:host=localhost;dbname=cis411_csaApp';
-    $username = 's_dmodonnell';
-    $password = 'Mysteriummmm06';
+    $username = 's_vjconiglio';
+    $password = 'baseball';
 
     try {
         $db = new PDO($dsn, $username, $password);
