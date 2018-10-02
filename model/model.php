@@ -1,22 +1,27 @@
 <?php
 //Instructor,Name,Term,Session,Subject,Catalog,Section,Descr,Count ID,Acad Org,Start Time,End Time,Days,Cap Enrl
-function addNewCourse($Subject, $Catalog, $Name, $Descr,$Acad_Org) {
+function addNewCourse($Subject, $Catalog, $Name, $Acad_Org) {
     try {
         $db = getDBConnection();
         $query = "INSERT INTO `cis411_csaApp`.`Course` 
-                      ( `Subject`, `Catalog`, `Name`, `Descr`,`Acad_Org`) 
-                      VALUES (:subject, :catalog, :name, :descr, :acad_org)";
+                      ( `Subject`, `Catalog`, `Name`,`Acad_Org`) 
+                      VALUES (:subject, :catalog, :name, :acad_org)";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
         //echo $query;
         //$statement->bindValue(':instructor', "$InstructorName");
-        $statement->bindValue(':name', "$Name");
         $statement->bindValue(':subject', "$Subject");
         $statement->bindValue(':catalog', "$Catalog");
-        $statement->bindValue(':descr', "$Descr");
+        $statement->bindValue(':name', "$Name");       //do we need 'name' and 'descr' ??
         $statement->bindValue(':acad_org', "$Acad_Org");
         $statement->execute();
         $statement->closeCursor();
         //$statement->debugDumpParams();
+        //echo(getLastInsertRow("Name", "course"));
+        $errorCode = $statement->errorCode();
+        if ($errorCode != "00000")
+            echo "Error code $errorCode:  Attempted to insert duplicate Primary Key:   "
+                . $Acad_Org. " " .  $Subject .  $Catalog . " " .  $Name . "<br>"
+                . "Duplicate course offering found in import file. <br><br>";
         return $statement->rowCount();         // Number of rows affected
     } catch (PDOException $e) {
         $errorMessage = $e->getMessage();
@@ -24,7 +29,7 @@ function addNewCourse($Subject, $Catalog, $Name, $Descr,$Acad_Org) {
         die;
     }
 }
-function addNewCourseOffering($Instructor, $InstructorName, $Term, $Session, $Subject, $Catalog, $Section, $Descr, $Count_ID, $Acad_Org, $Start_Time, $End_Time, $Days, $Cap_Enrl) {
+function addNewCourseOffering($rowTotal, $Instructor, $InstructorName, $Term, $Session, $Subject, $Catalog, $Section, $Descr, $Count_ID, $Acad_Org, $Start_Time, $End_Time, $Days, $Cap_Enrl) {
     try {
         $db = getDBConnection();
         $query = "INSERT INTO `cis411_csaApp`.`CourseOffering` 
@@ -47,11 +52,24 @@ function addNewCourseOffering($Instructor, $InstructorName, $Term, $Session, $Su
         $statement->bindValue(':days', "$Days");
         $statement->bindValue(':cap_enrl', "$Cap_Enrl");
         $statement->execute();
+        //echo "\nPDO::errorCode(): " . $statement->errorCode() . "<br>";  //print errorcode
+        $errorCode = $statement->errorCode();
+        if ($errorCode != "00000"){
+            if ($errorCode == "23000")
+                echo "Error code $errorCode:  Duplicate Entry Found:   "
+                    . $InstructorName. " " .  $Term . " " .  $Subject . " " . $Session  . " " .  $Catalog . " " .  $Section . "<br>"
+                    . "On line " . $rowTotal . " <br><br>";
+            else echo "Error code $errorCode:  "
+                . $InstructorName. " " .  $Term . " " .  $Subject . " " . $Session  . " " .  $Catalog . " " .  $Section . "<br>"
+                . "On line " . $rowTotal . " <br><br>";
+        }
+
         $statement->closeCursor();
         //$statement->debugDumpParams();
         return $statement->rowCount();         // Number of rows affected
     } catch (PDOException $e) {
         $errorMessage = $e->getMessage();
+        echo "This one didnt work";
         include '../view/errorPage.php';
         die;
     }
@@ -107,28 +125,31 @@ function addNewStudent($ID, $Name, $Last_Term, $Current, $Location,$Total, $GPA,
     }
 }
 
-function addNewStudentCourse($ID, $Name, $Term, $Session, $Subject, $Catalog, $Section, $Descr, $Grade, $Type ) {
+//rowtotal is just for debugging info
+function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section) {
     try {
         $db = getDBConnection();
-        $query = "INSERT INTO `cis411_csaApp`.`StudentsClasses` 
-                      (`ID`, `Name`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Descr`, `Grade`, `Type`) 
-                      VALUES (:id, :name, :term, :session, :subject, :catalog, :section, :descr, :grade, :type)";
-        $queryTest = "INSERT INTO `studentsclasses` (`ID`, `Name`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Descr`, `Grade`, `Type`) VALUES ('11020640', 'Aaron,Shianne E', '2098', '1', 'CIS', '217', '03', 'Appl Of Micro', 'A', 'OG');";
+        $query = "INSERT INTO `cis411_csaApp`.`studentclass` 
+                      (`ID`, `Term`, `Session`, `Subject`, `Catalog`, `Section`) 
+                      VALUES (:id, :term, :session, :subject, :catalog, :section)";
+        //$queryTest = "INSERT INTO `studentclass` (`ID`, `Name`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Descr`, `Grade`, `Type`) VALUES ('11020640', 'Aaron,Shianne E', '2098', '1', 'CIS', '217', '03', 'Appl Of Micro', 'A', 'OG');";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
         $statement->bindValue(':id', "$ID");
-        $statement->bindValue(':name', "$Name");
         $statement->bindValue(':term', "$Term");
         $statement->bindValue(':session', "$Session");
         $statement->bindValue(':subject', "$Subject");
         $statement->bindValue(':catalog', "$Catalog");
         $statement->bindValue(':section', "$Section");
-        $statement->bindValue(':descr', "$Descr");
-        $statement->bindValue(':grade', "$Grade");
-        $statement->bindValue(':type', "$Type");
         //echo $query;
         $statement->execute();
         $statement->closeCursor();
         //$statement->debugDumpParams();
+        $errorCode = $statement->errorCode();
+        if ($errorCode != "00000")
+            echo "Error code $errorCode:  Integrity Constraint Violation:   "
+                . $ID . " " .  $Term . " " . $Session  . " " .  $Subject . " " .  $Catalog . " " .  $Section . "<br>"
+                . "On line " . $rowTotal . " <br><br>";
+        //echo $rowTotal . " has error code: " . $errorCode . "<br>";
         return $statement->rowCount();         // Number of rows affected
     } catch (PDOException $e) {
         $errorMessage = $e->getMessage();
@@ -165,6 +186,22 @@ function getDBConnection() {
         die;
     }
     return $db;
+}
+function getLastInsertRow($columnName, $tableName){
+
+    try {
+        $db = getDBConnection();
+        $query = "SELECT LAST($columnName) FROM $tableName";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
 }
 function logSQLError($errorInfo) {
     $errorMessage = $errorInfo[2];

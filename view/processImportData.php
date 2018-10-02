@@ -4,15 +4,21 @@ require '../view/headerInclude.php';
 ?>
 
 <?php
+/// Process File Import
+/// Apache settings:
+///                  maximumum execution time
+///                  maximum file upload size
+/// DB connection string
+///
+///
 
-/*echo "Delete all rows in students-classes first to avoid foreign key constraints." . "<br>";
-clearTable("studentsclasses");   //IMPORTANT must be cleared first
-echo "<br>";                                          //foreign key constraint*/
+
+clearTable("studentclass");   //IMPORTANT must be cleared first
 
 //call the file load functions
 loadStudents();
 loadClasses();
-//loadStudentsClasses();
+loadStudentsClasses();
 
 ///
 /// to do
@@ -136,7 +142,7 @@ function loadClasses()
                 if ($headerRow[11] == "End Time")
                     if ($headerRow[12] == "Days")
                         if ($headerRow[13] == "Cap Enrl")
-        echo "Classes file has been chosen correctly." . "<br>";
+                            echo "Classes file has been chosen correctly." . "<br>";
     } else echo "Please choose an accurate *CLASSES* file." . "<br>";
 
     //clear CourseOffering and Course tables
@@ -145,21 +151,33 @@ function loadClasses()
 
     //collect unique Courses, load Course Table
     //assumes file won't use the " | " character (pipe)
+    //some catalogs have multiple spellings (" 110" and "110")
+    //some classes have multiple spellings ("Intro To Java" and "Intro to Java")
     $courseArray = array(); //hash table implementation
     //$courseToAdd = array();
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
-                            //Subject    Catalog       Name         Descr       Acad_Org
-        $courseItemString = $data[4]."|".$data[5]."|".$data[1]."|".$data[7]."|".$data[9]; //assemble a string unique to the course
-        $courseArray[$courseItemString] = 3;      //add it as a key to the AssociativeArray, key value is meaningless
+        //file headings:       //Subject    Catalog       Name         Descr       Acad_Org
+        //$courseItemString = $data[4]."|".$data[5]."|".$data[1]."|".$data[7]."|".$data[9]; //assemble a string unique to the course
+        $courseItemStringValue = $data[4]."|".str_replace(' ', '', $data[5])."|".$data[7]."|".$data[9]; //SUBJ|CATA|DESCR|ACADORG //string unique to course
+        $courseItemStringKey = $data[4]."|".str_replace(' ', '', $data[5]);
+        //remove whitespace from catalog     ^^^
+        //$courseArray[$courseItemString] = 3;      //add it as a key to the AssociativeArray, key value is meaningless
+        $courseArray[strtoupper($courseItemStringKey)] = $courseItemStringValue;      //add it as a key to the AssociativeArray, value is original format, key is UPPERCASE
+        //^^^unique ID:case-insensitive string...  value:case-sensitive
+        //so, we're saving each class only once, spelling it the way it is spelled the last time we find it
         //echo "courseItemString is " . $courseItemString . "<br>";
     }
 
     //Process courseArray with a ForEach loop, add to database
     //echo "<br> Now to process courseArray with a foreach loop: <br>";
     $rowCount = 0;
-    foreach ($courseArray as $courseItem => $keyThrowaway){
-        $courseToAdd = explode("|", $courseItem);
-        $rowCount += addNewCourse($courseToAdd[0],$courseToAdd[1],$courseToAdd[2],$courseToAdd[3],$courseToAdd[4]);
+    $testingCount = 0;
+    foreach ($courseArray as $courseKey => $courseValue){  //
+        $courseToAdd = explode("|", $courseValue);
+        $rowCount += addNewCourse($courseToAdd[0],$courseToAdd[1],$courseToAdd[2],$courseToAdd[3]);
+        $testingCount++;
+        echo "Iteration: " . $testingCount . "   Rows inserted: " . $rowCount .
+             "... " . $courseValue . "<br>";
     }
     echo    "There are " . count($courseArray) . " items in courseArray. <br>".
         "There should be " . count($courseArray) . " rows inserted into table Course. <br>";
@@ -170,9 +188,6 @@ function loadClasses()
     //               ****Why are we only inserting 82 out of 162?****
     //
     //                                                          //idk wtf is up
-    //                                                          //Is our Course table right?  PK's are alright?
-    //                                                          //can a CIS 202 exist with multiple teachers in the table?
-    //                                                          //I think our table should just be Subject, Catalog
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///
     //print courseArray for debugging
@@ -187,10 +202,15 @@ function loadClasses()
     //Rewind file, add course offerings after foreign key constraints (course table) are added
     rewind($file);
     $rowCount = 0;
+    $rowTotal = 0;
+    fgetcsv($file);//skip first line
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //INSERT INTO Classes <each field>
-        $rowCount += addNewCourseOffering($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9], $data[10], $data[11], $data[12], $data[13]);
+        $rowTotal++;
+        $rowCount += addNewCourseOffering($rowTotal, $data[0], $data[1], $data[2], $data[3], $data[4], str_replace(' ', '', $data[5]), $data[6], $data[7], $data[8], $data[9], $data[10], $data[11], $data[12], $data[13]);
     }   //rowcount increments when a row is affected, addNewStudent returns 1
+    echo    "There are " . $rowTotal . " rows in Course CSV file. <br>".
+    "There should be " . $rowTotal . " rows inserted into table CourseOffering. <br>";
     $errorMessage = "Inserted $rowCount rows into table CourseOffering.";
     echo $errorMessage;
 
@@ -240,12 +260,16 @@ function loadStudentsClasses()
     if ($headerRow[8] != "Grade" or $headerRow[9] != "Type"){
         echo "Please choose an accurate *STUDENTSCLASSES* file." . "<br>";
     } else echo "StudentsClasses file has been chosen correctly." . "<br>"; echo "<br>";
-    //clearTable("StudentsClasses");  //deletes all rows in StudentsClasses
+    clearTable("studentclass");  //deletes all rows in StudentsClasses
     $rowCount = 0;
+    $rowTotal = 0;
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //INSERT INTO StudentsClasses <each field>
-        $rowCount += addNewStudentCourse($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]);
+        $rowTotal++;
+        $rowCount += addNewStudentCourse($rowTotal, $data[0], $data[2], $data[3], $data[4], $data[5], $data[6]);
     }                                           //addNewStudentsClasses^^^
+    echo    "There are " . $rowTotal . " rows in Students-Courses CSV file. <br>".
+        "There should be " . $rowTotal . " rows inserted into table StudentCourse. <br>";
     $errorMessage = "Inserted $rowCount rows into table Students-Classes.";
     echo $errorMessage;
 
