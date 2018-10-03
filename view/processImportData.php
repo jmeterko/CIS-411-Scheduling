@@ -147,47 +147,50 @@ function loadPrograms()
     } else echo "Please choose an accurate *STUDENT* file." . "<br>";
     clearTable("Acad_Program");  //deletes all rows in Acad_Program
 
-    $rowCount = 0;
-    $rowTotal = 0;
-    //how many times do we attempt to insert a program vs how  many get inserted
-    while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
-        //INSERT INTO Acad_program <each field>
-        $rowTotal++;
+    $programArray = array();//hash table implementation
+
+    while (($data = fgetcsv($file)) !== FALSE) {
         if (!empty($data[15])){
-            $rowCount += addNewProgram($rowTotal, $data[15], $data[16]);
-            $rowTotal++;
+            $ProgramItemStringValue = $data[15]."|". $data[16]; //PROGRAM|DESC
+            $ProgramItemStringKey = $data[15]."|". $data[16]; //same thing
+            $programArray[strtoupper($ProgramItemStringKey)] = $ProgramItemStringValue;      //add it as a key to the AssociativeArray, value is original format, key is UPPERCASE
         }
+
         if (!empty($data[13])){
-            $rowCount += addNewProgram($rowTotal, $data[13], $data[14]);
-            $rowTotal++;
+            $ProgramItemStringValue = $data[13]."|". $data[14]; //PROGRAM|DESC
+            $ProgramItemStringKey = $data[13]."|". $data[14]; //same thing
+            $programArray[strtoupper($ProgramItemStringKey)] = $ProgramItemStringValue;      //add it as a key to the AssociativeArray, value is original format, key is UPPERCASE
         }
         if (!empty($data[11])){
-            $rowCount += addNewProgram($rowTotal, $data[11], $data[12]);
-            $rowTotal++;
+            $ProgramItemStringValue = $data[11]."|". $data[12]; //PROGRAM|DESC
+            $ProgramItemStringKey = $data[11]."|". $data[12]; //same thing
+            $programArray[strtoupper($ProgramItemStringKey)] = $ProgramItemStringValue;      //add it as a key to the AssociativeArray, value is original format, key is UPPERCASE
         }
         if (!empty($data[9])){
-            $rowCount += addNewProgram($rowTotal, $data[9], $data[10]);
-            $rowTotal++;
+            $ProgramItemStringValue = $data[9]."|". $data[10]; //PROGRAM|DESC
+            $ProgramItemStringKey = $data[9]."|". $data[10]; //same thing
+            $programArray[strtoupper($ProgramItemStringKey)] = $ProgramItemStringValue;      //add it as a key to the AssociativeArray, value is original format, key is UPPERCASE
         }
-        $rowCount += addNewProgram($rowTotal,$data[7],$data[8]);
-        $rowTotal++;
-    }   //rowcount increments when a row is affected, addNewStudent returns 1
-    $errorMessage = "Inserted $rowCount rows into table acad_program.";
-    echo "Attempted to insert $rowTotal rows into acad_program table (called addNewProgram $rowTotal times) <br>";
-    echo $errorMessage;
-    //AddNewProgram^^^
-    //print 10 rows to screen for convenience
-    echo "<h3>First 10 Programs are:</h3><ol>";
-    rewind($file);
-    fgetcsv($file); //skip first line before looping
-    $printIndex = 0;
-    while (($data = fgetcsv($file)) !== FALSE and $printIndex < 10) {
-        echo "<li>$data[7]  " .
-            "$data[8]</li>" ;
-        $printIndex++;
+        $ProgramItemStringValue = $data[7]."|". $data[8]; //PROGRAM|DESC
+        $ProgramItemStringKey = $data[7]."|". $data[8]; //same thing
+        $programArray[strtoupper($ProgramItemStringKey)] = $ProgramItemStringValue;      //add it as a key to the AssociativeArray, value is original format, key is UPPERCASE
     }
-    echo "</ol>";
-    fclose($file);
+
+    //Process programArray with a ForEach loop, add to database
+    //echo "<br> Now to process courseArray with a foreach loop: <br>";
+    $rowCount = 0;
+    $testingCount = 0;
+    foreach ($programArray as $programKey => $programValue){  //
+        $programToAdd = explode("|", $programValue);
+        $rowCount += addNewProgram($testingCount,$programToAdd[0],$programToAdd[1]);
+        $testingCount++;
+        echo "Iteration: " . $testingCount . "   Rows inserted: " . $rowCount .
+            "... " . $programValue . "<br>";
+    }
+    echo    "There are " . count($programArray) . " items in programArray. <br>".
+        "There should be " . count($programArray) . " rows inserted into table Acad_program. <br>";
+    $errorMessage = "Inserted $rowCount rows into table Acad_Program. <br>";
+    echo $errorMessage . "<br>";
 }
 
 

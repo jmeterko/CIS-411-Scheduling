@@ -204,8 +204,8 @@ function clearTable($tableName ) {
 }
 function getDBConnection() {
     $dsn = 'mysql:host=localhost;dbname=cis411_csaApp';
-    $username = 's_dmodonnell';
-    $password = 'Mysteriummmm06';
+    $username = 's_vjconiglio';
+    $password = 'baseball';
 
     try {
         $db = new PDO($dsn, $username, $password);
