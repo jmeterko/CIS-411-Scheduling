@@ -1,2 +1,4 @@
+#Ignore the project generated files in .idea directory
+#IDE metadata
+**.idea/**
 
-FileUploadPage.html
