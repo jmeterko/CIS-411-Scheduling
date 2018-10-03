@@ -16,6 +16,7 @@ require '../view/headerInclude.php';
 clearTable("studentclass");   //IMPORTANT must be cleared first
 
 //call the file load functions
+loadPrograms();
 loadStudents();
 loadClasses();
 loadStudentsClasses();
@@ -43,6 +44,12 @@ function checkIfCSV($fileToCheck){
         'application/octet-stream',
         'application/txt',
     );
+
+   // function convertToCsv($fileToCheck){
+    //    $filename = preg_replace('"\.xlsx$"', 'csv', $fileToCheck);
+   // };
+
+
 
     if (in_array($fileToCheck, $csv_mimetypes)) {
         // possible CSV file
@@ -106,6 +113,75 @@ function loadStudents(){
     //----------------------------------------------------------------
 }
 
+function loadPrograms()
+{
+    //////////////////////////////////////////////////////////////////
+    /// STUDENTS PROGRAMS
+    //////////////////////////////////////////////////////////////////
+    //make sure we have a file
+    if ($_FILES['userfilestudents']['error'] == UPLOAD_ERR_NO_FILE) {
+        echo "<p>Please choose a file first and then try again...</p>";
+    }  else if ($_FILES['userfilestudents']['error'] != UPLOAD_ERR_OK){
+        echo "File Read Error\n Debugging info:"; //any other error
+        print_r($_FILES);
+    }
+
+    //check if its a CSV file
+    if (checkIfCSV($_FILES['userfilestudents']['type'])){
+        echo "This file is compatible as a CSV" . "<br>";
+    }
+    else echo "this file is not compatible as a CSV" . "<br>";
+
+    //open file and validate that it is the right file
+    $file = fopen($_FILES['userfilestudents']['tmp_name'], "r");
+    $headerRow = fgetcsv($file); //load first line before looping, skips first line for output
+    if ($headerRow[6] == "GPA"){
+        if($headerRow[2] == "Last Term")
+            if($headerRow[3] == "Current")
+                if($headerRow[4] == "Location")
+                    if($headerRow[5] == "Total")
+                        if($headerRow[1] == "Name")
+                            if($headerRow[7] == "Plan 1")
+                                if($headerRow[8] == "Plan 1 Descr")
+                                    echo "Student file has been chosen correctly." . "<br>";
+    } else echo "Please choose an accurate *STUDENT* file." . "<br>";
+    clearTable("student");  //deletes all rows in Students
+
+    $rowCount = 0;
+    $rowTotal = 0;
+    while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
+        //INSERT INTO Acad_program <each field>
+        $rowTotal++;
+        if (!empty($data[15])){
+            $rowCount += addNewProgram($rowTotal, $data[15], $data[16]);
+        }
+        if (!empty($data[13])){
+            $rowCount += addNewProgram($rowTotal, $data[13], $data[14]);
+        }
+        if (!empty($data[11])){
+            $rowCount += addNewProgram($rowTotal, $data[11], $data[12]);
+        }
+        if (!empty($data[9])){
+            $rowCount += addNewProgram($rowTotal, $data[9], $data[10]);
+        }
+        $rowCount += addNewProgram($rowTotal,$data[7],$data[8]);
+    }   //rowcount increments when a row is affected, addNewStudent returns 1
+    $errorMessage = "Inserted $rowCount rows into table acad_program.";
+    echo $errorMessage;
+    //AddNewProgram^^^
+    //print 10 rows to screen for convenience
+    echo "<h3>First 10 Programs are:</h3><ol>";
+    rewind($file);
+    fgetcsv($file); //skip first line before looping
+    $printIndex = 0;
+    while (($data = fgetcsv($file)) !== FALSE and $printIndex < 10) {
+        echo "<li>$data[7]  " .
+            "$data[8]</li>" ;
+        $printIndex++;
+    }
+    echo "</ol>";
+    fclose($file);
+}
 
 
 function loadClasses()
