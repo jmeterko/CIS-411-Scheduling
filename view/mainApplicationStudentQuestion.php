@@ -8,29 +8,18 @@ require '../view/headerInclude.php';
     <center><h1>Course Scheduling Aid</h1></center>
     <!DOCTYPE html>
     <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>New Student Question</title>
-        <!-- Bootstrap -->
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    </head>
-    <body>
+    <!--<button onclick="howManyChildren()" type="button" id="howManyChildren">how many children?</button>-->
     <div class="container" style="margin: 0px auto">
         <h1>New Student Question</h1>
         <div class="jumbotron" style="margin:0px auto">
             <form id="issueInputForm" >
-                <div class="form-group" style="margin:0px auto">
+                <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown1">
+                    <select class="form-control, dropdownboxWidth" id="dropdown0" onchange="makeDivVisibleOr()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program" id="Program">Program</option>
                         <option value="Location">Location</option>
-                        <option value="courses">---courses---</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
                         <option value="Taking">Taking</option>
                         <option value="Completed">Completed</option>
                         <option value="Taking/Completed">Taking/Completed</option>
@@ -40,26 +29,20 @@ require '../view/headerInclude.php';
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or1" class="btn btn-primary">Or</button>
-
-                    <select class="dropdownboxWidth, hiddenDiv" id="dropdownOr1">
-                       <option value="" selected disabled hidden></option>
-                       <option value="Any Major">Any Major</option>
-                       <option value="Any Major">Any Minor</option>
-                    </select>
+                    <div class="inline" id="attach0"></div>
                 <br/>
-                <button type="button" id="and1" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and0" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd1">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown2">
+                    <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="makeDivVisibleOr()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
-                        <option value="courses">---courses---</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
                         <option value="Taking">Taking</option>
                         <option value="Completed">Completed</option>
                         <option value="Taking/Completed">Taking/Completed</option>
@@ -69,20 +52,20 @@ require '../view/headerInclude.php';
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or2" class="btn btn-primary">Or</button>
+                    <div class="inline" id="attach1"></div>
                     <br/>
-                <button type="button" id="and2" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and1" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd2">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown3">
+                    <select class="form-control, dropdownboxWidth" id="dropdown2" onchange="makeDivVisibleOr()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
-                        <option value="courses">---courses---</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
                         <option value="Taking">Taking</option>
                         <option value="Completed">Completed</option>
                         <option value="Taking/Completed">Taking/Completed</option>
@@ -92,20 +75,20 @@ require '../view/headerInclude.php';
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or3" class="btn btn-primary">Or</button>
+                    <div class="inline" id="attach2"></div>
                     <br/>
-                <button type="button" id="and3" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and2" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group , hiddenDiv" id="divAnd3" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown4">
+                    <select class="form-control, dropdownboxWidth" id="dropdown3" onchange="makeDivVisibleOr()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
-                        <option value="courses">---courses---</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
                         <option value="Taking">Taking</option>
                         <option value="Completed">Completed</option>
                         <option value="Taking/Completed">Taking/Completed</option>
@@ -115,20 +98,20 @@ require '../view/headerInclude.php';
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or4" class="btn btn-primary">Or</button>
+                    <div class="inline" id="attach3"></div>
                     <br/>
-                <button type="button" id="and4" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and3" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd4" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown5">
+                    <select class="form-control, dropdownboxWidth" id="dropdown4" onchange="makeDivVisibleOr()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
-                        <option value="courses">---courses---</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
                         <option value="Taking">Taking</option>
                         <option value="Completed">Completed</option>
                         <option value="Taking/Completed">Taking/Completed</option>
@@ -138,20 +121,20 @@ require '../view/headerInclude.php';
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or5" class="btn btn-primary">Or</button>
+                    <div class="inline" id="attach4"></div>
                     <br/>
-                <button type="button" id="and5" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and4" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd5" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown6">
+                    <select class="form-control, dropdownboxWidth" id="dropdown5" onchange="makeDivVisibleOr()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
-                        <option value="courses">---courses---</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
                         <option value="Taking">Taking</option>
                         <option value="Completed">Completed</option>
                         <option value="Taking/Completed">Taking/Completed</option>
@@ -161,20 +144,20 @@ require '../view/headerInclude.php';
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or6" class="btn btn-primary">Or</button>
+                    <div class="inline" id="attach5"></div>
                     <br/>
-                <button type="button" id="and6" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and5" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd6" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown7">
+                    <select class="form-control, dropdownboxWidth" id="dropdown6" onchange="makeDivVisibleOr()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
-                        <option value="courses">---courses---</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
                         <option value="Taking">Taking</option>
                         <option value="Completed">Completed</option>
                         <option value="Taking/Completed">Taking/Completed</option>
@@ -184,20 +167,20 @@ require '../view/headerInclude.php';
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or7" class="btn btn-primary">Or</button>
+                    <div class="inline" id="attach6"></div>
                     <br/>
-                <button type="button" id="and7" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and6" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd7" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown8">
+                    <select class="form-control, dropdownboxWidth" id="dropdown7" onchange="makeDivVisibleOr()">
                         <option value=" " selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
-                        <option value="courses">---courses---</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
                         <option value="Taking">Taking</option>
                         <option value="Completed">Completed</option>
                         <option value="Taking/Completed">Taking/Completed</option>
@@ -207,7 +190,7 @@ require '../view/headerInclude.php';
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
-                    <button type="button" id="or8" class="btn btn-primary">Or</button>
+                    <div class="inline" id="attach7"></div>
                     <br/>
                 <br/>
                 <br/>

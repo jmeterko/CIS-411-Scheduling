@@ -51,7 +51,12 @@
 
 .dropdownboxWidth
 {
-    width: 250px;
+    width: 22%;
+}
+
+.dropdownboxWidthSmall
+{
+    width:8%
 }
 
 .containerDiv
@@ -71,4 +76,12 @@
 
 .blackBorderDiv{
     border: 2px black;
+}
+
+.inline{
+    display:inline;
+}
+
+.fixedWidthToPreventBreakup{
+    width:80%;
 }
