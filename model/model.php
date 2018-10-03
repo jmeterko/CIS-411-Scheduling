@@ -1,454 +1,211 @@
-<?php     
-    require_once('../security/model.php');
-
-////****************************************************************************************************************************************//
-//                                        DATABASE CONNECTION AND SEARCH FUNCTIONS                                                       \\
-//****************************************************************************************************************************************//
-    function getDBConnection() {
-		$dsn = 'mysql:host=localhost;dbname=s_jcmeterko_bookdata';
-		$username = 'root';
-		$password = '';
-                
-		try {
-			$db = new PDO($dsn, $username, $password);
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}
-		return $db;
-	}
-	
-	function getAllData() {
-		try {
-			$db = getDBConnection();
-			$query = "select * from s_jcmeterko_bookdata";
-			$statement = $db->prepare($query);
-			$statement->execute();
-			$results = $statement->fetchAll();
-			$statement->closeCursor();
-			return $results;        
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}		
-	}
-        
-        function getMaxBookID() {
-		try {
-			$db = getDBConnection();
-			$query = "SELECT MAX(BookID) FROM `s_jcmeterko_bookdata`;";
-			$statement = $db->prepare($query);
-			$statement->execute();
-			$results = $statement->fetchAll();
-			$statement->closeCursor();
-			return $results;        
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}		
-	}
-        
-        function getEBooks() {
-		try {
-			$db = getDBConnection();
-			$query = "select * from s_jcmeterko_bookdata where Type = 'eBook'";
-			$statement = $db->prepare($query);
-			$statement->execute();
-			$results = $statement->fetchAll();
-			$statement->closeCursor();
-			return $results;        
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}		
-	}
-
-        function getPaperbacks() {
-		try {
-			$db = getDBConnection();
-			$query = "select * from s_jcmeterko_bookdata where Online_Sale = 'N'";
-			$statement = $db->prepare($query);
-			$statement->execute();
-			$results = $statement->fetchAll();
-			$statement->closeCursor();
-			return $results;        
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}		
-	}
-        
-        function getFiveStarRatings() {
-		try {
-			$db = getDBConnection();
-			$query = "select * from s_jcmeterko_bookdata where Rating = 5.0";
-			$statement = $db->prepare($query);
-			$statement->execute();
-			$results = $statement->fetchAll();
-			$statement->closeCursor();
-			return $results;        
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}		
-	}
-        
-        function getOnlineSales() {
-		try {
-			$db = getDBConnection();
-			$query = "select * from s_jcmeterko_bookdata where Online_Sale = 'Y'";
-			$statement = $db->prepare($query);
-			$statement->execute();
-			$results = $statement->fetchAll();
-			$statement->closeCursor();
-			return $results;        
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}		
-	}
-        
-        
-	function getCriteria($criteria) {
-		try {
-			$db = getDBConnection();
-			$query = "SELECT *
-                            FROM s_jcmeterko_bookdata WHERE 
-                            Type LIKE :criteria OR
-                            Rating LIKE :criteria OR
-                            Date LIKE :criteria OR
-                            Online_Sale LIKE :criteria OR
-                            Sales LIKE :criteria OR
-                            Review LIKE :criteria";
-                           
-			$statement = $db->prepare($query);
-			$statement->bindValue(':criteria', "%$criteria%");
-			$statement->execute();
-			$results = $statement->fetchAll();
-			$statement->closeCursor();
-			return $results;           // Assoc Array of Rows
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}		
-	}
-        
-        function getDateRange($fromDate, $toDate) {
-                try {
-			$db = getDBConnection();
-			$query = "SELECT * FROM `s_jcmeterko_bookdata` 
-                                 WHERE   Date >= :fromDate AND
-                                         Date   <= :toDate";
-			$statement = $db->prepare($query);
-			$statement->bindValue(':toDate', "%$toDate%", ':fromDate', "%$fromDate");
-			$statement->execute();
-			$results = $statement->fetchAll();
-			$statement->closeCursor();
-			return $results;           // Assoc Array of Rows
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}
-        }
-        
-	function getBook($bookID) {
-		try {
-			$db = getDBConnection();
-			$query = "select * from s_jcmeterko_bookdata WHERE BookID = $bookID";
-			$statement = $db->prepare($query);
-                        $statement->bindValue(':bookID', $bookID);//parameterized query to prevent SQL attacks
-			$statement->execute();
-			$result = $statement->fetch();  
-			$statement->closeCursor();
-                        $result['ImagePath'] = getImagePath($bookID);
-			return $result;			
-		} catch (PDOException $e) {
-			$errorMessage = $e->getMessage();
-			include '../view/errorPage.php';
-			die;
-		}
-	}
-        
-        function insertData($date, $rating, $review, $sales, $type, $online_sale, $tempImageFilePath){
-                $db = getDBConnection();
-		$query = 'INSERT INTO s_jcmeterko_bookdata (Date, Rating, Review, Sales, Online_Sale, Type)
-			VALUES (:Date, :Rating, :Review, :Sales, :Online_Sale, :Type)';
-		$statement = $db->prepare($query);
-                $statement->bindValue(':Date', toSQLDate($date));
-		$statement->bindValue(':Rating', $rating);
-		$statement->bindValue(':Review', $review);
-		$statement->bindValue(':Sales', $sales);
-		$statement->bindValue(':Online_Sale', $online_sale);
-		$statement->bindValue(':Type', $type);
-		$success = $statement->execute();
-		$statement->closeCursor();
-		if ($success) {
-			saveImageFile($db->lastInsertId(), $tempImageFilePath);
-			return $db->lastInsertId(); 
-		} else {
-			logSQLError($statement->errorInfo()); 
-		}		
-	}
-        
-        
-        function updateData($bookID, $date, $rating, $review, $sales, $type, $online_sale, $tempImageFilePath, $deleteImage){
-                $db = getDBConnection();
-		$query = 'UPDATE s_jcmeterko_bookdata SET Date = :Date, 
-                                Rating = :Rating, Review = :Review, Sales = :Sales, 
-                                Type = :Type, Online_Sale = :Online_Sale
-                                WHERE BookID = :BookID';
-		$statement = $db->prepare($query);
-		$statement->bindValue(':BookID', $bookID);
-		$statement->bindValue(':Date', toSQLDate($date));
-		$statement->bindValue(':Rating', $rating);
-		$statement->bindValue(':Review', $review);
-		$statement->bindValue(':Sales', $sales);
-                $statement->bindValue(':Type', $type);
-		$statement->bindValue(':Online_Sale', $online_sale);
-		$success = $statement->execute();
-		if ($success) {
-			saveImageFile($bookID, $tempImageFilePath);
-			if ($deleteImage && $tempImageFilePath == "") {
-				deleteImageFile($bookID);
-			}
-			return $statement->rowCount();         // Number of rows affected
-		} else {
-			logSQLError($statement->errorInfo());  // Log error to debug
-		}	
-	}
-        
-        function deleteEntry($bookID){
-		$db = getDBConnection();
-		$query = 'DELETE FROM s_jcmeterko_bookdata WHERE BookID = :BookID';
-		$statement = $db->prepare($query);
-		$statement->bindValue(':BookID', $bookID);
-		$success = $statement->execute();
-		$statement->closeCursor();
-		if ($success) {
-                    deleteImageFile($bookID);
-			return $statement->rowCount(); 
-		} else {
-			logSQLError($statement->errorInfo());  
-		}		
-            }
-            
-        function deleteImageFile($bookID) {
-            $imageFilePath = checkImagePath($bookID);
-            if ($imageFilePath != "") {
-                    if (unlink($imageFilePath) == false) {
-                        $errorMessage = "Unable to delete file at $imageFilePath.";
-                        include '../view/errorPage.php';
-                    }
-                 }
-              }
-          
-        
-        function getImagePath($bookID) {
-		$ImageDir = "../datafiles/ratings/";
-		$FilePath = "$ImageDir/$bookID.jpg";
-                return $FilePath;
-            }
-        
-	function checkImagePath($bookID) {
-		$FilePath = getImagePath($bookID);
-		if (is_file($FilePath)) {
-			return $FilePath;
-		} else {
-			return "";
-		}
-            }
-
-	function saveImageFile($bookID, $tempImageFilePath) {
-		if ($tempImageFilePath != "") {
-			$newImagePath = getImagePath($bookID);
-			if (move_uploaded_file($tempImageFilePath, $newImagePath) == FALSE) {
-				$errorMessage = "Unable to move image file.";
-				include '../view/errorPage.php';
-                    }
-		}
-            }
-            
-////****************************************************************************************************************************************//
-//                                        FILE UPLOADS AND PERSISTENCE FUNCTIONS                                                    \\
-//****************************************************************************************************************************************//  
-        
-////****************************************************************************************************************************************//
-//                                        PROCESS NEWSLETTER UPLOAD FUNCTION                                                   \\
-//****************************************************************************************************************************************//         
-        function processNewsletterUpload(){
-	$title = "Newsletter File Upload";
-	include'../view/headerInclude.php';
-        include '../view/sidenavleft.php';
-
-            $newname = "../datafiles/newsletters/newsletter.html";
-            $uploadfile = '../datafiles/newsletters/'. $_FILES['userfile']['name'];
-            $FileType = pathinfo($uploadfile,PATHINFO_EXTENSION);
-           if($FileType == "html") {//if file is .html, then check
-            if (file_exists($uploadfile)) {
-                        $message = "<p>The file was replaced successfully</p><br>";
-                } else {
-                        $message = "<p>The file was successfully uploaded</p><br>";
-                       }      
-            if (move_uploaded_file($_FILES['userfile']['tmp_name'], 
-                                        $uploadfile)){
-                
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-                rename($uploadfile, $newname);//rename file
-                                        }}
-                      else {//if there was an upload error:
-            if($_FILES['userfile']['error'] == UPLOAD_ERR_NO_FILE){
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>Please choose a file first, then try again.</p></div>";
-            }//if no file was uploaded - show user error message
-             else if($FileType != "html") {//if file is not html, then check
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>Please only upload .html files to replace the current newsletter.html.</p></div>";
-             } else {
-                echo "File Upload Error\n Debugging info:";
-                print_r($_FILES);
-            }//if there is a different upload error, show user error info
-         }
-           include '../view/sidenavright.php';
-            include '../view/footerInclude.php';
-    
-      }
-////****************************************************************************************************************************************//
-//                                        PROCESS LOGO UPLOAD FUNCTION                                                   \\
-//****************************************************************************************************************************************// 
-      function processLogoUpload(){
-        $title = "Logo Upload";
-	include'../view/headerInclude.php';
-        include '../view/sidenavleft.php';
-        $uploadfile = '../datafiles/logos/' . $_FILES['userfile']['name'];
-          if (true){
-          if (file_exists($uploadfile)) {
-                      $message = "<p>The file was replaced successfully</p><br>";
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-              } else {
-                      $message = "<p>The file was successfully uploaded</p><br>";
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-              }
-          }
-              $image_info = getimagesize($_FILES['userfile']['tmp_name']);
-              $image_width = $image_info[0];
-              $image_height = $image_info[1];
-              $image_type = $image_info[2];
-              if ($image_type != IMAGETYPE_JPEG && $image_type != 
-                      IMAGETYPE_GIF && $image_type != IMAGETYPE_PNG) {
-                      echo "Only jpg, gif, and png files are supported. Please upload a supported file type.";
-                      print_r($image_info);
-                      echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-              } else if ($image_height > 120 OR $image_width > 120) {
-                      echo "Logo files must be smaller than 120px by 120px.";
-              } else if (move_uploaded_file($_FILES['userfile']['tmp_name'], 
-                                                              $uploadfile)) {
-             echo "<p>$message.</p>";
-              } else if ($_FILES['userfile']['error'] == UPLOAD_ERR_NO_FILE) {
-                      echo "<p>Please choose a file first, then try again.</p>";
-                      echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-              } else if ($_FILES['userfile']['size'] > 1000000) {
-                      echo "<p>Please choose a file smaller than 1MB, then try again.</p>";
-                      echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-          } else {
-              echo "File Upload Error\n Debugging info:";
-              print_r($_FILES);
-          }
-           include '../view/sidenavright.php';
-            include '../view/footerInclude.php';
-        }
- ////****************************************************************************************************************************************//
-//                                        PROCESS FILE UPLOAD FUNCTION                                                 \\
-//****************************************************************************************************************************************//       
-        function processFileUpload(){
-        $title = "File Upload";
-	include'../view/headerInclude.php';
-        include '../view/sidenavleft.php';
-            $message;
-            $newname = "../datafiles/textfiles/quotes.txt";
-            $uploadfile = '../datafiles/textfiles/'. $_FILES['userfile']['name'];
-            $FileType = pathinfo($uploadfile,PATHINFO_EXTENSION);
-                      if($FileType == "txt") {//if file is txt, then check
-            if (file_exists($uploadfile)) {
-                        $message = "The file was replaced successfully<br>";
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-                } else {
-                        $message = "The file was successfully uploaded<br>";
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-                }      
-
-            if (move_uploaded_file($_FILES['userfile']['tmp_name'], 
-                                        $uploadfile)){
-                echo "<p>$message</p>";
-                rename($uploadfile, $newname);//rename file
-                                        }  
-                      }
-
-                      else {//if there was an upload error:
-            if($_FILES['userfile']['error'] == UPLOAD_ERR_NO_FILE){
-                $message = "Please choose a file first, then try again.";
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-            }//if no file was uploaded - show user error message
-
-             else if($FileType != "txt") {//if file is not html, then check
-                $message = "Please only upload .txt files to replace the current quotes.txt";
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-            }
-
-            else {
-                $message = "File Upload Error\n Debugging info:";
-                print_r($_FILES);
-                echo "<div class='bodycontent'><br><a href='../controller/controller.php?action=fileManagement' class ='btn btn-default' >File Management</a><p>$message</p></div>";
-            }//if there is a different upload error, show user error info
-                      }
-            include '../view/sidenavright.php';
-            include '../view/footerInclude.php';
+<?php
+//Instructor,Name,Term,Session,Subject,Catalog,Section,Descr,Count ID,Acad Org,Start Time,End Time,Days,Cap Enrl
+function addNewCourse($Subject, $Catalog, $Name, $Acad_Org) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`Course` 
+                      ( `Subject`, `Catalog`, `Name`,`Acad_Org`) 
+                      VALUES (:subject, :catalog, :name, :acad_org)";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        //echo $query;
+        //$statement->bindValue(':instructor', "$InstructorName");
+        $statement->bindValue(':subject', "$Subject");
+        $statement->bindValue(':catalog', "$Catalog");
+        $statement->bindValue(':name', "$Name");       //do we need 'name' and 'descr' ??
+        $statement->bindValue(':acad_org', "$Acad_Org");
+        $statement->execute();
+        $statement->closeCursor();
+        //$statement->debugDumpParams();
+        //echo(getLastInsertRow("Name", "course"));
+        $errorCode = $statement->errorCode();
+        if ($errorCode != "00000")
+            echo "Error code $errorCode:  Attempted to insert duplicate Primary Key:   "
+                . $Acad_Org. " " .  $Subject .  $Catalog . " " .  $Name . "<br>"
+                . "Duplicate course offering found in import file. <br><br>";
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+function addNewCourseOffering($rowTotal, $Instructor, $InstructorName, $Term, $Session, $Subject, $Catalog, $Section, $Descr, $Count_ID, $Acad_Org, $Start_Time, $End_Time, $Days, $Cap_Enrl) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`CourseOffering` 
+                      ( `Term`, `Session`, `Subject`, `Catalog`, `Section`, `InstructorName`, `Count_ID`,`Start_Time`, `End_Time`, `Days`, `Cap_Enrl`) 
+                      VALUES (:term, :session, :subject, :catalog, :section,:instructorname, :count_id, :start_time, :end_time, :days, :cap_enrl)";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        //echo $query;
+        //$statement->bindValue(':instructor', "$InstructorName");
+        $statement->bindValue(':instructorname', "$InstructorName");
+        $statement->bindValue(':term', "$Term");
+        $statement->bindValue(':session', "$Session");
+        $statement->bindValue(':subject', "$Subject");
+        $statement->bindValue(':catalog', "$Catalog");
+        $statement->bindValue(':section', "$Section");
+        //$statement->bindValue(':descr', "$Descr");
+        $statement->bindValue(':count_id', "$Count_ID");
+        //$statement->bindValue(':acad_org', "$Acad_Org");
+        $statement->bindValue(':start_time', "$Start_Time");
+        $statement->bindValue(':end_time', "$End_Time");
+        $statement->bindValue(':days', "$Days");
+        $statement->bindValue(':cap_enrl', "$Cap_Enrl");
+        $statement->execute();
+        //echo "\nPDO::errorCode(): " . $statement->errorCode() . "<br>";  //print errorcode
+        $errorCode = $statement->errorCode();
+        if ($errorCode != "00000"){
+            if ($errorCode == "23000")
+                echo "Error code $errorCode:  Duplicate Entry Found:   "
+                    . $InstructorName. " " .  $Term . " " .  $Subject . " " . $Session  . " " .  $Catalog . " " .  $Section . "<br>"
+                    . "On line " . $rowTotal . " <br><br>";
+            else echo "Error code $errorCode:  "
+                . $InstructorName. " " .  $Term . " " .  $Subject . " " . $Session  . " " .  $Catalog . " " .  $Section . "<br>"
+                . "On line " . $rowTotal . " <br><br>";
         }
 
-////****************************************************************************************************************************************//
-//                                        STORING MEMBER INFO FUNCTIONS                                                 \\
-//****************************************************************************************************************************************//         
-	function saveMemberInfo($firstName, $lastName, $age, $email) {
-		$file = fopen('../datafiles/textfiles/members.csv', 'ab');
-		fputcsv($file, 
-			array($firstName, $lastName, $age, $email));
-		fclose($file);		
-	}
+        $statement->closeCursor();
+        //$statement->debugDumpParams();
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        echo "This one didnt work";
+        include '../view/errorPage.php';
+        die;
+    }
+}
 
-	function getMembers() {
-		$file = fopen('../datafiles/textfiles/members.csv', 'rb');
-			while (($data = fgetcsv($file)) !== FALSE) {
-				$memberArray[] = array($data[0], $data[1], $data[2], $data[3]);
-			}
-		fclose($file);		
-		return $memberArray;
-	}
-        
-       function toDisplayDate($date) {
-		if ($phpDate = strtotime($date)) {
-			return date('m/d/Y', $phpDate);
-		} else {
-			return "";
-		}
-	}
-        
-        function toSQLDate($date) {
-		if ($phpDate = strtotime($date)) {
-			return date('Y-m-d', $phpDate);
-		} else {
-			return "";
-		}
-	}
-        
-        function logSQLError($errorInfo) {
-		$errorMessage = $errorInfo[2];
-		include '../view/errorPage.php';
-	}
+function addNewStudent($ID, $Name, $Last_Term, $Current, $Location,$Total, $GPA, $Plan_1, $Plan_1_Descr, $Plan_2, $Plan_2_Descr, $Plan_3, $Plan_3_Descr, $Plan_4, $Plan_4_Descr, $Plan_5, $Plan_5_Descr, $Phone, $EagleMail_ID, $Advisor_1, $Advisor_1_Email, $Advisor_2, $Advisor_2_Email, $Degree_Term, $Degree, $Deg_Plan_1, $Deg_Plan_2, $Deg_Plan_3, $Deg_Plan_4, $Deg_Plan_5 ) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`Student` 
+                      (`ID`, `Name`, `Last_Term`, `Current`, `Location`, `Total`, `GPA`, `Phone`, `EagleMail_ID`, `Advisor_1`, `Advisor_1_Email`, `Advisor_2`, `Advisor_2_Email`, `Degree_Term`, `Degree`, `Graduated_Plan_1`, `Graduated_Plan_2`, `Graduated_Plan_3`, `Graduated_Plan_4`, `Graduated_Plan_5`) 
+                      VALUES (:id, :name, :last_term, :current, :location, :total, :gpa, :phone, :eaglemail_id, :advisor_1, :advisor_1_email, :advisor_2, :advisor_2_email, :degree_term, :degree, :deg_plan_1, :deg_plan_2, :deg_plan_3, :deg_plan_4, :deg_plan_5)";
+        //$queryTest = "INSERT INTO `cis411_csaApp`.`Students`
+        //              (`ID`, `Name`, `Last_Term`, `Current`, `Location`, `Total`, `GPA`, `Plan_1`, `Plan_1_Descr`, `Plan_2`, `Plan_2_Descr`, `Plan_3`, `Plan_3_Descr`, `Plan_4`, `Plan4_Descr`, `Plan_5`, `Plan_5_Descr`, `Phone`, `EagleMail_ID`, `Advisor_1`, `Advisor_1_Email`, `Advisor_2`, `Advisor_2_Email`, `Degree_Term`, `Degree`, `Deg_Plan_1`, `Deg_Plan_2`, `Deg_Plan_3`, `Deg_Plan_4`, `Deg_Plan_5`) VALUES ('11111132', 'David', '11', 'David', 'David', '11', '11', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', 'David', '11', 'David', 'David', 'David', 'David', 'David', 'David');";
+        $statement = $db->prepare($query);
+        //echo $query;
+        $statement->bindValue(':id', "$ID");
+        $statement->bindValue(':name', "$Name");
+        $statement->bindValue(':last_term', "$Last_Term");
+        $statement->bindValue(':current', "$Current");
+        $statement->bindValue(':location', "$Location");
+        $statement->bindValue(':total', "$Total");
+        $statement->bindValue(':gpa', "$GPA");/*
+        $statement->bindValue(':plan_1', "$Plan_1");
+        $statement->bindValue(':plan_1_descr', "$Plan_1_Descr");
+        $statement->bindValue(':plan_2', "$Plan_2");
+        $statement->bindValue(':plan_2_descr', "$Plan_2_Descr");
+        $statement->bindValue(':plan_3', "$Plan_3");
+        $statement->bindValue(':plan_3_descr', "$Plan_3_Descr");
+        $statement->bindValue(':plan_4', "$Plan_4");
+        $statement->bindValue(':plan_4_descr', "$Plan_4_Descr");
+        $statement->bindValue(':plan_5', "$Plan_5");
+        $statement->bindValue(':plan_5_descr', "$Plan_5_Descr");*/
+        $statement->bindValue(':phone', "$Phone");
+        $statement->bindValue(':eaglemail_id', "$EagleMail_ID");
+        $statement->bindValue(':advisor_1', "$Advisor_1");
+        $statement->bindValue(':advisor_1_email', "$Advisor_1_Email");
+        $statement->bindValue(':advisor_2', "$Advisor_2");
+        $statement->bindValue(':advisor_2_email', "$Advisor_2_Email");
+        $statement->bindValue(':degree_term', "$Degree_Term");
+        $statement->bindValue(':degree', "$Degree");
+        $statement->bindValue(':deg_plan_1', "$Deg_Plan_1");
+        $statement->bindValue(':deg_plan_2', "$Deg_Plan_2");
+        $statement->bindValue(':deg_plan_3', "$Deg_Plan_3");
+        $statement->bindValue(':deg_plan_4', "$Deg_Plan_4");
+        $statement->bindValue(':deg_plan_5', "$Deg_Plan_5");
+        $statement->execute();
+        $statement->closeCursor();
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 
+//rowtotal is just for debugging info
+function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`studentclass` 
+                      (`ID`, `Term`, `Session`, `Subject`, `Catalog`, `Section`) 
+                      VALUES (:id, :term, :session, :subject, :catalog, :section)";
+        //$queryTest = "INSERT INTO `studentclass` (`ID`, `Name`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Descr`, `Grade`, `Type`) VALUES ('11020640', 'Aaron,Shianne E', '2098', '1', 'CIS', '217', '03', 'Appl Of Micro', 'A', 'OG');";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':id', "$ID");
+        $statement->bindValue(':term', "$Term");
+        $statement->bindValue(':session', "$Session");
+        $statement->bindValue(':subject', "$Subject");
+        $statement->bindValue(':catalog', "$Catalog");
+        $statement->bindValue(':section', "$Section");
+        //echo $query;
+        $statement->execute();
+        $statement->closeCursor();
+        //$statement->debugDumpParams();
+        $errorCode = $statement->errorCode();
+        if ($errorCode != "00000")
+            echo "Error code $errorCode:  Integrity Constraint Violation:   "
+                . $ID . " " .  $Term . " " . $Session  . " " .  $Subject . " " .  $Catalog . " " .  $Section . "<br>"
+                . "On line " . $rowTotal . " <br><br>";
+        //echo $rowTotal . " has error code: " . $errorCode . "<br>";
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+function clearTable($tableName ) {
+    try {
+        $db = getDBConnection();
+        $query = "DELETE FROM $tableName";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $count = $statement->rowCount();
+        $statement->closeCursor();
+        echo $count . " rows were deleted from table: " . $tableName . "<br>";
+        return $count;           // return # of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+function getDBConnection() {
+    $dsn = 'mysql:host=localhost;dbname=cis411_csaApp';
+    $username = 's_dmodonnell';
+    $password = 'Mysteriummmm06';
+
+    try {
+        $db = new PDO($dsn, $username, $password);
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+    return $db;
+}
+
+function getLastInsertRow($columnName, $tableName){
+
+    try {
+        $db = getDBConnection();
+        $query = "SELECT LAST($columnName) FROM $tableName";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+function logSQLError($errorInfo) {
+    $errorMessage = $errorInfo[2];
+    include '../view/errorPage.php';
+}
 ?>

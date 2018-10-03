@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
     session_start();
     require_once("../security/model.php");  
     require_once '../model/model.php';//require the functions from the model.php file
@@ -20,14 +21,31 @@
         }
     } else {
     
-    switch ($action) {
-        case 'Example': //example action passed in url
-            include '../view/index.php';
-            break;       
-        default:
-            include('../view/index.php');//default case
-    }
-        }
+  switch ($action) {
+    case 'FileUpload':
+        include '../view/fileUploadPage.php';
+        break;
+    case 'ImportData':
+        include '../view/importData.php';
+        break;
+    case 'Login':
+        include '../view/LoginPage.php';
+        break;
+    case 'StudentQuestion':
+        include '../view/mainApplicationStudentQuestion.php';
+        break;
+    case 'Home':
+        include '../view/LoginPage.php';
+        break;
+    case 'ProcessImportData':
+        include '../view/processImportData.php';
+        break;
+    case 'Wireframe':
+        include '../view/wireframe.php';
+        break;
+    default:
+        include('../view/LoginPage.php');   // default
+}
 
 
         function unQuote() {//strips out added slashes if magic_quotes_gpc is on

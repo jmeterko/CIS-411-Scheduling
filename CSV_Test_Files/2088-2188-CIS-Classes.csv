@@ -1,0 +1,813 @@
+﻿Instructor,Name,Term,Session,Subject,Catalog,Section,Descr,Count ID,Acad Org,Start Time,End Time,Days,Cap Enrl
+10460554,"ODonnell,Jon P",2078,1,CIS,110,01,Computer Info Process,31,CIS,,,,0
+10460305,Hunter N,2078,1,CIS,110,02,Computer Info Process,26,CIS,,,,0
+10460102,"Childs,Jeffrey S",2078,1,CIS,140,01,Ess Topics Discr Math Comp Sc,32,CIS,,,,0
+10460835,Wyatt J,2078,1,CIS,163,01,Intro Prog & Algo I,25,CIS,,,,0
+10460835,Wyatt J,2078,1,CIS,163,02,Intro Prog & Algo I,27,CIS,,,,0
+10460554,"ODonnell,Jon P",2078,1,CIS,206,01,Intro To Java Programming,29,CIS,,,,0
+10460102,"Childs,Jeffrey S",2078,1,CIS,217,01,Appl Of Micro,29,CIS,,,,0
+10460102,"Childs,Jeffrey S",2078,1,CIS,217,02,Appl Of Micro,35,CIS,,,,0
+10460305,Hunter N,2078,1,CIS,217,03,Appl Of Micro,34,CIS,,,,0
+10460831,"Wolfe,Veryl E",2078,1,CIS,217,04,Appl Of Micro,31,CIS,,,,0
+10460831,"Wolfe,Veryl E",2078,1,CIS,217,05,Appl Of Micro,33,CIS,,,,0
+10460305,Hunter N,2078,1,CIS,217,51,Appl Of Micro,24,CIS,,,,0
+10476004,Armburger M,2078,1,CIS,217,52,Appl Of Micro,26,CIS,,,,0
+10460305,Hunter N,2078,1,CIS,217,53,Appl Of Micro,18,CIS,,,,0
+10460305,Hunter N,2078,1,CIS,217,54,Appl Of Micro,24,CIS,,,,0
+10460831,"Wolfe,Veryl E",2078,1,CIS,217,5W,Appl Of Micro,21,CIS,,,,0
+10460831,"Wolfe,Veryl E",2078,1,CIS,217,W1,Appl Of Micro,3,CIS,,,,0
+10460831,"Wolfe,Veryl E",2078,1,CIS,217,WO,Appl Of Micro,5,CIS,,,,0
+10460835,Wyatt J,2078,1,CIS,253,01,Comp Org/Asb Lang,16,CIS,,,,0
+10460102,"Childs,Jeffrey S",2078,1,CIS,254,01,Data Structures,21,CIS,,,,0
+10460758,Traynor S,2078,1,CIS,301,01,Comp Sys Analysis,23,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2078,1,CIS,317,01,Microcomp Maint Conc & Tech,14,CIS,,,,0
+10460554,"ODonnell,Jon P",2078,1,CIS,330,01,Adv Event-Driven Program,16,CIS,,,,0
+10460554,"ODonnell,Jon P",2078,1,CIS,330,02,Adv Event-Driven Program,22,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2078,1,CIS,333,01,Info Sys Auditing & Security,17,CIS,,,,0
+10460835,Wyatt J,2078,1,CIS,355,01,Operating Systems I,12,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2078,1,CIS,403,01,Data Communications,19,CIS,,,,0
+10460758,Traynor S,2078,1,CIS,411,01,Systems Devlmt Project,7,CIS,,,,0
+10460102,"Childs,Jeffrey S",2078,1,CIS,460,01,Programming Lang & Comp Theory,11,CIS,,,,0
+10460758,Traynor S,2078,1,CIS,499,01,Independent Study,1,CIS,,,,0
+10460758,Traynor S,2079,1,CIS,422,71,Internship In Computers,2,CIS,,,,0
+10460554,"ODonnell,Jon P",2081,1,CIS,110,01,Computer Info Process,35,CIS,,,,0
+10460554,"ODonnell,Jon P",2081,1,CIS,110,02,Computer Info Process,34,CIS,,,,0
+10460835,Wyatt J,2081,1,CIS,163,01,Intro Prog & Algo I,25,CIS,,,,0
+10460835,Wyatt J,2081,1,CIS,202,01,Intro Event-Driven Program,25,CIS,,,,0
+10460835,Wyatt J,2081,1,CIS,202,02,Intro Event-Driven Program,27,CIS,,,,0
+10460102,"Childs,Jeffrey S",2081,1,CIS,217,01,Appl Of Micro,35,CIS,,,,0
+10460102,"Childs,Jeffrey S",2081,1,CIS,217,02,Appl Of Micro,35,CIS,,,,0
+10460831,"Wolfe,Veryl E",2081,1,CIS,217,03,Appl Of Micro,37,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2081,1,CIS,217,04,Appl Of Micro,36,CIS,,,,0
+10460831,"Wolfe,Veryl E",2081,1,CIS,217,05,Appl Of Micro,36,CIS,,,,0
+10460305,Hunter N,2081,1,CIS,217,51,Appl Of Micro,26,CIS,,,,0
+10476004,Armburger M,2081,1,CIS,217,52,Appl Of Micro,26,CIS,,,,0
+10460305,Hunter N,2081,1,CIS,217,53,Appl Of Micro,24,CIS,,,,0
+10460305,Hunter N,2081,1,CIS,217,54,Appl Of Micro,27,CIS,,,,0
+10460743,Tannehill N,2081,1,CIS,217,61,Appl Of Micro,11,CIS,,,,0
+10460743,Tannehill N,2081,1,CIS,217,62,Appl Of Micro,18,CIS,,,,0
+10460831,"Wolfe,Veryl E",2081,1,CIS,217,NW,Appl Of Micro,8,CIS,,,,0
+10460831,"Wolfe,Veryl E",2081,1,CIS,217,W1,Appl Of Micro,18,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2081,1,CIS,230,01,Practicum In Cis,2,CIS,,,,0
+10460835,Wyatt J,2081,1,CIS,244,01,Intro Prog & Algo II,32,CIS,,,,0
+10460758,Traynor S,2081,1,CIS,301,01,Comp Sys Analysis,22,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2081,1,CIS,303,01,Local Area Networks,25,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2081,1,CIS,304,01,Internet Programming,25,CIS,,,,0
+10460554,"ODonnell,Jon P",2081,1,CIS,306,01,Object Oriented Programming,16,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2081,1,CIS,317,01,Microcomp Maint Conc & Tech,17,CIS,,,,0
+10460102,"Childs,Jeffrey S",2081,1,CIS,350,01,Mach Arch Sys Sf,9,CIS,,,,0
+10460102,"Childs,Jeffrey S",2081,1,CIS,356,01,Analysis Of Algorithms,14,CIS,,,,0
+10460102,"Childs,Jeffrey S",2081,1,CIS,375,01,Software Engineering,12,CIS,,,,0
+10460554,"ODonnell,Jon P",2081,1,CIS,402,01,Data Base Sys Mgt,24,CIS,,,,0
+10460758,Traynor S,2081,1,CIS,411,01,Systems Devlmt Project,16,CIS,,,,0
+10460758,Traynor S,2081,1,CIS,499,01,Independent Study,1,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2085,S1,CIS,110,01,Computer Info Process,12,CIS,,,,0
+10460758,Traynor S,2085,S1,CIS,422,71,Internship In Computers,1,CIS,,,,0
+10460305,Hunter N,2085,S2,CIS,217,01,Appl Of Micro,16,CIS,,,,0
+10460831,"Wolfe,Veryl E",2085,S2,CIS,217,5W,Appl Of Micro,6,CIS,,,,0
+10460831,"Wolfe,Veryl E",2085,S2,CIS,217,W1,Appl Of Micro,11,CIS,,,,0
+10460831,"Wolfe,Veryl E",2085,S2,CIS,217,WU,Appl Of Micro,1,CIS,,,,0
+10460758,Traynor S,2085,S3,CIS,422,71,Internship In Computers,1,CIS,,,,0
+10525979,Hussain T,2088,1,CIS,110,01,Computer Info Process,35,CIS,,,,0
+10525979,Hussain T,2088,1,CIS,110,02,Computer Info Process,34,CIS,,,,0
+10525979,Hussain T,2088,1,CIS,140,01,Ess Topics Discr Math Comp Sc,35,CIS,,,,0
+10460835,Wyatt J,2088,1,CIS,163,01,Intro Prog & Algo I,28,CIS,,,,0
+10460835,Wyatt J,2088,1,CIS,163,02,Intro Prog & Algo I,23,CIS,,,,0
+10460102,"Childs,Jeffrey S",2088,1,CIS,217,01,Appl Of Micro,36,CIS,,,,0
+10460102,"Childs,Jeffrey S",2088,1,CIS,217,02,Appl Of Micro,35,CIS,,,,0
+10525980,"Kim,Soo",2088,1,CIS,217,03,Appl Of Micro,35,CIS,,,,0
+10525980,"Kim,Soo",2088,1,CIS,217,04,Appl Of Micro,35,CIS,,,,0
+10460831,"Wolfe,Veryl E",2088,1,CIS,217,05,Appl Of Micro,35,CIS,,,,0
+10460305,Hunter N,2088,1,CIS,217,51,Appl Of Micro,27,CIS,,,,0
+10460305,Hunter N,2088,1,CIS,217,52,Appl Of Micro,23,CIS,,,,0
+10460305,Hunter N,2088,1,CIS,217,53,Appl Of Micro,16,CIS,,,,0
+10476004,Armburger M,2088,1,CIS,217,54,Appl Of Micro,27,CIS,,,,0
+10460831,"Wolfe,Veryl E",2088,1,CIS,217,5W,Appl Of Micro,18,CIS,,,,0
+10460831,"Wolfe,Veryl E",2088,1,CIS,217,W2,Appl Of Micro,24,CIS,,,,0
+10460831,"Wolfe,Veryl E",2088,1,CIS,217,WO,Appl Of Micro,4,CIS,,,,0
+10460831,"Wolfe,Veryl E",2088,1,CIS,217,WU,Appl Of Micro,2,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2088,1,CIS,230,01,Practicum In Cis,4,CIS,,,,0
+10460835,Wyatt J,2088,1,CIS,253,01,Comp Org/Asb Lang,26,CIS,,,,0
+10460102,"Childs,Jeffrey S",2088,1,CIS,254,01,Data Structures,25,CIS,,,,0
+10525979,Hussain T,2088,1,CIS,301,01,Comp Sys Analysis,23,CIS,,,,0
+10525980,"Kim,Soo",2088,1,CIS,305,01,Art Intell Decision Make,7,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2088,1,CIS,317,01,Microcomp Maint Conc & Tech,16,CIS,,,,0
+10460554,"ODonnell,Jon P",2088,1,CIS,330,01,Adv Event-Driven Program,25,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2088,1,CIS,333,01,Info Sys Auditing & Security,12,CIS,,,,0
+10460835,Wyatt J,2088,1,CIS,355,01,Operating Systems I,7,CIS,,,,0
+10460554,"ODonnell,Jon P",2088,1,CIS,402,01,Data Base Sys Mgt,14,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2088,1,CIS,403,01,Data Communications,21,CIS,,,,0
+10525980,"Kim,Soo",2088,1,CIS,411,01,Systems Devlmt Project,22,CIS,,,,0
+10460102,"Childs,Jeffrey S",2088,1,CIS,460,01,Programming Lang & Comp Theory,9,CIS,,,,0
+10460554,"ODonnell,Jon P",2088,1,CIS,499,01,Independent Study,1,CIS,,,,0
+10460831,"Wolfe,Veryl E",2089,1,CIS,217,W1,Appl Of Micro,16,CIS,,,,0
+10525979,Hussain T,2091,1,CIS,110,01,Computer Info Process,35,CIS,,,,0
+10525979,Hussain T,2091,1,CIS,110,02,Computer Info Process,35,CIS,,,,0
+10460835,Wyatt J,2091,1,CIS,163,01,Intro Prog & Algo I,25,CIS,,,,0
+10460835,Wyatt J,2091,1,CIS,202,01,Intro Event-Driven Program,29,CIS,,,,0
+10460835,Wyatt J,2091,1,CIS,202,02,Intro Event-Driven Program,26,CIS,,,,0
+10460554,"ODonnell,Jon P",2091,1,CIS,206,01,Intro To Java Programming,25,CIS,,,,0
+10460102,"Childs,Jeffrey S",2091,1,CIS,217,01,Appl Of Micro,34,CIS,,,,0
+10460102,"Childs,Jeffrey S",2091,1,CIS,217,02,Appl Of Micro,36,CIS,,,,0
+10525980,"Kim,Soo",2091,1,CIS,217,03,Appl Of Micro,35,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2091,1,CIS,217,04,Appl Of Micro,34,CIS,,,,0
+10525980,"Kim,Soo",2091,1,CIS,217,05,Appl Of Micro,36,CIS,,,,0
+10460305,Hunter N,2091,1,CIS,217,51,Appl Of Micro,27,CIS,,,,0
+10460305,Hunter N,2091,1,CIS,217,52,Appl Of Micro,27,CIS,,,,0
+10476004,Armburger M,2091,1,CIS,217,53,Appl Of Micro,23,CIS,,,,0
+10460305,Hunter N,2091,1,CIS,217,54,Appl Of Micro,23,CIS,,,,0
+10460831,"Wolfe,Veryl E",2091,1,CIS,217,5W,Appl Of Micro,2,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2091,1,CIS,217,61,Appl Of Micro,12,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2091,1,CIS,217,62,Appl Of Micro,15,CIS,,,,0
+10460831,"Wolfe,Veryl E",2091,1,CIS,217,W1,Appl Of Micro,20,CIS,,,,0
+10460831,"Wolfe,Veryl E",2091,1,CIS,217,W2,Appl Of Micro,26,CIS,,,,0
+10460831,"Wolfe,Veryl E",2091,1,CIS,217,WU,Appl Of Micro,4,CIS,,,,0
+10460835,Wyatt J,2091,1,CIS,244,01,Intro Prog & Algo II,31,CIS,,,,0
+10525979,Hussain T,2091,1,CIS,301,01,Comp Sys Analysis,17,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2091,1,CIS,303,01,Local Area Networks,26,CIS,,,,0
+10525980,"Kim,Soo",2091,1,CIS,304,01,Internet Programming,27,CIS,,,,0
+10460554,"ODonnell,Jon P",2091,1,CIS,306,01,Object Oriented Programming,17,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2091,1,CIS,317,01,Microcomp Maint Conc & Tech,14,CIS,,,,0
+10525980,"Kim,Soo",2091,1,CIS,350,01,Mach Arch Sys Sf,14,CIS,,,,0
+10460102,"Childs,Jeffrey S",2091,1,CIS,356,01,Analysis Of Algorithms,12,CIS,,,,0
+10460102,"Childs,Jeffrey S",2091,1,CIS,375,01,Software Engineering,6,CIS,,,,0
+10525979,Hussain T,2091,1,CIS,462,01,Simulation/Modeling,7,CIS,,,,0
+10525979,Hussain T,2091,1,CIS,462,31,Simulation/Modeling,1,CIS,,,,0
+10460831,"Wolfe,Veryl E",2095,S1,CIS,217,W1,Appl Of Micro,19,CIS,,,,0
+10460831,"Wolfe,Veryl E",2095,S1,CIS,217,WU,Appl Of Micro,1,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2095,S1,CIS,303,I1,Local Area Networks,1,CIS,,,,0
+10525980,"Kim,Soo",2095,S1,CIS,403,I1,Data Communications,1,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2095,S2,CIS,110,01,Computer Info Process,9,CIS,,,,0
+10460835,Wyatt J,2095,S2,CIS,202,01,Intro Event-Driven Program,8,CIS,,,,0
+10460102,"Childs,Jeffrey S",2095,S2,CIS,217,01,Appl Of Micro,13,CIS,,,,0
+10460831,"Wolfe,Veryl E",2095,S2,CIS,217,W1,Appl Of Micro,18,CIS,,,,0
+10460758,Traynor S,2095,S2,CIS,422,71,Internship In Computers,8,CIS,,,,0
+10460102,"Childs,Jeffrey S",2095,S3,CIS,217,01,Appl Of Micro,16,CIS,,,,0
+10460831,"Wolfe,Veryl E",2095,S3,CIS,217,5W,Appl Of Micro,3,CIS,,,,0
+10460831,"Wolfe,Veryl E",2095,S3,CIS,217,W1,Appl Of Micro,18,CIS,,,,0
+10460831,"Wolfe,Veryl E",2095,S3,CIS,217,WU,Appl Of Micro,1,CIS,,,,0
+10460554,"ODonnell,Jon P",2098,1,CIS,110,01,Computer Info Process,35,CIS,,,,0
+10460554,"ODonnell,Jon P",2098,1,CIS,110,02,Computer Info Process,35,CIS,,,,0
+10460102,"Childs,Jeffrey S",2098,1,CIS,140,01,Ess Topics Discr Math Comp Sc,22,CIS,,,,0
+10460102,"Childs,Jeffrey S",2098,1,CIS,140,02,Ess Topics Discr Math Comp Sc,21,CIS,,,,0
+10460835,Wyatt J,2098,1,CIS,163,01,Intro Prog & Algo I,25,CIS,,,,0
+10460835,Wyatt J,2098,1,CIS,163,02,Intro Prog & Algo I,24,CIS,,,,0
+10525980,"Kim,Soo",2098,1,CIS,217,01,Appl Of Micro,34,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2098,1,CIS,217,02,Appl Of Micro,33,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2098,1,CIS,217,03,Appl Of Micro,35,CIS,,,,0
+10460831,"Wolfe,Veryl E",2098,1,CIS,217,04,Appl Of Micro,35,CIS,,,,0
+10460831,"Wolfe,Veryl E",2098,1,CIS,217,05,Appl Of Micro,35,CIS,,,,0
+10591343,Burford K,2098,1,CIS,217,06,Appl Of Micro,33,CIS,,,,0
+10594631,"Hough,Alan",2098,1,CIS,217,07,Appl Of Micro,34,CIS,,,,0
+10460305,Hunter N,2098,1,CIS,217,51,Appl Of Micro,25,CIS,,,,0
+10460305,Hunter N,2098,1,CIS,217,52,Appl Of Micro,26,CIS,,,,0
+10460305,Hunter N,2098,1,CIS,217,53,Appl Of Micro,28,CIS,,,,0
+10594631,"Hough,Alan",2098,1,CIS,217,54,Appl Of Micro,25,CIS,,,,0
+10460831,"Wolfe,Veryl E",2098,1,CIS,217,5W,Appl Of Micro,25,CIS,,,,0
+10591343,Burford K,2098,1,CIS,217,71,Appl Of Micro,23,CIS,,,,0
+10460831,"Wolfe,Veryl E",2098,1,CIS,217,W1,Appl Of Micro,11,CIS,,,,0
+10460831,"Wolfe,Veryl E",2098,1,CIS,217,WO,Appl Of Micro,8,CIS,,,,0
+10460831,"Wolfe,Veryl E",2098,1,CIS,217,WU,Appl Of Micro,5,CIS,,,,0
+10525980,"Kim,Soo",2098,1,CIS,230,01,Practicum In Cis,1,CIS,,,,0
+10460835,Wyatt J,2098,1,CIS,253,01,Comp Org/Asb Lang,24,CIS,,,,0
+10460102,"Childs,Jeffrey S",2098,1,CIS,254,01,Data Structures,16,CIS,,,,0
+10460758,Traynor S,2098,1,CIS,301,01,Comp Sys Analysis,28,CIS,,,,0
+10525980,"Kim,Soo",2098,1,CIS,305,01,Art Intell Decision Make,13,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2098,1,CIS,317,01,Microcomp Maint Conc & Tech,24,CIS,,,,0
+10460554,"ODonnell,Jon P",2098,1,CIS,330,01,Adv Event-Driven Program,22,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2098,1,CIS,333,01,Info Sys Auditing & Security,8,CIS,,,,0
+10460835,Wyatt J,2098,1,CIS,355,01,Operating Systems I,16,CIS,,,,0
+10460554,"ODonnell,Jon P",2098,1,CIS,402,01,Data Base Sys Mgt,20,CIS,,,,0
+10525980,"Kim,Soo",2098,1,CIS,403,01,Data Communications,21,CIS,,,,0
+10460758,Traynor S,2098,1,CIS,411,01,Systems Devlmt Project,9,CIS,,,,0
+10460102,"Childs,Jeffrey S",2098,1,CIS,460,01,Programming Lang & Comp Theory,9,CIS,,,,0
+10460831,"Wolfe,Veryl E",2099,1,CIS,217,W1,Appl Of Micro,18,CIS,,,,0
+10460554,"ODonnell,Jon P",2101,1,CIS,110,01,Computer Info Process,35,CIS,,,,0
+10460554,"ODonnell,Jon P",2101,1,CIS,110,02,Computer Info Process,34,CIS,,,,0
+10460835,Wyatt J,2101,1,CIS,202,01,Intro Prog And Algo,26,CIS,,,,0
+10460835,Wyatt J,2101,1,CIS,202,02,Intro Prog And Algo,32,CIS,,,,0
+10460554,"ODonnell,Jon P",2101,1,CIS,206,01,Intro To Java Programming,22,CIS,,,,0
+10525980,"Kim,Soo",2101,1,CIS,217,01,Appl Of Micro,35,CIS,,,,0
+10460102,"Childs,Jeffrey S",2101,1,CIS,217,02,Appl Of Micro,35,CIS,,,,0
+10460102,"Childs,Jeffrey S",2101,1,CIS,217,03,Appl Of Micro,34,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2101,1,CIS,217,04,Appl Of Micro,35,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2101,1,CIS,217,05,Appl Of Micro,35,CIS,,,,0
+10460831,"Wolfe,Veryl E",2101,1,CIS,217,06,Appl Of Micro,35,CIS,,,,0
+10591343,Burford K,2101,1,CIS,217,07,Appl Of Micro,35,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2101,1,CIS,217,08,Appl Of Micro,35,CIS,,,,0
+10460305,Hunter N,2101,1,CIS,217,51,Appl Of Micro,26,CIS,,,,0
+10460305,Hunter N,2101,1,CIS,217,52,Appl Of Micro,27,CIS,,,,0
+10460305,Hunter N,2101,1,CIS,217,53,Appl Of Micro,24,CIS,,,,0
+10460305,Hunter N,2101,1,CIS,217,54,Appl Of Micro,27,CIS,,,,0
+10460831,"Wolfe,Veryl E",2101,1,CIS,217,5W,Appl Of Micro,3,CIS,,,,0
+10637273,Scigliano K,2101,1,CIS,217,61,Appl Of Micro,11,CIS,,,,0
+10637273,Scigliano K,2101,1,CIS,217,62,Appl Of Micro,9,CIS,,,,0
+10460831,"Wolfe,Veryl E",2101,1,CIS,217,W1,Appl Of Micro,15,CIS,,,,0
+10460831,"Wolfe,Veryl E",2101,1,CIS,217,W2,Appl Of Micro,24,CIS,,,,0
+10460831,"Wolfe,Veryl E",2101,1,CIS,217,WO,Appl Of Micro,1,CIS,,,,0
+10460831,"Wolfe,Veryl E",2101,1,CIS,217,WU,Appl Of Micro,6,CIS,,,,0
+10460835,Wyatt J,2101,1,CIS,244,01,Intro Prog & Algo II,29,CIS,,,,0
+10460835,Wyatt J,2101,1,CIS,270,01,Client-Side Web Programming,25,CIS,,,,0
+10460758,Traynor S,2101,1,CIS,301,01,Comp Sys Analysis,25,CIS,,,,0
+10525980,"Kim,Soo",2101,1,CIS,303,01,Local Area Networks,28,CIS,,,,0
+10460554,"ODonnell,Jon P",2101,1,CIS,306,01,Object Oriented Programming,16,CIS,,,,0
+10460102,"Childs,Jeffrey S",2101,1,CIS,356,01,Analysis Of Algorithms,19,CIS,,,,0
+10460102,"Childs,Jeffrey S",2101,1,CIS,375,01,Software Engineering,13,CIS,,,,0
+10525980,"Kim,Soo",2101,1,CIS,377,01,Computer Graphics,17,CIS,,,,0
+10460758,Traynor S,2101,1,CIS,411,01,Systems Devlmt Project,15,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2101,1,CIS,470,01,Project Management,11,CIS,,,,0
+10460102,"Childs,Jeffrey S",2105,S1,CIS,217,01,Appl Of Micro,10,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2105,S1,CIS,217,W1,Appl Of Micro,15,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2105,S1,CIS,217,WU,Appl Of Micro,1,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2105,S2,CIS,110,W1,Computer Info Process,20,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2105,S2,CIS,110,WU,Computer Info Process,2,CIS,,,,0
+10460835,Wyatt J,2105,S2,CIS,270,I1,Client-Side Web Programming,2,CIS,,,,0
+10460102,"Childs,Jeffrey S",2105,S3,CIS,217,01,Appl Of Micro,18,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2105,S3,CIS,217,5W,Appl Of Micro,3,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2105,S3,CIS,217,W1,Appl Of Micro,18,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2105,S3,CIS,217,WU,Appl Of Micro,4,CIS,,,,0
+10460758,Traynor S,2105,S3,CIS,422,71,Internship In Computers,2,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2105,S3,CIS,651,W1,Networking Media Tech Centers,4,CIS,,,,0
+10460554,"ODonnell,Jon P",2108,1,CIS,110,01,Computer Info Process,35,CIS,,,,0
+10460554,"ODonnell,Jon P",2108,1,CIS,110,02,Computer Info Process,36,CIS,,,,0
+10460102,"Childs,Jeffrey S",2108,1,CIS,140,01,Ess Topics Discr Math Comp Sc,18,CIS,,,,0
+10460102,"Childs,Jeffrey S",2108,1,CIS,140,02,Ess Topics Discr Math Comp Sc,14,CIS,,,,0
+10460835,Wyatt J,2108,1,CIS,202,01,Intro Prog And Algo,25,CIS,,,,0
+10460835,Wyatt J,2108,1,CIS,202,02,Intro Prog And Algo,29,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2108,1,CIS,217,01,Appl Of Micro,32,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2108,1,CIS,217,02,Appl Of Micro,34,CIS,,,,0
+10594631,"Hough,Alan",2108,1,CIS,217,03,Appl Of Micro,35,CIS,,,,0
+10460831,"Wolfe,Veryl E",2108,1,CIS,217,04,Appl Of Micro,34,CIS,,,,0
+10460831,"Wolfe,Veryl E",2108,1,CIS,217,05,Appl Of Micro,34,CIS,,,,0
+10460305,Hunter N,2108,1,CIS,217,51,Appl Of Micro,27,CIS,,,,0
+10460305,Hunter N,2108,1,CIS,217,52,Appl Of Micro,27,CIS,,,,0
+10460305,Hunter N,2108,1,CIS,217,53,Appl Of Micro,27,CIS,,,,0
+10460831,"Wolfe,Veryl E",2108,1,CIS,217,5W,Appl Of Micro,24,CIS,,,,0
+10460831,"Wolfe,Veryl E",2108,1,CIS,217,W1,Appl Of Micro,7,CIS,,,,0
+10460831,"Wolfe,Veryl E",2108,1,CIS,217,WO,Appl Of Micro,6,CIS,,,,0
+10460831,"Wolfe,Veryl E",2108,1,CIS,217,WU,Appl Of Micro,12,CIS,,,,0
+10525980,"Kim,Soo",2108,1,CIS,230,01,Practicum In Cis,1,CIS,,,,0
+10460835,Wyatt J,2108,1,CIS,253,01,Comp Org/Asb Lang,26,CIS,,,,0
+10460102,"Childs,Jeffrey S",2108,1,CIS,254,01,Data Structures,20,CIS,,,,0
+10460835,Wyatt J,2108,1,CIS,270,01,Client-Side Web Programming,28,CIS,,,,0
+10460758,Traynor S,2108,1,CIS,301,01,Comp Sys Analysis,26,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2108,1,CIS,317,01,Microcomp Maint Conc & Tech,25,CIS,,,,0
+10460554,"ODonnell,Jon P",2108,1,CIS,330,01,Adv Event-Driven Program,29,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2108,1,CIS,333,01,Info Sys Auditing & Security,7,CIS,,,,0
+10525980,"Kim,Soo",2108,1,CIS,355,01,Operating Systems I,13,CIS,,,,0
+10460554,"ODonnell,Jon P",2108,1,CIS,402,01,Data Base Sys Mgt,22,CIS,,,,0
+10525980,"Kim,Soo",2108,1,CIS,403,01,Data Communications,17,CIS,,,,0
+10460758,Traynor S,2108,1,CIS,411,01,Systems Devlmt Project,14,CIS,,,,0
+10460102,"Childs,Jeffrey S",2108,1,CIS,412,01,Parallel Processing,13,CIS,,,,0
+10525980,"Kim,Soo",2108,1,CIS,460,01,Programming Lang & Comp Theory,15,CIS,,,,0
+10460831,"Wolfe,Veryl E",2109,1,CIS,217,W1,Appl Of Micro,13,CIS,,,,0
+10460554,"ODonnell,Jon P",2111,1,CIS, 110,01,Computer Info Process,35,CIS,,,,999
+10460554,"ODonnell,Jon P",2111,1,CIS, 110,02,Computer Info Process,35,CIS,,,,999
+10021771,"Wyatt,Joe",2111,1,CIS, 202,01,Intro Prog And Algo,29,CIS,,,,999
+10021771,"Wyatt,Joe",2111,1,CIS, 202,02,Intro Prog And Algo,25,CIS,,,,999
+10525980,"Kim,Soo",2111,1,CIS, 206,01,Intro To Java Programming,25,CIS,,,,999
+10460102,"Childs,Jeffrey S",2111,1,CIS, 217,01,Appl Of Micro,34,CIS,,,,999
+10460102,"Childs,Jeffrey S",2111,1,CIS, 217,02,Appl Of Micro,35,CIS,,,,999
+10459960,"Agyei-Mensah,Stephen O",2111,1,CIS, 217,03,Appl Of Micro,35,CIS,,,,999
+10459960,"Agyei-Mensah,Stephen O",2111,1,CIS, 217,04,Appl Of Micro,36,CIS,,,,999
+10460102,"Childs,Jeffrey S",2111,1,CIS, 217,05,Appl Of Micro,19,CIS,,,,999
+10460831,"Wolfe,Veryl E",2111,1,CIS, 217,06,Appl Of Micro,35,CIS,,,,30
+10594631,"Hough,Alan",2111,1,CIS, 217,07,Appl Of Micro,35,CIS,,,,30
+10525980,"Kim,Soo",2111,1,CIS, 217,08,Appl Of Micro,34,CIS,,,,30
+10459960,"Agyei-Mensah,Stephen O",2111,1,CIS, 217,09,Appl Of Micro,34,CIS,,,,30
+10115995,"Hunter,Nancie L",2111,1,CIS, 217,51,Appl Of Micro,25,CIS,,,,999
+10115995,"Hunter,Nancie L",2111,1,CIS, 217,52,Appl Of Micro,22,CIS,,,,999
+10115995,"Hunter,Nancie L",2111,1,CIS, 217,53,Appl Of Micro,25,CIS,,,,999
+10115995,"Hunter,Nancie L",2111,1,CIS, 217,54,Appl Of Micro,25,CIS,,,,999
+10460831,"Wolfe,Veryl E",2111,1,CIS, 217,5W,Appl Of Micro,3,CIS,,,,999
+11015317,"Scigliano,Kris",2111,1,CIS, 217,61,Appl Of Micro,15,CIS,,,,999
+11015317,"Scigliano,Kris",2111,1,CIS, 217,62,Appl Of Micro,10,CIS,,,,999
+10460831,"Wolfe,Veryl E",2111,1,CIS, 217,W1,Appl Of Micro,16,CIS,,,,999
+10460831,"Wolfe,Veryl E",2111,1,CIS, 217,W2,Appl Of Micro,3,CIS,,,,999
+10460831,"Wolfe,Veryl E",2111,1,CIS, 217,WO,Appl Of Micro,5,CIS,,,,999
+10460831,"Wolfe,Veryl E",2111,1,CIS, 217,WU,Appl Of Micro,21,CIS,,,,999
+10021771,"Wyatt,Joe",2111,1,CIS, 244,01,Intro Prog & Algo II,27,CIS,,,,999
+10021771,"Wyatt,Joe",2111,1,CIS, 270,01,Client-Side Web Programming,25,CIS,,,,999
+10002149,"Traynor,Susan",2111,1,CIS, 301,01,Comp Sys Analysis,30,CIS,,,,999
+10525980,"Kim,Soo",2111,1,CIS, 303,01,Local Area Networks,25,CIS,,,,999
+10460554,"ODonnell,Jon P",2111,1,CIS, 306,01,Object Oriented Programming,15,CIS,,,,999
+10459960,"Agyei-Mensah,Stephen O",2111,1,CIS, 317,01,Microcomp Maint Conc & Tech,24,CIS,,,,999
+10460102,"Childs,Jeffrey S",2111,1,CIS, 356,01,Analysis Of Algorithms,11,CIS,,,,999
+10460554,"ODonnell,Jon P",2111,1,CIS, 370,01,Server-Side Web Programming,16,CIS,,,,999
+10460102,"Childs,Jeffrey S",2111,1,CIS, 375,01,Software Engineering,8,CIS,,,,999
+10002149,"Traynor,Susan",2111,1,CIS, 411,01,Systems Devlmt Project,10,CIS,,,,999
+10459960,"Agyei-Mensah,Stephen O",2115,S1,CIS, 217,5W,Appl Of Micro,1,CIS,,,,2
+10459960,"Agyei-Mensah,Stephen O",2115,S1,CIS, 217,W1,Appl Of Micro,11,CIS,,,,23
+10459960,"Agyei-Mensah,Stephen O",2115,S2,CIS, 110,W1,Computer Info Process,22,CIS,,,,23
+10459960,"Agyei-Mensah,Stephen O",2115,S2,CIS, 110,WU,Computer Info Process,2,CIS,,,,2
+10115995,"Hunter,Nancie L",2115,S2,CIS, 217,51,Appl Of Micro,17,CIS,10:00,11:50,MTWR,27
+10459960,"Agyei-Mensah,Stephen O",2115,S3,CIS, 217,5W,Appl Of Micro,4,CIS,,,,4
+10459960,"Agyei-Mensah,Stephen O",2115,S3,CIS, 217,W1,Appl Of Micro,24,CIS,,,,30
+10460554,"ODonnell,Jon P",2115,S3,CIS, 422,71,Internship In Computers,1,CIS,,,,0
+10459960,"Agyei-Mensah,Stephen O",2115,S3,CIS, 651,W1,Deploying Info Tech Infras,6,CIS,,,,20
+10460102,"Childs,Jeffrey S",2118,1,CIS, 110,01,Computer Info Process,31,CIS,09:00,09:50,MWF,28
+10460102,"Childs,Jeffrey S",2118,1,CIS, 110,02,Computer Info Process,35,CIS,10:00,10:50,MWF,35
+10460102,"Childs,Jeffrey S",2118,1,CIS, 140,01,Ess Topics Discr Math Comp Sc,33,CIS,11:00,11:50,MWF,20
+10021771,"Wyatt,Joe",2118,1,CIS, 202,01,Intro Prog And Algo,29,CIS,12:00,12:50,MWF,25
+10021771,"Wyatt,Joe",2118,1,CIS, 202,02,Intro Prog And Algo,27,CIS,13:00,13:50,MWF,20
+10459960,"Agyei-Mensah,Stephen O",2118,1,CIS, 217,01,Appl Of Micro,33,CIS,09:30,10:45,TR,35
+10525980,"Kim,Soo",2118,1,CIS, 217,02,Appl Of Micro,35,CIS,11:00,12:15,TR,35
+10459960,"Agyei-Mensah,Stephen O",2118,1,CIS, 217,03,Appl Of Micro,34,CIS,15:30,16:45,MW,35
+10013015,"George,Randall Lee",2118,1,CIS, 217,04,Appl Of Micro,35,CIS,17:00,18:15,TR,35
+10460831,"Wolfe,Veryl E",2118,1,CIS, 217,05,Appl Of Micro,33,CIS,12:30,13:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2118,1,CIS, 217,06,Appl Of Micro,34,CIS,14:00,15:15,TR,35
+10115995,"Hunter,Nancie L",2118,1,CIS, 217,51,Appl Of Micro,22,CIS,15:30,16:40,TR,27
+10115995,"Hunter,Nancie L",2118,1,CIS, 217,52,Appl Of Micro,23,CIS,17:00,18:15,TR,27
+10115995,"Hunter,Nancie L",2118,1,CIS, 217,53,Appl Of Micro,24,CIS,12:30,15:00,W,27
+10115995,"Hunter,Nancie L",2118,1,CIS, 217,54,Appl Of Micro,26,CIS,15:30,16:45,MW,27
+10460831,"Wolfe,Veryl E",2118,1,CIS, 217,5W,Appl Of Micro,7,CIS,,,,8
+10460831,"Wolfe,Veryl E",2118,1,CIS, 217,W1,Appl Of Micro,21,CIS,,,,20
+10460831,"Wolfe,Veryl E",2118,1,CIS, 217,W2,Appl Of Micro,26,CIS,,,,27
+10460831,"Wolfe,Veryl E",2118,1,CIS, 217,WO,Appl Of Micro,5,CIS,,,,5
+10460831,"Wolfe,Veryl E",2118,1,CIS, 217,WU,Appl Of Micro,10,CIS,,,,10
+10525980,"Kim,Soo",2118,1,CIS, 230,01,Practicum In CIS,1,CIS,,,,0
+10021771,"Wyatt,Joe",2118,1,CIS, 253,01,Comp Org/Asb Lang,23,CIS,10:00,10:50,MWF,25
+10460102,"Childs,Jeffrey S",2118,1,CIS, 254,01,Data Structures,24,CIS,13:00,13:50,MWF,25
+10021771,"Wyatt,Joe",2118,1,CIS, 270,01,Client-Side Web Programming,18,CIS,11:00,11:50,MWF,25
+10459960,"Agyei-Mensah,Stephen O",2118,1,CIS, 301,01,Comp Sys Analysis,22,CIS,11:00,12:15,TR,25
+10459960,"Agyei-Mensah,Stephen O",2118,1,CIS, 317,01,Microcomp Maint Conc & Tech,21,CIS,15:30,16:45,TR,25
+10525980,"Kim,Soo",2118,1,CIS, 330,01,Info Systems Programming,30,CIS,09:30,10:45,TR,30
+10525980,"Kim,Soo",2118,1,CIS, 355,01,Operating Systems I,13,CIS,11:00,11:50,MWF,25
+10460554,"ODonnell,Jon P",2118,1,CIS, 402,01,Data Base Sys Mgt,18,CIS,11:00,12:15,TR,25
+10525980,"Kim,Soo",2118,1,CIS, 403,01,Data Communications,14,CIS,14:00,15:15,MW,25
+10460554,"ODonnell,Jon P",2118,1,CIS, 411,01,Systems Devlmt Project,11,CIS,08:00,09:15,TR,15
+10460102,"Childs,Jeffrey S",2118,1,CIS, 412,01,Parallel Processing,11,CIS,14:00,15:15,TR,30
+10460831,"Wolfe,Veryl E",2119,1,CIS, 217,W1,Appl Of Micro,14,CIS,,,,25
+10460102,"Childs,Jeffrey S",2121,1,CIS, 110,01,Computer Info Process,33,CIS,12:00,12:50,MWF,32
+10460102,"Childs,Jeffrey S",2121,1,CIS, 110,02,Computer Info Process,34,CIS,13:00,13:50,MWF,32
+10021771,"Wyatt,Joe",2121,1,CIS, 202,01,Intro Prog And Algo,28,CIS,12:00,12:50,MWF,20
+10021771,"Wyatt,Joe",2121,1,CIS, 202,02,Intro Prog And Algo,29,CIS,13:00,13:50,MWF,25
+10525980,"Kim,Soo",2121,1,CIS, 206,01,Intro To Java Programming,28,CIS,12:00,12:50,MWF,28
+10460102,"Childs,Jeffrey S",2121,1,CIS, 217,01,Appl Of Micro,34,CIS,11:00,11:50,MWF,35
+10459960,"Agyei-Mensah,Stephen O",2121,1,CIS, 217,02,Appl Of Micro,35,CIS,09:30,10:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2121,1,CIS, 217,03,Appl Of Micro,36,CIS,11:00,12:15,TR,35
+11023917,"Zboran,Beth",2121,1,CIS, 217,04,Appl Of Micro,35,CIS,17:00,18:15,TR,35
+10013015,"George,Randall Lee",2121,1,CIS, 217,05,Appl Of Micro,35,CIS,17:00,18:15,TR,35
+11023917,"Zboran,Beth",2121,1,CIS, 217,06,Appl Of Micro,34,CIS,18:30,19:45,TR,35
+10115995,"Hunter,Nancie L",2121,1,CIS, 217,51,Appl Of Micro,17,CIS,14:00,15:15,MW,27
+10115995,"Hunter,Nancie L",2121,1,CIS, 217,52,Appl Of Micro,19,CIS,15:30,16:45,MW,27
+10115995,"Hunter,Nancie L",2121,1,CIS, 217,53,Appl Of Micro,18,CIS,17:00,19:30,W,27
+10115995,"Hunter,Nancie L",2121,1,CIS, 217,54,Appl Of Micro,15,CIS,09:00,11:30,F,27
+10460831,"Wolfe,Veryl E",2121,1,CIS, 217,5W,Appl Of Micro,2,CIS,,,,2
+11015317,"Scigliano,Kris",2121,1,CIS, 217,61,Appl Of Micro,18,CIS,13:00,17:30,F,18
+10460831,"Wolfe,Veryl E",2121,1,CIS, 217,W1,Appl Of Micro,20,CIS,,,,21
+10460831,"Wolfe,Veryl E",2121,1,CIS, 217,WO,Appl Of Micro,5,CIS,,,,5
+10460831,"Wolfe,Veryl E",2121,1,CIS, 217,WU,Appl Of Micro,7,CIS,,,,7
+10021771,"Wyatt,Joe",2121,1,CIS, 244,01,Intro Prog & Algo II,33,CIS,10:00,10:50,MWF,25
+10021771,"Wyatt,Joe",2121,1,CIS, 270,01,Client-Side Web Programming,32,CIS,11:00,11:50,MWF,25
+10459960,"Agyei-Mensah,Stephen O",2121,1,CIS, 301,01,Comp Sys Analysis,31,CIS,12:30,13:45,TR,30
+10525980,"Kim,Soo",2121,1,CIS, 303,01,Local Area Networks,28,CIS,15:30,16:45,MW,25
+10460554,"ODonnell,Jon P",2121,1,CIS, 306,01,Object Oriented Programming,20,CIS,11:00,12:15,TR,30
+10460554,"ODonnell,Jon P",2121,1,CIS, 370,01,Server-Side Web Programming,26,CIS,09:30,10:45,TR,30
+10460102,"Childs,Jeffrey S",2121,1,CIS, 375,01,Software Engineering,14,CIS,14:00,15:15,TR,30
+10525980,"Kim,Soo",2121,1,CIS, 377,01,Computer Graphics,24,CIS,14:00,15:15,MW,30
+10460554,"ODonnell,Jon P",2121,1,CIS, 411,01,Systems Devlmt Project,9,CIS,13:00,13:50,MWF,30
+10459960,"Agyei-Mensah,Stephen O",2121,1,CIS, 470,W1,Project Management,6,CIS,,,,20
+10460102,"Childs,Jeffrey S",2125,S1,CIS, 217,C01,Appl Of Micro,9,CIS,11:00,13:40,MTWRF,25
+10459960,"Agyei-Mensah,Stephen O",2125,S1,CIS, 217,W01,Appl Of Micro,17,CIS,,,,22
+10525980,"Kim,Soo",2125,S2,CIS, 110,W01,Computer Info Process,18,CIS,,,,25
+10525980,"Kim,Soo",2125,S2,CIS, 217,W01,Appl Of Micro,13,CIS,,,,25
+10460554,"ODonnell,Jon P",2125,S2,CIS, 422,X01,Internship In Computers,2,CIS,,,,0
+10525980,"Kim,Soo",2125,S3,CIS, 110,W01,Computer Info Process,17,CIS,,,,25
+10459960,"Agyei-Mensah,Stephen O",2125,S3,CIS, 217,W01,Appl Of Micro,15,CIS,,,,25
+10459960,"Agyei-Mensah,Stephen O",2125,S3,CIS, 651,W01,Deploying Info Tech Infras,5,CIS,,,,25
+11025280,"Strausser,Jody",2128,1,CIS, 110,C01,Computer Info Process,32,CIS,09:00,09:50,MWF,35
+11025280,"Strausser,Jody",2128,1,CIS, 110,C02,Computer Info Process,35,CIS,10:00,10:50,MWF,35
+10460102,"Childs,Jeffrey S",2128,1,CIS, 140,C01,Ess Topics Discr Math Comp Sc,12,CIS,10:00,10:50,MWF,30
+10460102,"Childs,Jeffrey S",2128,1,CIS, 140,C02,Ess Topics Discr Math Comp Sc,21,CIS,11:00,11:50,MWF,30
+10021771,"Wyatt,Joe",2128,1,CIS, 202,C01,Intro Prog And Algo,24,CIS,12:00,12:50,MWF,25
+10021771,"Wyatt,Joe",2128,1,CIS, 202,C02,Intro Prog And Algo,26,CIS,13:00,13:50,MWF,25
+10459960,"Agyei-Mensah,Stephen O",2128,1,CIS, 217,C01,Appl Of Micro,35,CIS,09:30,10:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2128,1,CIS, 217,C02,Appl Of Micro,34,CIS,11:00,12:15,TR,35
+10525980,"Kim,Soo",2128,1,CIS, 217,C03,Appl Of Micro,30,CIS,15:30,16:45,MW,35
+10013015,"George,Randall Lee",2128,1,CIS, 217,C05,Appl Of Micro,31,CIS,17:00,18:15,MW,35
+11023917,"Zboran,Beth",2128,1,CIS, 217,C06,Appl Of Micro,36,CIS,17:00,18:15,MW,35
+11023917,"Zboran,Beth",2128,1,CIS, 217,C07,Appl Of Micro,35,CIS,18:30,19:45,MW,35
+10115995,"Hunter,Nancie L",2128,1,CIS, 217,V01,Appl Of Micro,26,CIS,15:30,16:45,TR,27
+10115995,"Hunter,Nancie L",2128,1,CIS, 217,V02,Appl Of Micro,26,CIS,17:00,18:15,TR,27
+10115995,"Hunter,Nancie L",2128,1,CIS, 217,V03,Appl Of Micro,23,CIS,14:00,15:15,MW,27
+10115995,"Hunter,Nancie L",2128,1,CIS, 217,V04,Appl Of Micro,27,CIS,15:30,16:45,MW,27
+10460831,"Wolfe,Veryl E",2128,1,CIS, 217,W01C,Appl Of Micro,11,CIS,,,,12
+10101029,"Snell,Cynthia Ann",2128,1,CIS, 217,W01V,Appl Of Micro,24,CIS,,,,25
+10460831,"Wolfe,Veryl E",2128,1,CIS, 217,W01W,Appl Of Micro,23,CIS,,,,23
+10460831,"Wolfe,Veryl E",2128,1,CIS, 217,W02C,Appl Of Micro,34,CIS,,,,35
+10525980,"Kim,Soo",2128,1,CIS, 230,C01,Practicum In CIS,1,CIS,,,,0
+10021771,"Wyatt,Joe",2128,1,CIS, 253,C01,Comp Org/Asb Lang,21,CIS,10:00,10:50,MWF,25
+10460102,"Childs,Jeffrey S",2128,1,CIS, 254,C01,Data Structures,23,CIS,13:00,13:50,MWF,25
+10021771,"Wyatt,Joe",2128,1,CIS, 270,C01,Client-Side Web Programming,22,CIS,11:00,11:50,MWF,25
+11025280,"Strausser,Jody",2128,1,CIS, 301,C01,Comp Sys Analysis,27,CIS,09:30,10:45,TR,25
+10525980,"Kim,Soo",2128,1,CIS, 305,C01,Art Intell Decision Make,26,CIS,12:00,12:50,MWF,25
+10459960,"Agyei-Mensah,Stephen O",2128,1,CIS, 317,C01,Microcomp Maint Conc & Tech,27,CIS,15:30,16:45,TR,25
+11025280,"Strausser,Jody",2128,1,CIS, 330,C01,Info Systems Programming,30,CIS,11:00,12:15,TR,25
+10459960,"Agyei-Mensah,Stephen O",2128,1,CIS, 333,C01,Info Sys Auditing & Security,13,CIS,14:00,15:15,TR,25
+10460554,"ODonnell,Jon P",2128,1,CIS, 402,C01,Data Base Sys Mgt,27,CIS,09:30,10:45,TR,25
+10525980,"Kim,Soo",2128,1,CIS, 403,C01,Data Communications,24,CIS,14:00,15:15,MW,25
+10460554,"ODonnell,Jon P",2128,1,CIS, 411,C01,Systems Devlmt Project,9,CIS,08:00,09:15,TR,15
+10460554,"ODonnell,Jon P",2128,1,CIS, 422,X01,Internship In Computers,3,CIS,,,,0
+10460102,"Childs,Jeffrey S",2128,1,CIS, 460,C01,Programming Lang & Comp Theory,23,CIS,12:30,13:45,TR,30
+10525980,"Kim,Soo",2129,1,CIS, 110,W01,Computer Info Process,16,CIS,,,,35
+10459960,"Agyei-Mensah,Stephen O",2129,1,CIS, 217,W01,Appl Of Micro,8,CIS,,,,35
+10460554,"ODonnell,Jon P",2129,1,CIS, 422,X01,Internship In Computers,1,CIS,,,,0
+11025280,"Strausser,Jody",2131,1,CIS, 110,C01,Computer Info Process,37,CIS,10:00,10:50,MWF,35
+10002149,"Traynor,Susan",2131,1,CIS, 110,C02,Computer Info Process,34,CIS,11:00,11:50,MWF,35
+11025280,"Strausser,Jody",2131,1,CIS, 110,C02,Computer Info Process,34,CIS,11:00,11:50,MWF,35
+10021771,"Wyatt,Joe",2131,1,CIS, 202,C01,Intro Prog And Algo,29,CIS,12:00,12:50,MWF,25
+10021771,"Wyatt,Joe",2131,1,CIS, 202,C02,Intro Prog And Algo,28,CIS,13:00,13:50,MWF,25
+10525980,"Kim,Soo",2131,1,CIS, 206,C01,Intro To Java Programming,23,CIS,12:00,12:50,MWF,28
+10460102,"Childs,Jeffrey S",2131,1,CIS, 217,C01,Appl Of Micro,36,CIS,11:00,11:50,MWF,35
+10460102,"Childs,Jeffrey S",2131,1,CIS, 217,C02,Appl Of Micro,35,CIS,12:00,12:50,MWF,35
+10459960,"Agyei-Mensah,Stephen O",2131,1,CIS, 217,C03,Appl Of Micro,35,CIS,11:00,12:15,TR,35
+10459960,"Agyei-Mensah,Stephen O",2131,1,CIS, 217,C04,Appl Of Micro,34,CIS,14:00,15:15,TR,35
+10013015,"George,Randall Lee",2131,1,CIS, 217,C05,Appl Of Micro,36,CIS,17:00,18:15,MW,35
+11023917,"Zboran,Beth",2131,1,CIS, 217,C06,Appl Of Micro,35,CIS,17:00,18:15,MW,35
+10115995,"Hunter,Nancie L",2131,1,CIS, 217,V01,Appl Of Micro,15,CIS,14:00,15:15,MW,27
+10115995,"Hunter,Nancie L",2131,1,CIS, 217,V02,Appl Of Micro,11,CIS,15:30,16:45,MW,27
+10115995,"Hunter,Nancie L",2131,1,CIS, 217,V03,Appl Of Micro,9,CIS,17:00,18:15,MW,27
+10115995,"Hunter,Nancie L",2131,1,CIS, 217,V04,Appl Of Micro,13,CIS,09:00,11:30,T,27
+10460831,"Wolfe,Veryl E",2131,1,CIS, 217,W01C,Appl Of Micro,15,CIS,,,,15
+10101029,"Snell,Cynthia Ann",2131,1,CIS, 217,W01V,Appl Of Micro,13,CIS,,,,30
+10460831,"Wolfe,Veryl E",2131,1,CIS, 217,W01W,Appl Of Micro,19,CIS,,,,20
+10460831,"Wolfe,Veryl E",2131,1,CIS, 217,W02,Appl Of Micro,35,CIS,,,,35
+10460831,"Wolfe,Veryl E",2131,1,CIS, 217,W03,Appl Of Micro,35,CIS,,,,35
+10525980,"Kim,Soo",2131,1,CIS, 230,C01,Practicum In CIS,3,CIS,,,,9
+10021771,"Wyatt,Joe",2131,1,CIS, 244,C01,Intro Prog & Algo II,30,CIS,10:00,10:50,MWF,25
+10021771,"Wyatt,Joe",2131,1,CIS, 270,C01,Client-Side Web Programming,29,CIS,11:00,11:50,MWF,25
+11025280,"Strausser,Jody",2131,1,CIS, 301,C01,Comp Sys Analysis,27,CIS,12:00,12:50,MWF,30
+10525980,"Kim,Soo",2131,1,CIS, 303,C01,Local Area Networks,26,CIS,14:00,15:15,MW,25
+10525980,"Kim,Soo",2131,1,CIS, 303,C02,Local Area Networks,25,CIS,15:30,16:45,MW,25
+11025280,"Strausser,Jody",2131,1,CIS, 306,C01,Object Oriented Programming,32,CIS,11:00,12:15,TR,30
+10459960,"Agyei-Mensah,Stephen O",2131,1,CIS, 317,C01,Microcomp Maint Conc & Tech,27,CIS,15:30,16:45,TR,30
+10460102,"Childs,Jeffrey S",2131,1,CIS, 356,C01,Analysis Of Algorithms,37,CIS,13:00,13:50,MWF,33
+10460554,"ODonnell,Jon P",2131,1,CIS, 370,C01,Server-Side Web Programming,20,CIS,09:30,10:45,TR,30
+10460102,"Childs,Jeffrey S",2131,1,CIS, 375,C01,Software Engineering,13,CIS,14:00,15:15,TR,30
+10460554,"ODonnell,Jon P",2131,1,CIS, 411,C01,Systems Devlmt Project,21,CIS,08:00,09:15,TR,15
+10460554,"ODonnell,Jon P",2131,1,CIS, 422,X01,Internship In Computers,1,CIS,,,,9
+10459960,"Agyei-Mensah,Stephen O",2131,1,CIS, 470,W01,Project Management,17,CIS,00:00,00:00,,20
+10459960,"Agyei-Mensah,Stephen O",2135,S1,CIS, 217,W01,Appl Of Micro,14,CIS,,,,30
+11025280,"Strausser,Jody",2135,S1,CIS, 301,I01,Comp Sys Analysis,1,CIS,,,,0
+10525980,"Kim,Soo",2135,S2,CIS, 110,W01,Computer Info Process,15,CIS,,,,35
+10525980,"Kim,Soo",2135,S3,CIS, 217,W01,Appl Of Micro,23,CIS,,,,35
+10460554,"ODonnell,Jon P",2135,S3,CIS, 422,X01,Internship In Computers,5,CIS,,,,9
+10459960,"Agyei-Mensah,Stephen O",2135,S3,CIS, 651,W01,Deploying Info Tech Infras,7,CIS,,,,20
+10460102,"Childs,Jeffrey S",2138,1,CIS, 110,C01,Computer Info Process,35,CIS,10:00,10:50,MWF,35
+10460102,"Childs,Jeffrey S",2138,1,CIS, 110,C02,Computer Info Process,36,CIS,11:00,11:50,MWF,35
+10115995,"Hunter,Nancie L",2138,1,CIS, 110,C03,Computer Info Process,35,CIS,09:30,10:45,TR,35
+10525980,"Kim,Soo",2138,1,CIS, 140,C01,Ess Topics Discr Math Comp Sc,37,CIS,15:30,16:45,MW,30
+10021771,"Wyatt,Joe",2138,1,CIS, 202,C01,Intro Prog And Algo,30,CIS,12:00,12:50,MWF,25
+10021771,"Wyatt,Joe",2138,1,CIS, 202,C02,Intro Prog And Algo,30,CIS,13:00,13:50,MWF,25
+10459960,"Agyei-Mensah,Stephen O",2138,1,CIS, 217,C01,Appl Of Micro,35,CIS,09:30,10:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2138,1,CIS, 217,C02,Appl Of Micro,33,CIS,11:00,12:15,TR,35
+10459960,"Agyei-Mensah,Stephen O",2138,1,CIS, 217,C03,Appl Of Micro,29,CIS,14:00,15:15,TR,35
+10013015,"George,Randall Lee",2138,1,CIS, 217,C04,Appl Of Micro,33,CIS,17:00,18:15,MW,35
+11023917,"Zboran,Beth",2138,1,CIS, 217,C06,Appl Of Micro,18,CIS,18:30,19:45,MW,35
+10115995,"Hunter,Nancie L",2138,1,CIS, 217,V01,Appl Of Micro,23,CIS,12:30,13:45,TR,27
+10115995,"Hunter,Nancie L",2138,1,CIS, 217,V02,Appl Of Micro,19,CIS,15:30,16:45,TR,27
+10460831,"Wolfe,Veryl E",2138,1,CIS, 217,W01C,Appl Of Micro,3,CIS,,,,9
+10460831,"Wolfe,Veryl E",2138,1,CIS, 217,W01W,Appl Of Micro,22,CIS,,,,26
+10460831,"Wolfe,Veryl E",2138,1,CIS, 217,W02,Appl Of Micro,35,CIS,,,,35
+10460831,"Wolfe,Veryl E",2138,1,CIS, 217,W03,Appl Of Micro,35,CIS,,,,35
+10525980,"Kim,Soo",2138,1,CIS, 230,C01,Practicum In CIS,1,CIS,,,,0
+10021771,"Wyatt,Joe",2138,1,CIS, 253,C01,Comp Org/Asb Lang,25,CIS,10:00,10:50,MWF,25
+10460102,"Childs,Jeffrey S",2138,1,CIS, 254,C01,Data Structures,27,CIS,13:00,13:50,MWF,30
+10021771,"Wyatt,Joe",2138,1,CIS, 270,C01,Client-Side Web Programming,26,CIS,11:00,11:50,MWF,25
+11025280,"Strausser,Jody",2138,1,CIS, 301,C01,Comp Sys Analysis,27,CIS,09:30,10:45,TR,30
+11025280,"Strausser,Jody",2138,1,CIS, 301,C02,Comp Sys Analysis,27,CIS,11:00,12:15,TR,30
+11025280,"Strausser,Jody",2138,1,CIS, 312,C01,Special Topics In Computing,21,CIS,10:00,10:50,MWF,30
+11025280,"Strausser,Jody",2138,1,CIS, 330,C01,Info Systems Programming,31,CIS,09:00,09:50,MWF,25
+10459960,"Agyei-Mensah,Stephen O",2138,1,CIS, 333,C01,Info Sys Auditing & Security,18,CIS,15:30,16:45,TR,25
+10525980,"Kim,Soo",2138,1,CIS, 355,C01,Operating Systems I,33,CIS,12:00,12:50,MWF,30
+10460554,"ODonnell,Jon P",2138,1,CIS, 402,C01,Data Base Sys Mgt,27,CIS,09:30,10:45,TR,30
+10525980,"Kim,Soo",2138,1,CIS, 403,C01,Data Communications,23,CIS,14:00,15:15,MW,25
+10460554,"ODonnell,Jon P",2138,1,CIS, 411,C01,Systems Devlmt Project,14,CIS,08:00,09:15,TR,15
+10460102,"Childs,Jeffrey S",2138,1,CIS, 412,C01,Parallel Processing,38,CIS,14:00,15:15,TR,30
+10459960,"Agyei-Mensah,Stephen O",2139,1,CIS, 217,W01,Appl Of Micro,6,CIS,,,,35
+11025280,"Strausser,Jody",2141,1,CIS, 110,C01,Computer Info Process,35,CIS,10:00,10:50,MWF,35
+11025280,"Strausser,Jody",2141,1,CIS, 110,C02,Computer Info Process,35,CIS,11:00,11:50,MWF,35
+11025280,"Strausser,Jody",2141,1,CIS, 110,C03,Computer Info Process,36,CIS,12:00,12:50,MWF,35
+10021771,"Wyatt,Joe",2141,1,CIS, 202,C01,Intro Prog And Algo,25,CIS,12:00,12:50,MWF,25
+10021771,"Wyatt,Joe",2141,1,CIS, 202,C02,Intro Prog And Algo,21,CIS,13:00,13:50,MWF,25
+10525980,"Kim,Soo",2141,1,CIS, 206,C01,Intro To Java Programming,26,CIS,12:00,12:50,MWF,30
+10459960,"Agyei-Mensah,Stephen O",2141,1,CIS, 217,C01,Appl Of Micro,36,CIS,14:00,15:15,TR,35
+10460102,"Childs,Jeffrey S",2141,1,CIS, 217,C02,Appl Of Micro,36,CIS,13:00,13:50,MWF,35
+10459960,"Agyei-Mensah,Stephen O",2141,1,CIS, 217,C03,Appl Of Micro,35,CIS,11:00,12:15,TR,35
+10460102,"Childs,Jeffrey S",2141,1,CIS, 217,C04,Appl Of Micro,33,CIS,12:00,12:50,MWF,35
+11023917,"Zboran,Beth",2141,1,CIS, 217,C05,Appl Of Micro,35,CIS,17:00,18:15,TR,35
+10115995,"Hunter,Nancie L",2141,1,CIS, 217,C06,Appl Of Micro,36,CIS,09:30,10:45,TR,35
+10115995,"Hunter,Nancie L",2141,1,CIS, 217,V01,Appl Of Micro,19,CIS,14:00,15:15,MW,27
+10115995,"Hunter,Nancie L",2141,1,CIS, 217,V02,Appl Of Micro,17,CIS,15:30,16:45,MW,27
+10460831,"Wolfe,Veryl E",2141,1,CIS, 217,W01C,Appl Of Micro,19,CIS,,,,20
+10460831,"Wolfe,Veryl E",2141,1,CIS, 217,W01W,Appl Of Micro,23,CIS,,,,20
+10460831,"Wolfe,Veryl E",2141,1,CIS, 217,W02,Appl Of Micro,37,CIS,,,,35
+10013015,"George,Randall Lee",2141,1,CIS, 217,W03,Appl Of Micro,35,CIS,,,,35
+10525980,"Kim,Soo",2141,1,CIS, 230,C01,Practicum In CIS,4,CIS,,,,9
+10021771,"Wyatt,Joe",2141,1,CIS, 244,C01,Intro Prog & Algo II,37,CIS,10:00,10:50,MWF,25
+10021771,"Wyatt,Joe",2141,1,CIS, 270,C01,Client-Side Web Programming,29,CIS,11:00,11:50,MWF,25
+10525980,"Kim,Soo",2141,1,CIS, 303,C01,Local Area Networks,25,CIS,14:00,15:15,MW,25
+10525980,"Kim,Soo",2141,1,CIS, 303,C02,Local Area Networks,22,CIS,15:30,16:45,MW,25
+11025280,"Strausser,Jody",2141,1,CIS, 306,C01,Object Oriented Programming,32,CIS,11:00,12:15,TR,30
+10460102,"Childs,Jeffrey S",2141,1,CIS, 312,C01,Special Topics In Computing,31,CIS,14:00,15:15,TR,30
+10459960,"Agyei-Mensah,Stephen O",2141,1,CIS, 317,C01,Microcomp Maint Conc & Tech,23,CIS,15:30,16:45,TR,30
+10460554,"ODonnell,Jon P",2141,1,CIS, 370,C01,Server-Side Web Programming,31,CIS,09:30,10:45,TR,30
+10460102,"Childs,Jeffrey S",2141,1,CIS, 375,C01,Software Engineering,28,CIS,10:00,10:50,MWF,30
+10460554,"ODonnell,Jon P",2141,1,CIS, 411,C01,Systems Devlmt Project,18,CIS,17:00,19:30,W,15
+10460554,"ODonnell,Jon P",2141,1,CIS, 422,X01,Internship In Computers,1,CIS,,,,9
+10459960,"Agyei-Mensah,Stephen O",2141,1,CIS, 470,C01,Project Management,10,CIS,12:30,13:45,TR,25
+10525980,"Kim,Soo",2145,S2,CIS, 110,W01,Computer Info Process,8,CIS,,,,35
+10460102,"Childs,Jeffrey S",2145,S3,CIS, 110,W01,Computer Info Process,9,CIS,,,,35
+10460102,"Childs,Jeffrey S",2145,S3,CIS, 217,W01,Appl Of Micro,27,CIS,,,,35
+10460554,"ODonnell,Jon P",2145,S3,CIS, 422,X01,Internship In Computers,4,CIS,,,,20
+10459960,"Agyei-Mensah,Stephen O",2145,S3,CIS, 651,I01,Deploying Info Tech Infras,3,CIS,,,,0
+10460102,"Childs,Jeffrey S",2148,1,CIS, 110,C01,Computer Info Process,35,CIS,10:00,10:50,MWF,35
+10460102,"Childs,Jeffrey S",2148,1,CIS, 110,C02,Computer Info Process,34,CIS,11:00,11:50,MWF,35
+11025280,"Strausser,Jody",2148,1,CIS, 140,C01,Ess Topics Discr Math Comp Sc,37,CIS,09:30,10:45,TR,30
+10021771,"Wyatt,Joe",2148,1,CIS, 202,C01,Intro Prog And Algo,37,CIS,12:00,12:50,MWF,28
+10021771,"Wyatt,Joe",2148,1,CIS, 202,C02,Intro Prog And Algo,37,CIS,13:00,13:50,MWF,0
+10459960,"Agyei-Mensah,Stephen O",2148,1,CIS, 217,C01,Appl Of Micro,29,CIS,09:30,10:45,TR,35
+10115995,"Hunter,Nancie L",2148,1,CIS, 217,C02,Appl Of Micro,35,CIS,11:00,12:15,TR,35
+10459960,"Agyei-Mensah,Stephen O",2148,1,CIS, 217,C03,Appl Of Micro,34,CIS,14:00,15:15,TR,35
+10525980,"Kim,Soo",2148,1,CIS, 217,C04,Appl Of Micro,33,CIS,15:30,16:45,MW,35
+10115995,"Hunter,Nancie L",2148,1,CIS, 217,C05,Appl Of Micro,34,CIS,12:30,13:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2148,1,CIS, 217,C06,Appl Of Micro,15,CIS,17:00,18:15,MW,35
+10115995,"Hunter,Nancie L",2148,1,CIS, 217,V01,Appl Of Micro,25,CIS,15:30,16:45,TR,27
+10460831,"Wolfe,Veryl E",2148,1,CIS, 217,W01C,Appl Of Micro,10,CIS,,,,0
+10460831,"Wolfe,Veryl E",2148,1,CIS, 217,W01W,Appl Of Micro,35,CIS,,,,40
+10013015,"George,Randall Lee",2148,1,CIS, 217,W02,Appl Of Micro,39,CIS,,,,40
+11023917,"Zboran,Beth",2148,1,CIS, 217,W03,Appl Of Micro,39,CIS,,,,40
+10021771,"Wyatt,Joe",2148,1,CIS, 253,C01,Comp Org/Asb Lang,24,CIS,10:00,10:50,MWF,30
+10460102,"Childs,Jeffrey S",2148,1,CIS, 254,C01,Data Structures,20,CIS,13:00,13:50,MWF,30
+10021771,"Wyatt,Joe",2148,1,CIS, 270,C01,Client-Side Web Programming,27,CIS,11:00,11:50,MWF,25
+11025280,"Strausser,Jody",2148,1,CIS, 301,C01,Comp Sys Analysis,25,CIS,09:00,09:50,MWF,30
+11025280,"Strausser,Jody",2148,1,CIS, 301,C02,Comp Sys Analysis,27,CIS,10:00,10:50,MWF,30
+10525980,"Kim,Soo",2148,1,CIS, 305,C01,Art Intell Decision Make,24,CIS,12:00,12:50,MWF,30
+11025280,"Strausser,Jody",2148,1,CIS, 330,C01,Info Systems Programming,33,CIS,11:00,12:15,TR,30
+10459960,"Agyei-Mensah,Stephen O",2148,1,CIS, 333,C01,Info Sys Auditing & Security,17,CIS,15:30,16:45,TR,25
+10460554,"ODonnell,Jon P",2148,1,CIS, 402,C01,Data Base Sys Mgt,31,CIS,09:30,10:45,TR,30
+10525980,"Kim,Soo",2148,1,CIS, 403,C01,Data Communications,23,CIS,14:00,15:15,MW,25
+10460554,"ODonnell,Jon P",2148,1,CIS, 411,C01,Systems Devlmt Project,13,CIS,17:00,19:30,W,15
+10460554,"ODonnell,Jon P",2148,1,CIS, 422,X01,Internship In Computers,1,CIS,,,,9
+10460102,"Childs,Jeffrey S",2148,1,CIS, 460,C01,Programming Lang & Comp Theory,32,CIS,14:00,15:15,TR,35
+10525980,"Kim,Soo",2149,1,CIS, 110,W01,Computer Info Process,5,CIS,,,,35
+10459960,"Agyei-Mensah,Stephen O",2149,1,CIS, 217,W01,Appl Of Micro,5,CIS,,,,35
+10525980,"Kim,Soo",2149,1,CIS, 330,I01,Info Systems Programming,1,CIS,,,,0
+10460554,"ODonnell,Jon P",2149,1,CIS, 422,X01,Internship in Computers,1,CIS,,,,0
+11025280,"Strausser,Jody",2151,1,CIS, 110,C01,Computer Info Process,33,CIS,10:00,10:50,MWF,35
+10459960,"Agyei-Mensah,Stephen O",2151,1,CIS, 110,C02,Computer Info Process,25,CIS,12:30,13:45,TR,35
+11025280,"Strausser,Jody",2151,1,CIS, 110,C03,Computer Info Process,35,CIS,11:00,11:50,MWF,35
+10021771,"Wyatt,Joe",2151,1,CIS, 202,C01,Intro Prog And Algo,27,CIS,12:00,12:50,MWF,25
+10021771,"Wyatt,Joe",2151,1,CIS, 202,C02,Intro Prog And Algo,24,CIS,13:00,13:50,MWF,25
+10525980,"Kim,Soo",2151,1,CIS, 206,C01,Intro To Java Programming,28,CIS,12:00,12:50,MWF,30
+10115995,"Hunter,Nancie L",2151,1,CIS, 217,C01,Appl of Micro,37,CIS,09:30,10:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2151,1,CIS, 217,C03,Appl of Micro,27,CIS,09:30,10:45,TR,35
+10460102,"Childs,Jeffrey S",2151,1,CIS, 217,C04,Appl of Micro,35,CIS,12:00,12:50,MWF,35
+10460102,"Childs,Jeffrey S",2151,1,CIS, 217,C05,Appl of Micro,35,CIS,13:00,13:50,MWF,35
+10459960,"Agyei-Mensah,Stephen O",2151,1,CIS, 217,C06,Appl of Micro,29,CIS,17:00,18:15,TR,35
+10115995,"Hunter,Nancie L",2151,1,CIS, 217,V01,Appl of Micro,18,CIS,14:00,15:15,MW,27
+10115995,"Hunter,Nancie L",2151,1,CIS, 217,V02,Appl of Micro,20,CIS,15:30,16:45,MW,27
+10460831,"Wolfe,Veryl E",2151,1,CIS, 217,W01,Appl of Micro,22,CIS,,,,30
+10460831,"Wolfe,Veryl E",2151,1,CIS, 217,W01C,Appl of Micro,9,CIS,,,,0
+10460831,"Wolfe,Veryl E",2151,1,CIS, 217,W01W,Appl of Micro,25,CIS,,,,35
+10013015,"George,Randall Lee",2151,1,CIS, 217,W02,Appl of Micro,35,CIS,,,,35
+11023917,"Zboran,Beth",2151,1,CIS, 217,W03,Appl of Micro,35,CIS,,,,35
+10525980,"Kim,Soo",2151,1,CIS, 230,C01,Practicum In CIS,3,CIS,,,,10
+10021771,"Wyatt,Joe",2151,1,CIS, 244,C01,Intro Prog & Algo II,40,CIS,10:00,10:50,MWF,35
+10021771,"Wyatt,Joe",2151,1,CIS, 270,C01,Client-Side Web Programming,28,CIS,11:00,11:50,MWF,25
+10525980,"Kim,Soo",2151,1,CIS, 303,C01,Local Area Networks,28,CIS,15:30,16:45,MW,28
+11025280,"Strausser,Jody",2151,1,CIS, 306,C01,Object Oriented Programming,22,CIS,11:00,12:15,TR,30
+10459960,"Agyei-Mensah,Stephen O",2151,1,CIS, 317,C01,Microcomp Maint Conc & Tech,32,CIS,14:00,15:15,TR,30
+10460102,"Childs,Jeffrey S",2151,1,CIS, 356,C01,Analysis Of Algorithms,30,CIS,14:00,15:15,TR,30
+10460554,"ODonnell,Jon P",2151,1,CIS, 370,C01,Server-Side Web Programming,19,CIS,09:30,10:45,TR,30
+10460102,"Childs,Jeffrey S",2151,1,CIS, 375,C01,Software Engineering,14,CIS,10:00,10:50,MWF,30
+10525980,"Kim,Soo",2151,1,CIS, 377,C01,Computer Graphics,13,CIS,14:00,15:15,MW,30
+10460554,"ODonnell,Jon P",2151,1,CIS, 411,C01,Systems Devlmt Project,20,CIS,17:00,19:30,W,15
+10460554,"ODonnell,Jon P",2151,1,CIS, 422,X01,Internship In Computers,1,CIS,,,,0
+11025280,"Strausser,Jody",2151,1,CIS, 462,C01,Simulation/Modeling,40,CIS,12:30,13:45,TR,35
+10460102,"Childs,Jeffrey S",2155,S2,CIS, 110,W01,Computer Info Process,14,CIS,,,,30
+11025280,"Strausser,Jody",2155,S2,CIS, 202,W01,Intro Prog And Algo,6,CIS,,,,30
+10525980,"Kim,Soo",2155,S2,CIS, 217,W01,Appl of Micro,11,CIS,,,,30
+10460102,"Childs,Jeffrey S",2155,S3,CIS, 217,W01,Appl of Micro,18,CIS,,,,30
+10460554,"ODonnell,Jon P",2155,S3,CIS, 422,X01,Internship in Computers,1,CIS,,,,9
+10460102,"Childs,Jeffrey S",2158,1,CIS, 110,C01,Computer Info Process,37,CIS,10:00,10:50,MWF,35
+10460102,"Childs,Jeffrey S",2158,1,CIS, 110,C02,Computer Info Process,35,CIS,11:00,11:50,MWF,35
+10115995,"Hunter,Nancie L",2158,1,CIS, 121,C01,What Does it Mean to be Human?,25,CIS,09:30,10:45,TR,25
+10115995,"Hunter,Nancie L",2158,1,CIS, 121,C02,What Does it Mean to be Human?,24,CIS,11:00,12:15,TR,25
+10525980,"Kim,Soo",2158,1,CIS, 140,C01,Ess Topics Discr Math Comp Sc,36,CIS,14:00,15:15,MW,35
+11025280,"Strausser,Jody",2158,1,CIS, 202,C01,Intro Prog And Algo,30,CIS,11:00,11:50,MWF,0
+11025280,"Strausser,Jody",2158,1,CIS, 202,C02,Intro Prog And Algo,26,CIS,12:00,12:50,MWF,25
+11023917,"Zboran,Beth",2158,1,CIS, 202,C03,Intro Prog And Algo,18,CIS,17:00,18:15,MW,35
+10459960,"Agyei-Mensah,Stephen O",2158,1,CIS, 217,C01,Appl of Micro,33,CIS,09:30,10:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2158,1,CIS, 217,C02,Appl of Micro,35,CIS,11:00,12:15,TR,35
+11045400,"Annadatha,Jayakumar",2158,1,CIS, 217,C03,Appl of Micro,35,CIS,14:00,15:15,TR,35
+11045400,"Annadatha,Jayakumar",2158,1,CIS, 217,C05,Appl of Micro,34,CIS,12:30,13:45,TR,35
+10115995,"Hunter,Nancie L",2158,1,CIS, 217,V01,Appl of Micro,24,CIS,11:00,12:15,MW,27
+10115995,"Hunter,Nancie L",2158,1,CIS, 217,W01,Appl of Micro,39,CIS,,,,35
+10460831,"Wolfe,Veryl E",2158,1,CIS, 217,W02,Appl of Micro,36,CIS,,,,35
+10525980,"Kim,Soo",2158,1,CIS, 230,C01,Practicum in CIS,1,CIS,,,,9
+10460102,"Childs,Jeffrey S",2158,1,CIS, 254,C01,Data Structures,26,CIS,13:00,13:50,MWF,35
+11045400,"Annadatha,Jayakumar",2158,1,CIS, 270,C01,Client-Side Web Programming,32,CIS,11:00,11:50,MWF,35
+11045400,"Annadatha,Jayakumar",2158,1,CIS, 301,C01,Comp Sys Analysis,35,CIS,09:00,09:50,MWF,35
+11025280,"Strausser,Jody",2158,1,CIS, 330,C01,Info Systems Programming,35,CIS,11:00,12:15,TR,30
+10459960,"Agyei-Mensah,Stephen O",2158,1,CIS, 333,C01,Info Sys Auditing & Security,16,CIS,12:30,13:45,TR,28
+10525980,"Kim,Soo",2158,1,CIS, 355,C01,Operating Systems I,25,CIS,12:00,12:50,MWF,35
+10460554,"ODonnell,Jon P",2158,1,CIS, 402,C01,Data Base Sys Mgt,29,CIS,09:30,10:45,TR,35
+10525980,"Kim,Soo",2158,1,CIS, 403,C01,Data Communications,21,CIS,15:30,16:45,MW,28
+11025280,"Strausser,Jody",2158,1,CIS, 406,C01,Mobile Application Development,25,CIS,10:00,10:50,MWF,28
+10460554,"ODonnell,Jon P",2158,1,CIS, 411,C01,Systems Devlmt Project,15,CIS,17:00,19:30,W,15
+10460102,"Childs,Jeffrey S",2158,1,CIS, 412,C01,Parallel Processing,23,CIS,14:00,15:15,TR,35
+10460554,"ODonnell,Jon P",2158,1,CIS, 422,X01,Internship in Computers,2,CIS,,,,9
+10459960,"Agyei-Mensah,Stephen O",2158,1,CIS, 470,W01,Project Management,4,CIS,,,,25
+10459960,"Agyei-Mensah,Stephen O",2158,1,CIS, 570,W01,Project Management,2,CIS,,,,20
+10525980,"Kim,Soo",2159,1,CIS, 110,W01,Computer Info Process,2,CIS,,,,30
+10459960,"Agyei-Mensah,Stephen O",2159,1,CIS, 217,W01,Appl of Micro,11,CIS,,,,30
+10460102,"Childs,Jeffrey S",2161,1,CIS, 110,C01,Computer Info Process,34,CIS,12:00,12:50,MWF,35
+10460102,"Childs,Jeffrey S",2161,1,CIS, 110,C02,Computer Info Process,30,CIS,13:00,13:50,MWF,35
+11025280,"Strausser,Jody",2161,1,CIS, 202,C01,Intro Program and Algorithms I,32,CIS,09:30,10:45,TR,30
+11023917,"Zboran,Beth",2161,1,CIS, 202,C02,Intro Program and Algorithms I,22,CIS,17:00,18:15,MW,35
+11023917,"Zboran,Beth",2161,1,CIS, 202,W01,Intro Program and Algorithms I,23,CIS,,,,30
+10525980,"Kim,Soo",2161,1,CIS, 206,C01,Intro to Java Programming,26,CIS,12:00,12:50,MWF,30
+10459960,"Agyei-Mensah,Stephen O",2161,1,CIS, 217,C01,Appl of Micro,24,CIS,09:30,10:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2161,1,CIS, 217,C02,Appl of Micro,34,CIS,11:00,12:15,TR,35
+11045400,"Annadatha,Jayakumar",2161,1,CIS, 217,C04,Appl of Micro,36,CIS,13:00,13:50,MWF,35
+11045400,"Annadatha,Jayakumar",2161,1,CIS, 217,C05,Appl of Micro,35,CIS,14:00,14:50,MWF,35
+10115995,"Hunter,Nancie L",2161,1,CIS, 217,V01,Appl of Micro,17,CIS,09:30,10:45,MW,27
+10115995,"Hunter,Nancie L",2161,1,CIS, 217,V02,Appl of Micro,20,CIS,11:00,12:15,MW,27
+10115995,"Hunter,Nancie L",2161,1,CIS, 217,W01,Appl of Micro,35,CIS,,,,35
+10460102,"Childs,Jeffrey S",2161,1,CIS, 217,W02,Appl of Micro,35,CIS,,,,35
+10115995,"Hunter,Nancie L",2161,1,CIS, 217,W03,Appl of Micro,35,CIS,,,,35
+10525980,"Kim,Soo",2161,1,CIS, 230,C01,Practicum in CIS,1,CIS,,,,10
+11025280,"Strausser,Jody",2161,1,CIS, 244,C01,Intro Prog & Algo II,22,CIS,10:00,10:50,MWF,35
+11025280,"Strausser,Jody",2161,1,CIS, 244,C02,Intro Prog & Algo II,33,CIS,11:00,11:50,MWF,35
+11045400,"Annadatha,Jayakumar",2161,1,CIS, 270,C01,Client-Side Web Programming,22,CIS,10:00,10:50,MWF,35
+10525980,"Kim,Soo",2161,1,CIS, 303,C01,Local Area Networks,27,CIS,15:30,16:45,MW,28
+10525980,"Kim,Soo",2161,1,CIS, 305,C01,Art Intell Decision Make,22,CIS,14:00,15:15,MW,28
+11025280,"Strausser,Jody",2161,1,CIS, 306,C01,Object Oriented Programming,28,CIS,11:00,12:15,TR,35
+11045400,"Annadatha,Jayakumar",2161,1,CIS, 312,C01,Special Topics in Computing,33,CIS,11:00,11:50,MWF,35
+10459960,"Agyei-Mensah,Stephen O",2161,1,CIS, 317,C01,Microcomp Maint Conc & Tech,30,CIS,14:00,15:15,TR,35
+10460554,"ODonnell,Jon P",2161,1,CIS, 370,C01,Server-Side Web Programming,33,CIS,09:30,10:45,TR,35
+10460102,"Childs,Jeffrey S",2161,1,CIS, 375,C01,Software Engineering,22,CIS,10:00,10:50,MWF,35
+10460554,"ODonnell,Jon P",2161,1,CIS, 411,C01,Systems Devlmt Project,22,CIS,17:00,19:30,W,15
+10460554,"ODonnell,Jon P",2161,1,CIS, 422,X01,Internship in Computers,3,CIS,,,,9
+11025280,"Strausser,Jody",2165,S2,CIS, 202,W01,Intro Program and Algorithms I,10,CIS,,,,30
+10525980,"Kim,Soo",2165,S2,CIS, 217,W01,Appl of Micro,15,CIS,,,,35
+10460102,"Childs,Jeffrey S",2165,S3,CIS, 217,W01,Appl of Micro,21,CIS,,,,33
+10460554,"ODonnell,Jon P",2165,S3,CIS, 422,X01,Internship in Computers,5,CIS,,,,0
+10460102,"Childs,Jeffrey S",2168,1,CIS, 110,C01,Computer Info Process,33,CIS,10:00,10:50,MWF,35
+10460102,"Childs,Jeffrey S",2168,1,CIS, 110,C02,Computer Info Process,34,CIS,11:00,11:50,MWF,35
+10525980,"Kim,Soo",2168,1,CIS, 140,C01,Ess Topics Discr Math Comp Sc,35,CIS,14:00,15:15,MW,35
+11025280,"Strausser,Jody",2168,1,CIS, 202,C01,Intro Program and Algorithms I,32,CIS,09:30,10:45,TR,30
+10021771,"Wyatt,Joe",2168,1,CIS, 202,C02,Intro Program and Algorithms I,30,CIS,13:00,13:50,MWF,30
+10115995,"Hunter,Nancie L",2168,1,CIS, 217,C01,Appl of Micro,32,CIS,09:30,10:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2168,1,CIS, 217,C02,Appl of Micro,35,CIS,11:00,12:15,TR,35
+10115995,"Hunter,Nancie L",2168,1,CIS, 217,C03,Appl of Micro,33,CIS,14:00,15:15,TR,35
+10525980,"Kim,Soo",2168,1,CIS, 217,C04,Appl of Micro,34,CIS,12:00,12:50,MWF,35
+10115995,"Hunter,Nancie L",2168,1,CIS, 217,C05,Appl of Micro,35,CIS,12:30,13:45,TR,35
+10115995,"Hunter,Nancie L",2168,1,CIS, 217,V01,Appl of Micro,24,CIS,11:00,12:15,MW,27
+10459960,"Agyei-Mensah,Stephen O",2168,1,CIS, 217,W01,Appl of Micro,33,CIS,,,,35
+10459960,"Agyei-Mensah,Stephen O",2168,1,CIS, 217,W02,Appl of Micro,33,CIS,,,,35
+10021771,"Wyatt,Joe",2168,1,CIS, 253,C01,Comp Org/Asb Lang,25,CIS,10:00,10:50,MWF,30
+10021771,"Wyatt,Joe",2168,1,CIS, 253,C02,Comp Org/Asb Lang,17,CIS,11:00,11:50,MWF,30
+10460102,"Childs,Jeffrey S",2168,1,CIS, 254,C01,Data Structures,37,CIS,13:00,13:50,MWF,35
+10021771,"Wyatt,Joe",2168,1,CIS, 270,C01,Client-Side Web Programming,29,CIS,12:00,12:50,MWF,30
+11025280,"Strausser,Jody",2168,1,CIS, 301,C01,Comp Sys Analysis,28,CIS,09:00,09:50,MWF,30
+11025280,"Strausser,Jody",2168,1,CIS, 301,C02,Comp Sys Analysis,34,CIS,10:00,10:50,MWF,30
+11025280,"Strausser,Jody",2168,1,CIS, 330,C01,Info Systems Programming,32,CIS,11:00,12:15,TR,30
+10459960,"Agyei-Mensah,Stephen O",2168,1,CIS, 333,C01,Info Sys Auditing & Security,11,CIS,15:30,16:45,TR,28
+10460554,"ODonnell,Jon P",2168,1,CIS, 402,C01,Data Base System Management,27,CIS,09:30,10:45,TR,30
+10525980,"Kim,Soo",2168,1,CIS, 403,C01,Data Communications,20,CIS,15:30,16:45,MW,28
+10460554,"ODonnell,Jon P",2168,1,CIS, 411,C01,Systems Devlmt Project,10,CIS,17:00,19:30,W,15
+10460554,"ODonnell,Jon P",2168,1,CIS, 422,X01,Internship in Computers,1,CIS,,,,9
+10460102,"Childs,Jeffrey S",2168,1,CIS, 460,C01,Programming Lang & Comp Theory,20,CIS,14:00,15:15,TR,35
+11045400,"Annadatha,Jayakumar",2168,7W1,CIS, 402G,W01,Data Base System Management,11,CIS,,,,30
+11045400,"Annadatha,Jayakumar",2168,7W2,CIS, 520,W01,Intro to Data Warehousing,12,CIS,,,,30
+10525980,"Kim,Soo",2169,1,CIS, 110,W01,Computer Info Process,3,CIS,,,,30
+10460102,"Childs,Jeffrey S",2169,1,CIS, 217,W01,Appl of Micro,7,CIS,,,,30
+11045400,"Annadatha,Jayakumar",2169,1,DA, 530,W01,Analytical Methods & Optimizat,9,CIS,,,,30
+10460102,"Childs,Jeffrey S",2171,1,CIS, 110,C01,Computer Info Process,34,CIS,11:00,11:50,MWF,35
+10460102,"Childs,Jeffrey S",2171,1,CIS, 110,C02,Computer Info Process,33,CIS,12:00,12:50,MWF,35
+10021771,"Wyatt,Joe",2171,1,CIS, 202,C01,Intro Program and Algorithms I,12,CIS,11:00,11:50,MWF,25
+10021771,"Wyatt,Joe",2171,1,CIS, 202,C02,Intro Program and Algorithms I,23,CIS,12:00,12:50,MWF,25
+11023917,"Zboran,Beth",2171,1,CIS, 202,W01,Intro Program and Algorithms I,20,CIS,,,,30
+10525980,"Kim,Soo",2171,1,CIS, 206,C01,Intro to Java Programming,19,CIS,12:00,12:50,MWF,30
+10115995,"Hunter,Nancie L",2171,1,CIS, 217,C01,Appl of Micro,31,CIS,09:30,10:45,TR,35
+10115995,"Hunter,Nancie L",2171,1,CIS, 217,C02,Appl of Micro,33,CIS,12:30,13:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2171,1,CIS, 217,C03,Appl of Micro,30,CIS,11:00,12:15,TR,35
+10115995,"Hunter,Nancie L",2171,1,CIS, 217,C04,Appl of Micro,28,CIS,14:00,15:15,TR,35
+10115995,"Hunter,Nancie L",2171,1,CIS, 217,V01,Appl of Micro,22,CIS,11:00,12:15,MW,27
+10459960,"Agyei-Mensah,Stephen O",2171,1,CIS, 217,W01,Appl of Micro,36,CIS,,,,35
+10459960,"Agyei-Mensah,Stephen O",2171,1,CIS, 217,W02,Appl of Micro,36,CIS,,,,35
+10013015,"George,Randall Lee",2171,1,CIS, 217,W03,Appl of Micro,35,CIS,,,,35
+10525980,"Kim,Soo",2171,1,CIS, 230,C01,Practicum in CIS,1,CIS,,,,5
+11025280,"Strausser,Jody",2171,1,CIS, 244,C01,Intro Prog & Algo II,19,CIS,10:00,10:50,MWF,30
+11025280,"Strausser,Jody",2171,1,CIS, 244,C02,Intro Prog & Algo II,27,CIS,11:00,11:50,MWF,30
+10021771,"Wyatt,Joe",2171,1,CIS, 270,C01,Client-Side Web Programming,27,CIS,10:00,10:50,MWF,25
+10525980,"Kim,Soo",2171,1,CIS, 303,C01,Local Area Networks,28,CIS,14:00,15:15,MW,28
+10525980,"Kim,Soo",2171,1,CIS, 303,C02,Local Area Networks,22,CIS,15:30,16:45,MW,28
+11025280,"Strausser,Jody",2171,1,CIS, 306,C01,Object Oriented Programming,30,CIS,11:00,12:15,TR,30
+11025280,"Strausser,Jody",2171,1,CIS, 312,C01,Special Topics in Computing,32,CIS,12:30,13:45,TR,28
+10459960,"Agyei-Mensah,Stephen O",2171,1,CIS, 317,C01,Microcomp Maint Conc & Tech,26,CIS,15:30,16:45,TR,30
+10460102,"Childs,Jeffrey S",2171,1,CIS, 356,C01,Analysis of Algorithms,39,CIS,14:00,15:15,TR,30
+10460554,"ODonnell,Jon P",2171,1,CIS, 370,C01,Server-Side Web Programming,14,CIS,09:30,10:45,TR,30
+10460102,"Childs,Jeffrey S",2171,1,CIS, 375,C01,Software Engineering,13,CIS,10:00,10:50,MWF,30
+10021771,"Wyatt,Joe",2171,1,CIS, 377,C01,Computer Graphics,23,CIS,13:00,13:50,MWF,25
+10460554,"ODonnell,Jon P",2171,1,CIS, 411,C01,Systems Devlmt Project,14,CIS,17:00,19:30,W,0
+10460554,"ODonnell,Jon P",2171,1,CIS, 422,X01,Internship in Computers,1,CIS,,,,0
+11045400,"Annadatha,Jayakumar",2171,7W1,DA, 540,W01,Applied Data Mining,11,CIS,,,,30
+11045400,"Annadatha,Jayakumar",2171,7W2,DA, 550,W01,Predictive Analytics,10,CIS,,,,30
+11045400,"Annadatha,Jayakumar",2175,7W1,DA, 510,I01,Database Management Systems,1,CIS,,,,0
+11045400,"Annadatha,Jayakumar",2175,7W1,DA, 560,W01,Data Visualization,8,CIS,,,,30
+11025280,"Strausser,Jody",2175,7W2,CIS, 202,W01,Intro Program and Algorithms I,8,CIS,,,,35
+10459960,"Agyei-Mensah,Stephen O",2175,7W2,CIS, 570,W01,Project Management,11,CIS,,,,20
+11045400,"Annadatha,Jayakumar",2175,7W2,DA, 520,I01,Intro to Data Warehousing,1,CIS,,,,0
+10460102,"Childs,Jeffrey S",2175,S3,CIS, 110,W01,Computer Info Process,11,CIS,,,,35
+10460102,"Childs,Jeffrey S",2175,S3,CIS, 217,W01,Appl of Micro,21,CIS,,,,35
+10460554,"ODonnell,Jon P",2175,S3,CIS, 422,X01,Internship in Computers,5,CIS,,,,9
+10460102,"Childs,Jeffrey S",2178,1,CIS, 110,C01,Computer Info Process,35,CIS,10:00,10:50,MWF,35
+10460102,"Childs,Jeffrey S",2178,1,CIS, 110,C02,Computer Info Process,35,CIS,11:00,11:50,MWF,35
+10525980,"Kim,Soo",2178,1,CIS, 140,C01,Ess Topics Discr Math Comp Sc,35,CIS,14:00,15:15,MW,35
+10021771,"Wyatt,Joe",2178,1,CIS, 202,C01,Intro Program and Algorithms I,30,CIS,12:00,12:50,MWF,30
+10021771,"Wyatt,Joe",2178,1,CIS, 202,C02,Intro Program and Algorithms I,33,CIS,13:00,13:50,MWF,30
+10115995,"Hunter,Nancie L",2178,1,CIS, 217,C01,Appl of Micro,33,CIS,09:30,10:45,TR,35
+10115995,"Hunter,Nancie L",2178,1,CIS, 217,C02,Appl of Micro,34,CIS,11:00,12:15,TR,35
+10115995,"Hunter,Nancie L",2178,1,CIS, 217,C03,Appl of Micro,29,CIS,14:00,15:15,TR,35
+11059375,"Lucas,Ronald",2178,1,CIS, 217,C04,Appl of Micro,35,CIS,10:00,10:50,MWF,35
+11059375,"Lucas,Ronald",2178,1,CIS, 217,C05,Appl of Micro,33,CIS,11:00,11:50,MWF,35
+10115995,"Hunter,Nancie L",2178,1,CIS, 217,V01,Appl of Micro,22,CIS,11:00,12:15,MW,27
+10013015,"George,Randall Lee",2178,1,CIS, 217,W01,Appl of Micro,35,CIS,,,,35
+11023917,"Zboran,Beth",2178,1,CIS, 217,W02,Appl of Micro,34,CIS,,,,35
+11023917,"Zboran,Beth",2178,1,CIS, 217,W03,Appl of Micro,32,CIS,,,,35
+10525980,"Kim,Soo",2178,1,CIS, 230,C01,Practicum in CIS,1,CIS,,,,5
+10021771,"Wyatt,Joe",2178,1,CIS, 253,C01,Comp Org/Asb Lang,18,CIS,10:00,10:50,MWF,25
+10460102,"Childs,Jeffrey S",2178,1,CIS, 254,C01,Data Structures,23,CIS,13:00,13:50,MWF,35
+10021771,"Wyatt,Joe",2178,1,CIS, 270,C01,Client-Side Web Programming,24,CIS,11:00,11:50,MWF,35
+11025280,"Strausser,Jody",2178,1,CIS, 301,C01,Comp Sys Analysis,21,CIS,09:00,09:50,MWF,35
+11025280,"Strausser,Jody",2178,1,CIS, 301,C02,Comp Sys Analysis,26,CIS,10:00,10:50,MWF,30
+11025280,"Strausser,Jody",2178,1,CIS, 330,C01,Info Systems Programming,31,CIS,11:00,12:15,TR,30
+10525980,"Kim,Soo",2178,1,CIS, 355,C01,Operating Systems I,34,CIS,12:00,12:50,MWF,35
+10460554,"ODonnell,Jon P",2178,1,CIS, 402,C01,Database Design & Implement,23,CIS,09:30,10:45,TR,35
+10525980,"Kim,Soo",2178,1,CIS, 403,C01,Data Communications,21,CIS,15:30,16:45,MW,28
+11025280,"Strausser,Jody",2178,1,CIS, 406,C01,Mobile Application Development,24,CIS,12:30,13:45,TR,28
+10460554,"ODonnell,Jon P",2178,1,CIS, 411,C01,Systems Devlmt Project,13,CIS,17:00,19:30,W,15
+10460102,"Childs,Jeffrey S",2178,1,CIS, 412,C01,Parallel Processing,34,CIS,14:00,15:15,TR,35
+10460554,"ODonnell,Jon P",2178,1,CIS, 422,X01,Internship in Computers,2,CIS,,,,9
+11045400,"Annadatha,Jayakumar",2178,1,DA, 570,W01,Big Data Analytics,7,CIS,,,,25
+11045400,"Annadatha,Jayakumar",2178,7W1,DA, 510,W01,Database Management Systems,34,CIS,,,,25
+11045400,"Annadatha,Jayakumar",2178,7W2,DA, 520,W01,Intro to Data Warehousing,31,CIS,,,,25
+10525980,"Kim,Soo",2179,1,CIS, 217,W01,Appl of Micro,6,CIS,,,,30
+10460102,"Childs,Jeffrey S",2179,1,DA, 512,W01,Special Topics Data Analytics,4,CIS,,,,30
+11045400,"Annadatha,Jayakumar",2179,1,DA, 530,W01,Analytical Methods & Optimizat,18,CIS,,,,30
+10460102,"Childs,Jeffrey S",2181,1,CIS, 110,C01,Computer Info Process,35,CIS,12:00,12:50,MWF,35
+10460102,"Childs,Jeffrey S",2181,1,CIS, 110,C02,Computer Info Process,35,CIS,13:00,13:50,MWF,35
+10021771,"Wyatt,Joe",2181,1,CIS, 202,C01,Intro Program and Algorithms I,29,CIS,12:00,12:50,MWF,15
+11023917,"Zboran,Beth",2181,1,CIS, 202,W01,Intro Program and Algorithms I,29,CIS,,,,30
+10525980,"Kim,Soo",2181,1,CIS, 206,C01,Intro to Java Programming,21,CIS,12:00,12:50,MWF,30
+11043422,"Peterson,Cheryl L",2181,1,CIS, 217,C01,Appl of Micro,34,CIS,11:00,12:15,TR,35
+11059375,"Lucas,Ronald",2181,1,CIS, 217,C03,Appl of Micro,35,CIS,12:30,13:45,TR,35
+11059375,"Lucas,Ronald",2181,1,CIS, 217,C04,Appl of Micro,34,CIS,14:00,15:15,TR,35
+11023917,"Zboran,Beth",2181,1,CIS, 217,W01,Appl of Micro,35,CIS,,,,35
+10013015,"George,Randall Lee",2181,1,CIS, 217,W02,Appl of Micro,35,CIS,,,,35
+10525980,"Kim,Soo",2181,1,CIS, 230,C01,Practicum in CIS,5,CIS,,,,0
+11025280,"Strausser,Jody",2181,1,CIS, 244,C01,Intro Prog & Algo II,13,CIS,10:00,10:50,MWF,25
+11025280,"Strausser,Jody",2181,1,CIS, 244,C02,Intro Prog & Algo II,24,CIS,11:00,11:50,MWF,25
+10021771,"Wyatt,Joe",2181,1,CIS, 270,C01,Client-Side Web Programming,31,CIS,13:00,13:50,MWF,35
+10525980,"Kim,Soo",2181,1,CIS, 303,C01,Local Area Networks,25,CIS,15:30,16:45,MW,28
+11025280,"Strausser,Jody",2181,1,CIS, 306,C01,Object Oriented Programming,16,CIS,11:00,12:15,TR,30
+10460102,"Childs,Jeffrey S",2181,1,CIS, 312,C01,Special Topics in Computing,32,CIS,14:00,15:15,TR,30
+10013015,"George,Randall Lee",2181,1,CIS, 317,C01,Microcomp Maint Conc & Tech,29,CIS,17:00,18:15,TR,30
+11025280,"Strausser,Jody",2181,1,CIS, 370,C01,Server-Side Web Programming,34,CIS,12:30,13:45,TR,30
+10460102,"Childs,Jeffrey S",2181,1,CIS, 375,C01,Software Engineering,20,CIS,10:00,10:50,MWF,30
+10525980,"Kim,Soo",2181,1,CIS, 411,C01,Systems Devlmt Project,20,CIS,17:00,19:30,W,15
+11059375,"Lucas,Ronald",2181,1,CIS, 470,C01,Project Management,21,CIS,09:30,10:45,TR,25
+11045400,"Annadatha,Jayakumar",2181,1,DA, 580,W01,Analytics Capstone,7,CIS,,,,30
+11045400,"Annadatha,Jayakumar",2181,7W1,DA, 540,W01,Applied Data Mining,18,CIS,,,,30
+11045400,"Annadatha,Jayakumar",2181,7W2,DA, 550,W01,Predictive Analytics,18,CIS,,,,30
+10459960,"Agyei-Mensah,Stephen O",2185,7W1,CIS, 570,W01,Project Management,13,CIS,,,,20
+11025280,"Strausser,Jody",2185,7W2,CIS, 202,W01,Intro Program and Algorithms I,5,CIS,,,,10
+11025280,"Strausser,Jody",2185,7W2,DA, 202,W01,Intro Program and Algorithms I,8,CIS,,,,20
+11045400,"Annadatha,Jayakumar",2185,7W2,DA, 560,W01,Data Visualization,17,CIS,,,,30
+11045400,"Annadatha,Jayakumar",2185,S2,DA, 590,X01,Field Exper in Data Analytics,1,CIS,,,,0
+10460102,"Childs,Jeffrey S",2185,S3,CIS, 217,W01,Appl of Micro,21,CIS,,,,30
+10460554,"ODonnell,Jon P",2185,S3,CIS, 422,X01,Internship in Computers,2,CIS,,,,9
+10460102,"Childs,Jeffrey S",2188,1,CIS, 110,C01,Computer Info Process,22,CIS,10:00,10:50,MWF,30
+10460102,"Childs,Jeffrey S",2188,1,CIS, 110,C02,Computer Info Process,26,CIS,11:00,11:50,MWF,30
+10525980,"Kim,Soo",2188,1,CIS, 140,C01,Ess Topics Discr Math Comp Sc,23,CIS,14:00,15:15,MW,35
+11025280,"Strausser,Jody",2188,1,CIS, 202,C01,Intro Program and Algorithms I,28,CIS,12:00,12:50,MWF,30
+11025280,"Strausser,Jody",2188,1,CIS, 202,C02,Intro Program and Algorithms I,16,CIS,13:00,13:50,MWF,30
+10459960,"Agyei-Mensah,Stephen O",2188,1,CIS, 217,C02,Appl of Micro,21,CIS,11:00,12:15,TR,35
+10459960,"Agyei-Mensah,Stephen O",2188,1,CIS, 217,C04,Appl of Micro,14,CIS,12:30,13:45,TR,35
+10459960,"Agyei-Mensah,Stephen O",2188,1,CIS, 217,W01,Appl of Micro,34,CIS,,,,35
+10459960,"Agyei-Mensah,Stephen O",2188,1,CIS, 217,W02,Appl of Micro,6,CIS,,,,35
+10460102,"Childs,Jeffrey S",2188,1,CIS, 254,C01,Data Structures,22,CIS,13:00,13:50,MWF,35
+11025280,"Strausser,Jody",2188,1,CIS, 270,C01,Client-Side Web Programming,13,CIS,12:30,13:45,TR,30
+10525980,"Kim,Soo",2188,1,CIS, 305,C01,Art Intell Decision Make,18,CIS,12:00,12:50,MWF,35
+11025280,"Strausser,Jody",2188,1,CIS, 330,C01,Info Systems Programming,29,CIS,11:00,12:15,TR,30
+10460554,"ODonnell,Jon P",2188,1,CIS, 402,C01,Database Design & Implement,23,CIS,09:30,10:45,TR,30
+10525980,"Kim,Soo",2188,1,CIS, 403,C01,Data Communications,11,CIS,15:30,16:45,MW,28
+10460554,"ODonnell,Jon P",2188,1,CIS, 411,C01,Systems Devlmt Project,11,CIS,17:00,19:30,W,15
+10460102,"Childs,Jeffrey S",2188,1,CIS, 460,C01,Programming Lang & Comp Theory,18,CIS,14:00,15:15,TR,35
+11045400,"Annadatha,Jayakumar",2188,1,DA, 570,W01,Big Data Analytics,14,CIS,,,,25
+11045400,"Annadatha,Jayakumar",2188,7W1,DA, 510,W01,Database Management Systems,26,CIS,,,,25
+11045400,"Annadatha,Jayakumar",2188,7W2,DA, 520,W01,Intro to Data Warehousing,27,CIS,,,,25
