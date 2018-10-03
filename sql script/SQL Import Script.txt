@@ -77,7 +77,6 @@ CREATE TABLE `studentclass` (
   `Section` varchar(4) NOT NULL,
   constraint PK_studentclass Primary Key (ID, Term, Session, Subject, Catalog, Section),
   constraint FK_studentclass_student Foreign Key (ID) references student(ID),
-  constraint FK_studentclass_courseoffering Foreign Key (Term, Session, Subject, Catalog, Section) references courseoffering(Term, Session, Subject, Catalog, Section)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `acad_program` (

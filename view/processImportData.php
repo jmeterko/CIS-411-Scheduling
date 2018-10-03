@@ -145,28 +145,35 @@ function loadPrograms()
                                 if($headerRow[8] == "Plan 1 Descr")
                                     echo "Student file has been chosen correctly." . "<br>";
     } else echo "Please choose an accurate *STUDENT* file." . "<br>";
-    clearTable("student");  //deletes all rows in Students
+    clearTable("Acad_Program");  //deletes all rows in Acad_Program
 
     $rowCount = 0;
     $rowTotal = 0;
+    //how many times do we attempt to insert a program vs how  many get inserted
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //INSERT INTO Acad_program <each field>
         $rowTotal++;
         if (!empty($data[15])){
             $rowCount += addNewProgram($rowTotal, $data[15], $data[16]);
+            $rowTotal++;
         }
         if (!empty($data[13])){
             $rowCount += addNewProgram($rowTotal, $data[13], $data[14]);
+            $rowTotal++;
         }
         if (!empty($data[11])){
             $rowCount += addNewProgram($rowTotal, $data[11], $data[12]);
+            $rowTotal++;
         }
         if (!empty($data[9])){
             $rowCount += addNewProgram($rowTotal, $data[9], $data[10]);
+            $rowTotal++;
         }
         $rowCount += addNewProgram($rowTotal,$data[7],$data[8]);
+        $rowTotal++;
     }   //rowcount increments when a row is affected, addNewStudent returns 1
     $errorMessage = "Inserted $rowCount rows into table acad_program.";
+    echo "Attempted to insert $rowTotal rows into acad_program table (called addNewProgram $rowTotal times) <br>";
     echo $errorMessage;
     //AddNewProgram^^^
     //print 10 rows to screen for convenience
