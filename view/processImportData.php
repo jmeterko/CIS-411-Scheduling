@@ -20,6 +20,8 @@ loadPrograms();
 loadStudents();
 loadClasses();
 loadStudentsClasses();
+loadStudentMajors();
+
 
 ///
 /// to do
@@ -58,6 +60,7 @@ function checkIfCSV($fileToCheck){
 }
 //
 function loadStudents(){
+    clearTable("student");  //deletes all rows in Students
     //////////////////////////////////////////////////////////////////
     /// STUDENTS
     //////////////////////////////////////////////////////////////////
@@ -88,7 +91,7 @@ function loadStudents(){
                                     if($headerRow[8] == "Plan 1 Descr")
                                         echo "Student file has been chosen correctly." . "<br>";
         } else echo "Please choose an accurate *STUDENT* file." . "<br>";
-    clearTable("student");  //deletes all rows in Students
+
 
         $rowCount = 0;
         while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
@@ -113,8 +116,75 @@ function loadStudents(){
     //----------------------------------------------------------------
 }
 
+function loadStudentMajors(){
+    //////////////////////////////////////////////////////////////////
+    /// STUDENTS MAJORS
+    //////////////////////////////////////////////////////////////////
+    //make sure we have a file
+    if ($_FILES['userfilestudents']['error'] == UPLOAD_ERR_NO_FILE) {
+        echo "<p>Please choose a file first and then try again...</p>";
+    }  else if ($_FILES['userfilestudents']['error'] != UPLOAD_ERR_OK){
+        echo "File Read Error\n Debugging info:"; //any other error
+        print_r($_FILES);
+    }
+
+    //check if its a CSV file
+    if (checkIfCSV($_FILES['userfilestudents']['type'])){
+        echo "This file is compatible as a CSV" . "<br>";
+    }
+    else echo "this file is not compatible as a CSV" . "<br>";
+
+    //open file and validate that it is the right file
+    $file = fopen($_FILES['userfilestudents']['tmp_name'], "r");
+    $headerRow = fgetcsv($file); //load first line before looping, skips first line for output
+    if ($headerRow[6] == "GPA"){
+        if($headerRow[2] == "Last Term")
+            if($headerRow[3] == "Current")
+                if($headerRow[4] == "Location")
+                    if($headerRow[5] == "Total")
+                        if($headerRow[1] == "Name")
+                            if($headerRow[7] == "Plan 1")
+                                if($headerRow[8] == "Plan 1 Descr")
+                                    echo "Student file has been chosen correctly." . "<br>";
+    } else echo "Please choose an accurate *STUDENT* file." . "<br>";
+    clearTable("studentmajor");  //deletes all rows in Students majors
+
+    $rowCount = 0;
+    $rowTotal = 0;
+    while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
+        //INSERT INTO StudentsMajors <each field>
+        if (!empty($data[15])){
+            $rowTotal++;
+            $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[15]);
+        }
+        if (!empty($data[13])){
+            $rowTotal++;
+            $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[13]);
+        }
+        if (!empty($data[11])){
+            $rowTotal++;
+            $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[11]);
+        }
+        if (!empty($data[9])){
+            $rowTotal++;
+            $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[9]);
+        }
+        $rowTotal++;
+        $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[7]);
+    }                                           //addNewStudentsClasses^^^
+    echo    "There are " . $rowTotal . " unique student majors in Students CSV file. <br>".
+        "There should be " . $rowTotal . " rows inserted into table StudentMajor. <br>";
+    $errorMessage = "Inserted $rowCount rows into table Students-Majors.";
+    echo $errorMessage;
+    fclose($file);
+    //----------------------------------------------------------------
+
+
+
+}
 function loadPrograms()
 {
+    clearTable("acad_program");  //deletes all rows in Acad_Program
     //////////////////////////////////////////////////////////////////
     /// STUDENTS PROGRAMS
     //////////////////////////////////////////////////////////////////
@@ -145,7 +215,8 @@ function loadPrograms()
                                 if($headerRow[8] == "Plan 1 Descr")
                                     echo "Student file has been chosen correctly." . "<br>";
     } else echo "Please choose an accurate *STUDENT* file." . "<br>";
-    clearTable("Acad_Program");  //deletes all rows in Acad_Program
+
+
 
     $programArray = array();//hash table implementation
 

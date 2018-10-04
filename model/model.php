@@ -186,6 +186,36 @@ function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog
         die;
     }
 }
+
+function addNewStudentMajor($rowTotal, $ID, $Plan) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`studentmajor` 
+                      (`ID`, `Plan`) 
+                      VALUES (:id, :plan)";
+
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':plan', "$Plan");
+        $statement->bindValue(':id', "$ID");
+        //echo $query;
+        $statement->execute();
+        $rowAffected = $statement->rowCount();
+        $statement->closeCursor();
+        //$statement->debugDumpParams();
+        $errorCode = $statement->errorCode();
+        echo "error code is $errorCode on line $rowTotal and number of rows affected is $rowAffected() <br>";
+        if ($errorCode != "00000")
+            echo "Error code $errorCode:  Integrity Constraint Violation:   "
+                . $ID . " " .  $Plan . " <br>"
+                . "On line " . $rowTotal . " <br><br>";
+        //echo $rowTotal . " has error code: " . $errorCode . "<br>";
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 function clearTable($tableName ) {
     try {
         $db = getDBConnection();
