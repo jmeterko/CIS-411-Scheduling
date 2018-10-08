@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <script src ="../js/jquery-3.1.1.js"></script>
     <script src ="../js/bootstrap.min.js"></script>
+    <script src ="../js/Javascript.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/Stylesheet.css">
     <!--for proper mobile scaling-->
@@ -27,5 +28,5 @@
 /*    include '../view/navbar.php';   //php for including navbar, previously js
     */?>
 </div>-->
-</html>
+
 

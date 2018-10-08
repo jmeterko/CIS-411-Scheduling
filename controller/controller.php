@@ -33,6 +33,9 @@
     case 'StudentQuestion':
         include '../view/mainApplicationStudentQuestion.php';
         break;
+	case 'ProcessStudentQuestion':
+        ProcessStudentQuestion();
+        break;
     case 'Home':
         include '../view/LoginPage.php';
         break;
@@ -48,7 +51,7 @@
 	}
 
 
-        function unQuote() {//strips out added slashes if magic_quotes_gpc is on
+    function unQuote() {//strips out added slashes if magic_quotes_gpc is on
             if (get_magic_quotes_gpc()) {
                 function stripslashes_gpc(&$value) {
                         $value = stripslashes($value);
@@ -58,5 +61,9 @@
                 array_walk_recursive($_COOKIE, 'stripslashes_gpc');
                 array_walk_recursive($_REQUEST, 'stripslashes_gpc');
             }		
+	}
+	
+	function ProcessStudentQuestion() {	
+		 include '../view/testpage.php';
 	}
 ?>

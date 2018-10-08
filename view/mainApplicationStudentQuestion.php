@@ -6,13 +6,11 @@ require '../view/headerInclude.php';
 <body>
 <div class="container">
     <center><h1>Course Scheduling Aid</h1></center>
-    <!DOCTYPE html>
-    <html lang="en">
     <!--<button onclick="howManyChildren()" type="button" id="howManyChildren">how many children?</button>-->
     <div class="container" style="margin: 0px auto">
         <h1>New Student Question</h1>
         <div class="jumbotron" style="margin:0px auto">
-            <form id="issueInputForm" >
+            <form id="issueInputForm" action="../controller/controller.php?action=ProcessStudentQuestion" method="post">
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown0" onchange="makeDivVisibleOr()">
