@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
     session_start();
     require_once("../security/model.php");  
     require_once '../model/model.php';//require the functions from the model.php file
@@ -46,6 +45,7 @@
     default:
         include('../view/LoginPage.php');   // default
 }
+	}
 
 
         function unQuote() {//strips out added slashes if magic_quotes_gpc is on
