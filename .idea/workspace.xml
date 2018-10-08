@@ -14,18 +14,40 @@
       <file leaf-file-name="MainApplicationStudentQuestion.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainApplicationStudentQuestion.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6699">
-              <caret line="203" column="80" lean-forward="false" selection-start-line="203" selection-start-column="80" selection-end-line="203" selection-end-column="80" />
+            <state relative-caret-position="-7846">
+              <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomePage.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HomePage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="858">
+              <caret line="26" column="82" lean-forward="true" selection-start-line="26" selection-start-column="82" selection-end-line="26" selection-end-column="82" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginPage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LoginPage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="965">
+              <caret line="31" column="18" lean-forward="true" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Javascript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="94" column="9" lean-forward="false" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+            <state relative-caret-position="3168">
+              <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
               <folding>
                 <marker date="1538074493386" expanded="true" signature="2076:2082" ph="&amp;nbsp;" />
                 <marker date="1538074493386" expanded="true" signature="2082:2088" ph="&amp;nbsp;" />
@@ -66,6 +88,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>message</find>
@@ -94,9 +123,11 @@
         <option value="$PROJECT_DIR$/FileUploadPage.html" />
         <option value="$PROJECT_DIR$/Wireframe.html" />
         <option value="$PROJECT_DIR$/Stylesheet.css" />
-        <option value="$PROJECT_DIR$/LoginPage.html" />
-        <option value="$PROJECT_DIR$/MainApplicationStudentQuestion.html" />
         <option value="$PROJECT_DIR$/Javascript.js" />
+        <option value="$PROJECT_DIR$/MainApplicationCourseQuestion.html" />
+        <option value="$PROJECT_DIR$/MainApplicationStudentQuestion.html" />
+        <option value="$PROJECT_DIR$/LoginPage.html" />
+        <option value="$PROJECT_DIR$/HomePage.html" />
       </list>
     </option>
   </component>
@@ -128,17 +159,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="ProjectPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -254,12 +286,13 @@
       <workItem from="1537218113097" duration="2263000" />
       <workItem from="1537462750544" duration="35394000" />
       <workItem from="1537844511989" duration="3338000" />
-      <workItem from="1537906590230" duration="7199000" />
+      <workItem from="1537906590230" duration="8439000" />
+      <workItem from="1538585830747" duration="2833000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72333000" />
+    <option name="totallyTimeSpent" value="76406000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -281,12 +314,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298153" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19675227" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19977342" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -294,8 +327,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -373,6 +406,55 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/MainApplicationStudentQuestion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Javascript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3102">
+          <caret line="94" column="9" lean-forward="false" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+          <folding>
+            <marker date="1538074493386" expanded="true" signature="2076:2082" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="2082:2088" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="2178:2184" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="2446:2452" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="2536:2542" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="2542:2548" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="2677:2683" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="2683:2689" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="2779:2785" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="3061:3067" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="3151:3157" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="3157:3163" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="3695:3701" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="3701:3707" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="3797:3803" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="3996:4002" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="4234:4240" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="4240:4246" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="4450:4456" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="4456:4462" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="4552:4558" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="4751:4757" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="4907:4913" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="4928:4932" ph="..." />
+            <marker date="1538074493386" expanded="true" signature="5325:5331" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="5331:5337" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="6254:6260" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="6260:6266" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="6356:6362" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="6645:6651" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="6735:6741" ph="&amp;nbsp;" />
+            <marker date="1538074493386" expanded="true" signature="6741:6747" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MainApplicationStudentQuestion.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1650">
@@ -723,36 +805,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HomePage.html">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="34" column="7" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LoginPage.html">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/resources/html5-schema/html5/web-forms.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="2173">
+          <caret line="371" column="22" lean-forward="false" selection-start-line="371" selection-start-column="22" selection-end-line="371" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainApplicationStudentQuestion.html">
+    <entry file="file://$PROJECT_DIR$/MainApplicationCourseQuestion.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6699">
-          <caret line="203" column="80" lean-forward="false" selection-start-line="203" selection-start-column="80" selection-end-line="203" selection-end-column="80" />
+        <state relative-caret-position="528">
+          <caret line="37" column="36" lean-forward="true" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Javascript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="94" column="9" lean-forward="false" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+        <state relative-caret-position="3168">
+          <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
           <folding>
             <marker date="1538074493386" expanded="true" signature="2076:2082" ph="&amp;nbsp;" />
             <marker date="1538074493386" expanded="true" signature="2082:2088" ph="&amp;nbsp;" />
@@ -787,6 +867,32 @@
             <marker date="1538074493386" expanded="true" signature="6735:6741" ph="&amp;nbsp;" />
             <marker date="1538074493386" expanded="true" signature="6741:6747" ph="&amp;nbsp;" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApplicationStudentQuestion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7846">
+          <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LoginPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="965">
+          <caret line="31" column="18" lean-forward="true" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HomePage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="26" column="82" lean-forward="true" selection-start-line="26" selection-start-column="82" selection-end-line="26" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>

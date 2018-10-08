@@ -33,8 +33,9 @@
     <center><h1>Course Scheduling Aid</h1></center>
     <!DOCTYPE html>
     <html lang="en">
+    <!--<button onclick="howManyChildren()" type="button" id="howManyChildren">how many children?</button>-->
     <div class="container" style="margin: 0px auto">
-        <h1>New Student Question</h1>
+        <h1>New Course Question</h1>
         <div class="jumbotron" style="margin:0px auto">
             <form id="issueInputForm" >
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
@@ -54,10 +55,10 @@
                         <option value="Not Scheduled For">Not Scheduled For</option>
                     </select>
                     <div class="inline" id="attach0"></div>
-                <br/>
-                <button type="button" id="and0" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
-                <br/>
-                <br/>
+                    <br/>
+                    <button type="button" id="and0" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                    <br/>
+                    <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd1">
@@ -78,9 +79,9 @@
                     </select>
                     <div class="inline" id="attach1"></div>
                     <br/>
-                <button type="button" id="and1" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
-                <br/>
-                <br/>
+                    <button type="button" id="and1" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                    <br/>
+                    <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd2">
@@ -101,9 +102,9 @@
                     </select>
                     <div class="inline" id="attach2"></div>
                     <br/>
-                <button type="button" id="and2" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
-                <br/>
-                <br/>
+                    <button type="button" id="and2" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                    <br/>
+                    <br/>
                 </div>
 
                 <div class="form-group , hiddenDiv" id="divAnd3" >
@@ -124,9 +125,9 @@
                     </select>
                     <div class="inline" id="attach3"></div>
                     <br/>
-                <button type="button" id="and3" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
-                <br/>
-                <br/>
+                    <button type="button" id="and3" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                    <br/>
+                    <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd4" >
@@ -147,9 +148,9 @@
                     </select>
                     <div class="inline" id="attach4"></div>
                     <br/>
-                <button type="button" id="and4" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
-                <br/>
-                <br/>
+                    <button type="button" id="and4" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                    <br/>
+                    <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd5" >
@@ -170,9 +171,9 @@
                     </select>
                     <div class="inline" id="attach5"></div>
                     <br/>
-                <button type="button" id="and5" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
-                <br/>
-                <br/>
+                    <button type="button" id="and5" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                    <br/>
+                    <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd6" >
@@ -193,9 +194,9 @@
                     </select>
                     <div class="inline" id="attach6"></div>
                     <br/>
-                <button type="button" id="and6" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
-                <br/>
-                <br/>
+                    <button type="button" id="and6" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                    <br/>
+                    <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd7" >
@@ -216,8 +217,8 @@
                     </select>
                     <div class="inline" id="attach7"></div>
                     <br/>
-                <br/>
-                <br/>
+                    <br/>
+                    <br/>
                 </div>
                 <br/><br/><br/>
                 <div class="blackBorderDiv" style="width: 20%; float: left;">
@@ -238,7 +239,7 @@
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
                     <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
-                <i>*Students who have been enrolled in the past year and have not graduated or applied for graduation</i>
+                    <i>*Students who have been enrolled in the past year and have not graduated or applied for graduation</i>
                 </div>
                 <div>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/></div>
 
@@ -251,7 +252,7 @@
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
                             <br/>
-                                <h5><b>Only check classes between:</b></h5>
+                            <h5><b>Only check classes between:</b></h5>
                             <select class="form-control, dropdownboxWidth" id="dropdownRange1" style="width:65px;">
                                 <option value="Spring" selected>Spring</option>
                                 <option value="Summer">Summer</option>
