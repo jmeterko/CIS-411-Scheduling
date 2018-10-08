@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,19 +18,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-    <div class="container">
+<body background="background%20image.JPG">
+    <div class="container" style="background-color: gray; padding: 5px; font-family:Verdana">
         <center><h1>Class Scheduling Aid</h1></center>
-        <center><div style="background-color: gray; width: 400px; height: 400px">
-            <input type="button" value="New Student Question" class="btn btn-primary" onclick="window.location.href='MainApplicationStudentQuestion.html'" />
-            <input type="button" value="New Course Question" class="btn btn-primary" onclick="window.location.href='MainApplicationCourseQuestion.html'" />
-            <button class="glyphicon glyphicon-cloud">Import Data</button>
-            <button class="glyphicon glyphicon-option-horizontal">Options</button>
-            <div>
-                <label>Latest Term:</label>
-                <label>Current Term:</label>
+        <form>          <!--have to add action later-->
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" class="form-control" id="email">
             </div>
-        </div></center>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd">
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox"> Remember me</label>
+            </div>
+            <input type="button" value="Submit" class="btn btn-primary" onclick="window.location.href='HomePage.html'" />
+        </form>
     </div>
 </body>
 </html>
