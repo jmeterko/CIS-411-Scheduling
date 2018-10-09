@@ -116,23 +116,37 @@
 		
     }
 } 
-	
+  //echo $stdq->rankFR; //how to access a student question object property		
+  //file_put_contents('store', $s); // store $s somewhere where page2.php can find it.
 	function ProcessStudentQuestion() {	
 
-	$stdq = new StudentQuestion();
-	echo $stdq->rankFR;
-				
-  //$s = serialize($stdq);
-  // store $s somewhere where page2.php can find it.
-  //file_put_contents('store', $s);
-
+		$saveQuestion = false; 
+		
+		//The $saveQuestion flag will determine if we should serialize and save this search
+		if (isset($_POST["saveQuestion"])) { $saveQuestion = true; }
+		
+		$stdq = new StudentQuestion();
+		
+		if($saveQuestion){
+			$s = serialize($stdq); //serialize the object
+			addSerial($s);
+		}
+		
+		//save the serial string into a variable to be unserialized
+		 $serial = constructSavedSearch();
+		 $u = unserialize($serial);
+		 
 		 include '../view/index.php';
 	}
 	
-	function buildSerialString(StudentQuestion $stdq) {	
+    function constructSavedSearch(){
+       $row = getSerial(1);
+			if ($row == false) {
+				displayError("<p>Serial ID is not on file.</p> ");
+			} else {
 
-    // $bar->method()
-
+				return $serial = $row["serial"];	
+			}
 	}
 
 ?>

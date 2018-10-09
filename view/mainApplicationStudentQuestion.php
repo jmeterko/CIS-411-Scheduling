@@ -276,6 +276,7 @@ require '../view/headerInclude.php';
                         </div>
                     </div>
                 </div>
+				<input type="checkbox" name="saveQuestion"> Remember this search</input>
                 <input type="submit" style="float:right" class="btn btn-success"/>
             </form>
         </div>

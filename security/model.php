@@ -523,4 +523,44 @@
             displayDBError($e->getMessage());
         }
     }
+	
+	//addSerial IS A PROTOTYPE AND THE $query NEEDS UPDATED TO CORRECT USER VALUES.
+	//SET UP FOR STATIC TEST ONLY
+	    function addSerial($serial){
+        try {
+            $db = connectToMySQL();
+            $query = 'INSERT INTO serials (id, user_id, serial)
+                      VALUES (1, 1, :serial)';//FIXED VALUES NEED CHANGED HERE
+					 
+            $statement = $db->prepare($query);
+
+            $statement->bindValue(':serial', $serial);
+ 
+			$success = $statement->execute();
+			$statement->closeCursor();
+
+			if ($success) {
+				return $db->lastInsertId(); // Get generated ID
+			} else {
+				logSQLError($statement->errorInfo());  // Log error to debug
+			}		
+        } catch (PDOException $e) {
+            displayError($e->getMessage());
+        }
+    }
+	
+	    function getSerial($serialID){
+        try {
+            $db = getDBConnection();
+            $query = 'select * from serials where id = :serialID';
+            $statement = $db->prepare($query);
+            $statement->bindValue(':serialID', $serialID);
+            $statement->execute();
+            $result = $statement->fetch();  // Should be zero or one row
+            $statement->closeCursor();
+            return $result;
+        } catch (PDOException $e) {
+            displayDBError($e->getMessage());
+        }
+    }
 ?>
