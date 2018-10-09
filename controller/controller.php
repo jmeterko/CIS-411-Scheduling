@@ -63,7 +63,76 @@
             }		
 	}
 	
+	class StudentQuestion {
+		
+	//DECLARE ALL VARIABLES THAT ARE AVAILABLE TO USER ON FORM
+	public $cat1 = ''; 
+	public $cat2 = ''; 
+	public $cat3 = ''; 
+	public $cat4 = ''; 
+	public $cat5 = ''; 
+	public $cat6 = ''; 
+	public $cat7 = ''; 
+	public $cat8 = ''; 
+	public $rankFR = ''; 
+	public $rankSO = ''; 
+	public $rankJR = ''; 
+	public $rankSR = ''; 
+	public $currentStudentsOnly = ''; 
+	public $startGPA = ''; 
+	public $startYear = ''; 
+	public $endGPA = ''; 
+	public $endYear = '';
+	
+	public function __construct() {
+        //ONLY ASSIGN VARIABLES IF THEIR RESPECTIVE FORM ELEMENT WAS SET BY USER
+	
+		//CATEGORIES
+		if (isset($_POST["category1"])) { $this->cat1 = $_POST['category1']; }
+		if (isset($_POST["category2"])) { $this->cat2 = $_POST['category2']; }
+		if (isset($_POST["category3"])) { $this->cat3 = $_POST['category3']; }
+		if (isset($_POST["category4"])) { $this->cat4 = $_POST['category4']; }
+		if (isset($_POST["category5"])) { $this->cat5 = $_POST['category5']; }
+		if (isset($_POST["category6"])) { $this->cat6 = $_POST['category6']; }
+		if (isset($_POST["category7"])) { $this->cat7 = $_POST['category7']; }
+		if (isset($_POST["category8"])) { $this->cat8 = $_POST['category8']; }
+
+		//YEAR
+		if (isset($_POST["currentStudentsOnly"])) { $this->currentStudentsOnly = $_POST['currentStudentsOnly']; }
+		if (isset($_POST["startYear"])) { $this->startYear = $_POST['startYear']; }
+		if (isset($_POST["endYear"])) { $this->endYear = $_POST['endYear']; }
+		if (isset($_POST["startGPA"])) { $this->startGPA = $_POST['startGPA']; }
+		if (isset($_POST["endGPA"])) { $this->endGPA = $_POST['endGPA']; }
+		
+		//RANK
+		if (isset($_POST["FR"])) { $this->rankFR = $_POST['FR']; }
+		if (isset($_POST["SO"])) { $this->rankSO = $_POST['SO']; }
+		if (isset($_POST["JR"])) { $this->rankJR = $_POST['JR']; }
+		if (isset($_POST["SR"])) { $this->rankSR = $_POST['SR']; }
+				
+		//GPA
+		if (isset($_POST["startGPA"])) { $this->startGPA = $_POST['startGPA']; }
+		if (isset($_POST["endGPA"])) { $this->endGPA = $_POST['endGPA']; }
+		
+    }
+} 
+	
 	function ProcessStudentQuestion() {	
-		 include '../view/testpage.php';
+
+	$stdq = new StudentQuestion();
+	echo $stdq->rankFR;
+				
+  //$s = serialize($stdq);
+  // store $s somewhere where page2.php can find it.
+  //file_put_contents('store', $s);
+
+		 include '../view/index.php';
 	}
+	
+	function buildSerialString(StudentQuestion $stdq) {	
+
+    // $bar->method()
+
+	}
+
 ?>
