@@ -136,7 +136,8 @@
 		 $serial = constructSavedSearch();
 		 $u = unserialize($serial);
 		 
-		 include '../view/index.php';
+		 //include '../view/index.php';
+		 include '../view/rebuildStudentQuestion.php';
 	}
 	
     function constructSavedSearch(){
