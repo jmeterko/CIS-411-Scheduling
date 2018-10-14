@@ -155,6 +155,43 @@ function addNewProgram($rowTotal, $Plan, $PlanDescr) {
 }
 
 //rowtotal is just for debugging info
+function addNewStudentMajor($rowTotal, $ID, $Plan) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`studentmajor` 
+                      (`ID`, `Plan`) 
+                      VALUES (:id, :plan)";
+
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':plan', "$Plan");
+        $statement->bindValue(':id', "$ID");
+        //echo $query;
+        $statement->execute();
+        $statement->closeCursor();
+        //$statement->debugDumpParams();
+        $errorCode = $statement->errorCode();
+        if ($errorCode != "00000")
+            echo "Error code $errorCode:  Integrity Constraint Violation:   "
+                . $Plan . " " .  $ID . " <br>"
+                . "On line " . $rowTotal . " <br><br>";
+        if ($statement->rowCount() == 0){
+            echo "Error code $errorCode:  <br> StudentMajor not added:   "
+                . "ID of: " . $ID . " --- Plan of: " .  $Plan . " <br>"
+                . "On line " . $rowTotal . " <br> ";
+            echo "Is there a duplicate entry for this ID in our import data?<br><br>";
+            //echo $rowTotal . " is the rowtotal and " . $ID . " " . $Plan . " is our thing. <br>";
+        }
+
+        //echo $rowTotal . " has error code: " . $errorCode . "<br>";
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
+//rowtotal is just for debugging info
 function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section) {
     try {
         $db = getDBConnection();

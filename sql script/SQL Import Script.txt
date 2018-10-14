@@ -7,13 +7,14 @@
 
 
 
-
-   DROP TABLE studentclass;
-   DROP TABLE studentmajor;
-   DROP TABLE courseoffering;
-   DROP TABLE course;
-   DROP TABLE student;
-   DROP TABLE acad_program;
+   DROP TABLE IF EXISTS userprograms;
+   DROP TABLE IF EXISTS users;
+   DROP TABLE IF EXISTS studentclass;
+   DROP TABLE IF EXISTS studentmajor;
+   DROP TABLE IF EXISTS courseoffering;
+   DROP TABLE IF EXISTS course;
+   DROP TABLE IF EXISTS student;
+   DROP TABLE IF EXISTS acad_program;
 
 
 -- Table structure for table `classes`
@@ -76,22 +77,69 @@ CREATE TABLE `studentclass` (
   `Catalog` varchar(5) NOT NULL,
   `Section` varchar(4) NOT NULL,
   constraint PK_studentclass Primary Key (ID, Term, Session, Subject, Catalog, Section),
-  constraint FK_studentclass_student Foreign Key (ID) references student(ID),
+  constraint FK_studentclass_student Foreign Key (ID) references student(ID)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `acad_program` (
   `Plan` varchar(10) NOT NULL,
   `Plan_Descr` varchar(30) DEFAULT NULL,
-  
+
   constraint PK_acad_program Primary Key (Plan)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-  
+
 CREATE TABLE `studentmajor` (
   `ID` int(11) NOT NULL,
   `Plan` varchar(10) NOT NULL,
-  
+
   constraint PK_studentmajor Primary Key (ID, Plan),
   constraint FK_studentmajor_student Foreign Key (ID) references student(ID),
   constraint FK_studentmajor_acad_program Foreign Key (Plan) references acad_program(Plan)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- why isn't our CREATE working for our student ID FK?
+-- for now, we add the INDEX after creating the table
+-- Need to fix our CREATE statement before shipping, this is some janky shit
+ALTER TABLE `cis411_csaapp`.`studentmajor`
+    ADD INDEX `FK_studentmajor_student` (`ID`) USING BTREE;
+
+
+-- --------------------------------- USERS FOR TESTING, JERAD FEEL FREE TO CHANGE/REMOVE AS NECESSARY
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `UserID` int(11) NOT NULL,
+  `FirstName` varchar(32) NOT NULL,
+  `LastName` varchar(32) NOT NULL,
+  `UserName` varchar(32) NOT NULL,
+  `Password` varchar(40) NOT NULL,
+  `Email` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `UserName`, `Password`, `Email`) VALUES
+(1, 'Jon', 'ODonnell', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'jodonnell@clarion.edu'),
+(2, 'Bill', 'Updater', 'bill', 'c692d6a10598e0a801576fdd4ecf3c37e45bfbc4', 'bill@localhost'),
+(3, 'Joe', 'Reader', 'joe', '16a9a54ddf4259952e3c118c763138e83693d7fd', 'joe@localhost'),
+(4, 'guest', 'guest', 'guest', '35675e68f4b5af7b995d9205ad0fc43842f16450', 'guest@localhost');
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`UserID`);
+
+ALTER TABLE `users`
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  -- ---------------------- ^USERS^ -------------------------------------------------------------------------
+
+-- -------------------- ˇUSERPROGRAMSˇ ----------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `userprograms` (
+  `UserID` int(11) NOT NULL,
+  `Plan` varchar(10) NOT NULL,
+  constraint PK_userprograms Primary Key (UserID, Plan),
+  constraint FK_userprograms_users Foreign Key (UserID) references users(UserID),
+  constraint FK_userprograms_acad_program Foreign Key (Plan) references acad_program(Plan)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `cis411_csaapp`.`userprograms`
+    ADD INDEX `FK_userprograms_users` (`UserID`) USING BTREE;
+-- -------------------- ^USERPROGRAMS^ ----------------------------------------------------------------------

@@ -13,11 +13,11 @@ require '../view/headerInclude.php';
 ///
 
 
-clearTable("studentclass");   //IMPORTANT must be cleared first
 
 //call the file load functions
-loadPrograms();
+clearAllTables();
 loadStudents();
+loadPrograms();
 loadClasses();
 loadStudentsClasses();
 
@@ -56,6 +56,17 @@ function checkIfCSV($fileToCheck){
         return true;
     } else return false;
 }
+
+function clearAllTables(){
+    //theres no logic yet for if we should call this, using it for debugging
+    //should probably check all files, then clear all tables, then start adding data
+    clearTable("studentclass");
+    clearTable("studentmajor");
+    clearTable("courseoffering");
+    clearTable("course");
+    clearTable("student");
+    clearTable("acad_program");
+}
 //
 function loadStudents(){
     //////////////////////////////////////////////////////////////////
@@ -91,12 +102,18 @@ function loadStudents(){
     clearTable("student");  //deletes all rows in Students
 
         $rowCount = 0;
+        $rowTotal = 1;
         while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
             //INSERT INTO Student <each field>
             $rowCount += addNewStudent($data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7],$data[8],$data[9],$data[10],$data[11],$data[12],$data[13],$data[14],$data[15],$data[16],$data[17],$data[18],$data[19],$data[20],$data[21],$data[22],$data[23],$data[24],$data[25],$data[26],$data[27],$data[28],$data[29]);
+            $rowTotal++;
         }   //rowcount increments when a row is affected, addNewStudent returns 1
+    echo    "There are " . $rowTotal . " rows in Students CSV file. <br>".
+        "There should be " . $rowTotal . " rows inserted into table Students. <br>";
         $errorMessage = "Inserted $rowCount rows into table Students.";
         echo $errorMessage;
+        if ($rowTotal != $rowCount)
+            echo "Do we have any problem data?  Duplicate student IDs?<br>";
     //AddNewStudent^^^
     //print 10 rows to screen for convenience
         echo "<h3>First 10 Students are:</h3><ol>";
@@ -147,10 +164,103 @@ function loadPrograms()
     } else echo "Please choose an accurate *STUDENT* file." . "<br>";
     clearTable("Acad_Program");  //deletes all rows in Acad_Program
 
+    //INSERT ACAD PROGRAMS --------------------------------------------------
+    //how many times do we attempt to insert a program vs how  many get inserted
+
+    //collect unique Courses, load Course Table
+    //assumes file won't use the " | " character (pipe)
+    //some catalogs have multiple spellings (" 110" and "110")
+    //some classes have multiple spellings ("Intro To Java" and "Intro to Java")
+    $programArray = array(); //hash table implementation
+    //$courseToAdd = array();
+    while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
+        //programArray[key] = "value"
+        //programArray[BS CS] = "Computer Science BS"
+        //if programArray[BS CS] exists, will overwrite the value, will still have 1 key
+        $programArray[$data[7]] = $data[8];
+        // $data[7] . $data[8] are plan1, plan1Descr
+        // 7 and 8 are never null, others can be.
+        // a student can have up to five plans
+        if (!empty($data[15])){
+            $programArray[$data[15]] = $data[16];
+        }
+        if (!empty($data[13])){
+            $programArray[$data[13]] = $data[14];
+        }
+        if (!empty($data[11])){
+            $programArray[$data[11]] = $data[12];
+        }
+        if (!empty($data[9])){
+            $programArray[$data[9]] = $data[10];
+        }
+    }
+    //^^^array is loaded with only unique Programs^^^
+    //^^^unique ID:Plan_1   ...  value:  plan_1_Descr
+    //so, we're saving each Program only once, with the description as the most recent entry
+
+    //now, for each entry in the array, all unique, add that entry to the database
     $rowCount = 0;
     $rowTotal = 0;
-    //how many times do we attempt to insert a program vs how  many get inserted
+    foreach ($programArray as $programKey => $programValue){  //
+        $rowCount += addNewProgram($rowTotal, $programKey, $programValue);
+        $rowTotal++;
+        echo "Iteration: " . $rowTotal . "   Rows inserted: " . $rowCount .
+            "... " . $programKey . " --- " . $programValue . "<br>";
+    }
+    echo    "There are " . count($programArray) . " items in programArray. <br>".
+        "There should be " . count($programArray) . " rows inserted into table Acad_Program. <br>";
+    $errorMessage = "Inserted $rowCount rows into table Acad_Program. <br>";
+    echo $errorMessage . "<br>";
+    //print courseArray for debugging
+    echo "Printing out the programArray: <br>";
+    ?>
+    <pre>
+        <?php print_r($programArray); ?>  <!--  Print the array, where are our missing classes?  -->
+    </pre>
+    <?php
+
+
+    //Add Student Majors
+    //Now, database has been loaded with Programs.
+    //Next, associate students with programs.
+    clearTable("StudentMajor");  //deletes all rows in StudentMajors
+    rewind($file); //point to first row
+    fgetcsv($file); //skip first line before looping
+    $rowCount = 0;
+    $rowTotal = 2;
+    $studentMajorsFound = 0;
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
+        if (!empty($data[15])) {
+            $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[15]);
+            $studentMajorsFound++;
+        }
+        if (!empty($data[13])) {
+            $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[13]);
+            $studentMajorsFound++;
+        }
+        if (!empty($data[11])) {
+            $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[11]);
+            $studentMajorsFound++;
+        }
+        if (!empty($data[9])) {
+            $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[9]);
+            $studentMajorsFound++;
+        }
+        if (!empty($data[7])) {  //this is Plan_1 ... do some students have no major?  is it ever empty?
+            $rowCount += addNewStudentMajor($rowTotal, $data[0], $data[7]);
+            $studentMajorsFound++;
+        }
+        $rowTotal++;  //line number of our CSV
+    }
+    echo    "There are " . $studentMajorsFound . " student majors found in Students file. <br>".
+        "There should be " . $studentMajorsFound . " rows inserted into table StudentMajors. <br>";
+    $errorMessage = "Inserted $rowCount rows into table StudentMajors. <br>";
+    echo $errorMessage . "<br>";
+
+
+
+    //vinny's code:
+    /*while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //INSERT INTO Acad_program <each field>
         $rowTotal++;
         if (!empty($data[15])){
@@ -174,8 +284,9 @@ function loadPrograms()
     }   //rowcount increments when a row is affected, addNewStudent returns 1
     $errorMessage = "Inserted $rowCount rows into table acad_program.";
     echo "Attempted to insert $rowTotal rows into acad_program table (called addNewProgram $rowTotal times) <br>";
-    echo $errorMessage;
-    //AddNewProgram^^^
+    echo $errorMessage;*/
+
+    //AddNewProgram^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     //print 10 rows to screen for convenience
     echo "<h3>First 10 Programs are:</h3><ol>";
     rewind($file);
