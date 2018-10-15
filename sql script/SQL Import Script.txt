@@ -110,36 +110,31 @@ ALTER TABLE `cis411_csaapp`.`studentmajor`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `UserID` int(11) NOT NULL,
   `FirstName` varchar(32) NOT NULL,
   `LastName` varchar(32) NOT NULL,
   `UserName` varchar(32) NOT NULL,
-  `Password` varchar(40) NOT NULL,
   `Email` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `UserName`, `Password`, `Email`) VALUES
-(1, 'Jon', 'ODonnell', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'jodonnell@clarion.edu'),
-(2, 'Bill', 'Updater', 'bill', 'c692d6a10598e0a801576fdd4ecf3c37e45bfbc4', 'bill@localhost'),
-(3, 'Joe', 'Reader', 'joe', '16a9a54ddf4259952e3c118c763138e83693d7fd', 'joe@localhost'),
-(4, 'guest', 'guest', 'guest', '35675e68f4b5af7b995d9205ad0fc43842f16450', 'guest@localhost');
+INSERT INTO `users` (`FirstName`, `LastName`, `UserName`, `Email`) VALUES
+('Jon', 'ODonnell', 'admin', 'jodonnell@clarion.edu'),
+('Bill', 'Updater', 'bill', 'bill@localhost'),
+('Joe', 'Reader', 'joe', 'joe@localhost'),
+('guest', 'guest', 'guest', 'guest@localhost');
 
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserID`);
+  ADD PRIMARY KEY (`UserName`);
 
-ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
   -- ---------------------- ^USERS^ -------------------------------------------------------------------------
 
 -- -------------------- ˇUSERPROGRAMSˇ ----------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `userprograms` (
-  `UserID` int(11) NOT NULL,
+  `UserName` int(11) NOT NULL,
   `Plan` varchar(10) NOT NULL,
-  constraint PK_userprograms Primary Key (UserID, Plan),
-  constraint FK_userprograms_users Foreign Key (UserID) references users(UserID),
+  constraint PK_userprograms Primary Key (UserName, Plan),
   constraint FK_userprograms_acad_program Foreign Key (Plan) references acad_program(Plan)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `cis411_csaapp`.`userprograms`
-    ADD INDEX `FK_userprograms_users` (`UserID`) USING BTREE;
+    ADD INDEX `FK_userprograms_users` (`UserName`) USING BTREE;
 -- -------------------- ^USERPROGRAMS^ ----------------------------------------------------------------------

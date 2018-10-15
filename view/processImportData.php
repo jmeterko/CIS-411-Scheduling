@@ -110,7 +110,7 @@ function loadStudents(){
         }   //rowcount increments when a row is affected, addNewStudent returns 1
     echo    "There are " . $rowTotal . " rows in Students CSV file. <br>".
         "There should be " . $rowTotal . " rows inserted into table Students. <br>";
-        $errorMessage = "Inserted $rowCount rows into table Students.";
+        $errorMessage = "Inserted $rowCount rows into table Students.<br>";
         echo $errorMessage;
         if ($rowTotal != $rowCount)
             echo "Do we have any problem data?  Duplicate student IDs?<br>";
