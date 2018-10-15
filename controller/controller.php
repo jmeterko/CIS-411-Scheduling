@@ -20,7 +20,7 @@ switch ($action) {
         include '../view/LoginPage.php';
         break;
     case 'StudentQuestion':
-        include '../view/mainApplicationStudentQuestion.php';
+        include '../view/MainApplicationStudentQuestion.php';
         break;
     case 'Home':
         include '../view/LoginPage.php';
