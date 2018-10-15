@@ -138,5 +138,7 @@ function orButtonPressed(){
     makeDivVisibleOr();
 }
 
-//login page
+//table
+
+
 
