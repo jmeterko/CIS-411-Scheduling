@@ -18,10 +18,10 @@
 <section class="height-full login-block">
     <div class="container">
 	<div class="row">
-		<div class="col-md-4 login-sec pad-bottom">
-		
-	<?php if (loggedIn()){ ?>                                             
-
+	<?php if(!loggedIn()){ ?>
+				<div class="col-md-4 login-sec pad-bottom">
+	<?php } else { ?>         
+				<div class="col-md-8 login-sec pad-bottom">
 		<h1>Control Panel</h1>
 
 		<?php if (userIsAuthorized("SecurityManageUsers")) {  ?>
