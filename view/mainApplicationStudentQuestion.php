@@ -277,6 +277,7 @@ require '../view/headerInclude.php';
                     </div>
                 </div>
 				<input type="checkbox" name="saveQuestion"> Remember this search</input>
+				<input type="text" placeholder="Enter Search Name" name="searchName"></input>
                 <input type="submit" style="float:right" class="btn btn-success"/>
             </form>
         </div>

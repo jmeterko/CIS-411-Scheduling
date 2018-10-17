@@ -36,6 +36,12 @@
 	case 'ProcessStudentQuestion':
         ProcessStudentQuestion();
         break;
+	case 'ProcessDisplaySerials':
+        ProcessDisplaySerials();
+        break;	
+	case 'RebuildQuestion':
+        RebuildQuestion();
+        break;
     case 'Home':
         include '../view/LoginPage.php';
         break;
@@ -83,6 +89,7 @@
 	public $startYear = ''; 
 	public $endGPA = ''; 
 	public $endYear = '';
+	public $searchName = '';
 	
 	public function __construct() {
         //ONLY ASSIGN VARIABLES IF THEIR RESPECTIVE FORM ELEMENT WAS SET BY USER
@@ -114,8 +121,27 @@
 		if (isset($_POST["startGPA"])) { $this->startGPA = $_POST['startGPA']; }
 		if (isset($_POST["endGPA"])) { $this->endGPA = $_POST['endGPA']; }
 		
+		//OTHER VARIABLES
+		if (isset($_POST["searchName"])) { $this->searchName = $_POST['searchName']; }
+
     }
 } 
+
+     function ProcessDisplaySerials(){
+		   $user = $_SESSION['username']; 
+		   $results = getSerialsForUser($user);					
+					
+		if (count($results) == 0) {
+			$errorMessage = "No data found.";
+			include '../view/errorPage.php';
+		} else if (count($results) == 1) {
+			$onlyRow = $results[0];
+			include '../view/displaySaleInfo.php';
+		} else {           
+           include '../view/index.php';
+		}
+     }
+				
   //echo $stdq->rankFR; //how to access a student question object property		
   //file_put_contents('store', $s); // store $s somewhere where page2.php can find it.
 	function ProcessStudentQuestion() {	
@@ -127,27 +153,38 @@
 		
 		$stdq = new StudentQuestion();
 		
-		if($saveQuestion){
-			$s = serialize($stdq); //serialize the object
-			addSerial($s);
+		if($saveQuestion){//if user checked the box to save
+			if(empty($stdq->searchName)){//user did not provide a name for the search
+				$errorMessage = "No search name provided.";
+				//send back to page, rebuilt with stdq object
+				include '../view/errorPage.php';			
+			}
+			
+			else {//serialize and save to user profile under their given search name
+				$s = serialize($stdq); //serialize the object
+				$user = $_SESSION['username']; 
+				addSerial($user, $s, $stdq->searchName);
+			}
 		}
-		
-		//save the serial string into a variable to be unserialized
-		 $serial = constructSavedSearch();
+	}
+	
+    function constructSavedSearch($serialID){
+       $row = getSerial($serialID);
+			if ($row == false) {
+				displayError("<p>Serial ID is not on file.</p> ");
+			} else {
+				return $serial = $row["serial"];	
+			}
+	}    
+	
+	function RebuildQuestion(){
+		 $serialID = $_GET['SerialID'];
+		 //save the serial string into a variable to be unserialized
+		 $serial = constructSavedSearch($serialID);
 		 $u = unserialize($serial);
 		 
 		 //include '../view/index.php';
 		 include '../view/rebuildStudentQuestion.php';
-	}
-	
-    function constructSavedSearch(){
-       $row = getSerial(1);
-			if ($row == false) {
-				displayError("<p>Serial ID is not on file.</p> ");
-			} else {
-
-				return $serial = $row["serial"];	
-			}
 	}
 
 ?>

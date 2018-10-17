@@ -22,7 +22,7 @@
 				 echo $stdq->rankJR; 
 				 echo $stdq->rankSR; */
 				 
-				   
+				/*   
 				 echo $u->cat1; 
 				 echo $u->cat2; 
 				 echo $u->cat3; 
@@ -35,9 +35,26 @@
 				 echo $u->rankSO; 
 				 echo $u->rankJR; 
 				 echo $u->rankSR; 
-				 echo $saveQuestion;
+				 echo $saveQuestion;*/
+				 
+					 
+					             $i = 0;
+            foreach ($results as $row) { $i++; ?>
 
-				 ?>
+                <tr class="<?php echo ($i % 2 == 0)?"evenRow":"oddRow" ?>" >
+									<td class="pad-right"><a href="../controller/controller.php?action=RebuildQuestion&SerialID=<?php echo $row['id'] ?>"><?php echo htmlspecialchars($row['name']) ?></a></td><br>
+                                    <td class="pad-right"><?php echo htmlspecialchars($row['username']) ?></td><br>
+                                    <td class="pad-right"><?php echo htmlspecialchars($row['serial']) ?></td><br>
+									<br><br><hr>
+                  
+                            </tr>
+		
+				
+				 <?php } ?>
+				
+           
+
+				 
       </p>										
     </div>
 

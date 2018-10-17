@@ -524,17 +524,17 @@
         }
     }
 	
-	//addSerial IS A PROTOTYPE AND THE $query NEEDS UPDATED TO CORRECT USER VALUES.
-	//SET UP FOR STATIC TEST ONLY
-	    function addSerial($serial){
+	    function addSerial($user, $serial, $name){
         try {
             $db = connectToMySQL();
-            $query = 'INSERT INTO serials (id, user_id, serial)
-                      VALUES (1, 1, :serial)';//FIXED VALUES NEED CHANGED HERE
+            $query = 'INSERT INTO serials (username, serial, name)
+                      VALUES (:user, :serial, :name)';
 					 
             $statement = $db->prepare($query);
 
             $statement->bindValue(':serial', $serial);
+            $statement->bindValue(':user', $user);
+            $statement->bindValue(':name', $name);
  
 			$success = $statement->execute();
 			$statement->closeCursor();
@@ -559,6 +559,21 @@
             $result = $statement->fetch();  // Should be zero or one row
             $statement->closeCursor();
             return $result;
+        } catch (PDOException $e) {
+            displayDBError($e->getMessage());
+        }
+    }
+	
+		function getSerialsForUser($user){
+        try {
+            $db = getDBConnection();
+            $query = 'select * from serials where username = :user';
+            $statement = $db->prepare($query);
+            $statement->bindValue(':user', $user);
+            $statement->execute();
+            $results = $statement->fetchAll();  
+            $statement->closeCursor();
+            return $results;
         } catch (PDOException $e) {
             displayDBError($e->getMessage());
         }

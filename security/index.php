@@ -92,7 +92,8 @@
         $isValidLogin = clarionLogin($username, $password);//run credentials through shell command - are they a valid clarion user?
         
         if($isValidLogin){//user is clarion verified         
-                if(login($username)){//find matching username and create session
+                if(login($username)){//find matching username and create 
+				    $_SESSION["username"] = $username;    
 					header("Location:../security/index.php?action=SecurityLogin");
                 }
         }
@@ -102,12 +103,12 @@
     }
     
    function clarionLogin($username, $password) {
-    $tmpFile = tempnam(sys_get_temp_dir(), 'usr');
-    file_put_contents($tmpFile, $password);
-    $shellResult = shell_exec('cat ' .  $tmpFile . " | kinit " . escapeshellarg($username) . " > /dev/null && printf 'Success\n'");
-    unlink($tmpFile);
-    return trim($shellResult) === "Success";
-}
+		$tmpFile = tempnam(sys_get_temp_dir(), 'usr');
+		file_put_contents($tmpFile, $password);
+		$shellResult = shell_exec('cat ' .  $tmpFile . " | kinit " . escapeshellarg($username) . " > /dev/null && printf 'Success\n'");
+		unlink($tmpFile);
+		return trim($shellResult) === "Success";
+	}
  
 	function ProcessLogOut() {
 		logOut();
