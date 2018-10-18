@@ -3,7 +3,7 @@ $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
 ?>
 
-<body style="background-color: #becccc;>
+<body style="background-color: #becccc;">
 <div class="container">
     <!DOCTYPE html>
     <html lang="en">
