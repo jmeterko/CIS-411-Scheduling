@@ -10,6 +10,9 @@ if (isset($_POST['action'])) {  // check get and post
     exit();
 }
 switch ($action) {
+    case 'DisplayData':
+        include '../view/DisplayData.php';
+        break;
     case 'FileUpload':
         include '../view/fileUploadPage.php';
         break;
@@ -19,10 +22,13 @@ switch ($action) {
     case 'Login':
         include '../view/LoginPage.php';
         break;
+    case 'Homepage':
+        include '../view/HomePage.php';
+        break;
     case 'StudentQuestion':
         include '../view/MainApplicationStudentQuestion.php';
         break;
-    case 'Home':
+    case 'LoginPage':
         include '../view/LoginPage.php';
         break;
     case 'ProcessImportData':
