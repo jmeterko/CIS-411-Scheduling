@@ -3,7 +3,7 @@ $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
 ?>
 
-<body style="background-color: #becccc;>
+<body style="background-color: #becccc;">
 <div class="container">
     <!DOCTYPE html>
     <html lang="en">
@@ -11,6 +11,31 @@ require '../view/headerInclude.php';
         <h1>New Student Question</h1>
         <div class="jumbotron" style="margin:0px auto">
             <form id="issueInputForm" >
+
+                <!-- ----------------------------------------------------------------------------------------------- -->
+                <button type="button" class="btn btn-primary" id="ajaxTestingButton" onclick="loadCoursesUsingAjax()" >Ajax Test</button>
+                <select id="AjaxTestingSelect" >
+                    <option>Ajax Testing Dropdown</option>
+
+                </select>
+                <br><br>
+                <!-- ----------------------------------------------------------------------------------------------- -->
+                <!--<select id="CourseSelect" >
+                    <option value="0">Select a Course</option>
+                    <?php /*foreach ($courseResults as $row) { */?>
+                        <option><?php /*echo $row['Subject'] . " " . $row['Catalog'] . ":   " . $row['Name'] */?></option>
+                    <?php /*} */?>
+                </select>
+
+                <select id="ProgramSelect" >
+                    <option value="0">Select a Program</option>
+
+                    <?php /*foreach ($programResults as $row) { */?>
+                        <option><?php /*echo $row['Plan'] . ":   " . $row['Plan_Descr'] */?></option>
+                    <?php /*} */?>
+                </select><br><br>-->
+                <!-- ----------------------------------------------------------------------------------------------- -->
+
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown0" onchange="makeDivVisibleOr()">

@@ -239,6 +239,37 @@ function clearTable($tableName ) {
         die;
     }
 }
+function getAllCourses() {
+    try {
+        $db = getDBConnection();
+        $query = "select * from Course";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+function getAllAcademicPrograms() {
+    try {
+        $db = getDBConnection();
+        $query = "select * from Acad_Program";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
 function getDBConnection() {
     $dsn = 'mysql:host=localhost;dbname=cis411_csaApp';
     $username = 's_dmodonnell';

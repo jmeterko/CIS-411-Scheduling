@@ -20,6 +20,8 @@ switch ($action) {
         include '../view/LoginPage.php';
         break;
     case 'StudentQuestion':
+        $courseResults = getAllCourses();
+        $programResults = getAllAcademicPrograms();
         include '../view/MainApplicationStudentQuestion.php';
         break;
     case 'Home':

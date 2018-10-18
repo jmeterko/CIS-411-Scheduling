@@ -61,6 +61,7 @@ function howManyChildren(){
 }
 
 function makeDivVisibleOr(){
+    loadCoursesUsingAjax();  //AJAX call
     var attachDiv=document.getElementById('attach'+and);
     //or=attachDiv.children.length+1;
     var dynamicDiv=document.createElement("div");
@@ -107,7 +108,7 @@ function makeDivVisibleOr(){
                 "</select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Location") {
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'"+or+"><option value=''" +
                 "selected disabled hidden>Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
                 "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
         }
@@ -115,9 +116,9 @@ function makeDivVisibleOr(){
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdownCourseAjax'+and+or><option value=''" +
                 "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='dropdown'+and+or>" +
-                "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+                "<option value=''\ selected disabled hidden>Course #:</option>  </select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' id='dropdown'+and+or><option value=''" +
@@ -138,6 +139,16 @@ function orButtonPressed(){
     makeDivVisibleOr();
 }
 
+function loadCoursesUsingAjax() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("AjaxTestingSelect").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "../model/getCourses.php", true);
+    xmlhttp.send();
+}
 //table
 
 
