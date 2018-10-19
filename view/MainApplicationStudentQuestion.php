@@ -3,6 +3,14 @@ $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
 ?>
 
+<script>
+    //load all data from database necessary for building questions
+
+</script>
+
+
+
+
 <body style="background-color: #becccc;">
 <div class="container">
     <!DOCTYPE html>
@@ -12,28 +20,18 @@ require '../view/headerInclude.php';
         <div class="jumbotron" style="margin:0px auto">
             <form id="issueInputForm" >
 
-                <!-- ----------------------------------------------------------------------------------------------- -->
-                <button type="button" class="btn btn-primary" id="ajaxTestingButton" onclick="loadCoursesUsingAjax()" >Ajax Test</button>
+                <!-- Ajax Demonstration---------------------------------------------------------------------------- -->
+                <button type="button" style="width:100px;"class="btn btn-primary" id="ajaxTestingButton" onclick="loadDoc('../model/getCoursesUsingAjax.php', loadCoursesUsingAjax)" >Ajax Test</button>
                 <select id="AjaxTestingSelect" >
                     <option>Ajax Testing Dropdown</option>
-
                 </select>
                 <br><br>
-                <!-- ----------------------------------------------------------------------------------------------- -->
-                <!--<select id="CourseSelect" >
-                    <option value="0">Select a Course</option>
-                    <?php /*foreach ($courseResults as $row) { */?>
-                        <option><?php /*echo $row['Subject'] . " " . $row['Catalog'] . ":   " . $row['Name'] */?></option>
-                    <?php /*} */?>
+                <!-- JSON Demonstration----------------------------------------------------------------------------- -->
+                <button type="button" style="width:100px;" class="btn btn-primary" id="JSONTestingButton" onclick="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)" >JSON Test</button>
+                <select id="JSONTestingSelect">
+                    <option>JSON Testing Dropdown</option>
                 </select>
-
-                <select id="ProgramSelect" >
-                    <option value="0">Select a Program</option>
-
-                    <?php /*foreach ($programResults as $row) { */?>
-                        <option><?php /*echo $row['Plan'] . ":   " . $row['Plan_Descr'] */?></option>
-                    <?php /*} */?>
-                </select><br><br>-->
+                <br><br><br><br><br><br>
                 <!-- ----------------------------------------------------------------------------------------------- -->
 
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
