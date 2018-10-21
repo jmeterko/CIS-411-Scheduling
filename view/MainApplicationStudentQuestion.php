@@ -3,15 +3,11 @@ $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
 ?>
 
-<script>
-    //load all data from database necessary for building questions
-
-</script>
 
 
 
-
-<body style="background-color: #becccc;">
+<!--                                     Should we fetch the data when the page is fully loaded? -->
+<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)">
 <div class="container">
     <!DOCTYPE html>
     <html lang="en">
@@ -27,9 +23,16 @@ require '../view/headerInclude.php';
                 </select>
                 <br><br>
                 <!-- JSON Demonstration----------------------------------------------------------------------------- -->
-                <button type="button" style="width:100px;" class="btn btn-primary" id="JSONTestingButton" onclick="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)" >JSON Test</button>
-                <select id="JSONTestingSelect">
-                    <option>JSON Testing Dropdown</option>
+                <!-- JSON Demonstration---------------------------------------------------------------this.id.replace() returns this id, minus all nonNumeric characters -------------- -->
+                <!-- JSON Demonstration---------------------------------------------------------------allows button and dropdowns to reference each other, because that number is the same -------------- -->
+                <!-- JSON Demonstration---------------------------------------------------------------that number will be the Row and Column or And+Or later -------------- -->
+                <button type="button" style="width:100px;" class="btn btn-primary" id="JSONTestingButton3434" onclick=" loadSubjects('JSONTestingSelect' + this.id.replace( /[^0-9]/g, '' ));" >JSON Test</button>
+                <select id="JSONTestingSelect3434"  onload="loadSubjects(this.id)" onchange="loadCatalogs(this.id, 'CatalogDropdown' + this.id.replace( /[^0-9]/g, '' ))">
+                    <option>JSON Subjects</option>
+                </select>
+
+                <select id="CatalogDropdown3434">
+                    <option>JSON Catalogs</option>
                 </select>
                 <br><br><br><br><br><br>
                 <!-- ----------------------------------------------------------------------------------------------- -->

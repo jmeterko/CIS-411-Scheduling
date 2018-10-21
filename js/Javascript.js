@@ -62,6 +62,7 @@ function howManyChildren(){
 
 function makeDivVisibleOr(){
     loadDoc("../model/getCoursesUsingAjax.php", loadCoursesUsingAjax);  //AJAX call
+    //getSubjectsAndCatalogsForDropdown();
     loadDoc("../model/getCoursesUsingJSON.php", getSubjectsUsingJSON);  //AJAX call, uses JSON
     var attachDiv=document.getElementById('attach'+and);
     //or=attachDiv.children.length+1;
@@ -139,6 +140,13 @@ function orButtonPressed(){
     orButton=true;
     makeDivVisibleOr();
 }
+
+
+//********************************************************************************
+//*************  JSON STUFF  *****************************************************
+//********************************************************************************
+
+
 //THIS IS AN IMPORTANT FUNCTION
 //This function is our real Ajax handling function
 //Pass a callback function into it along with the URL that the ajax call references
@@ -170,6 +178,7 @@ function getCoursesUsingJSON(xhttp){
     var JSONObjectHoldingAllOfOurCourses = JSON.parse(xhttp.responseText);//#ReadableCode
     //then, do stuff with our JSON object that holds all of our courses
     console.log(JSONObjectHoldingAllOfOurCourses);
+    return JSONObjectHoldingAllOfOurCourses;
     //this is what our JSON object looks like: (brace yourself)
     // ***
     // *** MY IDE LETS ME COLLAPSE THIS BLOCK COMMENT
@@ -235,30 +244,76 @@ length: 52
     // ***
 }
 
-//call this function with loadDoc(), passing in getCoursesUsingJSON.php
+//do we want to NOT use global variables
+//are they not the solution im looking for
+var JSONObjectHoldingAllOfOurCourses;
+var jsObjectHoldingAllOfOurSubjects;
+
+//pass in the id of the Subject Dropdown and the Catalog dropdown you want to load
+//get the value of subject dropdown
+//for each catalog found in that subjects' array
+//add that catalog as an option in our catalog dropdown
+function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
+    var SubjectSelectedInOurDropdown = document.getElementById(pSubjectDropdownID).value;
+    document.getElementById(pCatalogDropdownID).innerHTML = "<option>" + "Course Number..." + "</option>";
+    for (i =0; i < jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown].length; i++){
+        document.getElementById(pCatalogDropdownID).innerHTML += "<option>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
+    }
+}
+
+//loads a particular dropdown with all of our subjects
+function loadSubjects(pSubjectDropdownID){
+    document.getElementById(pSubjectDropdownID).innerHTML = "<option value='Select a Subject...'>" + "Select a Subject..." + "</option>";
+    for (subjectFound in jsObjectHoldingAllOfOurSubjects){
+        document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + subjectFound + "'>" + subjectFound + "</option>";
+    }
+}
+
+//this is an ajax callback function
+//call this function with loadDoc(), passing in getCoursesUsingJSON.php and this function
+//this will send an ajax request to getCoursesUsingJSON.php, store the response, then run this function on it
 function getSubjectsUsingJSON(xhttp){
     //parse the Ajax responseText into a JSON object, just as it was encoded into a JSON string
-    //create an associative array to hold our unique subject values
-    var JSONObjectHoldingAllOfOurCourses = JSON.parse(xhttp.responseText);
-    var associativeArrayOfSubjects = {};
+    //create a JS Object to hold our unique subject values much like a PHP associative array
+    JSONObjectHoldingAllOfOurCourses = JSON.parse(xhttp.responseText);
+    jsObjectHoldingAllOfOurSubjects = {};
+    //load unique values into associative array (shit makes me rock hard)
+    //key->value where key is the same as value
+    //upon finding a new key, creates a new entry in array
+    //upon finding a duplicate key, replaces the value of that key (therefore never repeating duplicates)
+    //keys are unique, so, we only have unique Subject values
+    //arrayOfSubjects         [              CIS                   ] = "               CIS                 "
+    //arrayOfSubjects         [              DA                    ] = "                DA                 "
+    //the whole point is so that we don't end up with 50 values of CIS, and instead just have one
     for (rowEntry in JSONObjectHoldingAllOfOurCourses) {
-        //load unique values into associative array (shit makes me rock hard)
-        //key->value where key is the same as value
-        //upon finding a new key, creates a new entry in array
-        //upon finding a duplicate key, replaces the value of that key
-        //keys are unique, so, we only have unique Subject values
-        //arrayOfSubjects         [              CIS                   ] = "               CIS                 "
-        //arrayOfSubjects         [              DA                    ] = "                DA                 "
-        associativeArrayOfSubjects[JSONObjectHoldingAllOfOurCourses[rowEntry].Subject] = JSONObjectHoldingAllOfOurCourses[rowEntry].Subject;
+        jsObjectHoldingAllOfOurSubjects[JSONObjectHoldingAllOfOurCourses[rowEntry].Subject] = JSONObjectHoldingAllOfOurCourses[rowEntry].Subject;
     }
-    //for in loops really aren't the same as foreach loops
-    //for i=0 to array.length, do something with: array[i]
-    //in this case, add an option to our Select
-    document.getElementById("JSONTestingSelect").innerHTML = "<option>" + "Select a Subject..." + "</option>";
-    for (rowEntry in associativeArrayOfSubjects){
-        document.getElementById("JSONTestingSelect").innerHTML += "<option>" + (associativeArrayOfSubjects[rowEntry] + "</option>");
+    //now, we have a JS object with each unique subject
+    //so, we'll use that to store the catalogs of each class for each subject
+    //first, replace the value at each subject with an array
+    // our object now looks like this:
+    // { "CIS": [], "DA": [] }
+    for (subjectKeyFound in jsObjectHoldingAllOfOurSubjects){
+        jsObjectHoldingAllOfOurSubjects[subjectKeyFound] = [];
+    }
+    //then, load those arrays with the catalogs for each subject
+    //for each class
+    //  go to our subject object, find that class's subject
+    //  add the catalog to the array associated with that subject
+    // our js object will now look something like this:
+    // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
+    //so, each subject is a key and that key's value is an array of that subject's respective catalogs
+    for (rowEntry in JSONObjectHoldingAllOfOurCourses){
+        jsObjectHoldingAllOfOurSubjects[JSONObjectHoldingAllOfOurCourses[rowEntry].Subject].push(JSONObjectHoldingAllOfOurCourses[rowEntry].Catalog);
+    }
+    console.log(jsObjectHoldingAllOfOurSubjects);
 
-    }
+    //if you want, you can use this line to load the first dropdown:
+        //loadSubjects("JSONTestingSelect3434");
+
+
+    return jsObjectHoldingAllOfOurSubjects;
+    // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
 }
 
 //table
