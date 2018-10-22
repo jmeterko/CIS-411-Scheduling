@@ -206,9 +206,9 @@ require '../view/headerInclude.php';
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: left">
                     GPA
                     <br/>
-                    <input type="text" value="0.0" style="width: 30px" id="firstGpaSpot"></input>
+                    <input type="text" value="0.0" style="width: 30px" id="firstGPASpot"></input>
                     -
-                    <input type="text" value="4.0" style="width: 30px" id="secondGpaSpot"></input>
+                    <input type="text" value="4.0" style="width: 30px" id="secondGPASpot"></input>
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
                     <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
@@ -277,7 +277,7 @@ require '../view/headerInclude.php';
                             years
                         </div>
 
-                        <b style="float:right">Save this question</b> <input type="checkbox" style="float:right"/>
+                        <b style="float:right">Save this question</b> <input type="checkbox" style="float:right" id="SaveThisQuestion"/>
                         <br/>
                         <br/>
                     </div>
