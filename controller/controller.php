@@ -136,7 +136,7 @@
 			include '../view/errorPage.php';
 		} else if (count($results) == 1) {
 			$onlyRow = $results[0];
-			include '../view/displaySaleInfo.php';
+           include '../view/index.php';
 		} else {           
            include '../view/index.php';
 		}
