@@ -5,18 +5,12 @@ require '../view/headerInclude.php';
 
 
 
+
 <!--                                     Should we fetch the data when the page is fully loaded? -->
 <body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)">
 <div class="container">
-    <center><h1>Course Scheduling Aid</h1></center>
-    <div class="container" style="margin: 0px auto">
-        <h1>New Student Question</h1>
-        <div class="jumbotron" style="margin:0px auto">
-            <form id="issueInputForm" action="../controller/controller.php?action=ProcessStudentQuestion" method="post">
-                <div class="form-group" style="margin:0px auto" id="divAnd0">
-                    <label>Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown1" name="category1" onchange="makeDivVisibleOr()">
-
+    <!DOCTYPE html>
+    <html lang="en">
     <div class="container" style="margin: 0px auto">
         <h1>New Student Question</h1>
         <div class="jumbotron" style="margin:0px auto">
@@ -68,10 +62,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd1">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown2" name="category2" onchange="makeDivVisibleOr()">
-=======
                     <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="dropdownFreshlyChanged()">
->>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -94,11 +85,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd2">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-<<<<<<< HEAD:view/mainApplicationStudentQuestion.php
-                    <select class="form-control, dropdownboxWidth" id="dropdown3" name="category3" onchange="makeDivVisibleOr()">
-=======
                     <select class="form-control, dropdownboxWidth" id="dropdown2" onchange="dropdownFreshlyChanged()">
->>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -121,11 +108,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group , hiddenDiv" id="divAnd3" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-<<<<<<< HEAD:view/mainApplicationStudentQuestion.php
-                    <select class="form-control, dropdownboxWidth" id="dropdown4" name="category4" onchange="makeDivVisibleOr()">
-=======
                     <select class="form-control, dropdownboxWidth" id="dropdown3" onchange="dropdownFreshlyChanged()">
->>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -148,11 +131,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd4" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-<<<<<<< HEAD:view/mainApplicationStudentQuestion.php
-                    <select class="form-control, dropdownboxWidth" id="dropdown5" name="category5" onchange="makeDivVisibleOr()">
-=======
                     <select class="form-control, dropdownboxWidth" id="dropdown4" onchange="dropdownFreshlyChanged()">
->>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -175,11 +154,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd5" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-<<<<<<< HEAD:view/mainApplicationStudentQuestion.php
-                    <select class="form-control, dropdownboxWidth" id="dropdown6" name="category6" onchange="makeDivVisibleOr()">
-=======
                     <select class="form-control, dropdownboxWidth" id="dropdown5" onchange="dropdownFreshlyChanged()">
->>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -202,7 +177,6 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd6" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown7" name="category7" onchange="makeDivVisibleOr()">
                     <select class="form-control, dropdownboxWidth" id="dropdown6" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
@@ -226,7 +200,6 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd7" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown8" name="category8" onchange="makeDivVisibleOr()">
                     <select class="form-control, dropdownboxWidth" id="dropdown7" onchange="dropdownFreshlyChanged()">
                         <option value=" " selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
@@ -250,21 +223,21 @@ require '../view/headerInclude.php';
                 <div class="blackBorderDiv" style="width: 20%; float: left;">
                     Rank
                     <br/>
-                    <input type="checkbox" value="FR" name="FR" checked="checked" id="FR">FR
-                    <input type="checkbox" value="SO" name="SO" checked="checked" id="SO">SO
-                    <input type="checkbox" value="JR" name="JR" checked="checked" id="JR">JR
-                    <input type="checkbox" value="SR" name="SR" checked="checked" id="SR">SR
+                    <input type="checkbox" value="FR" checked="checked" id="FR">FR
+                    <input type="checkbox" value="SO" checked="checked" id="SO">SO
+                    <input type="checkbox" value="JR" checked="checked" id="JR">JR
+                    <input type="checkbox" value="SR+" checked="checked" id="SR">SR
                 </div>
 
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: left">
                     GPA
                     <br/>
-                    <input type="text" value="0.0" style="width: 30px" name="startGPA" id="firstGpaSpot"></input>
+                    <input type="text" value="0.0" style="width: 30px" id="firstGpaSpot"></input>
                     -
-                    <input type="text" value="4.0" style="width: 30px" name="endGPA" id="secondGpaSpot"></input>
+                    <input type="text" value="4.0" style="width: 30px" id="secondGpaSpot"></input>
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
-                    <input type="checkbox" checked="checked" name="currentStudentsOnly" id="currentStudentsOnly">Current Students Only</input>
+                    <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
                 <i>*Students who have been enrolled in the past year and have not graduated or applied for graduation</i>
                 </div>
                 <div>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/></div>
@@ -279,13 +252,13 @@ require '../view/headerInclude.php';
                         <div id="home" class="tab-pane fade in active">
                             <br/>
                                 <h5><b>Only check classes between:</b></h5>
-                            <select class="form-control, dropdownboxWidth" name="startSeason" id="dropdownRange1" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange1" style="width:65px;">
                                 <option value="Spring" selected>Spring</option>
                                 <option value="Summer">Summer</option>
                                 <option value="Fall">Fall</option>
                                 <option value="Winter">Winter</option>
                             </select>
-                            <select class="form-control, dropdownboxWidth" name="startYear" id="dropdownRange2" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" style="width:65px;">
                                 <option value="2007" selected>2007</option>
                                 <option value="2008">2008</option>
                                 <option value="2009">2009</option>
@@ -300,13 +273,13 @@ require '../view/headerInclude.php';
                                 <option value="2018">2018</option>
                             </select>
                             -
-                            <select class="form-control, dropdownboxWidth" name="endSeason" id="dropdownRange3" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange3" style="width:65px;">
                                 <option value="Spring">Spring</option>
                                 <option value="Summer">Summer</option>
                                 <option value="Fall" selected>Fall</option>
                                 <option value="Winter">Winter</option>
                             </select>
-                            <select class="form-control, dropdownboxWidth" name="endYear" id="dropdownRange4" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange4" style="width:65px;">
                                 <option value="2007">2007</option>
                                 <option value="2008">2008</option>
                                 <option value="2009">2009</option>
@@ -335,9 +308,6 @@ require '../view/headerInclude.php';
                         <br/>
                     </div>
                 </div>
-				<input type="checkbox" name="saveQuestion"> Remember this search</input>
-				<input type="text" placeholder="Enter Search Name" name="searchName"></input>
-                <input type="submit" style="float:right" class="btn btn-success"/>
                 <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='HomePage.html'"/>
                 <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='DisplayData.html'" />
             </form>
