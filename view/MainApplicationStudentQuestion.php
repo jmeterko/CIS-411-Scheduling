@@ -3,9 +3,6 @@ $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
 ?>
 
-
-
-
 <!--                                     Should we fetch the data when the page is fully loaded? -->
 <body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)">
 <div class="container">
@@ -16,7 +13,7 @@ require '../view/headerInclude.php';
         <div class="jumbotron" style="margin:0px auto">
             <form id="issueInputForm" >
 
-                <!-- Ajax Demonstration---------------------------------------------------------------------------- -->
+                <!-- Ajax Demonstration---------------------------------------------------------------------------- --
                 <button type="button" style="width:100px;"class="btn btn-primary" id="ajaxTestingButton" onclick="loadDoc('../model/getCoursesUsingAjax.php', loadCoursesUsingAjax)" >Ajax Test</button>
                 <select id="AjaxTestingSelect" >
                     <option>Ajax Testing Dropdown</option>
@@ -26,6 +23,7 @@ require '../view/headerInclude.php';
                 <!-- JSON Demonstration---------------------------------------------------------------this.id.replace() returns this id, minus all nonNumeric characters -------------- -->
                 <!-- JSON Demonstration---------------------------------------------------------------allows button and dropdowns to reference each other, because that number is the same -------------- -->
                 <!-- JSON Demonstration---------------------------------------------------------------that number will be the Row and Column or And+Or later -------------- -->
+                <!------------------------------------------------------------------------------------------------------
                 <button type="button" style="width:100px;" class="btn btn-primary" id="JSONTestingButton3434" onclick=" loadSubjects('JSONTestingSelect' + this.id.replace( /[^0-9]/g, '' ));" >JSON Test</button>
                 <select id="JSONTestingSelect3434"  onload="loadSubjects(this.id)" onchange="loadCatalogs(this.id, 'CatalogDropdown' + this.id.replace( /[^0-9]/g, '' ))">
                     <option>JSON Subjects</option>
@@ -35,7 +33,7 @@ require '../view/headerInclude.php';
                     <option>JSON Catalogs</option>
                 </select>
                 <br><br><br><br><br><br>
-                <!-- ----------------------------------------------------------------------------------------------- -->
+                -- ----------------------------------------------------------------------------------------------- -->
 
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
@@ -308,8 +306,8 @@ require '../view/headerInclude.php';
                         <br/>
                     </div>
                 </div>
-                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='HomePage.html'"/>
-                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='DisplayData.html'" />
+                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
+                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=DisplayData'" />
             </form>
         </div>
     </div>
