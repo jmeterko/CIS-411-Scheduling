@@ -3,12 +3,10 @@ $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
 ?>
 
-<body>
+<body style="background-color: #becccc;">
 <div class="container">
-    <center><h1>Course Scheduling Aid</h1></center>
     <!DOCTYPE html>
     <html lang="en">
-    <!--<button onclick="howManyChildren()" type="button" id="howManyChildren">how many children?</button>-->
     <div class="container" style="margin: 0px auto">
         <h1>New Course Question</h1>
         <div class="jumbotron" style="margin:0px auto">
@@ -208,9 +206,9 @@ require '../view/headerInclude.php';
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: left">
                     GPA
                     <br/>
-                    <input type="text" value="0.0" style="width: 30px" id="firstGpaSpot"></input>
+                    <input type="text" value="0.0" style="width: 30px" id="firstGPASpot"></input>
                     -
-                    <input type="text" value="4.0" style="width: 30px" id="secondGpaSpot"></input>
+                    <input type="text" value="4.0" style="width: 30px" id="secondGPASpot"></input>
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
                     <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
@@ -270,6 +268,7 @@ require '../view/headerInclude.php';
                                 <option value="2018" selected>2018</option>
                             </select>
                         </div>
+                        <br/>
                         <div id="menu1" class="tab-pane fade">
                             <br/>
                             Only check past
@@ -277,9 +276,14 @@ require '../view/headerInclude.php';
                             </input>
                             years
                         </div>
+
+                        <b style="float:right">Save this question</b> <input type="checkbox" style="float:right" id="SaveThisQuestion"/>
+                        <br/>
+                        <br/>
                     </div>
                 </div>
-                <input type="submit" style="float:right" class="btn btn-success"/>
+                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=Homepage'"/>
+                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=DisplayData'" />
             </form>
         </div>
     </div>
