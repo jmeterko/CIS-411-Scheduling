@@ -104,8 +104,6 @@ ALTER TABLE `cis411_csaapp`.`studentmajor`
     ADD INDEX `FK_studentmajor_student` (`ID`) USING BTREE;
 
 
--- --------------------------------- USERS FOR TESTING, JERAD FEEL FREE TO CHANGE/REMOVE AS NECESSARY
---
 -- Table structure for table `users`
 --
 
