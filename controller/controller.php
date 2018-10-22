@@ -31,7 +31,9 @@
         include '../view/LoginPage.php';
         break;
     case 'StudentQuestion':
-        include '../view/mainApplicationStudentQuestion.php';
+        $courseResults = getAllCourses();
+        $programResults = getAllAcademicPrograms();
+        include '../view/MainApplicationStudentQuestion.php';
         break;
 	case 'ProcessStudentQuestion':
         ProcessStudentQuestion();

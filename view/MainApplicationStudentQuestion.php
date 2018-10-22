@@ -3,7 +3,10 @@ $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
 ?>
 
-<body>
+
+
+<!--                                     Should we fetch the data when the page is fully loaded? -->
+<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)">
 <div class="container">
     <center><h1>Course Scheduling Aid</h1></center>
     <div class="container" style="margin: 0px auto">
@@ -13,6 +16,36 @@ require '../view/headerInclude.php';
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown1" name="category1" onchange="makeDivVisibleOr()">
+
+    <div class="container" style="margin: 0px auto">
+        <h1>New Student Question</h1>
+        <div class="jumbotron" style="margin:0px auto">
+            <form id="issueInputForm" >
+
+                <!-- Ajax Demonstration---------------------------------------------------------------------------- -->
+                <button type="button" style="width:100px;"class="btn btn-primary" id="ajaxTestingButton" onclick="loadDoc('../model/getCoursesUsingAjax.php', loadCoursesUsingAjax)" >Ajax Test</button>
+                <select id="AjaxTestingSelect" >
+                    <option>Ajax Testing Dropdown</option>
+                </select>
+                <br><br>
+                <!-- JSON Demonstration----------------------------------------------------------------------------- -->
+                <!-- JSON Demonstration---------------------------------------------------------------this.id.replace() returns this id, minus all nonNumeric characters -------------- -->
+                <!-- JSON Demonstration---------------------------------------------------------------allows button and dropdowns to reference each other, because that number is the same -------------- -->
+                <!-- JSON Demonstration---------------------------------------------------------------that number will be the Row and Column or And+Or later -------------- -->
+                <button type="button" style="width:100px;" class="btn btn-primary" id="JSONTestingButton3434" onclick=" loadSubjects('JSONTestingSelect' + this.id.replace( /[^0-9]/g, '' ));" >JSON Test</button>
+                <select id="JSONTestingSelect3434"  onload="loadSubjects(this.id)" onchange="loadCatalogs(this.id, 'CatalogDropdown' + this.id.replace( /[^0-9]/g, '' ))">
+                    <option>JSON Subjects</option>
+                </select>
+
+                <select id="CatalogDropdown3434">
+                    <option>JSON Catalogs</option>
+                </select>
+                <br><br><br><br><br><br>
+                <!-- ----------------------------------------------------------------------------------------------- -->
+
+                <div class="form-group" style="margin:0px auto" id="divAnd0">
+                    <label>Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown0" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program" id="Program">Program</option>
                         <option value="Location">Location</option>
@@ -36,6 +69,9 @@ require '../view/headerInclude.php';
                 <div class="form-group, hiddenDiv" id="divAnd1">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown2" name="category2" onchange="makeDivVisibleOr()">
+=======
+                    <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="dropdownFreshlyChanged()">
+>>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -58,7 +94,11 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd2">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+<<<<<<< HEAD:view/mainApplicationStudentQuestion.php
                     <select class="form-control, dropdownboxWidth" id="dropdown3" name="category3" onchange="makeDivVisibleOr()">
+=======
+                    <select class="form-control, dropdownboxWidth" id="dropdown2" onchange="dropdownFreshlyChanged()">
+>>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -81,7 +121,11 @@ require '../view/headerInclude.php';
 
                 <div class="form-group , hiddenDiv" id="divAnd3" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+<<<<<<< HEAD:view/mainApplicationStudentQuestion.php
                     <select class="form-control, dropdownboxWidth" id="dropdown4" name="category4" onchange="makeDivVisibleOr()">
+=======
+                    <select class="form-control, dropdownboxWidth" id="dropdown3" onchange="dropdownFreshlyChanged()">
+>>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -104,7 +148,11 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd4" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+<<<<<<< HEAD:view/mainApplicationStudentQuestion.php
                     <select class="form-control, dropdownboxWidth" id="dropdown5" name="category5" onchange="makeDivVisibleOr()">
+=======
+                    <select class="form-control, dropdownboxWidth" id="dropdown4" onchange="dropdownFreshlyChanged()">
+>>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -127,7 +175,11 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd5" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+<<<<<<< HEAD:view/mainApplicationStudentQuestion.php
                     <select class="form-control, dropdownboxWidth" id="dropdown6" name="category6" onchange="makeDivVisibleOr()">
+=======
+                    <select class="form-control, dropdownboxWidth" id="dropdown5" onchange="dropdownFreshlyChanged()">
+>>>>>>> David-ODonnell:view/MainApplicationStudentQuestion.php
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -151,6 +203,7 @@ require '../view/headerInclude.php';
                 <div class="form-group, hiddenDiv" id="divAnd6" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown7" name="category7" onchange="makeDivVisibleOr()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown6" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -174,6 +227,7 @@ require '../view/headerInclude.php';
                 <div class="form-group, hiddenDiv" id="divAnd7" >
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown8" name="category8" onchange="makeDivVisibleOr()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown7" onchange="dropdownFreshlyChanged()">
                         <option value=" " selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -267,6 +321,7 @@ require '../view/headerInclude.php';
                                 <option value="2018" selected>2018</option>
                             </select>
                         </div>
+                        <br/>
                         <div id="menu1" class="tab-pane fade">
                             <br/>
                             Only check past
@@ -274,11 +329,17 @@ require '../view/headerInclude.php';
                             </input>
                             years
                         </div>
+
+                        <b style="float:right">Save this question</b> <input type="checkbox" style="float:right"/>
+                        <br/>
+                        <br/>
                     </div>
                 </div>
 				<input type="checkbox" name="saveQuestion"> Remember this search</input>
 				<input type="text" placeholder="Enter Search Name" name="searchName"></input>
                 <input type="submit" style="float:right" class="btn btn-success"/>
+                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='HomePage.html'"/>
+                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='DisplayData.html'" />
             </form>
         </div>
     </div>
