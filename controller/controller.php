@@ -178,90 +178,102 @@
 		//0
 		if(isset($row0)){
 			$x = 0;
-			while ($x <= $row0){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+			while ($x <= $row0){  // sub 0 0 
+				$subLocation = "sub" . $loc . $x; 
+				$corLocation = "cor" . $loc . $x; 
+				$graLocation = "gra" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-					$x++; $loc++;
-			}
-		}
-		
-		//1
+				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				$x++; 
+			} $loc++;
+			//1
 		if(isset($row1)){
 			$x = 0;
 			while ($x <= $row1){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-					$x++; $loc++;
-			}
+				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				$x++; 
+			} $loc++;
 		}
 		
 		//2
 		if(isset($row2)){
 			$x = 0;
 			while ($x <= $row2){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-					$x++; $loc++;
-			}
+				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				$x++;
+			} $loc++;
 		}
 		
 		//3
 		if(isset($row3)){
 			$x = 0;
 			while ($x <= $row3){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-					$x++; $loc++;
-			}
+				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				$x++;
+			} $loc++;
 		}
 		
 		//4
 		if(isset($row4)){
 			$x = 0;
 			while ($x <= $row4){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-					$x++; $loc++;
-			}
+				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				$x++;
+			} $loc++;
 		}
 		
 		//5
 		if(isset($row5)){
 			$x = 0;
 			while ($x <= $row5){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-					$x++; $loc++;
-			}
+				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				$x++;
+			} $loc++;
 		}
 		
 		//6
 		if(isset($row6)){
 			$x = 0;
 			while ($x <= $row6){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-					$x++; $loc++;
-			}
+				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				$x++;
+			} $loc++;
 		}
 		
 		//7
 		if(isset($row7)){
 			$x = 0;
 			while ($x <= $row7){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-					$x++; $loc++;
-			}
+				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				$x++; 
+			} $loc++;
 		}
+			
+		}
+		
+		
 		
 		if($saveQuestion){//if user checked the box to save
 			if(empty($stdq->searchName)){//user did not provide a name for the search

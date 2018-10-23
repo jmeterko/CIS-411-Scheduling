@@ -17,10 +17,15 @@
 				 echo $stdq->cat5; 
 				 echo $stdq->cat6; 
 				 echo $stdq->cat7; 
+				 
+				 echo "<br><br>";
+
 				 echo $stdq->rankFR; 
 				 echo $stdq->rankSO; 
 				 echo $stdq->rankJR; 
 				 echo $stdq->rankSR; 
+				 
+				 echo "<br><br>";
 				 
 				 echo $stdq->or0;
 				 echo $stdq->or1;
@@ -30,6 +35,14 @@
 				 echo $stdq->or5;
 				 echo $stdq->or6;
 				 echo $stdq->or7;
+				 
+				 echo "<br><br>";
+
+				  $orDropdownValue = $stdq->data;
+				  foreach ($orDropdownValue as $item => $value) {
+					  echo $value  . "\n";
+				  }//echo $item to see key/value pair
+
 				 
 				/*   
 				 echo $u->cat1; 
