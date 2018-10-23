@@ -74,38 +74,35 @@
 	class StudentQuestion {
 		
 	//DECLARE ALL VARIABLES THAT ARE AVAILABLE TO USER ON FORM
-	public $cat1 = ''; 
-	public $cat2 = ''; 
-	public $cat3 = ''; 
-	public $cat4 = ''; 
-	public $cat5 = ''; 
-	public $cat6 = ''; 
-	public $cat7 = ''; 
-	public $cat8 = ''; 
-	public $rankFR = ''; 
-	public $rankSO = ''; 
-	public $rankJR = ''; 
-	public $rankSR = ''; 
-	public $currentStudentsOnly = ''; 
-	public $startGPA = ''; 
-	public $startYear = ''; 
-	public $endGPA = ''; 
-	public $endYear = '';
-	public $searchName = '';
+	public $cat0, $cat1, $cat2, $cat3, $cat4, $cat5, $cat6, $cat7 = ''; 
+			
+	public $or0, $or1, $or2, $or3, $or4, $or5, $or6, $or7 = '';
 	
+	public $rankFR, $rankSO, $rankJR, $rankSR, $currentStudentsOnly, $startGPA, $startYear, $endGPA, $endYear, $searchName = '';
+		
 	public function __construct() {
         //ONLY ASSIGN VARIABLES IF THEIR RESPECTIVE FORM ELEMENT WAS SET BY USER
 	
 		//CATEGORIES
-		if (isset($_POST["category1"])) { $this->cat1 = $_POST['category1']; }
-		if (isset($_POST["category2"])) { $this->cat2 = $_POST['category2']; }
-		if (isset($_POST["category3"])) { $this->cat3 = $_POST['category3']; }
-		if (isset($_POST["category4"])) { $this->cat4 = $_POST['category4']; }
-		if (isset($_POST["category5"])) { $this->cat5 = $_POST['category5']; }
-		if (isset($_POST["category6"])) { $this->cat6 = $_POST['category6']; }
-		if (isset($_POST["category7"])) { $this->cat7 = $_POST['category7']; }
-		if (isset($_POST["category8"])) { $this->cat8 = $_POST['category8']; }
-
+		if (isset($_POST["dropdown0"])) { $this->cat0 = $_POST['dropdown0']; }
+		if (isset($_POST["dropdown1"])) { $this->cat1 = $_POST['dropdown1']; }
+		if (isset($_POST["dropdown2"])) { $this->cat2 = $_POST['dropdown2']; }
+		if (isset($_POST["dropdown3"])) { $this->cat3 = $_POST['dropdown3']; }
+		if (isset($_POST["dropdown4"])) { $this->cat4 = $_POST['dropdown4']; }
+		if (isset($_POST["dropdown5"])) { $this->cat5 = $_POST['dropdown5']; }
+		if (isset($_POST["dropdown6"])) { $this->cat6 = $_POST['dropdown6']; }
+		if (isset($_POST["dropdown7"])) { $this->cat7 = $_POST['dropdown7']; }
+		
+		//OR'S - (orCounts are used to repopulate the # of OR buttons pressed for that AND row)
+		if (isset($_POST["orCount0"])) { $this->or0 = $_POST['orCount0']; }
+		if (isset($_POST["orCount1"])) { $this->or1 = $_POST['orCount1']; }
+		if (isset($_POST["orCount2"])) { $this->or2 = $_POST['orCount2']; }
+		if (isset($_POST["orCount3"])) { $this->or3 = $_POST['orCount3']; }
+		if (isset($_POST["orCount4"])) { $this->or4 = $_POST['orCount4']; }
+		if (isset($_POST["orCount5"])) { $this->or5 = $_POST['orCount5']; }
+		if (isset($_POST["orCount6"])) { $this->or6 = $_POST['orCount6']; }
+		if (isset($_POST["orCount7"])) { $this->or7 = $_POST['orCount7']; }
+		
 		//YEAR
 		if (isset($_POST["currentStudentsOnly"])) { $this->currentStudentsOnly = $_POST['currentStudentsOnly']; }
 		if (isset($_POST["startYear"])) { $this->startYear = $_POST['startYear']; }
@@ -125,8 +122,11 @@
 		
 		//OTHER VARIABLES
 		if (isset($_POST["searchName"])) { $this->searchName = $_POST['searchName']; }
-
     }
+		public function __set($name, $value)
+		{
+			$this->data[$name] = $value;
+		}
 } 
 
      function ProcessDisplaySerials(){
@@ -155,6 +155,114 @@
 		
 		$stdq = new StudentQuestion();
 		
+		if (isset($_POST["orCount0"])) { $row0 = $_POST['orCount0']; }
+		if (isset($_POST["orCount1"])) { $row1 = $_POST['orCount1']; }
+		if (isset($_POST["orCount2"])) { $row2 = $_POST['orCount2']; }
+		if (isset($_POST["orCount3"])) { $row3 = $_POST['orCount3']; }
+		if (isset($_POST["orCount4"])) { $row4 = $_POST['orCount4']; }
+		if (isset($_POST["orCount5"])) { $row5 = $_POST['orCount5']; }
+		if (isset($_POST["orCount6"])) { $row6 = $_POST['orCount6']; }
+		if (isset($_POST["orCount7"])) { $row7 = $_POST['orCount7']; }
+		
+		//$stdq->__set($subLocation, $_POST["Subject" . 0 . 0]);
+		//$stdq->__set($subLocation, $_POST["Subject" . 0 . 1]);
+		
+		
+		//Conditional block that fills all 'set' or dropdowns and dyanmically add those properties to the student question class
+		//Must run through each row until all OR's are set. (This is much nicer than having hundreds of if statements checking for every value)
+		//if the row count has been set, continue filling the or's in order until there are no more. 
+		
+		//hold location of current row
+		$loc = 0;
+		
+		//0
+		if(isset($row0)){
+			$x = 0;
+			while ($x <= $row0){
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+					$x++; $loc++;
+			}
+		}
+		
+		//1
+		if(isset($row1)){
+			$x = 0;
+			while ($x <= $row1){
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+					$x++; $loc++;
+			}
+		}
+		
+		//2
+		if(isset($row2)){
+			$x = 0;
+			while ($x <= $row2){
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+					$x++; $loc++;
+			}
+		}
+		
+		//3
+		if(isset($row3)){
+			$x = 0;
+			while ($x <= $row3){
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+					$x++; $loc++;
+			}
+		}
+		
+		//4
+		if(isset($row4)){
+			$x = 0;
+			while ($x <= $row4){
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+					$x++; $loc++;
+			}
+		}
+		
+		//5
+		if(isset($row5)){
+			$x = 0;
+			while ($x <= $row5){
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+					$x++; $loc++;
+			}
+		}
+		
+		//6
+		if(isset($row6)){
+			$x = 0;
+			while ($x <= $row6){
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+					$x++; $loc++;
+			}
+		}
+		
+		//7
+		if(isset($row7)){
+			$x = 0;
+			while ($x <= $row7){
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x;
+				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+					$x++; $loc++;
+			}
+		}
+		
 		if($saveQuestion){//if user checked the box to save
 			if(empty($stdq->searchName)){//user did not provide a name for the search
 				$errorMessage = "No search name provided.";
@@ -167,6 +275,8 @@
 				$user = $_SESSION['username']; 
 				addSerial($user, $s, $stdq->searchName);
 			}
+			
+			include '../view/index.php';			
 		}
 	}
 	

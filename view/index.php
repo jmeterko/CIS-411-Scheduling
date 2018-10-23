@@ -9,18 +9,27 @@
 			//$s = file_get_contents('store');
 			//$a = unserialize($s);
   
-	/*			 echo $stdq->cat1; 
+				 echo $stdq->cat0; 
+				 echo $stdq->cat1; 
 				 echo $stdq->cat2; 
 				 echo $stdq->cat3; 
 				 echo $stdq->cat4; 
 				 echo $stdq->cat5; 
 				 echo $stdq->cat6; 
 				 echo $stdq->cat7; 
-				 echo $stdq->cat8; 
 				 echo $stdq->rankFR; 
 				 echo $stdq->rankSO; 
 				 echo $stdq->rankJR; 
-				 echo $stdq->rankSR; */
+				 echo $stdq->rankSR; 
+				 
+				 echo $stdq->or0;
+				 echo $stdq->or1;
+				 echo $stdq->or2;
+				 echo $stdq->or3;
+				 echo $stdq->or4;
+				 echo $stdq->or5;
+				 echo $stdq->or6;
+				 echo $stdq->or7;
 				 
 				/*   
 				 echo $u->cat1; 
@@ -37,7 +46,7 @@
 				 echo $u->rankSR; 
 				 echo $saveQuestion;*/
 				 
-					 
+					 if(!empty($results)){
 					             $i = 0;
             foreach ($results as $row) { $i++; ?>
 
@@ -50,7 +59,7 @@
                             </tr>
 		
 				
-				 <?php } ?>
+					 <?php }} ?>
 				
            
 

@@ -14,7 +14,7 @@ require '../view/headerInclude.php';
     <div class="container" style="margin: 0px auto">
         <h1>New Student Question</h1>
         <div class="jumbotron" style="margin:0px auto">
-            <form id="issueInputForm" >
+			<form id="issueInputForm" action="../controller/controller.php?action=ProcessStudentQuestion" method="post">
 
                 <!-- Ajax Demonstration---------------------------------------------------------------------------- -->
                 <button type="button" style="width:100px;"class="btn btn-primary" id="ajaxTestingButton" onclick="loadDoc('../model/getCoursesUsingAjax.php', loadCoursesUsingAjax)" >Ajax Test</button>
@@ -39,7 +39,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown0" onchange="dropdownFreshlyChanged()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown0" name="dropdown0" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program" id="Program">Program</option>
                         <option value="Location">Location</option>
@@ -62,7 +62,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd1">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="dropdownFreshlyChanged()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown1" name="dropdown1" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -85,7 +85,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd2">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown2" onchange="dropdownFreshlyChanged()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown2" name="dropdown2" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -106,9 +106,9 @@ require '../view/headerInclude.php';
                 <br/>
                 </div>
 
-                <div class="form-group , hiddenDiv" id="divAnd3" >
+                <div class="form-group , hiddenDiv" id="divAnd3">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown3" onchange="dropdownFreshlyChanged()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown3" name="dropdown3" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -129,9 +129,9 @@ require '../view/headerInclude.php';
                 <br/>
                 </div>
 
-                <div class="form-group, hiddenDiv" id="divAnd4" >
+                <div class="form-group, hiddenDiv" id="divAnd4">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown4" onchange="dropdownFreshlyChanged()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown4" name="dropdown4" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -152,9 +152,9 @@ require '../view/headerInclude.php';
                 <br/>
                 </div>
 
-                <div class="form-group, hiddenDiv" id="divAnd5" >
+                <div class="form-group, hiddenDiv" id="divAnd5">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown5" onchange="dropdownFreshlyChanged()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown5" name="dropdown5" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -175,9 +175,9 @@ require '../view/headerInclude.php';
                 <br/>
                 </div>
 
-                <div class="form-group, hiddenDiv" id="divAnd6" >
+                <div class="form-group, hiddenDiv" id="divAnd6">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown6" onchange="dropdownFreshlyChanged()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown6" name="dropdown6" onchange="dropdownFreshlyChanged()">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -198,9 +198,9 @@ require '../view/headerInclude.php';
                 <br/>
                 </div>
 
-                <div class="form-group, hiddenDiv" id="divAnd7" >
+                <div class="form-group, hiddenDiv" id="divAnd7">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown7" onchange="dropdownFreshlyChanged()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown7" name="dropdown7" onchange="dropdownFreshlyChanged()">
                         <option value=" " selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -223,18 +223,18 @@ require '../view/headerInclude.php';
                 <div class="blackBorderDiv" style="width: 20%; float: left;">
                     Rank
                     <br/>
-                    <input type="checkbox" value="FR" checked="checked" id="FR">FR
-                    <input type="checkbox" value="SO" checked="checked" id="SO">SO
-                    <input type="checkbox" value="JR" checked="checked" id="JR">JR
-                    <input type="checkbox" value="SR+" checked="checked" id="SR">SR
+                    <input type="checkbox" value="FR" name="FR" checked="checked" id="FR">FR
+                    <input type="checkbox" value="SO" name="SO" checked="checked" id="SO">SO
+                    <input type="checkbox" value="JR" name="JR" checked="checked" id="JR">JR
+                    <input type="checkbox" value="SR" name="SR" checked="checked" id="SR">SR
                 </div>
 
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: left">
                     GPA
                     <br/>
-                    <input type="text" value="0.0" style="width: 30px" id="firstGpaSpot"></input>
+					<input type="text" value="0.0" style="width: 30px" name="startGPA" id="firstGpaSpot"></input>
                     -
-                    <input type="text" value="4.0" style="width: 30px" id="secondGpaSpot"></input>
+                    <input type="text" value="4.0" style="width: 30px" name="endGPA" id="secondGpaSpot"></input>
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
                     <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
@@ -303,13 +303,24 @@ require '../view/headerInclude.php';
                             years
                         </div>
 
-                        <b style="float:right">Save this question</b> <input type="checkbox" style="float:right"/>
-                        <br/>
+				<input type="checkbox" name="saveQuestion"> Remember this search</input>
+				<input type="text" placeholder="Enter Search Name" name="searchName"></input>
+				
+				<input type='hidden' name='orCount0' id="orCount0" value='0'/>
+				<input type='hidden' name='orCount1' id="orCount1" value='0'/>
+				<input type='hidden' name='orCount2' id="orCount2" value='0'/>
+				<input type='hidden' name='orCount3' id="orCount3" value='0'/>
+				<input type='hidden' name='orCount4' id="orCount4" value='0'/>
+				<input type='hidden' name='orCount5' id="orCount5" value='0'/>
+				<input type='hidden' name='orCount6' id="orCount6" value='0'/>
+				<input type='hidden' name='orCount7' id="orCount7" value='0'/>
+
+				<br/>
                         <br/>
                     </div>
                 </div>
                 <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='HomePage.html'"/>
-                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='DisplayData.html'" />
+                <input type="submit" value="Submit" style="float:right" class="btn btn-success" />
             </form>
         </div>
     </div>
