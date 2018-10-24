@@ -15,28 +15,6 @@ require '../view/headerInclude.php';
         <h1>New Student Question</h1>
         <div class="jumbotron" style="margin:0px auto">
             <form id="issueInputForm" >
-
-                <!-- Ajax Demonstration---------------------------------------------------------------------------- -->
-                <button type="button" style="width:100px;"class="btn btn-primary" id="ajaxTestingButton" onclick="loadDoc('../model/getCoursesUsingAjax.php', loadCoursesUsingAjax)" >Ajax Test</button>
-                <select id="AjaxTestingSelect" >
-                    <option>Ajax Testing Dropdown</option>
-                </select>
-                <br><br>
-                <!-- JSON Demonstration----------------------------------------------------------------------------- -->
-                <!-- JSON Demonstration---------------------------------------------------------------this.id.replace() returns this id, minus all nonNumeric characters -------------- -->
-                <!-- JSON Demonstration---------------------------------------------------------------allows button and dropdowns to reference each other, because that number is the same -------------- -->
-                <!-- JSON Demonstration---------------------------------------------------------------that number will be the Row and Column or And+Or later -------------- -->
-                <button type="button" style="width:100px;" class="btn btn-primary" id="JSONTestingButton3434" onclick=" loadSubjects('JSONTestingSelect' + this.id.replace( /[^0-9]/g, '' ));" >JSON Test</button>
-                <select id="JSONTestingSelect3434"  onload="loadSubjects(this.id)" onchange="loadCatalogs(this.id, 'CatalogDropdown' + this.id.replace( /[^0-9]/g, '' ))">
-                    <option>JSON Subjects</option>
-                </select>
-
-                <select id="CatalogDropdown3434">
-                    <option>JSON Catalogs</option>
-                </select>
-                <br><br><br><br><br><br>
-                <!-- ----------------------------------------------------------------------------------------------- -->
-
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown0" onchange="dropdownFreshlyChanged()">

@@ -31,5 +31,3 @@
 /*    include '../view/navbar.php';   //php for including navbar, previously js
     */?>
 </div>-->
-</html>
-
