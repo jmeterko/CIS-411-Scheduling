@@ -319,7 +319,20 @@ function getSubjectsUsingJSON(xhttp){
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
 }
 
-//table
+//import data
+
+$('#chooseFile').bind('change', function () {
+    var filename = $("#chooseFile").val();
+    if (/^\s*$/.test(filename)) {
+        $(".file-upload").removeClass('active');
+        $("#noFile").text("No file chosen...");
+    }
+    else {
+        $(".file-upload").addClass('active');
+        $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+    }
+});
+
 
 
 

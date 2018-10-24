@@ -16,9 +16,6 @@ switch ($action) {
     case 'DisplayData':
         include '../view/DisplayData.php';
         break;
-    case 'FileUpload':
-        include '../view/fileUploadPage.php';
-        break;
     case 'HomePage':
         include '../view/HomePage.php';
         break;
