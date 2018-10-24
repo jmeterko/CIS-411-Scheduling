@@ -36,7 +36,6 @@ require '../view/headerInclude.php';
                 </select>
                 <br><br><br><br><br><br>
                 <!-- ----------------------------------------------------------------------------------------------- -->
-
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown0" name="dropdown0" onchange="dropdownFreshlyChanged()">
