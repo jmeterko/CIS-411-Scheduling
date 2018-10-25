@@ -15,6 +15,10 @@ var or5 = 0;
 var or6 = 0;
 var or7 = 0;
 
+$( document ).ready(function() {
+    populateElements();
+});
+
 //var $=document.getElementById();
 
 /* When the user clicks on the button,
@@ -54,6 +58,18 @@ function updateORCounts(){
 	document.getElementById("orCount7").value = or7;
 }
 
+function populateElements(){
+	var andCount = 	document.getElementById("andCount").value;
+	var x = 0;
+	
+	if (andCount > 0){
+		while (x < andCount){
+			makeDivVisibleAnd();
+			x++;
+		}
+	}
+}
+
 function makeDivVisibleAnd(){
 	if(and == 0){
 		or0 = getNumberOfChildren();
@@ -74,7 +90,8 @@ function makeDivVisibleAnd(){
 	} 
 	
 	updateORCounts();
-    and++;
+	if (and < 7) { and++; }
+	document.getElementById("andCount").value = and;
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
     document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
     //alert("divAnd"+and);
@@ -97,6 +114,11 @@ function removeOrDiv(){
 function howManyChildren(){
     var attachDiv=document.getElementById('attach'+and);
     alert(attachDiv.children.length);
+}
+
+function getNumberOfChildren(){
+    var attachDiv=document.getElementById('attach'+and);
+    return attachDiv.children.length;
 }
 
 function makeDivVisibleOr(){

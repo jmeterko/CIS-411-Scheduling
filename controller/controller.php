@@ -76,7 +76,7 @@
 	//DECLARE ALL VARIABLES THAT ARE AVAILABLE TO USER ON FORM
 	public $cat0, $cat1, $cat2, $cat3, $cat4, $cat5, $cat6, $cat7 = ''; 
 			
-	public $or0, $or1, $or2, $or3, $or4, $or5, $or6, $or7 = '';
+	public $or0, $or1, $or2, $or3, $or4, $or5, $or6, $or7, $andCount = '';
 	
 	public $rankFR, $rankSO, $rankJR, $rankSR, $currentStudentsOnly, $startGPA, $startYear, $endGPA, $endYear, $searchName = '';
 		
@@ -102,6 +102,7 @@
 		if (isset($_POST["orCount5"])) { $this->or5 = $_POST['orCount5']; }
 		if (isset($_POST["orCount6"])) { $this->or6 = $_POST['orCount6']; }
 		if (isset($_POST["orCount7"])) { $this->or7 = $_POST['orCount7']; }
+		if (isset($_POST["andCount"])) { $this->andCount = $_POST['andCount']; }
 		
 		//YEAR
 		if (isset($_POST["currentStudentsOnly"])) { $this->currentStudentsOnly = $_POST['currentStudentsOnly']; }
@@ -273,8 +274,6 @@
 			
 		}
 		
-		
-		
 		if($saveQuestion){//if user checked the box to save
 			if(empty($stdq->searchName)){//user did not provide a name for the search
 				$errorMessage = "No search name provided.";
@@ -302,13 +301,20 @@
 	}    
 	
 	function RebuildQuestion(){
-		 $serialID = $_GET['SerialID'];
-		 //save the serial string into a variable to be unserialized
-		 $serial = constructSavedSearch($serialID);
-		 $u = unserialize($serial);
+		 $serialID = 0;
+		 try {
+			 if( isset($_GET['SerialID']) ) { $serialID = $_GET['SerialID']; }
+			 //save the serial string into a variable to be unserialized
+			 $serial = constructSavedSearch($serialID);
+			 $form = unserialize($serial);
 		 
 		 //include '../view/index.php';
-		 include '../view/rebuildStudentQuestion.php';
+		 //include '../view/rebuildStudentQuestion.php';
+		 include '../view/MainApplicationStudentQuestion.php';
+		 } catch (Exception $e) {
+			     echo 'Caught exception: ',  $e->getMessage(), "\n";
+		 }
+
 	}
 
 ?>

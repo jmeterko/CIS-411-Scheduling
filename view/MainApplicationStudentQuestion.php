@@ -2,15 +2,8 @@
 $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
 ?>
-
-
-
-
-<!--                                     Should we fetch the data when the page is fully loaded? -->
 <body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)">
 <div class="container">
-    <!DOCTYPE html>
-    <html lang="en">
     <div class="container" style="margin: 0px auto">
         <h1>New Student Question</h1>
         <div class="jumbotron" style="margin:0px auto">
@@ -38,31 +31,22 @@ require '../view/headerInclude.php';
                 <!-- ----------------------------------------------------------------------------------------------- -->
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown0" name="dropdown0" onchange="dropdownFreshlyChanged()">
-                        <option value="" selected disabled hidden>Select Category</option>
-                        <option value="Program" id="Program">Program</option>
-                        <option value="Location">Location</option>
+					<select class="form-control, dropdownboxWidth" id="dropdown0" name="dropdown0" onchange="dropdownFreshlyChanged()">
+					<?php $rebuild = false; if (isset($form) && !empty($form)) { $rebuild = true; } if ($rebuild) {  ?>
+					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>
+						<option value="Location"<?=$form->cat0 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
-                        <option value="Taking">Taking</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Taking/Completed">Taking/Completed</option>
-                        <option value="Scheduled For">Scheduled For</option>
-                        <option value="Not Taking">Not Taking</option>
-                        <option value="Not Completed">Not Completed</option>
-                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
-                        <option value="Not Scheduled For">Not Scheduled For</option>
-                    </select>
-                    <div class="inline" id="attach0"></div>
-                <br/>
-                <button type="button" id="and0" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
-                <br/>
-                <br/>
-                </div>
-
-                <div class="form-group, hiddenDiv" id="divAnd1">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown1" name="dropdown1" onchange="dropdownFreshlyChanged()">
-                        <option value="" selected disabled hidden>Select Category</option>
+						<option value="Taking"<?=$form->cat0 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
+						<option value="Completed"<?=$form->cat0 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
+						<option value="Taking/Completed"<?=$form->cat0 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
+						<option value="Scheduled For"<?=$form->cat0 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
+						<option value="Not Taking"<?=$form->cat0 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
+						<option value="Not Completed"<?=$form->cat0 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
+						<option value="Not Taking/Not Completed"<?=$form->cat0 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
+						<option value="Not Scheduled For"<?=$form->cat0 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+					<?php } else { ?>
+						<option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
@@ -74,6 +58,44 @@ require '../view/headerInclude.php';
                         <option value="Not Completed">Not Completed</option>
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
+					<?php } ?>
+                       </select>
+                    <div class="inline" id="attach0"></div>
+                <br/>
+                <button type="button" id="and0" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <br/>
+                <br/>
+                </div>
+
+                <div class="form-group, hiddenDiv" id="divAnd1">
+                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown1" name="dropdown1" onchange="dropdownFreshlyChanged()">
+                    <?php if ($rebuild) {  ?>
+					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Location"<?=$form->cat1 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
+						<option value="Taking"<?=$form->cat1 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
+						<option value="Completed"<?=$form->cat1 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
+						<option value="Taking/Completed"<?=$form->cat1 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
+						<option value="Scheduled For"<?=$form->cat1 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
+						<option value="Not Taking"<?=$form->cat1 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
+						<option value="Not Completed"<?=$form->cat1 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
+						<option value="Not Taking/Not Completed"<?=$form->cat1 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
+						<option value="Not Scheduled For"<?=$form->cat1 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+					<?php } else { ?>
+						<option value="" selected disabled hidden>Select Category</option>
+                        <option value="Program">Program</option>
+                        <option value="Location">Location</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
+                        <option value="Taking">Taking</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Taking/Completed">Taking/Completed</option>
+                        <option value="Scheduled For">Scheduled For</option>
+                        <option value="Not Taking">Not Taking</option>
+                        <option value="Not Completed">Not Completed</option>
+                        <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
+                        <option value="Not Scheduled For">Not Scheduled For</option>
+					<?php } ?>
                     </select>
                     <div class="inline" id="attach1"></div>
                     <br/>
@@ -85,7 +107,20 @@ require '../view/headerInclude.php';
                 <div class="form-group, hiddenDiv" id="divAnd2">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown2" name="dropdown2" onchange="dropdownFreshlyChanged()">
-                        <option value="" selected disabled hidden>Select Category</option>
+                    <?php if ($rebuild) {  ?>
+					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Location"<?=$form->cat2 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
+						<option value="Taking"<?=$form->cat2 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
+						<option value="Completed"<?=$form->cat2 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
+						<option value="Taking/Completed"<?=$form->cat2 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
+						<option value="Scheduled For"<?=$form->cat2 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
+						<option value="Not Taking"<?=$form->cat2 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
+						<option value="Not Completed"<?=$form->cat2 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
+						<option value="Not Taking/Not Completed"<?=$form->cat2 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
+						<option value="Not Scheduled For"<?=$form->cat2 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+					<?php } else { ?>
+						<option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
@@ -97,6 +132,7 @@ require '../view/headerInclude.php';
                         <option value="Not Completed">Not Completed</option>
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
+					<?php } ?>
                     </select>
                     <div class="inline" id="attach2"></div>
                     <br/>
@@ -108,7 +144,20 @@ require '../view/headerInclude.php';
                 <div class="form-group , hiddenDiv" id="divAnd3">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown3" name="dropdown3" onchange="dropdownFreshlyChanged()">
-                        <option value="" selected disabled hidden>Select Category</option>
+                    <?php if ($rebuild) {  ?>
+					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Location"<?=$form->cat3 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
+						<option value="Taking"<?=$form->cat3 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
+						<option value="Completed"<?=$form->cat3 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
+						<option value="Taking/Completed"<?=$form->cat3 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
+						<option value="Scheduled For"<?=$form->cat3 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
+						<option value="Not Taking"<?=$form->cat3 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
+						<option value="Not Completed"<?=$form->cat3 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
+						<option value="Not Taking/Not Completed"<?=$form->cat3 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
+						<option value="Not Scheduled For"<?=$form->cat3 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+					<?php } else { ?>
+						<option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
@@ -120,6 +169,7 @@ require '../view/headerInclude.php';
                         <option value="Not Completed">Not Completed</option>
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
+					<?php } ?>
                     </select>
                     <div class="inline" id="attach3"></div>
                     <br/>
@@ -131,7 +181,20 @@ require '../view/headerInclude.php';
                 <div class="form-group, hiddenDiv" id="divAnd4">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown4" name="dropdown4" onchange="dropdownFreshlyChanged()">
-                        <option value="" selected disabled hidden>Select Category</option>
+                    <?php if ($rebuild) {  ?>
+					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Location"<?=$form->cat4 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
+						<option value="Taking"<?=$form->cat4 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
+						<option value="Completed"<?=$form->cat4 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
+						<option value="Taking/Completed"<?=$form->cat4 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
+						<option value="Scheduled For"<?=$form->cat4 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
+						<option value="Not Taking"<?=$form->cat4 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
+						<option value="Not Completed"<?=$form->cat4 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
+						<option value="Not Taking/Not Completed"<?=$form->cat4 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
+						<option value="Not Scheduled For"<?=$form->cat4 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+					<?php } else { ?>
+						<option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
@@ -143,6 +206,7 @@ require '../view/headerInclude.php';
                         <option value="Not Completed">Not Completed</option>
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
+					<?php } ?>
                     </select>
                     <div class="inline" id="attach4"></div>
                     <br/>
@@ -154,7 +218,20 @@ require '../view/headerInclude.php';
                 <div class="form-group, hiddenDiv" id="divAnd5">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown5" name="dropdown5" onchange="dropdownFreshlyChanged()">
-                        <option value="" selected disabled hidden>Select Category</option>
+                    <?php if ($rebuild) {  ?>
+					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Location"<?=$form->cat5 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
+						<option value="Taking"<?=$form->cat5 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
+						<option value="Completed"<?=$form->cat5 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
+						<option value="Taking/Completed"<?=$form->cat5 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
+						<option value="Scheduled For"<?=$form->cat5 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
+						<option value="Not Taking"<?=$form->cat5 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
+						<option value="Not Completed"<?=$form->cat5 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
+						<option value="Not Taking/Not Completed"<?=$form->cat5 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
+						<option value="Not Scheduled For"<?=$form->cat5 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+					<?php } else { ?>
+						<option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
@@ -166,6 +243,7 @@ require '../view/headerInclude.php';
                         <option value="Not Completed">Not Completed</option>
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
+					<?php } ?>
                     </select>
                     <div class="inline" id="attach5"></div>
                     <br/>
@@ -177,7 +255,20 @@ require '../view/headerInclude.php';
                 <div class="form-group, hiddenDiv" id="divAnd6">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown6" name="dropdown6" onchange="dropdownFreshlyChanged()">
-                        <option value="" selected disabled hidden>Select Category</option>
+                    <?php if ($rebuild) {  ?>
+					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Location"<?=$form->cat6 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
+						<option value="Taking"<?=$form->cat6 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
+						<option value="Completed"<?=$form->cat6 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
+						<option value="Taking/Completed"<?=$form->cat6 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
+						<option value="Scheduled For"<?=$form->cat6 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
+						<option value="Not Taking"<?=$form->cat6 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
+						<option value="Not Completed"<?=$form->cat6 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
+						<option value="Not Taking/Not Completed"<?=$form->cat6 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
+						<option value="Not Scheduled For"<?=$form->cat6 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+					<?php } else { ?>
+						<option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
@@ -189,6 +280,7 @@ require '../view/headerInclude.php';
                         <option value="Not Completed">Not Completed</option>
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
+					<?php } ?>
                     </select>
                     <div class="inline" id="attach6"></div>
                     <br/>
@@ -200,7 +292,20 @@ require '../view/headerInclude.php';
                 <div class="form-group, hiddenDiv" id="divAnd7">
                     <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown7" name="dropdown7" onchange="dropdownFreshlyChanged()">
-                        <option value=" " selected disabled hidden>Select Category</option>
+                    <?php if ($rebuild) {  ?>
+					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Location"<?=$form->cat7 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
+                        <option value="courses" disabled><b>---COURSES---</b></option>
+						<option value="Taking"<?=$form->cat7 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
+						<option value="Completed"<?=$form->cat7 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
+						<option value="Taking/Completed"<?=$form->cat7 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
+						<option value="Scheduled For"<?=$form->cat7 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
+						<option value="Not Taking"<?=$form->cat7 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
+						<option value="Not Completed"<?=$form->cat7 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
+						<option value="Not Taking/Not Completed"<?=$form->cat7 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
+						<option value="Not Scheduled For"<?=$form->cat7 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+					<?php } else { ?>
+						<option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
@@ -212,6 +317,7 @@ require '../view/headerInclude.php';
                         <option value="Not Completed">Not Completed</option>
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
+					<?php } ?>
                     </select>
                     <div class="inline" id="attach7"></div>
                     <br/>
@@ -313,7 +419,11 @@ require '../view/headerInclude.php';
 				<input type='hidden' name='orCount5' id="orCount5" value='0'/>
 				<input type='hidden' name='orCount6' id="orCount6" value='0'/>
 				<input type='hidden' name='orCount7' id="orCount7" value='0'/>
-
+				<?php if ($rebuild) { ?>
+					<input type='hidden' name='andCount' id="andCount" value='<?php echo $form->andCount;?>'/>
+				<?php } else { ?>
+					<input type='hidden' name='andCount' id="andCount" value='0'/>
+				<?php } ?>
 				<br/>
                         <br/>
                     </div>

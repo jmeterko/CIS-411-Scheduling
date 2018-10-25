@@ -9,14 +9,14 @@
 			//$s = file_get_contents('store');
 			//$a = unserialize($s);
   
-				 echo $stdq->cat0; 
-				 echo $stdq->cat1; 
-				 echo $stdq->cat2; 
-				 echo $stdq->cat3; 
-				 echo $stdq->cat4; 
-				 echo $stdq->cat5; 
-				 echo $stdq->cat6; 
-				 echo $stdq->cat7; 
+				 echo "Category 1: " . $stdq->cat0 . "<br>"; 
+				 echo "Category 2: " . $stdq->cat1 . "<br>"; 
+				 echo "Category 3: " . $stdq->cat2 . "<br>"; 
+				 echo "Category 4: " . $stdq->cat3 . "<br>"; 
+				 echo "Category 5: " . $stdq->cat4 . "<br>"; 
+				 echo "Category 6: " . $stdq->cat5 . "<br>"; 
+				 echo "Category 7: " . $stdq->cat6 . "<br>"; 
+				 echo "Category 8: " . $stdq->cat7 . "<br>"; 
 				 
 				 echo "<br><br>";
 
@@ -38,12 +38,12 @@
 				 
 				 echo "<br><br>";
 
-				  $orDropdownValue = $stdq->data;
+				  /*$orDropdownValue = $stdq->data;
 				  foreach ($orDropdownValue as $item => $value) {
-					  echo $value  . "\n";
+					  echo $item . ": " . $value  . "\n";
 				  }//echo $item to see key/value pair
 
-				 
+				 */
 				/*   
 				 echo $u->cat1; 
 				 echo $u->cat2; 
