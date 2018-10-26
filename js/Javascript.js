@@ -246,11 +246,20 @@ length: 52
     // *** YE BE WARNED
     // ***
 }
+//call this function with loadDoc(), pass in getCoursesUsingJSON.php
+function getProgramsUsingJSON(xhttp){
+    var JSONObjectHoldingAllOfOurPrograms = JSON.parse(xhttp.responseText);//#ReadableCode
+    //then, do stuff with our JSON object that holds all of our courses
+    console.log(JSONObjectHoldingAllOfOurPrograms);
+    return JSONObjectHoldingAllOfOurPrograms;
+}
 
 //do we want to NOT use global variables
 //are they not the solution im looking for
 var JSONObjectHoldingAllOfOurCourses;
+var JSONObjectHoldingAllOfOurPrograms;
 var jsObjectHoldingAllOfOurSubjects;
+var ProgramSubjectsJSON;
 
 //pass in the id of the Subject Dropdown and the Catalog dropdown you want to load
 //get the value of subject dropdown
@@ -267,11 +276,67 @@ function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
 //loads a particular dropdown with all of our subjects
 function loadSubjects(pSubjectDropdownID){
     document.getElementById(pSubjectDropdownID).innerHTML = "<option value='Subject'>" + "Subject" + "</option>";
-    for (subjectFound in jsObjectHoldingAllOfOurSubjects){
-        document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + subjectFound + "'>" + subjectFound + "</option>";
+    for (ProgramSubjectPairFound in jsObjectHoldingAllOfOurSubjects){
+        document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + ProgramSubjectPairFound + "'>" + ProgramSubjectPairFound + "</option>";
     }
 }
+function loadProgramSubjects(pProgramName){
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    let ProgramSubjectPairFound;
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            ProgramSubjectsJSON = JSON.parse(xhttp.responseText);
+            console.log(ProgramSubjectsJSON);
+            //alert(ProgramSubjectsJSON);
+            document.getElementById('hasSubjectsSelect').innerHTML = "<option>Has these subjects: </option><option></option>";
+            document.getElementById('hasNotSubjectsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            for (ProgramSubjectPairFound in ProgramSubjectsJSON){
+                document.getElementById('hasSubjectsSelect').innerHTML +=
+                    "<option value='" + ProgramSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "'>" + ProgramSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "</option>";
+            }
+            //when xhttpResponse is ready and our HasSubjects are loaded, load the HasNotSubjects
+            loadNotProgramSubjects(pProgramName);
+        }
+    };
+    xhttp.open("GET", "../model/getProgramSubjectsUsingJSON.php?ProgramSelected=" + pProgramName, true);
+    xhttp.send();
+}
 
+function loadNotProgramSubjects(pProgramName){
+    let xhttp;
+    let allSubjectsJSON;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            allSubjectsJSON = JSON.parse(xhttp.responseText);
+            console.log(allSubjectsJSON);
+            //alert(ProgramSubjectsJSON);
+
+            //remove the subjects that we DO have
+            //now our allSubjectsJSON is our HasNot array
+            for (ProgramSubjectPairFound in ProgramSubjectsJSON){
+                for (SubjectFoundFromAllSubjects in allSubjectsJSON)
+                    if (allSubjectsJSON[SubjectFoundFromAllSubjects][0] == ProgramSubjectsJSON[ProgramSubjectPairFound][1]){
+                        console.log(allSubjectsJSON[SubjectFoundFromAllSubjects][0] + " from: allSubjectsJSON");
+                        console.log(ProgramSubjectsJSON[ProgramSubjectPairFound][1] + " from: programsSubjectsJSON");
+                        delete allSubjectsJSON[SubjectFoundFromAllSubjects];
+                    }
+            }
+
+            //once our HasNot array is ready, load it into the second select
+            document.getElementById('hasNotSubjectsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            for (ProgramSubjectPairFound in allSubjectsJSON){
+                document.getElementById('hasNotSubjectsSelect').innerHTML +=
+                    "<option value='" + allSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "'>" + allSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "</option>";
+            }
+        }
+    };
+    xhttp.open("GET", "../model/getAllSubjectsUsingJSON.php?ProgramSelected=" + pProgramName, true);
+    xhttp.send();
+}
+//this gets all unique Subjects found in Courses table only!!
+// does not use Subjects table
 //this is an ajax callback function
 //call this function with loadDoc(), passing in getCoursesUsingJSON.php and this function
 //this will send an ajax request to getCoursesUsingJSON.php, store the response, then run this function on it
@@ -317,6 +382,34 @@ function getSubjectsUsingJSON(xhttp){
 
     return jsObjectHoldingAllOfOurSubjects;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
+}
+////////////////////////////////////
+//stolen from 370 security framework
+function swap(srcId,dstId)
+{
+    src = document.getElementById(srcId);
+    dst = document.getElementById(dstId);
+
+    index = src.selectedIndex;
+
+    if(index != -1)
+    {
+        txt = src.options[ index ].text;
+        value = src.options[ index ].value;
+
+        dst.options[ dst.options.length] = new Option( txt, value );
+        src.options[ index ] = null;
+    }
+}
+function selectAll(id)
+{
+    var select = document.getElementById(id);
+
+    for(i = 0; i < select.length; ++i)
+    {
+        select[i].selected = true;
+        //alert("checking each selection");
+    }
 }
 
 //table

@@ -14,7 +14,6 @@
    DROP TABLE IF EXISTS courseoffering;
    DROP TABLE IF EXISTS course;
    DROP TABLE IF EXISTS student;
-   DROP TABLE IF EXISTS acad_program;
 
 
 -- Table structure for table `classes`
@@ -80,13 +79,12 @@ CREATE TABLE `studentclass` (
   constraint FK_studentclass_student Foreign Key (ID) references student(ID)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `acad_program` (
+CREATE TABLE IF NOT EXISTS `acad_program` (
   `Plan` varchar(10) NOT NULL,
   `Plan_Descr` varchar(30) DEFAULT NULL,
 
   constraint PK_acad_program Primary Key (Plan)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 CREATE TABLE `studentmajor` (
   `ID` int(11) NOT NULL,
@@ -96,6 +94,30 @@ CREATE TABLE `studentmajor` (
   constraint FK_studentmajor_student Foreign Key (ID) references student(ID),
   constraint FK_studentmajor_acad_program Foreign Key (Plan) references acad_program(Plan)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `Current_Term` int(4) NOT NULL,
+  `Latest_Term` int(4) NOT NULL,
+  `Last_Import_Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `subject` (
+  `Subject` varchar(4) NOT NULL,
+
+  constraint PK_subject Primary Key (Subject)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `programsubject` (
+  `Plan` varchar(10) NOT NULL,
+  `Subject` varchar(4) NOT NULL,
+
+  constraint PK_programsubject Primary Key (Subject, Plan),
+  constraint FK_programsubject_subject Foreign Key (Subject) references subject(Subject),
+  constraint FK_programsubject_acad_program Foreign Key (Plan) references acad_program(Plan)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `cis411_csaapp`.`programsubject`
+    ADD INDEX `FK_programsubject_subject` (`Subject`) USING BTREE;
 
 -- why isn't our CREATE working for our student ID FK?
 -- for now, we add the INDEX after creating the table

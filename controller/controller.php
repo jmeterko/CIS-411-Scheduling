@@ -20,12 +20,16 @@ switch ($action) {
         include '../view/LoginPage.php';
         break;
     case 'StudentQuestion':
-        $courseResults = getAllCourses();
-        $programResults = getAllAcademicPrograms();
         include '../view/MainApplicationStudentQuestion.php';
         break;
     case 'Home':
         include '../view/LoginPage.php';
+        break;
+    case 'ModifyAcadProgram':
+        include '../view/modify_Acad_Program_Form.php';
+        break;
+    case 'ProcessModifyAcadProgram':
+        include '../view/processmodify_Acad_Program.php';
         break;
     case 'ProcessImportData':
         include '../view/processImportData.php';
@@ -36,5 +40,6 @@ switch ($action) {
     default:
         include('../view/LoginPage.php');   // default
 }
+
 
 ?>
