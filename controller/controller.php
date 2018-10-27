@@ -76,7 +76,7 @@
 	//DECLARE ALL VARIABLES THAT ARE AVAILABLE TO USER ON FORM
 	public $cat0, $cat1, $cat2, $cat3, $cat4, $cat5, $cat6, $cat7 = ''; 
 			
-	public $or0, $or1, $or2, $or3, $or4, $or5, $or6, $or7, $andCount = '';
+	public $or0, $or1, $or2, $or3, $or4, $or5, $or6, $or7, $andCount, $startSeason, $endSeason = '';
 	
 	public $rankFR, $rankSO, $rankJR, $rankSR, $currentStudentsOnly, $startGPA, $startYear, $endGPA, $endYear, $searchName = '';
 		
@@ -108,6 +108,8 @@
 		if (isset($_POST["currentStudentsOnly"])) { $this->currentStudentsOnly = $_POST['currentStudentsOnly']; }
 		if (isset($_POST["startYear"])) { $this->startYear = $_POST['startYear']; }
 		if (isset($_POST["endYear"])) { $this->endYear = $_POST['endYear']; }
+		if (isset($_POST["startSeason"])) { $this->startSeason = $_POST['startSeason']; }
+		if (isset($_POST["endSeason"])) { $this->endSeason = $_POST['endSeason']; }
 		if (isset($_POST["startGPA"])) { $this->startGPA = $_POST['startGPA']; }
 		if (isset($_POST["endGPA"])) { $this->endGPA = $_POST['endGPA']; }
 		

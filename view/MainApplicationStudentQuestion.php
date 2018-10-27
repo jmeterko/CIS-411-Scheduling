@@ -328,18 +328,33 @@ require '../view/headerInclude.php';
                 <div class="blackBorderDiv" style="width: 20%; float: left;">
                     Rank
                     <br/>
-                    <input type="checkbox" value="FR" name="FR" checked="checked" id="FR">FR
-                    <input type="checkbox" value="SO" name="SO" checked="checked" id="SO">SO
-                    <input type="checkbox" value="JR" name="JR" checked="checked" id="JR">JR
-                    <input type="checkbox" value="SR" name="SR" checked="checked" id="SR">SR
+					<?php if ($rebuild) { ?>
+						<input type='hidden' name='orCount1' id="orCount1" value='<?php echo $form->or1;?>'/>
+						<input type="checkbox" value="FR" name="FR" <?php if ($form->rankFR == "FR") echo "checked='checked'"?> id="FR">FR
+						<input type="checkbox" value="SO" name="SO" <?php if ($form->rankSO == "SO") echo "checked='checked'"?> id="SO">SO
+						<input type="checkbox" value="JR" name="JR" <?php if ($form->rankJR == "JR") echo "checked='checked'"?> id="JR">JR
+						<input type="checkbox" value="SR" name="SR" <?php if ($form->rankSR == "SR") echo "checked='checked'"?> id="SR">SR
+					<?php } else { ?>
+						<input type="checkbox" value="FR" name="FR" checked="checked" id="FR">FR
+						<input type="checkbox" value="SO" name="SO" checked="checked" id="SO">SO
+						<input type="checkbox" value="JR" name="JR" checked="checked" id="JR">JR
+						<input type="checkbox" value="SR" name="SR" checked="checked" id="SR">SR
+					<?php } ?>
+
                 </div>
 
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: left">
                     GPA
                     <br/>
-					<input type="text" value="0.0" style="width: 30px" name="startGPA" id="firstGpaSpot"></input>
-                    -
-                    <input type="text" value="4.0" style="width: 30px" name="endGPA" id="secondGpaSpot"></input>
+					<?php if ($rebuild) { ?>
+						<input type="text" value="<?php echo $form->startGPA;?>" style="width: 30px" name="startGPA" id="firstGpaSpot"></input>
+						-
+						<input type="text" value="<?php echo $form->endGPA;?>" style="width: 30px" name="endGPA" id="secondGpaSpot"></input>
+					<?php } else { ?>
+						<input type="text" value="0.0" style="width: 30px" name="startGPA" id="firstGpaSpot"></input>
+						-
+						<input type="text" value="4.0" style="width: 30px" name="endGPA" id="secondGpaSpot"></input>
+					<?php } ?>
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
                     <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
@@ -357,13 +372,34 @@ require '../view/headerInclude.php';
                         <div id="home" class="tab-pane fade in active">
                             <br/>
                                 <h5><b>Only check classes between:</b></h5>
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange1" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange1" name="startSeason" style="width:65px;">				
+							 <?php if ($rebuild) {  ?>
+								<option value="Spring"<?=$form->startSeason == 'Spring' ? ' selected="selected"' : '';?>>Spring</option>
+								<option value="Summer"<?=$form->startSeason == 'Summer' ? ' selected="selected"' : '';?>>Summer</option>
+								<option value="Fall"<?=$form->startSeason == 'Fall' ? ' selected="selected"' : '';?>>Fall</option>
+								<option value="Winter"<?=$form->startSeason == 'Winter' ? ' selected="selected"' : '';?>>Winter</option>							
+							<?php } else { ?>
                                 <option value="Spring" selected>Spring</option>
                                 <option value="Summer">Summer</option>
                                 <option value="Fall">Fall</option>
-                                <option value="Winter">Winter</option>
+                                <option value="Winter">Winter</option>								
+							<?php } ?>
                             </select>
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" name="startYear" style="width:65px;">
+							<?php if ($rebuild) {  ?>
+                                <option value="2007"<?=$form->startYear == '2007' ? ' selected="selected"' : '';?>>2007</option>
+                                <option value="2008"<?=$form->startYear == '2008' ? ' selected="selected"' : '';?>>2008</option>
+                                <option value="2009"<?=$form->startYear == '2009' ? ' selected="selected"' : '';?>>2009</option>
+                                <option value="2010"<?=$form->startYear == '2010' ? ' selected="selected"' : '';?>>2010</option>
+                                <option value="2011"<?=$form->startYear == '2011' ? ' selected="selected"' : '';?>>2011</option>
+                                <option value="2012"<?=$form->startYear == '2012' ? ' selected="selected"' : '';?>>2012</option>
+                                <option value="2013"<?=$form->startYear == '2013' ? ' selected="selected"' : '';?>>2013</option>
+                                <option value="2014"<?=$form->startYear == '2014' ? ' selected="selected"' : '';?>>2014</option>
+                                <option value="2015"<?=$form->startYear == '2015' ? ' selected="selected"' : '';?>>2015</option>
+                                <option value="2016"<?=$form->startYear == '2016' ? ' selected="selected"' : '';?>>2016</option>
+                                <option value="2017"<?=$form->startYear == '2017' ? ' selected="selected"' : '';?>>2017</option>
+                                <option value="2018"<?=$form->startYear == '2018' ? ' selected="selected"' : '';?>>2018</option>				
+							<?php } else { ?>
                                 <option value="2007" selected>2007</option>
                                 <option value="2008">2008</option>
                                 <option value="2009">2009</option>
@@ -375,17 +411,39 @@ require '../view/headerInclude.php';
                                 <option value="2015">2015</option>
                                 <option value="2016">2016</option>
                                 <option value="2017">2017</option>
-                                <option value="2018">2018</option>
+                                <option value="2018">2018</option>							
+							<?php } ?>
                             </select>
                             -
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange3" style="width:65px;">
-                                <option value="Spring">Spring</option>
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange3" name="endSeason" style="width:65px;">
+							 <?php if ($rebuild) {  ?>
+								<option value="Spring"<?=$form->endSeason == 'Spring' ? ' selected="selected"' : '';?>>Spring</option>
+								<option value="Summer"<?=$form->endSeason == 'Summer' ? ' selected="selected"' : '';?>>Summer</option>
+								<option value="Fall"<?=$form->endSeason == 'Fall' ? ' selected="selected"' : '';?>>Fall</option>
+								<option value="Winter"<?=$form->endSeason == 'Winter' ? ' selected="selected"' : '';?>>Winter</option>							
+							<?php } else { ?>
+                                <option value="Spring" selected>Spring</option>
                                 <option value="Summer">Summer</option>
-                                <option value="Fall" selected>Fall</option>
-                                <option value="Winter">Winter</option>
+                                <option value="Fall">Fall</option>
+                                <option value="Winter">Winter</option>								
+							<?php } ?>
                             </select>
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange4" style="width:65px;">
-                                <option value="2007">2007</option>
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange4" name="endYear" style="width:65px;">
+							<?php if ($rebuild) {  ?>
+                                <option value="2007"<?=$form->endYear == '2007' ? ' selected="selected"' : '';?>>2007</option>
+                                <option value="2008"<?=$form->endYear == '2008' ? ' selected="selected"' : '';?>>2008</option>
+                                <option value="2009"<?=$form->endYear == '2009' ? ' selected="selected"' : '';?>>2009</option>
+                                <option value="2010"<?=$form->endYear == '2010' ? ' selected="selected"' : '';?>>2010</option>
+                                <option value="2011"<?=$form->endYear == '2011' ? ' selected="selected"' : '';?>>2011</option>
+                                <option value="2012"<?=$form->endYear == '2012' ? ' selected="selected"' : '';?>>2012</option>
+                                <option value="2013"<?=$form->endYear == '2013' ? ' selected="selected"' : '';?>>2013</option>
+                                <option value="2014"<?=$form->endYear == '2014' ? ' selected="selected"' : '';?>>2014</option>
+                                <option value="2015"<?=$form->endYear == '2015' ? ' selected="selected"' : '';?>>2015</option>
+                                <option value="2016"<?=$form->endYear == '2016' ? ' selected="selected"' : '';?>>2016</option>
+                                <option value="2017"<?=$form->endYear == '2017' ? ' selected="selected"' : '';?>>2017</option>
+                                <option value="2018"<?=$form->endYear == '2018' ? ' selected="selected"' : '';?>>2018</option>				
+							<?php } else { ?>
+                                <option value="2007" selected>2007</option>
                                 <option value="2008">2008</option>
                                 <option value="2009">2009</option>
                                 <option value="2010">2010</option>
@@ -396,7 +454,8 @@ require '../view/headerInclude.php';
                                 <option value="2015">2015</option>
                                 <option value="2016">2016</option>
                                 <option value="2017">2017</option>
-                                <option value="2018" selected>2018</option>
+                                <option value="2018">2018</option>							
+							<?php } ?>
                             </select>
                         </div>
                         <br/>
@@ -410,19 +469,29 @@ require '../view/headerInclude.php';
 
 				<input type="checkbox" name="saveQuestion"> Remember this search</input>
 				<input type="text" placeholder="Enter Search Name" name="searchName"></input>
-				
-				<input type='hidden' name='orCount0' id="orCount0" value='0'/>
-				<input type='hidden' name='orCount1' id="orCount1" value='0'/>
-				<input type='hidden' name='orCount2' id="orCount2" value='0'/>
-				<input type='hidden' name='orCount3' id="orCount3" value='0'/>
-				<input type='hidden' name='orCount4' id="orCount4" value='0'/>
-				<input type='hidden' name='orCount5' id="orCount5" value='0'/>
-				<input type='hidden' name='orCount6' id="orCount6" value='0'/>
-				<input type='hidden' name='orCount7' id="orCount7" value='0'/>
 				<?php if ($rebuild) { ?>
 					<input type='hidden' name='andCount' id="andCount" value='<?php echo $form->andCount;?>'/>
+					<input type='hidden' name='orCount0' id="orCount0" value='<?php echo $form->or0;?>'/>
+					<input type='hidden' name='orCount1' id="orCount1" value='<?php echo $form->or1;?>'/>
+					<input type='hidden' name='orCount2' id="orCount2" value='<?php echo $form->or2;?>'/>
+					<input type='hidden' name='orCount3' id="orCount3" value='<?php echo $form->or3;?>'/>
+					<input type='hidden' name='orCount4' id="orCount4" value='<?php echo $form->or4;?>'/>
+					<input type='hidden' name='orCount5' id="orCount5" value='<?php echo $form->or5;?>'/>
+					<input type='hidden' name='orCount6' id="orCount6" value='<?php echo $form->or6;?>'/>
+					<input type='hidden' name='orCount7' id="orCount7" value='<?php echo $form->or7;?>'/>
+					<!--rebuildFlag will tell the javascript functions to work based off this flag-->
+					<input type='hidden' name='rebuildFlag' id="rebuildFlag" value='true'/>			
 				<?php } else { ?>
 					<input type='hidden' name='andCount' id="andCount" value='0'/>
+					<input type='hidden' name='orCount0' id="orCount0" value='0'/>
+					<input type='hidden' name='orCount1' id="orCount1" value='0'/>
+					<input type='hidden' name='orCount2' id="orCount2" value='0'/>
+					<input type='hidden' name='orCount3' id="orCount3" value='0'/>
+					<input type='hidden' name='orCount4' id="orCount4" value='0'/>
+					<input type='hidden' name='orCount5' id="orCount5" value='0'/>
+					<input type='hidden' name='orCount6' id="orCount6" value='0'/>
+					<input type='hidden' name='orCount7' id="orCount7" value='0'/>
+					<input type='hidden' name='rebuildFlag' id="rebuildFlag" value='false'/>			
 				<?php } ?>
 				<br/>
                         <br/>

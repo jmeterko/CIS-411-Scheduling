@@ -59,15 +59,91 @@ function updateORCounts(){
 }
 
 function populateElements(){
-	var andCount = 	document.getElementById("andCount").value;
+	var andCount = document.getElementById("andCount").value;
+	var orCount0 = document.getElementById("orCount0").value;
+	var orCount1 = document.getElementById("orCount1").value;
+	var orCount2 = document.getElementById("orCount2").value;
+	var orCount3 = document.getElementById("orCount3").value;
+	var orCount4 = document.getElementById("orCount4").value;
+	var orCount5 = document.getElementById("orCount5").value;
+	var orCount6 = document.getElementById("orCount6").value;
+	var orCount7 = document.getElementById("orCount7").value;
+	//alert(orCount0);
 	var x = 0;
+	
+	//if the count variable is set, generate the correct number of AND's + OR's
 	
 	if (andCount > 0){
 		while (x < andCount){
 			makeDivVisibleAnd();
 			x++;
-		}
+		} x = 0;
 	}
+	
+	//0
+	if (orCount0 > 0){ and = 0;
+		while (x < orCount0){
+			orButtonPressed();
+			x++;
+		} x = 0;
+	}
+	
+	//1
+	if (orCount1 > 0){ and = 1;
+		while (x < orCount1){
+			orButtonPressed();
+			x++;
+		} x = 0;
+	}
+
+	//2
+	if (orCount2 > 0){ and = 2;
+		while (x < orCount2){
+			orButtonPressed();
+			x++;
+		} x = 0;
+	}	
+	
+	//3
+	if (orCount3 > 0){ and = 3;
+		while (x < orCount3){
+			orButtonPressed();
+			x++;
+		} x = 0;
+	}
+	
+	//4
+	if (orCount4 > 0){ and = 4;
+		while (x < orCount4){
+			orButtonPressed();
+			x++;
+		} x = 0;
+	}	
+	
+	//5
+	if (orCount5 > 0){ and = 5;
+		while (x < orCount5){
+			orButtonPressed();
+			x++;
+		} x = 0;
+	}	
+	
+	//6
+	if (orCount6 > 0){ and = 6;
+		while (x < orCount6){
+			orButtonPressed();
+			x++;
+		} x = 0;
+	}	
+	
+	//7
+	if (orCount7 > 0){ and = 7;
+		while (x < orCount7){
+			orButtonPressed();
+			x++;
+		} x = 0;
+	}
+	
 }
 
 function makeDivVisibleAnd(){
