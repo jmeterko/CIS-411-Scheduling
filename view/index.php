@@ -38,12 +38,12 @@
 				 
 				 echo "<br><br>";
 
-				  /*$orDropdownValue = $stdq->data;
+				  $orDropdownValue = $stdq->data;
 				  foreach ($orDropdownValue as $item => $value) {
 					  echo $item . ": " . $value  . "\n";
 				  }//echo $item to see key/value pair
 
-				 */
+				 
 				/*   
 				 echo $u->cat1; 
 				 echo $u->cat2; 

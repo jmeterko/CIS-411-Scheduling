@@ -480,8 +480,18 @@ require '../view/headerInclude.php';
 					<input type='hidden' name='orCount6' id="orCount6" value='<?php echo $form->or6;?>'/>
 					<input type='hidden' name='orCount7' id="orCount7" value='<?php echo $form->or7;?>'/>
 					<!--rebuildFlag will tell the javascript functions to work based off this flag-->
-					<input type='hidden' name='rebuildFlag' id="rebuildFlag" value='true'/>			
-				<?php } else { ?>
+					<input type='hidden' name='rebuildFlag' id="rebuildFlag" value='true'/>		
+
+				<?php $orDropdownValue = $form->data;
+				  foreach ($orDropdownValue as $item => $value) {
+					  echo ("<input type='hidden' name='val" . $item . "' id='val" . $item . "' value='" . $value . "'/>");
+					  
+					/*  $orDropdownValue = $form->data;
+				  foreach ($orDropdownValue as $item => $value) {
+					  echo $item . ": " . $value  . "\n";
+				  }*/
+				  }					
+				 } else { ?>
 					<input type='hidden' name='andCount' id="andCount" value='0'/>
 					<input type='hidden' name='orCount0' id="orCount0" value='0'/>
 					<input type='hidden' name='orCount1' id="orCount1" value='0'/>
@@ -491,7 +501,8 @@ require '../view/headerInclude.php';
 					<input type='hidden' name='orCount5' id="orCount5" value='0'/>
 					<input type='hidden' name='orCount6' id="orCount6" value='0'/>
 					<input type='hidden' name='orCount7' id="orCount7" value='0'/>
-					<input type='hidden' name='rebuildFlag' id="rebuildFlag" value='false'/>			
+					<input type='hidden' name='rebuildFlag' id="rebuildFlag" value='false'/>	
+
 				<?php } ?>
 				<br/>
                         <br/>
