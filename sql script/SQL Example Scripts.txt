@@ -1,0 +1,40 @@
+--
+-- These are just a few examples of queries we'll be building
+-- Thought we could use an ezpz reference sheet
+--
+
+Select all students who have taken a 200s level course:
+
+SELECT ID, NAME, CURRENT, Last_Term, Total, GPA, EagleMail_ID
+FROM `student`
+WHERE ID IN
+	(SELECT ID FROM `studentclass`
+     WHERE `Subject` = 'CIS'
+     AND Catalog BETWEEN 200 AND 299);
+
+Select all students with a Location of Clarion:
+
+SELECT ID, NAME, CURRENT,Last_Term, Total, GPA, EagleMail_ID  FROM `student` WHERE LOCATION = 'CLARION';
+
+Select all students who have taken CIS 217:
+
+SELECT ID, NAME, CURRENT,Last_Term, Total, GPA, EagleMail_ID
+FROM `student`
+WHERE ID IN
+	(SELECT ID FROM `studentclass`
+     WHERE `Subject` = 'CIS'
+     AND Catalog = '217');
+
+Select all students who have a CS Major (BS CS):
+
+SELECT ID, NAME, CURRENT,Last_Term, Total, GPA, EagleMail_ID
+FROM `student`
+WHERE ID IN
+  (SELECT ID FROM studentmajor WHERE PLAN = 'BA CS');
+
+  ***
+    Need to add the Grade column into the import of Students-Classes
+
+    I believe Grade can determine if they're currently enrolled in a class
+    for "Taking/Completed" search etc
+  ***

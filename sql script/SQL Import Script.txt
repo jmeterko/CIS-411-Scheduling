@@ -19,7 +19,7 @@
 
 CREATE TABLE `course` (
   `Subject` varchar(4) NOT NULL,
-  `Catalog` varchar(5) NOT NULL,
+  `Catalog` int(5) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Acad_Org` varchar(4) NOT NULL,
   constraint PK_course Primary Key (Subject, Catalog )
@@ -29,7 +29,7 @@ CREATE TABLE `courseoffering` (
   `Term` int(11) NOT NULL,
   `Session` varchar(3) NOT NULL,
   `Subject` varchar(4) NOT NULL,
-  `Catalog` varchar(5) NOT NULL,
+  `Catalog` int(5) NOT NULL,
   `Section` varchar(4) NOT NULL,
   `InstructorName` varchar(22) NOT NULL,
   `Count_ID` int(11) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `studentclass` (
   `Term` int(11) NOT NULL,
   `Session` varchar(3) NOT NULL,
   `Subject` varchar(4) NOT NULL,
-  `Catalog` varchar(5) NOT NULL,
+  `Catalog` int(5) NOT NULL,
   `Section` varchar(4) NOT NULL,
   constraint PK_studentclass Primary Key (ID, Term, Session, Subject, Catalog, Section),
   constraint FK_studentclass_student Foreign Key (ID) references student(ID)
