@@ -28,8 +28,14 @@ switch ($action) {
     case 'ModifyAcadProgram':
         include '../view/modify_Acad_Program_Form.php';
         break;
+    case 'ModifyUserProgram':
+        include '../view/modify_User_Program_Form.php';
+        break;
     case 'ProcessModifyAcadProgram':
         include '../view/processmodify_Acad_Program.php';
+        break;
+    case 'ProcessModifyUserProgram':
+        include '../view/processmodify_User_Program.php';
         break;
     case 'ProcessImportData':
         include '../view/processImportData.php';

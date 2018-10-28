@@ -310,10 +310,41 @@ function getAllSubjects() {
         die;
     }
 }
+function getAllUsers() {
+    try {
+        $db = getDBConnection();
+        $query = "select * from Users";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 function getProgramSubjects($pProgramName) {
     try {
         $db = getDBConnection();
         $query = "SELECT * FROM programsubject WHERE Plan='" . $pProgramName . "'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
+function getUserPrograms($pUserName) {
+    try {
+        $db = getDBConnection();
+        $query = "SELECT * FROM userprograms WHERE UserName='" . $pUserName . "'";
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
@@ -342,6 +373,35 @@ function updateProgramSubjects($pProgramName, $addSubjects)
             $statement = $db->prepare($query);
             $statement->bindValue(':programName', $pProgramName);
             $statement->bindValue(':subjectToAdd', $subjectToAdd);
+            $success = $statement->execute();
+            $rowCount += $statement->rowCount();
+        }
+        $statement->closeCursor();
+        return $rowCount;           // how many rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        //die;
+    }
+}
+
+//remove all the entries with that Program, then add the selected ones
+function updateUserPrograms($pUserName, $addPrograms)
+{
+    try {
+        $rowCount = 0;
+        $db = getDBConnection();
+        $query = "DELETE FROM userprograms WHERE UserName= :userName";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':userName', $pUserName);
+        $statement->execute();
+        ////process the array that was passed in
+        for ($i = 0; $i < count($addPrograms); $i++) {
+            $programToAdd = $addPrograms[$i];
+            $query = "INSERT INTO userprograms (`UserName`, `Plan`) VALUES (:userName, :programToAdd)";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':userName', $pUserName);
+            $statement->bindValue(':programToAdd', $programToAdd);
             $success = $statement->execute();
             $rowCount += $statement->rowCount();
         }

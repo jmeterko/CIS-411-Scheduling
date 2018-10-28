@@ -254,12 +254,21 @@ function getProgramsUsingJSON(xhttp){
     return JSONObjectHoldingAllOfOurPrograms;
 }
 
+//call this function with loadDoc(), pass in getUsersUsingJSON.php
+function getUsersUsingJSON(xhttp){
+    var JSONObjectHoldingAllOfOurUsers = JSON.parse(xhttp.responseText);//#ReadableCode
+    //then, do stuff with our JSON object that holds all of our users
+    console.log(JSONObjectHoldingAllOfOurUsers);
+    return JSONObjectHoldingAllOfOurUsers;
+}
+
 //do we want to NOT use global variables
 //are they not the solution im looking for
 var JSONObjectHoldingAllOfOurCourses;
 var JSONObjectHoldingAllOfOurPrograms;
 var jsObjectHoldingAllOfOurSubjects;
 var ProgramSubjectsJSON;
+var UserProgramsJSON;
 
 //pass in the id of the Subject Dropdown and the Catalog dropdown you want to load
 //get the value of subject dropdown
@@ -303,9 +312,34 @@ function loadProgramSubjects(pProgramName){
     xhttp.send();
 }
 
+function loadUserPrograms(pUserName){
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    let UserProgramPairFound;
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            UserProgramsJSON = JSON.parse(xhttp.responseText);
+            console.log(UserProgramsJSON);
+            //alert(ProgramSubjectsJSON);
+            document.getElementById('hasProgramsSelect').innerHTML = "<option>Has these programs: </option><option></option>";
+            document.getElementById('hasNotProgramsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            for (UserProgramPairFound in UserProgramsJSON){
+                document.getElementById('hasProgramsSelect').innerHTML +=
+                    "<option value='" + UserProgramsJSON[UserProgramPairFound][`Plan`] + "'>" + UserProgramsJSON[UserProgramPairFound][`Plan`] + "</option>";
+            }
+            //when xhttpResponse is ready and our HasSubjects are loaded, load the HasNotSubjects
+            loadNotUserPrograms(pUserName);
+        }
+    };
+    xhttp.open("GET", "../model/getUserProgramsUsingJSON.php?UserSelected=" + pUserName, true);
+    xhttp.send();
+}
+
 function loadNotProgramSubjects(pProgramName){
     let xhttp;
     let allSubjectsJSON;
+    let ProgramSubjectPairFound;
+    let SubjectFoundFromAllSubjects;
     xhttp=new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -333,6 +367,38 @@ function loadNotProgramSubjects(pProgramName){
         }
     };
     xhttp.open("GET", "../model/getAllSubjectsUsingJSON.php?ProgramSelected=" + pProgramName, true);
+    xhttp.send();
+}
+function loadNotUserPrograms(pUserName){
+    let xhttp;
+    let allProgramsJSON;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            allProgramsJSON = JSON.parse(xhttp.responseText);
+            console.log(allProgramsJSON);
+            //alert(ProgramSubjectsJSON);
+
+            //remove the subjects that we DO have
+            //now our allProgramsJSON is our HasNot array
+            for (UserProgramPairFound in UserProgramsJSON){
+                for (ProgramFoundFromAllPrograms in allProgramsJSON)
+                    if (allProgramsJSON[ProgramFoundFromAllPrograms][0] == UserProgramsJSON[UserProgramPairFound][1]){
+                        console.log(allProgramsJSON[ProgramFoundFromAllPrograms][0] + " from: allProgramsJSON");
+                        console.log(UserProgramsJSON[UserProgramPairFound][1] + " from: UserProgramsJSON");
+                        delete allProgramsJSON[ProgramFoundFromAllPrograms];
+                    }
+            }
+
+            //once our HasNot array is ready, load it into the second select
+            document.getElementById('hasNotProgramsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            for (UserProgramPairFound in allProgramsJSON){
+                document.getElementById('hasNotProgramsSelect').innerHTML +=
+                    "<option value='" + allProgramsJSON[UserProgramPairFound][`Plan`] + "'>" + allProgramsJSON[UserProgramPairFound][`Plan`] + "</option>";
+            }
+        }
+    };
+    xhttp.open("GET", "../model/getProgramsUsingJSON.php?ProgramSelected=" + pUserName, true);
     xhttp.send();
 }
 //this gets all unique Subjects found in Courses table only!!

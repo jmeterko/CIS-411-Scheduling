@@ -4,14 +4,13 @@ require '../view/headerInclude.php';
 ?>
 <?php
     $acadPrograms = getAllAcademicPrograms();
-    $allSubjects = getAllSubjects();
 ?>
 <body onload="loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON)" >
     <form enctype="multipart/form-data"
           action="../controller/controller.php?action=ProcessModifyAcadProgram" onsubmit="selectAll('hasSubjectsSelect')" method="post">
         <h3>Modify a program:</h3>
         <br>
-        <select name="programSelect" id="programSelect" onchange="loadProgramSubjects(this.value);" >
+        <select name="programSelect" id="programSelect" onchange="loadProgramSubjects(this.value);" required >
             <option value="Select a program..." >Select a program...</option>
             <?php
                 foreach ($acadPrograms as $program){
@@ -24,13 +23,13 @@ require '../view/headerInclude.php';
             <option >Has these subjects:</option>
             <option ></option>
             <td>
-                <input type="button" value=">>" onclick="swap('hasSubjectsSelect','hasNotSubjectsSelect')">
+                <input type="button" value=">>" onclick="for (let i=0; i<200; i++){swap('hasSubjectsSelect','hasNotSubjectsSelect')}">
 
-                <input type="button" value="<<" onclick="swap('hasNotSubjectsSelect','hasSubjectsSelect')">
+                <input type="button" value="<<" onclick="for (let i=0; i<200; i++){swap('hasNotSubjectsSelect','hasSubjectsSelect')}">
             </td>
         </select>
         &nbsp;
-        <select name="hasNotSubjects" id="hasNotSubjectsSelect" size="10">
+        <select name="hasNotSubjects" id="hasNotSubjectsSelect" size="10" multiple>
             <option >Does not have:</option>
             <option ></option>
 

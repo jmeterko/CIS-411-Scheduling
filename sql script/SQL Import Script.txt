@@ -7,8 +7,6 @@
 
 
 
-   DROP TABLE IF EXISTS userprograms;
-   DROP TABLE IF EXISTS users;
    DROP TABLE IF EXISTS studentclass;
    DROP TABLE IF EXISTS studentmajor;
    DROP TABLE IF EXISTS courseoffering;
@@ -117,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `programsubject` (
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `cis411_csaapp`.`programsubject`
-    ADD INDEX `FK_programsubject_subject` (`Subject`) USING BTREE;
+    ADD INDEX IF NOT EXISTS `FK_programsubject_subject` (`Subject`) USING BTREE;
 
 -- why isn't our CREATE working for our student ID FK?
 -- for now, we add the INDEX after creating the table
@@ -136,25 +134,25 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Email` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `users` (`FirstName`, `LastName`, `UserName`, `Email`) VALUES
+INSERT IGNORE INTO `users` (`FirstName`, `LastName`, `UserName`, `Email`) VALUES
 ('Jon', 'ODonnell', 'admin', 'jodonnell@clarion.edu'),
 ('Bill', 'Updater', 'bill', 'bill@localhost'),
 ('Joe', 'Reader', 'joe', 'joe@localhost'),
 ('guest', 'guest', 'guest', 'guest@localhost');
 
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserName`);
+  ADD PRIMARY KEY IF NOT EXISTS (`UserName`);
 
   -- ---------------------- ^USERS^ -------------------------------------------------------------------------
 
 -- -------------------- ˇUSERPROGRAMSˇ ----------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `userprograms` (
-  `UserName` int(11) NOT NULL,
+  `UserName` varchar(32) NOT NULL,
   `Plan` varchar(10) NOT NULL,
   constraint PK_userprograms Primary Key (UserName, Plan),
   constraint FK_userprograms_acad_program Foreign Key (Plan) references acad_program(Plan)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `cis411_csaapp`.`userprograms`
-    ADD INDEX `FK_userprograms_users` (`UserName`) USING BTREE;
+    ADD INDEX IF NOT EXISTS `FK_userprograms_users` (`UserName`) USING BTREE;
 -- -------------------- ^USERPROGRAMS^ ----------------------------------------------------------------------
