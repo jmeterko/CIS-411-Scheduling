@@ -185,19 +185,22 @@
 				$subLocation = "sub" . $loc . $x; 
 				$corLocation = "cor" . $loc . $x; 
 				$graLocation = "gra" . $loc . $x;
+				$majLocation = "maj" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
 				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}					
 				$x++; 
 			} $loc++;
 			//1
 		if(isset($row1)){
 			$x = 0;
 			while ($x <= $row1){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x; $majLocation = "maj" . $loc . $x; 
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
 				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}				
 				$x++; 
 			} $loc++;
 		}
@@ -206,10 +209,11 @@
 		if(isset($row2)){
 			$x = 0;
 			while ($x <= $row2){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x; $majLocation = "maj" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
 				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}				
 				$x++;
 			} $loc++;
 		}
@@ -218,10 +222,11 @@
 		if(isset($row3)){
 			$x = 0;
 			while ($x <= $row3){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x; $majLocation = "maj" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
 				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}				
 				$x++;
 			} $loc++;
 		}
@@ -230,10 +235,11 @@
 		if(isset($row4)){
 			$x = 0;
 			while ($x <= $row4){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x; $majLocation = "maj" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
 				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}				
 				$x++;
 			} $loc++;
 		}
@@ -242,10 +248,11 @@
 		if(isset($row5)){
 			$x = 0;
 			while ($x <= $row5){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x; $majLocation = "maj" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
 				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}				
 				$x++;
 			} $loc++;
 		}
@@ -254,10 +261,11 @@
 		if(isset($row6)){
 			$x = 0;
 			while ($x <= $row6){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x; $majLocation = "maj" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
 				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}				
 				$x++;
 			} $loc++;
 		}
@@ -266,10 +274,11 @@
 		if(isset($row7)){
 			$x = 0;
 			while ($x <= $row7){
-				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
+				$subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x; $majLocation = "maj" . $loc . $x;
 				if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
 				if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
 				if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}					
+				if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}				
 				$x++; 
 			} $loc++;
 		}
