@@ -276,7 +276,7 @@ function populateElements(){
 	
 	if (andCount > 0){
 		while (x < andCount){
-			makeDivVisibleAnd();
+			rebuildDivs();
 			x++;
 		} x = 0;
 	}
@@ -365,7 +365,35 @@ function makeDivVisibleAnd(){
 	} else if (and == 7){
 		or7 = getNumberOfChildren();
 	} 
+	//if (!document.getElementById("rebuildFlag").value){	updateORCounts(); } 
+	updateORCounts(); 
+	if (and < 7) { and++; }
+	document.getElementById("andCount").value = and;
+    document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
+    document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
+    //alert("divAnd"+and);
+}
+
+function rebuildDivs(){
+	if(and == 0){
+		or0 = getNumberOfChildren();
+	} else if (and == 1){
+		or1 = getNumberOfChildren();
+	} else if (and == 2){
+		or2 = getNumberOfChildren();
+	} else if (and == 3){
+		or3 = getNumberOfChildren();
+	} else if (and == 4){
+		or4 = getNumberOfChildren();
+	} else if (and == 5){
+		or5 = getNumberOfChildren();
+	} else if (and == 6){
+		or6 = getNumberOfChildren();
+	} else if (and == 7){
+		or7 = getNumberOfChildren();
+	} 
 	if (!document.getElementById("rebuildFlag").value){	updateORCounts(); } 
+	
 	if (and < 7) { and++; }
 	document.getElementById("andCount").value = and;
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
