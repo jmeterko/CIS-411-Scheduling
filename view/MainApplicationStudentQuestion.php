@@ -72,6 +72,7 @@ require '../view/headerInclude.php';
                     <select class="form-control, dropdownboxWidth" id="dropdown1" name="dropdown1" onchange="dropdownFreshlyChanged()">
                     <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Program"<?=$form->cat1 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat1 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat1 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -109,6 +110,7 @@ require '../view/headerInclude.php';
                     <select class="form-control, dropdownboxWidth" id="dropdown2" name="dropdown2" onchange="dropdownFreshlyChanged()">
                     <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat2 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat2 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -146,6 +148,7 @@ require '../view/headerInclude.php';
                     <select class="form-control, dropdownboxWidth" id="dropdown3" name="dropdown3" onchange="dropdownFreshlyChanged()">
                     <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat3 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat3 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -183,6 +186,7 @@ require '../view/headerInclude.php';
                     <select class="form-control, dropdownboxWidth" id="dropdown4" name="dropdown4" onchange="dropdownFreshlyChanged()">
                     <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat4 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat4 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -220,6 +224,7 @@ require '../view/headerInclude.php';
                     <select class="form-control, dropdownboxWidth" id="dropdown5" name="dropdown5" onchange="dropdownFreshlyChanged()">
                     <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat5 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat5 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -257,6 +262,7 @@ require '../view/headerInclude.php';
                     <select class="form-control, dropdownboxWidth" id="dropdown6" name="dropdown6" onchange="dropdownFreshlyChanged()">
                     <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat6 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat6 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -294,6 +300,7 @@ require '../view/headerInclude.php';
                     <select class="form-control, dropdownboxWidth" id="dropdown7" name="dropdown7" onchange="dropdownFreshlyChanged()">
                     <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
+						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat7 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat7 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
