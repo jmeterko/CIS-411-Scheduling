@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/sql script/SQL Example Scripts.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GhettoVersioningFolder/Javascript (2).js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/Stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Javascript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +38,21 @@
       <file leaf-file-name="Stylesheet.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/Stylesheet.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="689">
-              <caret line="296" column="30" selection-start-line="296" selection-start-column="30" selection-end-line="296" selection-end-column="30" />
+            <state relative-caret-position="25">
+              <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Javascript (2).js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GhettoVersioningFolder/Javascript (2).js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
+              <folding>
+                <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -45,62 +60,25 @@
       <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Javascript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8160">
-              <caret line="480" column="7" selection-start-line="480" selection-start-column="7" selection-end-line="480" selection-end-column="7" />
+            <state relative-caret-position="300">
+              <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
+                <element signature="e#11890#19508#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainApplicationStudentQuestion.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainApplicationStudentQuestion.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4913">
-              <caret line="289" selection-start-line="289" selection-start-column="143" selection-end-line="290" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SQL Import Script.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SQL Example Scripts.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sql script/SQL Example Scripts.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="importData.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/importData.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="processmodify_User_Program.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/processmodify_User_Program.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modify_User_Program_Form.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/modify_User_Program_Form.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="20" selection-end-column="10" />
+            <state relative-caret-position="266">
+              <caret line="184" column="75" lean-forward="true" selection-start-line="184" selection-start-column="75" selection-end-line="184" selection-end-column="75" />
+              <folding>
+                <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#html#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,19 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>message</find>
-      <find>$</find>
-      <find>{</find>
-      <find />
-      <find>cleartable</find>
-      <find>loadcou</find>
-      <find>getcourses</find>
-      <find>JSONgetCou</find>
-      <find>getsubje</find>
-      <find>getsubjectsandca</find>
-      <find>subjectKey</find>
-      <find>push</find>
-      <find>JSONtestin</find>
       <find>testingsele</find>
       <find>JSONtest</find>
       <find>Corre</find>
@@ -134,6 +99,24 @@
       <find>getall</find>
       <find>upd</find>
       <find>catalog</find>
+      <find>shit</find>
+      <find>GAY</find>
+      <find>gay</find>
+      <find>width:</find>
+      <find>this.id</find>
+      <find>div</find>
+      <find>loadsubje</find>
+      <find>orbutton</find>
+      <find>()</find>
+      <find>makedivinvi</find>
+      <find>ble()</find>
+      <find>()'</find>
+      <find>div()</find>
+      <find>dropdownfreshly</find>
+      <find>dropdownfre</find>
+      <find>changed(</find>
+      <find>invisible</find>
+      <find>invisibl</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -161,7 +144,6 @@
         <option value="$PROJECT_DIR$/model/getCourses.php" />
         <option value="$PROJECT_DIR$/model/JSONgetCourses.php" />
         <option value="$PROJECT_DIR$/view/headerInclude.php" />
-        <option value="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" />
         <option value="$PROJECT_DIR$/view/processImportData.php" />
         <option value="$PROJECT_DIR$/model/getCoursesUsingJSON.php" />
         <option value="$PROJECT_DIR$/model/getProgramsUsingJSON.php" />
@@ -178,9 +160,11 @@
         <option value="$PROJECT_DIR$/view/HomePage.html" />
         <option value="$PROJECT_DIR$/view/modify_User_Program_Form.php" />
         <option value="$PROJECT_DIR$/view/modify_Acad_Program_Form.php" />
-        <option value="$PROJECT_DIR$/js/Javascript.js" />
         <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
         <option value="$PROJECT_DIR$/sql script/SQL Example Scripts.txt" />
+        <option value="$PROJECT_DIR$/css/Stylesheet.css" />
+        <option value="$PROJECT_DIR$/js/Javascript.js" />
+        <option value="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" />
       </list>
     </option>
   </component>
@@ -202,9 +186,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -256,6 +237,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -370,11 +354,12 @@
       <workItem from="1540323916169" duration="3524000" />
       <workItem from="1540411443088" duration="3339000" />
       <workItem from="1540506517180" duration="34866000" />
+      <workItem from="1540835638364" duration="7368000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194351000" />
+    <option name="totallyTimeSpent" value="203397000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -403,7 +388,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3298153" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15833333" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15625" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Learn" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -412,36 +397,13 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="PHP-CGI Server" order="11" />
-      <window_info id="Learn" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3298153" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15625" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="8" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info id="Image Layers" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3298153" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3298153" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3298153" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="SciView" order="8" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,7 +444,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MainApplicationStudentQuestion.html" />
     <entry file="file://$PROJECT_DIR$/Stylesheet.css" />
     <entry file="file://$PROJECT_DIR$/Javascript.js" />
     <entry file="file://$PROJECT_DIR$/LoginPage.html" />
@@ -521,13 +482,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/LoginPage.html" />
-    <entry file="file://$PROJECT_DIR$/css/Stylesheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="689">
-          <caret line="296" column="30" selection-start-line="296" selection-start-column="30" selection-end-line="296" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/Settings.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
@@ -574,13 +528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/headerInclude.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CSV_Test_Files/2088-2188-CIS-Classes.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="882">
@@ -592,13 +539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4913">
-          <caret line="289" selection-start-line="289" selection-start-column="143" selection-end-line="290" />
         </state>
       </provider>
     </entry>
@@ -632,7 +572,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/importData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
+        <state relative-caret-position="442">
           <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
@@ -641,13 +581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/processmodify_Acad_Program.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -686,31 +619,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/HomePage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="32" column="91" selection-start-line="32" selection-start-column="91" selection-end-line="32" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/modify_Acad_Program_Form.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="27" column="103" selection-start-line="27" selection-start-column="103" selection-end-line="27" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Javascript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8160">
-          <caret line="480" column="7" selection-start-line="480" selection-start-column="7" selection-end-line="480" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/processmodify_User_Program.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -721,17 +633,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Example Scripts.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+        <state relative-caret-position="506">
+          <caret line="23" column="34" lean-forward="true" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Example Scripts.txt">
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+        <state relative-caret-position="248">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/processmodify_User_Program.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/HomePage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/processmodify_Acad_Program.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/headerInclude.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/Stylesheet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GhettoVersioningFolder/Javascript (2).js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Javascript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
+            <element signature="e#11890#19508#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="184" column="75" lean-forward="true" selection-start-line="184" selection-start-column="75" selection-end-line="184" selection-end-column="75" />
+          <folding>
+            <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#html#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

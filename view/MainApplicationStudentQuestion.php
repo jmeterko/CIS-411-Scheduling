@@ -17,7 +17,7 @@ require '../view/headerInclude.php';
             <form id="issueInputForm" >
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown0" onchange="dropdownFreshlyChanged()">
+                    <select class="form-control, dropdownboxWidth" id="dropdown0" onchange="dropdownFreshlyChanged(this.id)">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program" id="Program">Program</option>
                         <option value="Location">Location</option>
@@ -33,14 +33,14 @@ require '../view/headerInclude.php';
                     </select>
                     <div class="inline" id="attach0"></div>
                 <br/>
-                <button type="button" id="and0" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and0" class="btn btn-primary" onclick="makeDivVisibleAnd(this.id)">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd1">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="dropdownFreshlyChanged()">
+                    <button id="minus1" type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="dropdownFreshlyChanged(this.id)">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -56,14 +56,14 @@ require '../view/headerInclude.php';
                     </select>
                     <div class="inline" id="attach1"></div>
                     <br/>
-                <button type="button" id="and1" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and1" class="btn btn-primary" onclick="makeDivVisibleAnd(this.id)">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd2">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown2" onchange="dropdownFreshlyChanged()">
+                    <button id="minus1" type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown2" onchange="dropdownFreshlyChanged(this.id)">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -79,14 +79,14 @@ require '../view/headerInclude.php';
                     </select>
                     <div class="inline" id="attach2"></div>
                     <br/>
-                <button type="button" id="and2" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and2" class="btn btn-primary" onclick="makeDivVisibleAnd(this.id)">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group , hiddenDiv" id="divAnd3" >
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown3" onchange="dropdownFreshlyChanged()">
+                    <button  id="minus1" type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown3" onchange="dropdownFreshlyChanged(this.id)">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -102,14 +102,14 @@ require '../view/headerInclude.php';
                     </select>
                     <div class="inline" id="attach3"></div>
                     <br/>
-                <button type="button" id="and3" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and3" class="btn btn-primary" onclick="makeDivVisibleAnd(this.id)">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd4" >
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown4" onchange="dropdownFreshlyChanged()">
+                    <button  id="minus1" type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown4" onchange="dropdownFreshlyChanged(this.id)">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -125,14 +125,14 @@ require '../view/headerInclude.php';
                     </select>
                     <div class="inline" id="attach4"></div>
                     <br/>
-                <button type="button" id="and4" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and4" class="btn btn-primary" onclick="makeDivVisibleAnd(this.id)">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd5" >
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown5" onchange="dropdownFreshlyChanged()">
+                    <button  id="minus1" type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown5" onchange="dropdownFreshlyChanged(this.id)">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -148,14 +148,14 @@ require '../view/headerInclude.php';
                     </select>
                     <div class="inline" id="attach5"></div>
                     <br/>
-                <button type="button" id="and5" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and5" class="btn btn-primary" onclick="makeDivVisibleAnd(this.id)">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd6" >
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown6" onchange="dropdownFreshlyChanged()">
+                    <button  id="minus1" type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown6" onchange="dropdownFreshlyChanged(this.id)">
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -171,14 +171,14 @@ require '../view/headerInclude.php';
                     </select>
                     <div class="inline" id="attach6"></div>
                     <br/>
-                <button type="button" id="and6" class="btn btn-primary" onclick="makeDivVisibleAnd()">And</button>
+                <button type="button" id="and6" class="btn btn-primary" onclick="makeDivVisibleAnd(this.id)">And</button>
                 <br/>
                 <br/>
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd7" >
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown7" onchange="dropdownFreshlyChanged()">
+                    <button  id="minus1" type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+                    <select class="form-control, dropdownboxWidth" id="dropdown7" onchange="dropdownFreshlyChanged(this.id)">
                         <option value=" " selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
