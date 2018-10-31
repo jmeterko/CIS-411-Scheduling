@@ -22,6 +22,9 @@ switch ($action) {
     case 'ImportData':
         include '../view/importData.php';
         break;
+    case 'Loading':
+        include '../view/LoadingPage.php';
+        break;
     case 'Login':
         include '../view/LoginPage.php';
         break;

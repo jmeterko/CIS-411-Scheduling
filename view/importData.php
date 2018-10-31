@@ -37,5 +37,5 @@ require '../view/headerInclude.php';
     </form>
     <br/>
     <input type="button" value="Back" style="float:left" class="btn btn-danger"  onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
-    <input type="submit" value="Submit" style="float:right" class="btn btn-success" />
+    <input type="submit" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=Loading'"/>
 </body>

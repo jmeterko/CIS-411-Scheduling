@@ -14,17 +14,70 @@
       <file leaf-file-name="importData.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/importData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="891">
-              <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+            <state relative-caret-position="1188">
+              <caret line="39" column="158" lean-forward="false" selection-start-line="39" selection-start-column="158" selection-end-line="39" selection-end-column="158" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1023">
+              <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7953">
+              <caret line="241" column="9" lean-forward="false" selection-start-line="241" selection-start-column="9" selection-end-line="241" selection-end-column="9" />
+              <folding>
+                <marker date="1540248555642" expanded="true" signature="242:413" ph="INSERT INTO `cis411_csaApp`.`Course`... " />
+                <marker date="1540248555642" expanded="true" signature="1795:2138" ph="INSERT INTO `cis411_csaApp`.`CourseOffering`... " />
+                <marker date="1540248555642" expanded="true" signature="4558:5160" ph="INSERT INTO `cis411_csaApp`.`Student`... " />
+                <marker date="1540248555642" expanded="true" signature="8153:8287" ph="INSERT INTO `cis411_csaApp`.`acad_program`... " />
+                <marker date="1540248555642" expanded="true" signature="9308:9431" ph="INSERT INTO `cis411_csaApp`.`studentmajor`... " />
+                <marker date="1540248555642" expanded="true" signature="10916:11123" ph="INSERT INTO `cis411_csaApp`.`studentclass`... " />
+                <marker date="1540248555642" expanded="true" signature="12607:12619" ph="DELETE FROM ${$tableName}... " />
+                <marker date="1540248555642" expanded="true" signature="13147:13167" ph="select * fro... Course" />
+                <marker date="1540248555642" expanded="true" signature="13613:13639" ph="select * fro... Acad_Program" />
+                <marker date="1540248555642" expanded="true" signature="14462:14492" ph="SELECT LAST(... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadingPage.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/view/LoadingPage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stylesheet.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/Stylesheet.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="767">
+              <caret line="317" column="42" lean-forward="true" selection-start-line="317" selection-start-column="42" selection-end-line="317" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Javascript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
+            <state relative-caret-position="2838">
               <caret line="164" column="22" lean-forward="false" selection-start-line="164" selection-start-column="22" selection-end-line="164" selection-end-column="22" />
               <folding>
                 <element signature="e#11543#11625#0" expanded="false" />
@@ -119,9 +172,11 @@
       <find>DA</find>
       <find>CIS</find>
       <find>makedivvisibleor</find>
+      <find>39C0C4</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
+      <replace>000000</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -156,13 +211,14 @@
         <option value="$PROJECT_DIR$/view/MainApplicationCourseQuestion.php" />
         <option value="$PROJECT_DIR$/view/DisplayData.php" />
         <option value="$PROJECT_DIR$/view/HomePage.php" />
-        <option value="$PROJECT_DIR$/controller/controller.php" />
-        <option value="$PROJECT_DIR$/css/Stylesheet.css" />
         <option value="$PROJECT_DIR$/view/headerInclude.php" />
         <option value="$PROJECT_DIR$/view/importDataTest.php" />
         <option value="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" />
-        <option value="$PROJECT_DIR$/view/importData.php" />
         <option value="$PROJECT_DIR$/js/Javascript.js" />
+        <option value="$PROJECT_DIR$/view/importData.php" />
+        <option value="$PROJECT_DIR$/css/Stylesheet.css" />
+        <option value="$PROJECT_DIR$/view/LoadingPage.php" />
+        <option value="$PROJECT_DIR$/controller/controller.php" />
       </list>
     </option>
   </component>
@@ -176,7 +232,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-57" />
     <option name="y" value="187" />
     <option name="width" value="974" />
@@ -207,6 +263,16 @@
             <path>
               <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
               <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
@@ -359,12 +425,12 @@
       <workItem from="1540248068036" duration="8211000" />
       <workItem from="1540413156240" duration="2560000" />
       <workItem from="1540834859269" duration="4175000" />
-      <workItem from="1540839140162" duration="2679000" />
+      <workItem from="1540839140162" duration="5585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166341000" />
+    <option name="totallyTimeSpent" value="169247000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -376,7 +442,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="-13" width="2762" height="1770" extended-state="6" />
+    <frame x="-13" y="-13" width="2762" height="1770" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -450,13 +516,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/view/processImportData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-103">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/stubs/standard/standard_4.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -579,13 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="271" column="0" lean-forward="true" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/DisplayData.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1361">
@@ -594,20 +646,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/fileUploadPage.php" />
-    <entry file="file://$PROJECT_DIR$/controller/controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/Stylesheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1361">
-          <caret line="312" column="125" lean-forward="false" selection-start-line="312" selection-start-column="125" selection-end-line="312" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/headerInclude.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1089">
@@ -619,14 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
           <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="34" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/MainApplicationCourseQuestion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9273">
-          <caret line="290" column="7" lean-forward="false" selection-start-line="290" selection-start-column="7" selection-end-line="290" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -646,25 +676,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/view/MainApplicationCourseQuestion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1406">
+          <caret line="290" column="7" lean-forward="false" selection-start-line="290" selection-start-column="7" selection-end-line="290" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="37" column="63" lean-forward="false" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="63" />
+        <state relative-caret-position="198">
+          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#html#0;n#div#0;n#body#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/Stylesheet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="317" column="42" lean-forward="true" selection-start-line="317" selection-start-column="42" selection-end-line="317" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7953">
+          <caret line="241" column="9" lean-forward="false" selection-start-line="241" selection-start-column="9" selection-end-line="241" selection-end-column="9" />
+          <folding>
+            <marker date="1540248555642" expanded="true" signature="242:413" ph="INSERT INTO `cis411_csaApp`.`Course`... " />
+            <marker date="1540248555642" expanded="true" signature="1795:2138" ph="INSERT INTO `cis411_csaApp`.`CourseOffering`... " />
+            <marker date="1540248555642" expanded="true" signature="4558:5160" ph="INSERT INTO `cis411_csaApp`.`Student`... " />
+            <marker date="1540248555642" expanded="true" signature="8153:8287" ph="INSERT INTO `cis411_csaApp`.`acad_program`... " />
+            <marker date="1540248555642" expanded="true" signature="9308:9431" ph="INSERT INTO `cis411_csaApp`.`studentmajor`... " />
+            <marker date="1540248555642" expanded="true" signature="10916:11123" ph="INSERT INTO `cis411_csaApp`.`studentclass`... " />
+            <marker date="1540248555642" expanded="true" signature="12607:12619" ph="DELETE FROM ${$tableName}... " />
+            <marker date="1540248555642" expanded="true" signature="13147:13167" ph="select * fro... Course" />
+            <marker date="1540248555642" expanded="true" signature="13613:13639" ph="select * fro... Acad_Program" />
+            <marker date="1540248555642" expanded="true" signature="14462:14492" ph="SELECT LAST(... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1023">
+          <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/importData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        <state relative-caret-position="1188">
+          <caret line="39" column="158" lean-forward="false" selection-start-line="39" selection-start-column="158" selection-end-line="39" selection-end-column="158" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Javascript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
+        <state relative-caret-position="2838">
           <caret line="164" column="22" lean-forward="false" selection-start-line="164" selection-start-column="22" selection-end-line="164" selection-end-column="22" />
           <folding>
             <element signature="e#11543#11625#0" expanded="false" />
@@ -729,6 +805,16 @@
             <marker date="1540924745247" expanded="true" signature="10444:10448" ph="..." />
             <marker date="1540924745247" expanded="true" signature="10895:10901" ph="&amp;nbsp;" />
             <marker date="1540924745247" expanded="true" signature="10901:10907" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/LoadingPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
