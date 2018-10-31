@@ -157,19 +157,7 @@
             displayDBError($e->getMessage());
         }
     }
-    function getAllUsers() {
-        try {
-            $db = connectToMySQL();
-            $query = "SELECT FirstName, LastName, UserName, Password, Email, UserID FROM users order by LastName";
-            $statement = $db->prepare($query);
-            $statement->execute();
-            $results = $statement->fetchAll();
-            $statement->closeCursor();
-            return $results;
-        } catch (PDOException $e) {
-            displayDBError($e->getMessage());
-        }
-    }
+
     function getUser($UserID){
         try {
             $db = getDBConnection();

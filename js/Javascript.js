@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		  populateElements(formRebuilt);
 		  populateOrTaking(formRebuilt);
 		  populateOrProgram(formRebuilt);
-		 // populateOrCompleted(formRebuilt)
+		  populateOrCompleted(formRebuilt)
 		  populateOrLocation(formRebuilt);
 		  formRebuilt = true;
 	}
@@ -117,11 +117,10 @@ function populateOrTaking(formRebuilt){
 	//2. set up variables, and use counter and location variable to dynamically assign each value
 			var x = 0;
 			var loc = 0;
+			var dropdownVal = document.getElementById("dropdown0").value;
 				var subLocation = "";
 				var corLocation = "";
-				var graLocation = "";
-				var majLocation = "";
-				var pSub, pCor, pGra, pMaj, select;
+				var pSub, pCor, select;
 				
 				//3. until all or's are accounted for, set values that were passed by stdq object
 				
@@ -129,13 +128,13 @@ function populateOrTaking(formRebuilt){
 				while (x < orCount0){
 					subLocation = "sub" + loc + x; 
 					corLocation = "cor" + loc + x; 
-					graLocation = "gra" + loc + x;
-					majLocation = "maj" + loc + x;
 
 					//4. assign values based on category, since different dropdowns have different names
 					
-					//=====[ TAKING - Row0 ]=====//		
-					if(document.getElementById("dropdown0").value == "Taking"){
+					//=====[ TAKING || Subject + Catalog Combo - Row0 ]=====//		
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
 							//set the value from the hidden field to the dropdown value
 								pSub = document.getElementById("val" + subLocation).value;
 								pCor = document.getElementById("val" + corLocation).value;
@@ -155,14 +154,17 @@ function populateOrTaking(formRebuilt){
 
 				//increase loc to next row, reset x at starting position of that row.
 				loc++; x = 0; 	
-
+				dropdownVal = document.getElementById("dropdown1").value;
 				//1
 				while (x < orCount1){
 
 					subLocation = "sub" + loc + x; 
 					corLocation = "cor" + loc + x; 
 					graLocation = "gra" + loc + x;
-					if(document.getElementById("dropdown1").value == "Taking"){
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
 							pSub = document.getElementById("val" + subLocation).value;
 							pCor = document.getElementById("val" + corLocation).value;
 
@@ -177,14 +179,17 @@ function populateOrTaking(formRebuilt){
 							}
 					} x++;	
 				} loc++; x = 0;			
-
+				dropdownVal = document.getElementById("dropdown2").value;
 				//2
 				while (x < orCount2){
 
 					subLocation = "sub" + loc + x; 
 					corLocation = "cor" + loc + x; 
 					graLocation = "gra" + loc + x;
-					if(document.getElementById("dropdown2").value == "Taking"){
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
 							pSub = document.getElementById("val" + subLocation).value;
 							pCor = document.getElementById("val" + corLocation).value;
 
@@ -199,14 +204,17 @@ function populateOrTaking(formRebuilt){
 							}
 					} x++;	
 				} loc++; x = 0;			
-
+				dropdownVal = document.getElementById("dropdown3").value;
 				//3
 				while (x < orCount3){
 
 					subLocation = "sub" + loc + x; 
 					corLocation = "cor" + loc + x; 
 					graLocation = "gra" + loc + x;
-					if(document.getElementById("dropdown3").value == "Taking"){
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
 							pSub = document.getElementById("val" + subLocation).value;
 							pCor = document.getElementById("val" + corLocation).value;
 
@@ -221,14 +229,17 @@ function populateOrTaking(formRebuilt){
 							}
 					} x++;	
 				} loc++; x = 0;	
-
+                dropdownVal = document.getElementById("dropdown4").value;
 				//4
 				while (x < orCount4){
 
 					subLocation = "sub" + loc + x; 
 					corLocation = "cor" + loc + x; 
 					graLocation = "gra" + loc + x;
-					if(document.getElementById("dropdown4").value == "Taking"){
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
 							pSub = document.getElementById("val" + subLocation).value;
 							pCor = document.getElementById("val" + corLocation).value;
 
@@ -243,14 +254,17 @@ function populateOrTaking(formRebuilt){
 							}
 					} x++;	
 				} loc++; x = 0;		
-
+				dropdownVal = document.getElementById("dropdown5").value;
 				//5
 				while (x < orCount5){
 
 					subLocation = "sub" + loc + x; 
 					corLocation = "cor" + loc + x; 
 					graLocation = "gra" + loc + x;
-					if(document.getElementById("dropdown5").value == "Taking"){
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
 							pSub = document.getElementById("val" + subLocation).value;
 							pCor = document.getElementById("val" + corLocation).value;
 
@@ -265,14 +279,17 @@ function populateOrTaking(formRebuilt){
 							}
 					} x++;	
 				} loc++; x = 0;	
-
+				dropdownVal = document.getElementById("dropdown6").value;
 				//6
 				while (x < orCount6){
 
 					subLocation = "sub" + loc + x; 
 					corLocation = "cor" + loc + x; 
 					graLocation = "gra" + loc + x;
-					if(document.getElementById("dropdown6").value == "Taking"){
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
 							pSub = document.getElementById("val" + subLocation).value;
 							pCor = document.getElementById("val" + corLocation).value;
 
@@ -287,14 +304,17 @@ function populateOrTaking(formRebuilt){
 							}
 					} x++;	
 				} loc++; x = 0;		
-
+				dropdownVal = document.getElementById("dropdown7").value;
 				//7
 				while (x < orCount7){
 
 					subLocation = "sub" + loc + x; 
 					corLocation = "cor" + loc + x; 
 					graLocation = "gra" + loc + x;
-					if(document.getElementById("dropdown7").value == "Taking"){
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
 							pSub = document.getElementById("val" + subLocation).value;
 							pCor = document.getElementById("val" + corLocation).value;
 
@@ -588,7 +608,7 @@ function populateOrCompleted(formRebuilt){
 					graLocation = "gra" + loc + x;
 					
 					//=====[ COMPLETED - Row0 ]=====//		
-					if(document.getElementById("dropdown0").value == "Completed"){
+					if(document.getElementById("dropdown0").value == "Completed" || document.getElementById("dropdown0").value == "Taking/Completed"){
 						pSub = document.getElementById("val" + subLocation).value;
 						pCor = document.getElementById("val" + corLocation).value;
 						pGra = document.getElementById("val" + graLocation).value;
@@ -602,9 +622,232 @@ function populateOrCompleted(formRebuilt){
 									select.options[select.options.length] = new Option(pCor, pCor);
 									select.value = pCor;
 								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
 						}										
 					x++;	
-				} // ** END Row0 ** //
+				} loc++; x = 0;
+				
+				//1
+				while (x < orCount1){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row1 ]=====//		
+					if(document.getElementById("dropdown1").value == "Completed" || document.getElementById("dropdown1").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;		
+
+				//2
+				while (x < orCount2){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row2 ]=====//		
+					if(document.getElementById("dropdown2").value == "Completed" || document.getElementById("dropdown2").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;		
+
+				//3
+				while (x < orCount3){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row3 ]=====//		
+					if(document.getElementById("dropdown3").value == "Completed" || document.getElementById("dropdown3").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;
+
+				//4
+				while (x < orCount4){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row4 ]=====//		
+					if(document.getElementById("dropdown4").value == "Completed" || document.getElementById("dropdown4").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;				
+		
+				//5
+				while (x < orCount5){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row5 ]=====//		
+					if(document.getElementById("dropdown5").value == "Completed" || document.getElementById("dropdown5").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;	
+
+				//6
+				while (x < orCount6){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row6 ]=====//		
+					if(document.getElementById("dropdown6").value == "Completed" || document.getElementById("dropdown6").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;
+				
+				//7
+				while (x < orCount7){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row7 ]=====//		
+					if(document.getElementById("dropdown7").value == "Completed" || document.getElementById("dropdown7").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;						
 		}
 }
 
