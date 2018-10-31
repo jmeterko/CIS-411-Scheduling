@@ -124,7 +124,33 @@ function addNewStudent($ID, $Name, $Last_Term, $Current, $Location,$Total, $GPA,
         die;
     }
 }
-
+//Instructor,Name,Term,Session,Subject,Catalog,Section,Descr,Count ID,Acad Org,Start Time,End Time,Days,Cap Enrl
+function addNewSubject($Subject) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`Subject` 
+                      ( `Subject`) 
+                      VALUES (:subject)";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':subject', "$Subject");
+        $statement->execute();
+        $statement->closeCursor();
+        //$statement->debugDumpParams();
+        //echo(getLastInsertRow("Name", "course"));
+        $errorCode = $statement->errorCode();
+        if ($statement->rowCount() < 1)
+            echo "Row was not inserted for: " . $Subject . " Error code: " . $errorCode . "<br>";
+        if ($errorCode != "00000")
+            echo "Error code $errorCode:  Attempted to insert duplicate Primary Key:   "
+                . $Subject . "<br>"
+                . "Duplicate subject found in import file. <br><br>";
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 //rowtotal is just for debugging info
 function addNewProgram($rowTotal, $Plan, $PlanDescr) {
     try {
@@ -269,7 +295,140 @@ function getAllAcademicPrograms() {
         die;
     }
 }
+function getAllSubjects() {
+    try {
+        $db = getDBConnection();
+        $query = "select * from Subject";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+function getAllUsers() {
+    try {
+        $db = getDBConnection();
+        $query = "select * from Users";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+function getProgramSubjects($pProgramName) {
+    try {
+        $db = getDBConnection();
+        $query = "SELECT * FROM programsubject WHERE Plan='" . $pProgramName . "'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 
+function getUserPrograms($pUserName) {
+    try {
+        $db = getDBConnection();
+        $query = "SELECT * FROM userprograms WHERE UserName='" . $pUserName . "'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+//remove all the entries with that Program, then add the selected ones
+function updateProgramSubjects($pProgramName, $addSubjects)
+{
+    try {
+        $rowCount = 0;
+        $db = getDBConnection();
+        $query = "DELETE FROM programsubject WHERE Plan= :programName";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':programName', $pProgramName);
+        $statement->execute();
+        ////process the array that was passed in
+        for ($i = 0; $i < count($addSubjects); $i++) {
+            $subjectToAdd = $addSubjects[$i];
+            $query = "INSERT INTO programsubject (`Plan`, `Subject`) VALUES (:programName, :subjectToAdd)";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':programName', $pProgramName);
+            $statement->bindValue(':subjectToAdd', $subjectToAdd);
+            $success = $statement->execute();
+            $rowCount += $statement->rowCount();
+        }
+        $statement->closeCursor();
+        return $rowCount;           // how many rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        //die;
+    }
+}
+
+//remove all the entries with that Program, then add the selected ones
+function updateUserPrograms($pUserName, $addPrograms)
+{
+    try {
+        $rowCount = 0;
+        $db = getDBConnection();
+        $query = "DELETE FROM userprograms WHERE UserName= :userName";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':userName', $pUserName);
+        $statement->execute();
+        ////process the array that was passed in
+        for ($i = 0; $i < count($addPrograms); $i++) {
+            $programToAdd = $addPrograms[$i];
+            $query = "INSERT INTO userprograms (`UserName`, `Plan`) VALUES (:userName, :programToAdd)";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':userName', $pUserName);
+            $statement->bindValue(':programToAdd', $programToAdd);
+            $success = $statement->execute();
+            $rowCount += $statement->rowCount();
+        }
+        $statement->closeCursor();
+        return $rowCount;           // how many rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        //die;
+    }
+}
+
+function getNotProgramSubjects($pProgramName) {
+    try {
+        $db = getDBConnection();
+        $query = "SELECT * FROM programsubject WHERE Plan <>'" . $pProgramName . "'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 function getDBConnection() {
     $dsn = 'mysql:host=localhost;dbname=cis411_csaApp';
     $username = 'root';

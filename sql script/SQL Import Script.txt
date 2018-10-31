@@ -7,14 +7,11 @@
 
 
 
-   DROP TABLE IF EXISTS userprograms;
-   DROP TABLE IF EXISTS users;
    DROP TABLE IF EXISTS studentclass;
    DROP TABLE IF EXISTS studentmajor;
    DROP TABLE IF EXISTS courseoffering;
    DROP TABLE IF EXISTS course;
    DROP TABLE IF EXISTS student;
-   DROP TABLE IF EXISTS acad_program;
 
 
 -- Table structure for table `classes`
@@ -22,7 +19,7 @@
 
 CREATE TABLE `course` (
   `Subject` varchar(4) NOT NULL,
-  `Catalog` varchar(5) NOT NULL,
+  `Catalog` int(5) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Acad_Org` varchar(4) NOT NULL,
   constraint PK_course Primary Key (Subject, Catalog )
@@ -32,7 +29,7 @@ CREATE TABLE `courseoffering` (
   `Term` int(11) NOT NULL,
   `Session` varchar(3) NOT NULL,
   `Subject` varchar(4) NOT NULL,
-  `Catalog` varchar(5) NOT NULL,
+  `Catalog` int(5) NOT NULL,
   `Section` varchar(4) NOT NULL,
   `InstructorName` varchar(22) NOT NULL,
   `Count_ID` int(11) NOT NULL,
@@ -74,19 +71,18 @@ CREATE TABLE `studentclass` (
   `Term` int(11) NOT NULL,
   `Session` varchar(3) NOT NULL,
   `Subject` varchar(4) NOT NULL,
-  `Catalog` varchar(5) NOT NULL,
+  `Catalog` int(5) NOT NULL,
   `Section` varchar(4) NOT NULL,
   constraint PK_studentclass Primary Key (ID, Term, Session, Subject, Catalog, Section),
   constraint FK_studentclass_student Foreign Key (ID) references student(ID)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `acad_program` (
+CREATE TABLE IF NOT EXISTS `acad_program` (
   `Plan` varchar(10) NOT NULL,
   `Plan_Descr` varchar(30) DEFAULT NULL,
 
   constraint PK_acad_program Primary Key (Plan)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 CREATE TABLE `studentmajor` (
   `ID` int(11) NOT NULL,
@@ -96,6 +92,30 @@ CREATE TABLE `studentmajor` (
   constraint FK_studentmajor_student Foreign Key (ID) references student(ID),
   constraint FK_studentmajor_acad_program Foreign Key (Plan) references acad_program(Plan)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `Current_Term` int(4) NOT NULL,
+  `Latest_Term` int(4) NOT NULL,
+  `Last_Import_Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `subject` (
+  `Subject` varchar(4) NOT NULL,
+
+  constraint PK_subject Primary Key (Subject)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `programsubject` (
+  `Plan` varchar(10) NOT NULL,
+  `Subject` varchar(4) NOT NULL,
+
+  constraint PK_programsubject Primary Key (Subject, Plan),
+  constraint FK_programsubject_subject Foreign Key (Subject) references subject(Subject),
+  constraint FK_programsubject_acad_program Foreign Key (Plan) references acad_program(Plan)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `cis411_csaapp`.`programsubject`
+    ADD INDEX IF NOT EXISTS `FK_programsubject_subject` (`Subject`) USING BTREE;
 
 -- why isn't our CREATE working for our student ID FK?
 -- for now, we add the INDEX after creating the table
@@ -114,25 +134,25 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Email` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `users` (`FirstName`, `LastName`, `UserName`, `Email`) VALUES
+INSERT IGNORE INTO `users` (`FirstName`, `LastName`, `UserName`, `Email`) VALUES
 ('Jon', 'ODonnell', 'admin', 'jodonnell@clarion.edu'),
 ('Bill', 'Updater', 'bill', 'bill@localhost'),
 ('Joe', 'Reader', 'joe', 'joe@localhost'),
 ('guest', 'guest', 'guest', 'guest@localhost');
 
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserName`);
+  ADD PRIMARY KEY IF NOT EXISTS (`UserName`);
 
   -- ---------------------- ^USERS^ -------------------------------------------------------------------------
 
 -- -------------------- ˇUSERPROGRAMSˇ ----------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `userprograms` (
-  `UserName` int(11) NOT NULL,
+  `UserName` varchar(32) NOT NULL,
   `Plan` varchar(10) NOT NULL,
   constraint PK_userprograms Primary Key (UserName, Plan),
   constraint FK_userprograms_acad_program Foreign Key (Plan) references acad_program(Plan)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `cis411_csaapp`.`userprograms`
-    ADD INDEX `FK_userprograms_users` (`UserName`) USING BTREE;
+    ADD INDEX IF NOT EXISTS `FK_userprograms_users` (`UserName`) USING BTREE;
 -- -------------------- ^USERPROGRAMS^ ----------------------------------------------------------------------

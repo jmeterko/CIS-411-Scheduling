@@ -302,6 +302,7 @@ function loadPrograms()
 }
 
 
+$subjectArray = array();
 function loadClasses()
 {
     //////////////////////////////////////////////////////////////////
@@ -348,15 +349,18 @@ function loadClasses()
     //some catalogs have multiple spellings (" 110" and "110")
     //some classes have multiple spellings ("Intro To Java" and "Intro to Java")
     $courseArray = array(); //hash table implementation
+    $subjectArray = array();
     //$courseToAdd = array();
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //file headings:       //Subject    Catalog       Name         Descr       Acad_Org
         //$courseItemString = $data[4]."|".$data[5]."|".$data[1]."|".$data[7]."|".$data[9]; //assemble a string unique to the course
         $courseItemStringValue = $data[4]."|".str_replace(' ', '', $data[5])."|".$data[7]."|".$data[9]; //SUBJ|CATA|DESCR|ACADORG //string unique to course
         $courseItemStringKey = $data[4]."|".str_replace(' ', '', $data[5]);
+        $subjectItem = $data[4];
         //remove whitespace from catalog     ^^^
         //$courseArray[$courseItemString] = 3;      //add it as a key to the AssociativeArray, key value is meaningless
         $courseArray[strtoupper($courseItemStringKey)] = $courseItemStringValue;      //add it as a key to the AssociativeArray, value is original format, key is UPPERCASE
+        $subjectArray[strtoupper($subjectItem)] = $subjectItem;
         //^^^unique ID:case-insensitive string...  value:case-sensitive
         //so, we're saving each class only once, spelling it the way it is spelled the last time we find it
         //echo "courseItemString is " . $courseItemString . "<br>";
@@ -378,11 +382,18 @@ function loadClasses()
     $errorMessage = "Inserted $rowCount rows into table Course. <br>";
     echo $errorMessage . "<br>";
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //               ****Why are we only inserting 82 out of 162?****
-    //
-    //                                                          //idk wtf is up
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //process subjectArray with a ForEach loop, add to database
+    $rowCount = 0;
+    $testingCount = 0;
+    echo sizeof($subjectArray) . " unique subjects found in Courses file, attempting to add to Subject table:<br>";
+    foreach ($subjectArray as $subjectKey => $subjectValue){
+        $rowCount += addNewSubject($subjectValue);
+        $testingCount++;
+        echo "Iteration: " . $testingCount . "   Subjects inserted: " . $rowCount .
+            "... " . $subjectValue . "<br>";
+    }
+
+
     ///
     //print courseArray for debugging
     echo "Printing out the courseArray: <br>";
@@ -461,12 +472,24 @@ function loadStudentsClasses()
         //INSERT INTO StudentsClasses <each field>
         $rowTotal++;
         $rowCount += addNewStudentCourse($rowTotal, $data[0], $data[2], $data[3], $data[4], $data[5], $data[6]);
+        $subjectItem = $data[4];
+        $subjectArray[strtoupper($subjectItem)] = $subjectItem;
     }                                           //addNewStudentsClasses^^^
     echo    "There are " . $rowTotal . " rows in Students-Courses CSV file. <br>".
         "There should be " . $rowTotal . " rows inserted into table StudentCourse. <br>";
-    $errorMessage = "Inserted $rowCount rows into table Students-Classes.";
+    $errorMessage = "Inserted $rowCount rows into table Students-Classes.<br>";
     echo $errorMessage;
 
+    //process subjectArray with a ForEach loop, add to database
+    $rowCount = 0;
+    $testingCount = 0;
+    echo sizeof($subjectArray) . " unique subjects found in Students-Courses file, attempting to add to Subject table:<br>";
+    foreach ($subjectArray as $subjectKey => $subjectValue){
+        $rowCount += addNewSubject($subjectValue);
+        $testingCount++;
+        echo "Iteration: " . $testingCount . "   Subjects inserted: " . $rowCount .
+            "... " . $subjectValue . "<br>";
+    }
     //print 10 rows to screen for convenience
     echo "<h3>First 10 Students-Classes are:</h3><ol>";
     rewind($file);
