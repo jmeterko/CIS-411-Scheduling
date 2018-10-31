@@ -36,6 +36,7 @@ function makeDivVisibleAnd(pID){
     //alert("called");
     and=pID.replace( /[^0-9]/g, `` );
     and++;
+    $('#dropdown' + and).prop('disabled', false);
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
     document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
     //alert("divAnd"+and);
@@ -54,7 +55,8 @@ function makeDivInvisible(pID){
     });
     document.getElementById("divAnd" + and).removeAttribute("class","visibleDiv");
     document.getElementById("divAnd" + and).setAttribute("class","hiddenDiv");
-    and--;
+    if(and>0)
+        and--;
 }
 
 function removeOrDiv(pID){
@@ -166,6 +168,44 @@ function changeFileDiv(pID){
     fileCounter=pID.replace( /[^0-9]/g, `` );
     var currentFileDiv=$('#noFile' + fileCounter);
     currentFileDiv.html(filename);
+}
+
+//SAVE QUESTION POPUP BOX
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+function checkIfUserWantsToSaveQuestion(){
+    var modal = document.getElementById('myModal');
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    if($('#userSaveQuestion').prop('checked')){
+        //alert("yes");
+        modal.style.display = "block";
+    }
+    else {
+        //alert("no");
+        window.location.replace("../controller/controller.php?action=DisplayData");
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 }
 
 //********************************************************************************
@@ -341,3 +381,4 @@ function getSubjectsUsingJSON(xhttp){
     return jsObjectHoldingAllOfOurSubjects;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
 }
+

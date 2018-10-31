@@ -5,7 +5,8 @@ require '../view/headerInclude.php';
 
 <body style="font-size: 20px; ">
 <center><h1>Results</h1></center>
-<center><table class="my_table">
+<center>
+    <table class="my_table">
         <tr>
             <th>&nbsp;</th>
             <th>ID</th>

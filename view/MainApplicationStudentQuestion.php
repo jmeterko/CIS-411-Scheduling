@@ -50,6 +50,7 @@ require '../view/headerInclude.php';
                         <option value="Not Completed">Not Completed</option>
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
+                        <option value="courses" disabled><b>---SAVED QUESTIONS---</b></option>
                     </select>
                     <div class="inline" id="attach0"></div>
                 <br/>
@@ -60,7 +61,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd1">
                     <button type="button" class="glyphicon glyphicon-minus" id="minusButton1" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="dropdownFreshlyChanged(this.id)">
+                    <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="dropdownFreshlyChanged(this.id)" disabled>
                         <option value="" id="default" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -83,7 +84,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd2">
                     <button type="button" class="glyphicon glyphicon-minus" id="minusButton2" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown2" onchange="dropdownFreshlyChanged(this.id)">
+                    <select class="form-control, dropdownboxWidth" id="dropdown2" onchange="dropdownFreshlyChanged(this.id)" disabled>
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -106,7 +107,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group , hiddenDiv" id="divAnd3" >
                     <button type="button" class="glyphicon glyphicon-minus" id="minusButton3" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown3" onchange="dropdownFreshlyChanged(this.id)">
+                    <select class="form-control, dropdownboxWidth" id="dropdown3" onchange="dropdownFreshlyChanged(this.id)" disabled>
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -127,9 +128,20 @@ require '../view/headerInclude.php';
                 <br/>
                 </div>
 
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <input type="text" id="savedQuestion" placeholder="Name the question..."/>
+                        <button type="button" id="play_button" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=DisplayData'" style="float:right;">&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</button>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+
                 <div class="form-group, hiddenDiv" id="divAnd4" >
                     <button type="button" class="glyphicon glyphicon-minus" id="minusButton4" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown4" onchange="dropdownFreshlyChanged(this.id)">
+                    <select class="form-control, dropdownboxWidth" id="dropdown4" onchange="dropdownFreshlyChanged(this.id)" disabled>
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -152,7 +164,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd5" >
                     <button type="button" class="glyphicon glyphicon-minus" id="minusButton5" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown5" onchange="dropdownFreshlyChanged(this.id)">
+                    <select class="form-control, dropdownboxWidth" id="dropdown5" onchange="dropdownFreshlyChanged(this.id)" disabled>
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -175,7 +187,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd6" >
                     <button type="button" class="glyphicon glyphicon-minus" id="minusButton6" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown6" onchange="dropdownFreshlyChanged(this.id)">
+                    <select class="form-control, dropdownboxWidth" id="dropdown6" onchange="dropdownFreshlyChanged(this.id)" disabled>
                         <option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -198,7 +210,7 @@ require '../view/headerInclude.php';
 
                 <div class="form-group, hiddenDiv" id="divAnd7" >
                     <button type="button" class="glyphicon glyphicon-minus" id="minusButton7" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown7" onchange="dropdownFreshlyChanged(this.id)">
+                    <select class="form-control, dropdownboxWidth" id="dropdown7" onchange="dropdownFreshlyChanged(this.id)" disabled>
                         <option value=" " selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
                         <option value="Location">Location</option>
@@ -301,13 +313,13 @@ require '../view/headerInclude.php';
                             years
                         </div>
 
-                        <b style="float:right">Save this question</b> <input type="checkbox" style="float:right"/>
+                        <b style="float:right">Save this question</b> <input type="checkbox" style="float:right" id="userSaveQuestion"/>
                         <br/>
                         <br/>
                     </div>
                 </div>
                 <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
-                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=DisplayData'" />
+                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="checkIfUserWantsToSaveQuestion()" />
             </form>
         </div>
     </div>
