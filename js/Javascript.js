@@ -363,6 +363,45 @@ function getSubjectsUsingJSON(xhttp){
 }
 
 //table
+//^????
+
+//the function that copies selected emails to clipboard
+function copyEmailsToClipboard() {
+    //this is pretty gross we have a hidden text box where the emails are typed
+    document.getElementById("emails").style.visibility="visible";
+
+    //the list of emails
+    var emailList = "";
+    //which row we are on
+    var rows = document.getElementsByTagName("tr");
+    //the table
+    var table = document.getElementById("result_table");
+    //row counter
+    var i;
+    //cycle through the table adding the email of the row we're on to emalList if that row is checked
+    for (i=1; i<rows.length;i++)
+    {
+        if (table.rows[i].cells[0].getElementsByTagName('input')[0].checked ) {
+        //alert(table.rows[i].cells[0].getElementsByTagName('input')[0].checked);
+            emailList += (table.rows[i].cells[10].innerHTML);
+            emailList += ", ";
+        }
+    }
+
+    //put our list of emails in a hidden textbox so we can select and copy them
+    document.getElementById("emailList").value=emailList;
+
+    //select and copy the content of the textbox
+    var copyList = document.querySelector("#emailList");
+    copyList.select();
+    document.execCommand("copy");
+
+    //and then we hide that textbox after its all copied again
+    document.getElementById("emails").style.visibility="hidden";
+
+    //alert to see if it all worked and nothing broke along  the way
+    alert("Emails of selected rows successfully copied.");
+}
 
 
 

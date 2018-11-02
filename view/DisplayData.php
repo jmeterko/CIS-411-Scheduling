@@ -3,52 +3,102 @@ $title = "Homepage";
 require '../view/headerInclude.php';
 ?>
 
+
 <body style="font-size: 20px; ">
 <center><h1>Results</h1></center>
 <center>
-    <table class="my_table">
+    <table class="my_table" id ="result_table">
         <tr>
-            <th>&nbsp;</th>
+            <th id="checkboxes">&nbsp;</th>
             <th>ID</th>
-            <th>Name&nbsp;&nbsp;</th>
-            <th>Campus&nbsp;&nbsp;</th>
-            <th>Current&nbsp;&nbsp;</th>
-            <th>Last Term&nbsp;&nbsp;</th>
-            <th>Total Credits&nbsp;&nbsp;</th>
-            <th>Rank&nbsp;&nbsp;</th>
-            <th>GPA&nbsp;&nbsp;</th>
-            <th>Programs&nbsp;&nbsp;</th>
-            <th>Eagle Mail&nbsp;&nbsp;</th>
+            <th>Name</th>
+            <th>Campus</th>
+            <th>Current</th>
+            <th>Last Term</th>
+            <th>Total Credits</th>
+            <th>Rank</th>
+            <th>GPA</th>
+            <th>Programs</th>
+            <th>Eagle Mail</th>
             <th>History</th>
         </tr>
         <tr>
             <td><input type="checkbox"/></td>
-            <td>123456789&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Bob Smith&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Clarion&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Y&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Spring 2018&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>110&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Junior&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>2.5&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>CIS&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>b.l.smith@eagle.clarion.edu&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>History&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>123456789</td>
+            <td>Bob Smith</td>
+            <td>Clarion</td>
+            <td>Y</td>
+            <td>Spring 2018</td>
+            <td>110</td>
+            <td>Junior</td>
+            <td>2.5</td>
+            <td>CIS</td>
+            <td>b.p.smith@eagle.clarion.edu</td>
+            <td>History</td>
         </tr>
         <tr>
             <td><input type="checkbox"/></td>
-            <td>123456789&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Bob Smith&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Clarion&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Y&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Spring 2018&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>110&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>Junior&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>2.5&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>CIS&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>b.l.smith@eagle.clarion.edu&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>History&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>123456789</td>
+            <td>Bob Smith</td>
+            <td>Clarion</td>
+            <td>Y</td>
+            <td>Spring 2018</td>
+            <td>110</td>
+            <td>Junior</td>
+            <td>2.5</td>
+            <td>CIS</td>
+            <td>b.n.smith@eagle.clarion.edu</td>
+            <td>History</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>123456789</td>
+            <td>Bob Smith</td>
+            <td>Clarion</td>
+            <td>Y</td>
+            <td>Spring 2018</td>
+            <td>110</td>
+            <td>Junior</td>
+            <td>2.5</td>
+            <td>CIS</td>
+            <td>b.m.smith@eagle.clarion.edu</td>
+            <td>History</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>123456789</td>
+            <td>Bob Smith</td>
+            <td>Clarion</td>
+            <td>Y</td>
+            <td>Spring 2018</td>
+            <td>110</td>
+            <td>Junior</td>
+            <td>2.5</td>
+            <td>CIS</td>
+            <td>b.k.smith@eagle.clarion.edu</td>
+            <td>History</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>123456789</td>
+            <td>Bob Smith</td>
+            <td>Clarion</td>
+            <td>Y</td>
+            <td>Spring 2018</td>
+            <td>110</td>
+            <td>Junior</td>
+            <td>2.5</td>
+            <td>CIS</td>
+            <td>b.l.smith@eagle.clarion.edu</td>
+            <td>History</td>
         </tr>
     </table></center>
+<!--the copy emails button-->
+<button onclick = "copyEmailsToClipboard()" > Copy Selected Emails to Clipboard </button>
+
+<div id = "emails">
+    <input id="emailList" type="text" visibility="hidden" readonly>
+</div>
+
 </body>
 </html>

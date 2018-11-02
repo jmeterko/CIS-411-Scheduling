@@ -387,3 +387,7 @@ tr:hover {
 #savedQuestion{
     width: 70%;
 }
+
+#emails{
+    visibility: hidden;
+}
