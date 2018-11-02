@@ -1,39 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$title = "MainApplicationStudentPage.html";
+require '../view/headerInclude.php';
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="Javascript.js"></script>
-    <link rel="stylesheet" href="Stylesheet.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="http://chancejs.com/chance.min.js"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <!--for proper mobile scaling-->
-    <title>Class Scheduler</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>New Student Question</title>
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</head>
-
-<body>
+<body style="background-color: #becccc;">
 <div class="container">
-    <center><h1>Course Scheduling Aid</h1></center>
     <!DOCTYPE html>
     <html lang="en">
-    <!--<button onclick="howManyChildren()" type="button" id="howManyChildren">how many children?</button>-->
     <div class="container" style="margin: 0px auto">
         <h1>New Course Question</h1>
         <div class="jumbotron" style="margin:0px auto">
@@ -233,9 +206,9 @@
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: left">
                     GPA
                     <br/>
-                    <input type="text" value="0.0" style="width: 30px" id="firstGpaSpot"></input>
+                    <input type="text" value="0.0" style="width: 30px" id="firstGPASpot"></input>
                     -
-                    <input type="text" value="4.0" style="width: 30px" id="secondGpaSpot"></input>
+                    <input type="text" value="4.0" style="width: 30px" id="secondGPASpot"></input>
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
                     <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
@@ -295,6 +268,7 @@
                                 <option value="2018" selected>2018</option>
                             </select>
                         </div>
+                        <br/>
                         <div id="menu1" class="tab-pane fade">
                             <br/>
                             Only check past
@@ -302,9 +276,14 @@
                             </input>
                             years
                         </div>
+
+                        <b style="float:right">Save this question</b> <input type="checkbox" style="float:right" id="SaveThisQuestion"/>
+                        <br/>
+                        <br/>
                     </div>
                 </div>
-                <input type="submit" style="float:right" class="btn btn-success"/>
+                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=Homepage'"/>
+                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=DisplayData'" />
             </form>
         </div>
     </div>
