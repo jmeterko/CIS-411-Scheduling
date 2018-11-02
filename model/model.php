@@ -460,6 +460,31 @@ function getLastInsertRow($columnName, $tableName){
         die;
     }
 }
+
+    function constructSavedSearch($serialID){
+       $row = getSerial($serialID);
+			if ($row == false) {
+				displayError("<p>Serial ID is not on file.</p> ");
+			} else {
+				return $serial = $row["serial"];	
+			}
+	}    
+	
+	function RebuildQuestion(){
+		 $serialID = 0;
+		 try {
+			 if( isset($_GET['SerialID']) ) { $serialID = $_GET['SerialID']; }
+			 //save the serial string into a variable to be unserialized
+			 $serial = constructSavedSearch($serialID);
+			 $form = unserialize($serial);
+			 
+			 include '../view/MainApplicationStudentQuestion.php';
+			 
+			 } catch (Exception $e) {
+					 echo 'Caught exception: ',  $e->getMessage(), "\n";
+			 }
+	}
+
 function logSQLError($errorInfo) {
     $errorMessage = $errorInfo[2];
     include '../view/errorPage.php';
