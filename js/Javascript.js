@@ -58,6 +58,27 @@ window.onclick = function(event) {
     }
 }
 
+function orValueChanged(){
+	if(and == 0){
+		or0 = getNumberOfChildren() + 1;
+	} else if (and == 1){
+		or1 = getNumberOfChildren() + 1;
+	} else if (and == 2){
+		or2 = getNumberOfChildren() + 1;
+	} else if (and == 3){
+		or3 = getNumberOfChildren() + 1;
+	} else if (and == 4){
+		or4 = getNumberOfChildren() + 1;
+	} else if (and == 5){
+		or5 = getNumberOfChildren() + 1;
+	} else if (and == 6){
+		or6 = getNumberOfChildren() + 1;
+	} else if (and == 7){
+		or7 = getNumberOfChildren() + 1;
+	} 
+	updateORCounts();
+}
+
 function setOrCounts(){
 	 orCount0 = document.getElementById("orCount0").value;
 	 orCount1 = document.getElementById("orCount1").value;
@@ -943,30 +964,11 @@ function populateElements(formRebuild){
 }
 
 function makeDivVisibleAnd(){
-	if(and == 0){
-		or0 = getNumberOfChildren();
-	} else if (and == 1){
-		or1 = getNumberOfChildren();
-	} else if (and == 2){
-		or2 = getNumberOfChildren();
-	} else if (and == 3){
-		or3 = getNumberOfChildren();
-	} else if (and == 4){
-		or4 = getNumberOfChildren();
-	} else if (and == 5){
-		or5 = getNumberOfChildren();
-	} else if (and == 6){
-		or6 = getNumberOfChildren();
-	} else if (and == 7){
-		or7 = getNumberOfChildren();
-	} 
-	//if (!document.getElementById("rebuildFlag").value){	updateORCounts(); } 
-	updateORCounts(); 
+	
 	if (and < 7) { and++; }
 	document.getElementById("andCount").value = and;
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
     document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
-    //alert("divAnd"+and);
 }
 
 function rebuildDivs(){
@@ -992,7 +994,6 @@ function rebuildDivs(){
 	document.getElementById("andCount").value = and;
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
     document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
-    //alert("divAnd"+and);
 }
 
 function makeDivInvisible(){
@@ -1057,6 +1058,7 @@ function makeDivVisibleOr(){
         }
         freshlyChanged=false;
         or++;
+		orValueChanged();
     }
     else{
         while(attachDiv.firstChild) {
@@ -1089,6 +1091,7 @@ function makeDivVisibleOr(){
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
         }
         or++;
+		orValueChanged();
     }
     attachDiv.appendChild(dynamicDiv);
     orButton=false;
