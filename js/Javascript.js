@@ -1,9 +1,9 @@
 //GLOBALS
 var and=0;
 var or=0;
-var flag=true;
 var freshlyChanged=true;
 var orButton=false;
+<<<<<<< HEAD
 var firstAnd=false;
 var uniqueID=0;
 var or0 = 0;
@@ -22,6 +22,9 @@ var orCount4 = 0;
 var orCount5 = 0;
 var orCount6 = 0;
 var orCount7 = 0;
+=======
+var fileCounter=0;
+>>>>>>> origin/Steven-Smathers-3
 
 var formRebuilt = false;
 
@@ -963,6 +966,7 @@ function populateElements(formRebuild){
   }
 }
 
+<<<<<<< HEAD
 function makeDivVisibleAnd(){
 	
 	if (and < 7) { and++; }
@@ -992,17 +996,37 @@ function rebuildDivs(){
 	
 	if (and < 7) { and++; }
 	document.getElementById("andCount").value = and;
+=======
+function makeDivVisibleAnd(pID){
+    //alert("called");
+    and=pID.replace( /[^0-9]/g, `` );
+    and++;
+    $('#dropdown' + and).prop('disabled', false);
+>>>>>>> origin/Steven-Smathers-3
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
     document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
 }
 
-function makeDivInvisible(){
+function makeDivInvisible(pID){
+    var attachID=`attach` + pID.replace( /[^0-9]/g, `` );
+    //alert(attachID);
+    while(document.getElementById(attachID).firstChild) {
+        document.getElementById(attachID).removeChild(document.getElementById(attachID).firstChild);
+    }
+    $("#dropdown1").on("click", function () {
+        $('#default').prop('selected', function() {
+            return this.defaultSelected;
+        });
+    });
     document.getElementById("divAnd" + and).removeAttribute("class","visibleDiv");
     document.getElementById("divAnd" + and).setAttribute("class","hiddenDiv");
-    and--;
+    if(and>0)
+        and--;
 }
 
-function removeOrDiv(){
+function removeOrDiv(pID){
+    var placeholder=pID.replace( /[^0-9]/g, `` );
+    and=placeholder.charAt(0);
     var attachDiv=document.getElementById('attach'+and);
     if(attachDiv.children.length > 1) {
         attachDiv.removeChild(attachDiv.childNodes[or - 1]);
@@ -1032,6 +1056,7 @@ function makeDivVisibleOr(){
     if(freshlyChanged || orButton) {
         if ($('#dropdown' + and + ' option:selected').text() == "Program") {
             //alert("called");
+<<<<<<< HEAD
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='MajorMinor" + and + or +"' id='MajorMinor" + and  + or +"'><option value=''" +
                 ">Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
                 "</select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
@@ -1040,11 +1065,22 @@ function makeDivVisibleOr(){
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='Location" + and + or +"' id='Location" + and  + or +"' ><option value''" +
                 ">Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
                 "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+=======
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select class='dropdownWidth' id='MajorMinor" + and  + or +"'><option value=''" +
+                "selected disabled hidden>Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
+                "</select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+        }
+        else if ($('#dropdown' + and + ' option:selected').text() == "Location") {
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select class='dropdownWidth' id='Location" + and  + or +"' ><option value''" +
+                "selected disabled hidden>Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
+                "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+>>>>>>> origin/Steven-Smathers-3
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Taking" || $('#dropdown' + and + ' option:selected').text() == "Scheduled For" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
+<<<<<<< HEAD
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
                 ">Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ >Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
@@ -1055,6 +1091,18 @@ function makeDivVisibleOr(){
                 "<option value=''\ >Course #:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
                 "                \"<option value=''\\ >Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+=======
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"'><option value=''" +
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+        }
+        else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"' ><option value=''"+
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp;<select style='20%;' id='MinGrade" + and  + or +"''>\" +\n" +
+                "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
+                "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+>>>>>>> origin/Steven-Smathers-3
         }
         freshlyChanged=false;
         or++;
@@ -1066,6 +1114,7 @@ function makeDivVisibleOr(){
         }
         if ($('#dropdown' + and + ' option:selected').text() == "Program") {
             //alert("called");
+<<<<<<< HEAD
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='MajorMinor" + and + or +"' id='MajorMinor" + and  + or +"'><option value=''" +
                 ">Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
                 "</select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
@@ -1074,11 +1123,22 @@ function makeDivVisibleOr(){
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='Location" + and + or +"' id='Location" + and  + or +"' ><option value''" +
                 ">Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
                 "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+=======
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select class='dropdownWidth' id='MajorMinor" + and  + or +"'><option value=''" +
+                "selected disabled hidden>Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
+                "</select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+        }
+        else if ($('#dropdown' + and + ' option:selected').text() == "Location") {
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select class='dropdownWidth' id='Location" + and  + or +"' ><option value''" +
+                "selected disabled hidden>Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
+                "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+>>>>>>> origin/Steven-Smathers-3
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Taking" || $('#dropdown' + and + ' option:selected').text() == "Scheduled For" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
+<<<<<<< HEAD
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' onclick='removeOrDiv()'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
                 ">Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ >Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
@@ -1089,6 +1149,18 @@ function makeDivVisibleOr(){
                 "<option value=''\ >Course #:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
                 "                \"<option value=''\\ >Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' onclick='orButtonPressed()'>Or</button>&nbsp;&nbsp;");
+=======
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"'><option value=''" +
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+        }
+        else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"' ><option value=''"+
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course #:</option></select>&nbsp;<select style='20%;' id='MinGrade" + and  + or +"''>\" +\n" +
+                "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
+                "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+>>>>>>> origin/Steven-Smathers-3
         }
         or++;
 		orValueChanged();
@@ -1097,13 +1169,64 @@ function makeDivVisibleOr(){
     orButton=false;
 }
 
-function orButtonPressed(){
+function orButtonPressed(pID){
+    var placeholder=pID.replace( /[^0-9]/g, `` );
+    and=placeholder.charAt(0);
+    //alert(and);
     orButton=true;
     makeDivVisibleOr();
 }
-function dropdownFreshlyChanged(){
+function dropdownFreshlyChanged(pID){
+    and=pID.replace( /[^0-9]/g, `` );
+    //alert(and);
     or=0;
     makeDivVisibleOr();
+}
+
+function changeFileDiv(pID){
+    var filename = $('#' + pID).val().replace(/C:\\fakepath\\/i, '');
+    fileCounter=pID.replace( /[^0-9]/g, `` );
+    var currentFileDiv=$('#noFile' + fileCounter);
+    currentFileDiv.html(filename);
+}
+
+//SAVE QUESTION POPUP BOX
+
+// When the user clicks anywhere outside of the modal, close it
+
+function checkIfUserWantsToSaveQuestion(){
+    var modal = document.getElementById('myModal');
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    if($('#userSaveQuestion').prop('checked')){
+        //alert("yes");
+        modal.style.display = "block";
+    }
+    else {
+        //alert("no");
+        window.location.replace("../controller/controller.php?action=Loading");
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 }
 
 
@@ -1208,11 +1331,29 @@ length: 52
     // *** YE BE WARNED
     // ***
 }
+//call this function with loadDoc(), pass in getCoursesUsingJSON.php
+function getProgramsUsingJSON(xhttp){
+    var JSONObjectHoldingAllOfOurPrograms = JSON.parse(xhttp.responseText);//#ReadableCode
+    //then, do stuff with our JSON object that holds all of our courses
+    console.log(JSONObjectHoldingAllOfOurPrograms);
+    return JSONObjectHoldingAllOfOurPrograms;
+}
+
+//call this function with loadDoc(), pass in getUsersUsingJSON.php
+function getUsersUsingJSON(xhttp){
+    var JSONObjectHoldingAllOfOurUsers = JSON.parse(xhttp.responseText);//#ReadableCode
+    //then, do stuff with our JSON object that holds all of our users
+    console.log(JSONObjectHoldingAllOfOurUsers);
+    return JSONObjectHoldingAllOfOurUsers;
+}
 
 //do we want to NOT use global variables
 //are they not the solution im looking for
 var JSONObjectHoldingAllOfOurCourses;
+var JSONObjectHoldingAllOfOurPrograms;
 var jsObjectHoldingAllOfOurSubjects;
+var ProgramSubjectsJSON;
+var UserProgramsJSON;
 
 //pass in the id of the Subject Dropdown and the Catalog dropdown you want to load
 //get the value of subject dropdown
@@ -1220,20 +1361,145 @@ var jsObjectHoldingAllOfOurSubjects;
 //add that catalog as an option in our catalog dropdown
 function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
     var SubjectSelectedInOurDropdown = document.getElementById(pSubjectDropdownID).value;
-    document.getElementById(pCatalogDropdownID).innerHTML = "<option>" + "Course Number..." + "</option>";
+    document.getElementById(pCatalogDropdownID).innerHTML = "<option value='Catalog' selected disabled hidden>" + "Course No." + "</option>";
+    document.getElementById(pCatalogDropdownID).innerHTML += "<option value='Any...'>" + "Any..." + "</option>";
+    document.getElementById(pCatalogDropdownID).innerHTML += "<option value='100&#39;s'>" + "100's" + "</option>";
+    document.getElementById(pCatalogDropdownID).innerHTML += "<option value='200&#39;s'>" + "200's" + "</option>";
+    document.getElementById(pCatalogDropdownID).innerHTML += "<option value='300&#39;s'>" + "300's" + "</option>";
+    document.getElementById(pCatalogDropdownID).innerHTML += "<option value='400&#39;s'>" + "400's" + "</option>";
+    document.getElementById(pCatalogDropdownID).innerHTML += "<option value='500&#39;s'>" + "500's" + "</option>";
     for (i =0; i < jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown].length; i++){
-        document.getElementById(pCatalogDropdownID).innerHTML += "<option>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
+        document.getElementById(pCatalogDropdownID).innerHTML += "<option value='" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "'>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
     }
 }
 
 //loads a particular dropdown with all of our subjects
 function loadSubjects(pSubjectDropdownID){
+<<<<<<< HEAD
     document.getElementById(pSubjectDropdownID).innerHTML = "<option value='Subject'>" + "Subject" + "</option>";
     for (subjectFound in jsObjectHoldingAllOfOurSubjects){
         document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + subjectFound + "'>" + subjectFound + "</option>";
+=======
+    document.getElementById(pSubjectDropdownID).innerHTML = "<option value='Subject' selected disabled hidden>" + "Subject" + "</option>";
+    for (ProgramSubjectPairFound in jsObjectHoldingAllOfOurSubjects){
+        document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + ProgramSubjectPairFound + "'>" + ProgramSubjectPairFound + "</option>";
+>>>>>>> origin/Steven-Smathers-3
     }
 }
+function loadProgramSubjects(pProgramName){
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    let ProgramSubjectPairFound;
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            ProgramSubjectsJSON = JSON.parse(xhttp.responseText);
+            console.log(ProgramSubjectsJSON);
+            //alert(ProgramSubjectsJSON);
+            document.getElementById('hasSubjectsSelect').innerHTML = "<option>Has these subjects: </option><option></option>";
+            document.getElementById('hasNotSubjectsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            for (ProgramSubjectPairFound in ProgramSubjectsJSON){
+                document.getElementById('hasSubjectsSelect').innerHTML +=
+                    "<option value='" + ProgramSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "'>" + ProgramSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "</option>";
+            }
+            //when xhttpResponse is ready and our HasSubjects are loaded, load the HasNotSubjects
+            loadNotProgramSubjects(pProgramName);
+        }
+    };
+    xhttp.open("GET", "../model/getProgramSubjectsUsingJSON.php?ProgramSelected=" + pProgramName, true);
+    xhttp.send();
+}
 
+function loadUserPrograms(pUserName){
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    let UserProgramPairFound;
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            UserProgramsJSON = JSON.parse(xhttp.responseText);
+            console.log(UserProgramsJSON);
+            //alert(ProgramSubjectsJSON);
+            document.getElementById('hasProgramsSelect').innerHTML = "<option>Has these programs: </option><option></option>";
+            document.getElementById('hasNotProgramsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            for (UserProgramPairFound in UserProgramsJSON){
+                document.getElementById('hasProgramsSelect').innerHTML +=
+                    "<option value='" + UserProgramsJSON[UserProgramPairFound][`Plan`] + "'>" + UserProgramsJSON[UserProgramPairFound][`Plan`] + "</option>";
+            }
+            //when xhttpResponse is ready and our HasSubjects are loaded, load the HasNotSubjects
+            loadNotUserPrograms(pUserName);
+        }
+    };
+    xhttp.open("GET", "../model/getUserProgramsUsingJSON.php?UserSelected=" + pUserName, true);
+    xhttp.send();
+}
+
+function loadNotProgramSubjects(pProgramName){
+    let xhttp;
+    let allSubjectsJSON;
+    let ProgramSubjectPairFound;
+    let SubjectFoundFromAllSubjects;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            allSubjectsJSON = JSON.parse(xhttp.responseText);
+            console.log(allSubjectsJSON);
+            //alert(ProgramSubjectsJSON);
+
+            //remove the subjects that we DO have
+            //now our allSubjectsJSON is our HasNot array
+            for (ProgramSubjectPairFound in ProgramSubjectsJSON){
+                for (SubjectFoundFromAllSubjects in allSubjectsJSON)
+                    if (allSubjectsJSON[SubjectFoundFromAllSubjects][0] == ProgramSubjectsJSON[ProgramSubjectPairFound][1]){
+                        console.log(allSubjectsJSON[SubjectFoundFromAllSubjects][0] + " from: allSubjectsJSON");
+                        console.log(ProgramSubjectsJSON[ProgramSubjectPairFound][1] + " from: programsSubjectsJSON");
+                        delete allSubjectsJSON[SubjectFoundFromAllSubjects];
+                    }
+            }
+
+            //once our HasNot array is ready, load it into the second select
+            document.getElementById('hasNotSubjectsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            for (ProgramSubjectPairFound in allSubjectsJSON){
+                document.getElementById('hasNotSubjectsSelect').innerHTML +=
+                    "<option value='" + allSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "'>" + allSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "</option>";
+            }
+        }
+    };
+    xhttp.open("GET", "../model/getAllSubjectsUsingJSON.php?ProgramSelected=" + pProgramName, true);
+    xhttp.send();
+}
+function loadNotUserPrograms(pUserName){
+    let xhttp;
+    let allProgramsJSON;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            allProgramsJSON = JSON.parse(xhttp.responseText);
+            console.log(allProgramsJSON);
+            //alert(ProgramSubjectsJSON);
+
+            //remove the subjects that we DO have
+            //now our allProgramsJSON is our HasNot array
+            for (UserProgramPairFound in UserProgramsJSON){
+                for (ProgramFoundFromAllPrograms in allProgramsJSON)
+                    if (allProgramsJSON[ProgramFoundFromAllPrograms][0] == UserProgramsJSON[UserProgramPairFound][1]){
+                        console.log(allProgramsJSON[ProgramFoundFromAllPrograms][0] + " from: allProgramsJSON");
+                        console.log(UserProgramsJSON[UserProgramPairFound][1] + " from: UserProgramsJSON");
+                        delete allProgramsJSON[ProgramFoundFromAllPrograms];
+                    }
+            }
+
+            //once our HasNot array is ready, load it into the second select
+            document.getElementById('hasNotProgramsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            for (UserProgramPairFound in allProgramsJSON){
+                document.getElementById('hasNotProgramsSelect').innerHTML +=
+                    "<option value='" + allProgramsJSON[UserProgramPairFound][`Plan`] + "'>" + allProgramsJSON[UserProgramPairFound][`Plan`] + "</option>";
+            }
+        }
+    };
+    xhttp.open("GET", "../model/getProgramsUsingJSON.php?ProgramSelected=" + pUserName, true);
+    xhttp.send();
+}
+//this gets all unique Subjects found in Courses table only!!
+// does not use Subjects table
 //this is an ajax callback function
 //call this function with loadDoc(), passing in getCoursesUsingJSON.php and this function
 //this will send an ajax request to getCoursesUsingJSON.php, store the response, then run this function on it
@@ -1274,14 +1540,43 @@ function getSubjectsUsingJSON(xhttp){
     console.log(jsObjectHoldingAllOfOurSubjects);
 
     //if you want, you can use this line to load the first dropdown:
-        //loadSubjects("JSONTestingSelect3434");
+    //loadSubjects("JSONTestingSelect3434");
 
 
     return jsObjectHoldingAllOfOurSubjects;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
 }
 
-//table
 
+////////////////////////////////////
+//stolen from 370 security framework
+function swap(srcId,dstId)
+{
+    src = document.getElementById(srcId);
+    dst = document.getElementById(dstId);
+
+    index = src.selectedIndex;
+
+    if(index != -1)
+    {
+        txt = src.options[ index ].text;
+        value = src.options[ index ].value;
+
+        dst.options[ dst.options.length] = new Option( txt, value );
+        src.options[ index ] = null;
+    }
+}
+function selectAll(id)
+{
+    var select = document.getElementById(id);
+
+    for(i = 0; i < select.length; ++i)
+    {
+        select[i].selected = true;
+        //alert("checking each selection");
+    }
+}
+
+//table
 
 

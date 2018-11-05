@@ -6,6 +6,9 @@ require '../view/headerInclude.php';
     $acadPrograms = getAllAcademicPrograms();
 ?>
 <body onload="loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON)" >
+$acadPrograms = getAllAcademicPrograms();
+?>
+    <body onload="loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON)" >
     <form enctype="multipart/form-data"
           action="../controller/controller.php?action=ProcessModifyAcadProgram" onsubmit="selectAll('hasSubjectsSelect')" method="post">
         <h3>Modify a program:</h3>

@@ -8,30 +8,9 @@ require '../view/headerInclude.php';
         <h1>New Student Question</h1>
         <div class="jumbotron" style="margin:0px auto">
 			<form id="issueInputForm" action="../controller/controller.php?action=ProcessStudentQuestion" method="post">
-
-                <!-- Ajax Demonstration---------------------------------------------------------------------------- -->
-                <button type="button" style="width:100px;"class="btn btn-primary" id="ajaxTestingButton" onclick="loadDoc('../model/getCoursesUsingAjax.php', loadCoursesUsingAjax)" >Ajax Test</button>
-                <select id="AjaxTestingSelect" >
-                    <option>Ajax Testing Dropdown</option>
-                </select>
-                <br><br>
-                <!-- JSON Demonstration----------------------------------------------------------------------------- -->
-                <!-- JSON Demonstration---------------------------------------------------------------this.id.replace() returns this id, minus all nonNumeric characters -------------- -->
-                <!-- JSON Demonstration---------------------------------------------------------------allows button and dropdowns to reference each other, because that number is the same -------------- -->
-                <!-- JSON Demonstration---------------------------------------------------------------that number will be the Row and Column or And+Or later -------------- -->
-                <button type="button" style="width:100px;" class="btn btn-primary" id="JSONTestingButton3434" onclick=" loadSubjects('JSONTestingSelect' + this.id.replace( /[^0-9]/g, '' ));" >JSON Test</button>
-                <select id="JSONTestingSelect3434"  onload="loadSubjects(this.id)" onchange="loadCatalogs(this.id, 'CatalogDropdown' + this.id.replace( /[^0-9]/g, '' ))">
-                    <option>JSON Subjects</option>
-                </select>
-
-                <select id="CatalogDropdown3434">
-                    <option>JSON Catalogs</option>
-                </select>
-                <br><br><br><br><br><br>
-                <!-- ----------------------------------------------------------------------------------------------- -->
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
-					<select class="form-control, dropdownboxWidth" id="dropdown0" name="dropdown0" onchange="dropdownFreshlyChanged()">
+					<select class="form-control, dropdownboxWidth" id="dropdown0" onchange="dropdownFreshlyChanged(this.id)">					
 					<?php $rebuild = false; if (isset($form) && !empty($form)) { $rebuild = true; } if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
 						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>
@@ -68,9 +47,9 @@ require '../view/headerInclude.php';
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd1">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown1" name="dropdown1" onchange="dropdownFreshlyChanged()">
-                    <?php if ($rebuild) {  ?>
+				 <button type="button" class="glyphicon glyphicon-minus" id="minusButton1" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+				 <select class="form-control, dropdownboxWidth" id="dropdown1" onchange="dropdownFreshlyChanged(this.id)" disabled>
+					 <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
 						<option value="Program"<?=$form->cat1 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat1 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
@@ -106,11 +85,11 @@ require '../view/headerInclude.php';
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd2">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown2" name="dropdown2" onchange="dropdownFreshlyChanged()">
-                    <?php if ($rebuild) {  ?>
+				 <button type="button" class="glyphicon glyphicon-minus" id="minusButton2" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+				 <select class="form-control, dropdownboxWidth" id="dropdown2" onchange="dropdownFreshlyChanged(this.id)" disabled>
+					 <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
-						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
+						<option value="Program"<?=$form->cat2 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat2 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat2 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -144,11 +123,11 @@ require '../view/headerInclude.php';
                 </div>
 
                 <div class="form-group , hiddenDiv" id="divAnd3">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown3" name="dropdown3" onchange="dropdownFreshlyChanged()">
-                    <?php if ($rebuild) {  ?>
+					 <button type="button" class="glyphicon glyphicon-minus" id="minusButton3" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+					 <select class="form-control, dropdownboxWidth" id="dropdown3" onchange="dropdownFreshlyChanged(this.id)" disabled>
+					 <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
-						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
+						<option value="Program"<?=$form->cat3 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat3 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat3 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -182,11 +161,11 @@ require '../view/headerInclude.php';
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd4">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown4" name="dropdown4" onchange="dropdownFreshlyChanged()">
-                    <?php if ($rebuild) {  ?>
+				 <button type="button" class="glyphicon glyphicon-minus" id="minusButton4" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+				 <select class="form-control, dropdownboxWidth" id="dropdown4" onchange="dropdownFreshlyChanged(this.id)" disabled>
+					 <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
-						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
+						<option value="Program"<?=$form->cat4 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat4 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat4 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -220,11 +199,11 @@ require '../view/headerInclude.php';
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd5">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown5" name="dropdown5" onchange="dropdownFreshlyChanged()">
-                    <?php if ($rebuild) {  ?>
+				 <button type="button" class="glyphicon glyphicon-minus" id="minusButton5" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+				 <select class="form-control, dropdownboxWidth" id="dropdown5" onchange="dropdownFreshlyChanged(this.id)" disabled>
+					 <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
-						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
+						<option value="Program"<?=$form->cat5 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat5 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat5 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -258,11 +237,11 @@ require '../view/headerInclude.php';
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd6">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown6" name="dropdown6" onchange="dropdownFreshlyChanged()">
-                    <?php if ($rebuild) {  ?>
+				 <button type="button" class="glyphicon glyphicon-minus" id="minusButton6" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+				 <select class="form-control, dropdownboxWidth" id="dropdown6" onchange="dropdownFreshlyChanged(this.id)" disabled>
+					 <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
-						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
+						<option value="Program"<?=$form->cat6 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat6 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat6 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
@@ -296,11 +275,11 @@ require '../view/headerInclude.php';
                 </div>
 
                 <div class="form-group, hiddenDiv" id="divAnd7">
-                    <button type="button" class="glyphicon glyphicon-minus" onclick="makeDivInvisible()"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown7" name="dropdown7" onchange="dropdownFreshlyChanged()">
-                    <?php if ($rebuild) {  ?>
+				 <button type="button" class="glyphicon glyphicon-minus" id="minusButton7" onclick="makeDivInvisible(this.id)"></button><label>&nbsp;&nbsp;&nbsp;Category</label>
+				 <select class="form-control, dropdownboxWidth" id="dropdown7" onchange="dropdownFreshlyChanged(this.id)" disabled>
+					 <?php if ($rebuild) {  ?>
 					    <option value="" selected disabled hidden>Select Category</option>
-						<option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
+						<option value="Program"<?=$form->cat7 == 'Program' ? ' selected="selected"' : '';?>>Program</option>						
 						<option value="Location"<?=$form->cat7 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
                         <option value="courses" disabled><b>---COURSES---</b></option>
 						<option value="Taking"<?=$form->cat7 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
