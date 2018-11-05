@@ -20,10 +20,6 @@
             include('../security/not_authorized.html');
         }
     } else {
-    
-  switch ($action) {
-    case 'FileUpload':
-        include '../view/fileUploadPage.php';
 
 if (isset($_POST['action'])) {  // check get and post
     $action = $_POST['action'];
@@ -37,6 +33,9 @@ switch ($action) {
     case 'CourseQuestion':
         include '../view/MainApplicationCourseQuestion.php';
         break;
+	case 'FileUpload':
+        include '../view/fileUploadPage.php';
+		break;
     case 'DisplayData':
         include '../view/DisplayData.php';
         break;
