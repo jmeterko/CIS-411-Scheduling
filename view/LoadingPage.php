@@ -3,7 +3,7 @@ $title = "Loading Page";
 require '../view/headerInclude.php';
 ?>
 
-<meta http-equiv="refresh" content="3;url=../controller/controller.php?action=HomePage" />
+<meta http-equiv="refresh" content="3;url=../controller/controller.php?action=DisplayData" />
 
 <body style="background-color: #becccc;">
 <svg id="loading">

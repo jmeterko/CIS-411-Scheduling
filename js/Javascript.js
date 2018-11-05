@@ -191,7 +191,7 @@ function checkIfUserWantsToSaveQuestion(){
     }
     else {
         //alert("no");
-        window.location.replace("../controller/controller.php?action=DisplayData");
+        window.location.replace("../controller/controller.php?action=Loading");
     }
 
     span.onclick = function() {

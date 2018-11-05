@@ -133,7 +133,7 @@ require '../view/headerInclude.php';
                     <div class="modal-content">
                         <span class="close">&times;</span>
                         <input type="text" id="savedQuestion" placeholder="Name the question..."/>
-                        <button type="button" id="play_button" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=DisplayData'" style="float:right;">&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</button>
+                        <button type="button" id="play_button" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=Loading'" style="float:right;">&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</button>
                         <br/>
                         <br/>
                     </div>
