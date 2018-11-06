@@ -1,6 +1,7 @@
 <?php
 $title = "Import Data";
 require '../view/headerInclude.php';
+require_once '../model/model.php';
 ?>
 
 <?php
@@ -65,7 +66,6 @@ function clearAllTables(){
     clearTable("courseoffering");
     clearTable("course");
     clearTable("student");
-    clearTable("acad_program");
 }
 //
 function loadStudents(){
