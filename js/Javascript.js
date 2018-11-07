@@ -26,6 +26,13 @@ var fileCounter=0;
 var formRebuilt = false;
 
 document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("saveQuestion").addEventListener("change", toggleSaveQuestion);
+	document.getElementById("dropdown0").addEventListener("change", function(){ 
+		var dropdown = document.getElementById("dropdown0").value;
+		if (dropdown > 0){
+			window.location.href = "../controller/controller.php?action=RebuildQuestion&SerialID=" + dropdown;
+		}
+	}); 
 	if(!formRebuilt){
 		  setOrCounts();
 		  populateElements(formRebuilt);
@@ -36,6 +43,18 @@ document.addEventListener("DOMContentLoaded", function() {
 		  formRebuilt = true;
 	}
 });
+
+function toggleSaveQuestion(){
+		if( document.getElementById("saveQuestion").checked == true ) { 
+			document.getElementById("searchName").classList.remove('hidden');
+			document.getElementById("searchName").required = true;
+		}
+		if( document.getElementById("saveQuestion").checked == false ) { 
+			document.getElementById("searchName").classList.add('hidden'); 
+			document.getElementById("searchName").required = false;
+		}	
+		
+}
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */

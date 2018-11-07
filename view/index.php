@@ -9,7 +9,7 @@
 			//$s = file_get_contents('store');
 			//$a = unserialize($s);
   
-				 echo "Category 1: " . $stdq->cat0 . "<br>"; 
+				 /*echo "Category 1: " . $stdq->cat0 . "<br>"; 
 				 echo "Category 2: " . $stdq->cat1 . "<br>"; 
 				 echo "Category 3: " . $stdq->cat2 . "<br>"; 
 				 echo "Category 4: " . $stdq->cat3 . "<br>"; 
@@ -43,7 +43,7 @@
 					  echo $item . ": " . $value  . "\n";
 				  }//echo $item to see key/value pair
 
-				 
+				 */
 				/*   
 				 echo $u->cat1; 
 				 echo $u->cat2; 
@@ -65,8 +65,6 @@
 
                 <tr class="<?php echo ($i % 2 == 0)?"evenRow":"oddRow" ?>" >
 									<td class="pad-right"><a href="../controller/controller.php?action=RebuildQuestion&SerialID=<?php echo $row['id'] ?>"><?php echo htmlspecialchars($row['name']) ?></a></td><br>
-                                    <td class="pad-right"><?php echo htmlspecialchars($row['username']) ?></td><br>
-                                    <td class="pad-right"><?php echo htmlspecialchars($row['serial']) ?></td><br>
 									<br><br><hr>
                   
                             </tr>

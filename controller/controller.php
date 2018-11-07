@@ -52,7 +52,7 @@ switch ($action) {
         include '../view/LoginPage.php';
         break;
     case 'StudentQuestion':
-        include '../view/MainApplicationStudentQuestion.php';
+		AskQuestion();
         break;
 	case 'ProcessStudentQuestion':
         ProcessStudentQuestion();

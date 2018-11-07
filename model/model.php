@@ -470,6 +470,13 @@ function getLastInsertRow($columnName, $tableName){
 			}
 	}    
 	
+	function AskQuestion(){
+		$user = $_SESSION['username']; 
+		$results = getSerialsForUser($user);	
+		
+		include '../view/MainApplicationStudentQuestion.php';
+	}
+	
 	function RebuildQuestion(){
 		 $serialID = 0;
 		 try {

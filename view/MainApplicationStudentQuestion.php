@@ -5,7 +5,11 @@ require '../view/headerInclude.php';
 <body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)">
 <div class="container">
     <div class="container" style="margin: 0px auto">
-        <h1>New Student Question</h1>
+			<?php $rebuild = false; if (isset($form) && !empty($form)) { $rebuild = true; } if ($rebuild) { ?>
+							<h1>Saved Student Question - <?php echo $form->searchName;?></h1>
+					<?php } else { ?>
+					        <h1>New Student Question</h1>
+					<?php } ?>
         <div class="jumbotron" style="margin:0px auto">
 			<form id="issueInputForm" action="../controller/controller.php?action=ProcessStudentQuestion" method="post">
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
@@ -37,7 +41,16 @@ require '../view/headerInclude.php';
                         <option value="Not Completed">Not Completed</option>
                         <option value="Not Taking/Not Completed">Not Taking/Not Completed</option>
                         <option value="Not Scheduled For">Not Scheduled For</option>
-					<?php } ?>
+						
+						<?php if(!empty($results)){ ?>
+						<option value="courses" disabled><b>---SAVED SEARCHES---</b></option>
+					    <?php         $i = 0;
+						foreach ($results as $row) { $i++; ?>
+
+							<option value="<?php echo $row['id'] ?>"><?php echo htmlspecialchars($row['name']) ?></option>               
+					<?php }}} ?> 
+					             
+			
                        </select>
                     <div class="inline" id="attach0"></div>
                 <br/>
@@ -447,8 +460,8 @@ require '../view/headerInclude.php';
                             years
                         </div>
 
-				<input type="checkbox" name="saveQuestion"> Remember this search</input>
-				<input type="text" placeholder="Enter Search Name" name="searchName"></input>
+				<input type="checkbox" id="saveQuestion" name="saveQuestion"> Remember this search</input>
+				<input type="text" id="searchName" class="hidden" placeholder="Enter Search Name" name="searchName"></input>
 				<?php if ($rebuild) { ?>
 					<input type='hidden' name='andCount' id="andCount" value='<?php echo $form->andCount;?>'/>
 					<input type='hidden' name='orCount0' id="orCount0" value='<?php echo $form->or0;?>'/>
