@@ -7,7 +7,7 @@ require '../view/headerInclude.php';
 
 
 <!--                                     Should we fetch the data when the page is fully loaded? -->
-<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)">
+<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON);loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON);">
 <div class="container">
     <!DOCTYPE html>
     <html lang="en">
@@ -286,8 +286,8 @@ require '../view/headerInclude.php';
                         <br/>
                     </div>
                 </div>
-                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='HomePage.html'"/>
-                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='DisplayData.html'" />
+                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../view/HomePage.html'"/>
+                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='../view/DisplayData.html'" />
             </form>
         </div>
     </div>

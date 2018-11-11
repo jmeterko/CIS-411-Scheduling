@@ -10,6 +10,9 @@ if (isset($_POST['action'])) {  // check get and post
     exit();
 }
 switch ($action) {
+    case 'DisplayData':
+        include '../view/DisplayData.html';
+        break;
     case 'FileUpload':
         include '../view/fileUploadPage.php';
         break;
