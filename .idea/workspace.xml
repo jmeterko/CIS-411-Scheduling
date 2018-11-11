@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GhettoVersioningFolder/JSON stuff.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GhettoVersioningFolder/Javascript (2).js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GhettoVersioningFolder/Javascript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GhettoVersioningFolder/importData (1).php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GhettoVersioningFolder/importData.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/2088-2188-CIS-Classes2.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/2088-2188-CIS-Students - Copy.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/js/Javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Javascript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/importDataWithAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/importDataWithAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/processImportData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/processImportData.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,44 +24,57 @@
       <file leaf-file-name="controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
+            <state relative-caret-position="153">
               <caret line="19" column="49" lean-forward="true" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainApplicationStudentQuestion.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
+      <file leaf-file-name="processImportData.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/view/processImportData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="102" selection-start-line="9" selection-start-column="102" selection-end-line="9" selection-end-column="102" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#html#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="606">
+              <caret line="454" column="26" lean-forward="true" selection-start-line="454" selection-start-column="26" selection-end-line="454" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getCoursesUsingJSON.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/getCoursesUsingJSON.php">
+      <file leaf-file-name="importData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/importData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Javascript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="822">
-              <caret line="323" column="197" selection-start-line="323" selection-start-column="197" selection-end-line="323" selection-end-column="197" />
+            <state relative-caret-position="488">
+              <caret line="495" column="51" selection-start-line="495" selection-start-column="51" selection-end-line="495" selection-end-column="51" />
               <folding>
                 <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
-                <element signature="e#13392#21010#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="514">
+              <caret line="538" column="28" selection-start-line="538" selection-start-column="28" selection-end-line="538" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="updateCurrentTermUsingJSON.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="9" column="40" lean-forward="true" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -100,13 +113,13 @@
       <find>POST</find>
       <find>loadstudents(</find>
       <find>FILES</find>
-      <find>clear</find>
       <find>changefile`</find>
       <find>fakepath</find>
       <find>fake</find>
       <find>loadcat</find>
       <find>getprogramsusingjson</find>
       <find>loadprog</find>
+      <find>clear</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -143,26 +156,27 @@
         <option value="$PROJECT_DIR$/model/getUsersUsingJSON.php" />
         <option value="$PROJECT_DIR$/view/processmodify_User_Program.php" />
         <option value="$PROJECT_DIR$/model/getUserProgramsUsingJSON.php" />
-        <option value="$PROJECT_DIR$/model/model.php" />
         <option value="$PROJECT_DIR$/view/HomePage.html" />
         <option value="$PROJECT_DIR$/view/modify_User_Program_Form.php" />
         <option value="$PROJECT_DIR$/view/modify_Acad_Program_Form.php" />
-        <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
         <option value="$PROJECT_DIR$/sql script/SQL Example Scripts.txt" />
         <option value="$PROJECT_DIR$/GhettoVersioningFolder/JSON stuff.js" />
         <option value="$PROJECT_DIR$/view/importData.php" />
         <option value="$PROJECT_DIR$/view/processImportDataTestAjax.php" />
         <option value="$PROJECT_DIR$/view/testingProcessAjaxImportFILESWORK.php" />
         <option value="$PROJECT_DIR$/view/testingProcessAjaxImport.php" />
-        <option value="$PROJECT_DIR$/view/processImportData.php" />
         <option value="$PROJECT_DIR$/view/importDataTestingWithAjax.php" />
         <option value="$PROJECT_DIR$/view/adsfonasf.php" />
         <option value="$PROJECT_DIR$/GhettoVersioningFolder/Javascript.js" />
         <option value="$PROJECT_DIR$/css/Stylesheet.css" />
-        <option value="$PROJECT_DIR$/view/importDataWithAjax.php" />
         <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" />
+        <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
+        <option value="$PROJECT_DIR$/model/model.php" />
+        <option value="$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php" />
         <option value="$PROJECT_DIR$/js/Javascript.js" />
+        <option value="$PROJECT_DIR$/view/importDataWithAjax.php" />
+        <option value="$PROJECT_DIR$/view/processImportData.php" />
       </list>
     </option>
   </component>
@@ -355,7 +369,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237268000" />
+    <option name="totallyTimeSpent" value="249600000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -436,24 +450,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/view/modify_Acad_Program_Form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Javascript.js" />
     <entry file="file://$PROJECT_DIR$/Wireframe.html" />
     <entry file="file://$PROJECT_DIR$/Stylesheet.css" />
@@ -497,13 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/footerInclude.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CSV_Test_Files/2088-2188-CIS-Classes.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="882">
@@ -519,9 +512,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/getProgramsUsingJSON.php" />
-    <entry file="file://$PROJECT_DIR$/model/getProgramSubjectsUsingJSON.php" />
     <entry file="file://$PROJECT_DIR$/model/getUsersUsingJSON.php" />
-    <entry file="file://$PROJECT_DIR$/model/getUserProgramsUsingJSON.php" />
     <entry file="file://$PROJECT_DIR$/view/processmodify_User_Program.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -551,20 +542,6 @@
           <folding>
             <element signature="e#1883#9501#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="251" column="9" selection-start-line="251" selection-start-column="9" selection-end-line="251" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -649,42 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/importDataWithAjax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="35" column="54" lean-forward="true" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#form#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#form#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/processImportData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="201" column="18" lean-forward="true" selection-start-line="201" selection-start-column="18" selection-end-line="201" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/importData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="19" column="49" lean-forward="true" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/loginPage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -710,15 +651,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controller/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="19" column="49" lean-forward="true" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/stubs/date/date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="291" column="9" selection-start-line="291" selection-start-column="9" selection-end-line="291" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="102" column="39" lean-forward="true" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/getProgramSubjectsUsingJSON.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/getUserProgramsUsingJSON.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/footerInclude.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="51" lean-forward="true" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="538" column="28" selection-start-line="538" selection-start-column="28" selection-end-line="538" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/Javascript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="323" column="197" selection-start-line="323" selection-start-column="197" selection-end-line="323" selection-end-column="197" />
+        <state relative-caret-position="488">
+          <caret line="495" column="51" selection-start-line="495" selection-start-column="51" selection-end-line="495" selection-end-column="51" />
           <folding>
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
-            <element signature="e#13392#21010#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/importData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="40" lean-forward="true" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/importDataWithAjax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1050">
+          <caret line="6" column="70" lean-forward="true" selection-start-line="6" selection-start-column="70" selection-end-line="6" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/processImportData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="454" column="26" lean-forward="true" selection-start-line="454" selection-start-column="26" selection-end-line="454" selection-end-column="26" />
         </state>
       </provider>
     </entry>

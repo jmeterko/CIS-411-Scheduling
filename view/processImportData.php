@@ -17,9 +17,9 @@ require_once '../model/model.php';
 
 //call the file load functions
 clearAllTables();
+loadClasses();
 loadStudents();
 loadPrograms();
-loadClasses();
 loadStudentsClasses();
 
 ///
@@ -408,16 +408,55 @@ function loadClasses()
     rewind($file);
     $rowCount = 0;
     $rowTotal = 0;
+    $oldestTerm = 0;
+    $currentTerm = 0;
+    $latestTerm = 0;
+    $currentDate = date ("Y-m-d");
+    $currentTermInDB = getCurrentTerm();
+    echo "<br> current date is " . $currentDate . "<br>";
     fgetcsv($file);//skip first line
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //INSERT INTO Classes <each field>
         $rowTotal++;
         $rowCount += addNewCourseOffering($rowTotal, $data[0], $data[1], $data[2], $data[3], $data[4], str_replace(' ', '', $data[5]), $data[6], $data[7], $data[8], $data[9], $data[10], $data[11], $data[12], $data[13]);
+        //on first row, set $lowest and $latest to the first term we read
+        if ($rowTotal == 1){
+            $oldestTerm = $data[2];
+            $latestTerm = $data[2];
+        }
+        //if the term we read is lower  than our current Oldest Term, its our new value
+        //if the term we read is higher than our current Latest Term, its our new value
+        if ($data[2] < $oldestTerm)
+            $oldestTerm = $data[2];
+        if ($data[2] > $latestTerm)
+            $latestTerm = $data[2];
     }   //rowcount increments when a row is affected, addNewStudent returns 1
     echo    "There are " . $rowTotal . " rows in Course CSV file. <br>".
     "There should be " . $rowTotal . " rows inserted into table CourseOffering. <br>";
-    $errorMessage = "Inserted $rowCount rows into table CourseOffering.";
+    $errorMessage = "Inserted $rowCount rows into table CourseOffering.<br>";
     echo $errorMessage;
+
+    //Term settings stuff
+
+    $currentTermInDB = getCurrentTerm();
+    $currentTerm = $currentTermInDB;
+    if ($currentTerm == 0)
+        $currentTerm = $latestTerm;
+    echo "<br><br>Our Oldest Term is " . $oldestTerm . " and our Latest Term is " . $latestTerm . "<br>";
+    //NOW
+    //  WE GOTTA insert the terms into settings bruh
+    echo "current term in the database settings is " . $currentTermInDB . '<br>';
+    //if we find a newer term than our current term in the database
+    if ($currentTermInDB != $latestTerm)
+        echo "Our Latest Term has been updated, may need to update Current Term.<br>";
+    echo "the date is " . $currentDate . '<br>';
+    if(updateSettings($oldestTerm, $currentTerm, $latestTerm, $currentDate))
+        echo "Settings have been updated!<br>";
+    echo "Set current term to: <br>";
+    echo "<button onclick='updateCurrentTermUsingJSON(this.value)' value ='" . $currentTermInDB . "'>" . $currentTermInDB . "</button>&nbsp &nbsp  &nbsp &nbsp  &nbsp &nbsp  &nbsp &nbsp 
+          <button onclick='updateCurrentTermUsingJSON(this.value)' value ='" . $latestTerm . "'>" . $latestTerm .  "</button><br>
+          Or enter custom value...<input name='customTerm' id='customTerm' type = text /><button onclick='updateCurrentTermUsingJSON(document.getElementById(`customTerm`).value)' value='Go'>Go</button>
+          <div id='updatedTermLabel'></div>";
 
     //print 10 rows to screen for convenience
     echo "<h3>First 10 Courses are:</h3><ol>";

@@ -459,6 +459,90 @@ function getLastInsertRow($columnName, $tableName){
         die;
     }
 }
+function getCurrentTerm(){
+
+    try {
+        $db = getDBConnection();
+        $query = "SELECT Current_Term FROM settings
+                  ORDER BY Current_Term DESC
+                  LIMIT 1;";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result[0];
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+//returns the count of rows of a table, returns just a number, not an array
+function countRows($tablename){
+
+    try {
+        $db = getDBConnection();
+        $query = "SELECT COUNT(*) FROM $tablename";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result[0];
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
+//remove all the entries with that Program, then add the selected ones
+function updateSettings($pOldestTerm, $pCurrentTerm, $pLatestTerm, $pDate)
+{
+    try {
+        //clear the settings if they exist
+        clearTable('settings');
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`Settings` 
+                          ( `Oldest_Term`, `Current_Term`,`Latest_Term`, `Last_Import_Date`) 
+                          VALUES (:oldestterm, :currentterm, :latestterm, :date)";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':oldestterm', "$pOldestTerm");
+        $statement->bindValue(':currentterm', "$pCurrentTerm");
+        $statement->bindValue(':latestterm', "$pLatestTerm");
+        $statement->bindValue(':date', "$pDate");
+        $statement->execute();
+        $statement->closeCursor();
+        $errorCode = $statement->errorCode();
+        if ($statement->rowCount() < 1)
+            echo "Row was not inserted  Error code: " . $errorCode . "<br>";
+
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+}
+
+}
+function updateCurrentTerm($pCurrentTerm)
+{
+    try {
+        $db = getDBConnection();
+        $query = "    UPDATE Settings
+                          SET Current_Term = :currentterm;";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':currentterm', "$pCurrentTerm");
+        $statement->execute();
+        $statement->closeCursor();
+        $errorCode = $statement->errorCode();
+
+        return $pCurrentTerm;         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 function logSQLError($errorInfo) {
     $errorMessage = $errorInfo[2];
     include '../view/errorPage.php';

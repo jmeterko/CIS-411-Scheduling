@@ -282,7 +282,8 @@ function getUsersUsingJSON(xhttp){
     console.log(JSONObjectHoldingAllOfOurUsers);
     return JSONObjectHoldingAllOfOurUsers;
 }
-
+// **JSON GLOBALS **
+//
 //do we want to NOT use global variables
 //are they not the solution im looking for
 var JSONObjectHoldingAllOfOurCourses;
@@ -290,6 +291,7 @@ var JSONObjectHoldingAllOfOurPrograms;
 var jsObjectHoldingAllOfOurSubjects;
 var ProgramSubjectsJSON;
 var UserProgramsJSON;
+var CurrentTermJSON;
 
 //pass in the id of the Subject Dropdown and the Catalog dropdown you want to load
 //get the value of subject dropdown
@@ -478,11 +480,26 @@ function getSubjectsUsingJSON(xhttp){
     console.log(jsObjectHoldingAllOfOurSubjects);
 
     //if you want, you can use this line to load the first dropdown:
-        //loadSubjects("JSONTestingSelect3434");
+    //loadSubjects("JSONTestingSelect3434");
 
 
     return jsObjectHoldingAllOfOurSubjects;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
+}
+function updateCurrentTermUsingJSON(pCurrentTerm){
+    console.log("Button clicked, pCurrentTerm is " + pCurrentTerm);
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(xhttp.responseText);
+            document.getElementById('updatedTermLabel').innerHTML = "Current term has been updated to: " + xhttp.responseText;
+        }
+    };
+    xhttp.open("GET", "../model/updateCurrentTermUsingJSON.php?CurrentTerm=" + pCurrentTerm, true);
+    xhttp.send();
+
+    return CurrentTermJSON;
 }
 
 

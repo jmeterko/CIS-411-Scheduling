@@ -9,7 +9,7 @@ require '../view/headerInclude.php';
 
     We also still don't update settings like Latest Term yet.  When am i gonna get around to that?
 --><body style="
-  width: 400px;
+  width: 450px;
   margin: 100px auto;
   background-color: #becccc;"
   id = "body">

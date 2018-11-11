@@ -12,6 +12,7 @@
    DROP TABLE IF EXISTS courseoffering;
    DROP TABLE IF EXISTS course;
    DROP TABLE IF EXISTS student;
+   DROP TABLE IF EXISTS settings;
 
 
 -- Table structure for table `classes`
@@ -94,9 +95,11 @@ CREATE TABLE `studentmajor` (
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `settings` (
+  `Oldest_Term` int(4) NOT NULL,
   `Current_Term` int(4) NOT NULL,
   `Latest_Term` int(4) NOT NULL,
-  `Last_Import_Date` date NOT NULL
+  `Last_Import_Date` date NOT NULL,
+  constraint PK_settings Primary Key (Oldest_Term)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `subject` (
