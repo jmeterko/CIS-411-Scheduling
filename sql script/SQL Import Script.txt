@@ -78,6 +78,9 @@ CREATE TABLE `studentclass` (
   constraint FK_studentclass_student Foreign Key (ID) references student(ID)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+  CREATE INDEX IDX_STUDENTCLASS
+  ON studentclass (Subject, Catalog);
+
 CREATE TABLE IF NOT EXISTS `acad_program` (
   `Plan` varchar(10) NOT NULL,
   `Plan_Descr` varchar(30) DEFAULT NULL,

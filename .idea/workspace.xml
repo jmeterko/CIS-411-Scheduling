@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/2088-2188-CIS-Classes2.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/2088-2188-CIS-Students - Copy.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/Javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Javascript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/importDataWithAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/importDataWithAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/processImportData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/processImportData.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,11 +22,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="processImportData.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="processImportData.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/processImportData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="454" column="26" lean-forward="true" selection-start-line="454" selection-start-column="26" selection-end-line="454" selection-end-column="26" />
+            <state relative-caret-position="438">
+              <caret line="447" column="65" selection-start-line="447" selection-start-column="65" selection-end-line="447" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SQL Example Scripts.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sql script/SQL Example Scripts.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SQL Import Script.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="81" column="35" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -171,12 +181,12 @@
         <option value="$PROJECT_DIR$/css/Stylesheet.css" />
         <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" />
-        <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
         <option value="$PROJECT_DIR$/model/model.php" />
         <option value="$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php" />
         <option value="$PROJECT_DIR$/js/Javascript.js" />
         <option value="$PROJECT_DIR$/view/importDataWithAjax.php" />
         <option value="$PROJECT_DIR$/view/processImportData.php" />
+        <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
       </list>
     </option>
   </component>
@@ -369,7 +379,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="249600000" />
+    <option name="totallyTimeSpent" value="249926000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,13 +538,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GhettoVersioningFolder/Javascript (2).js" />
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Example Scripts.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GhettoVersioningFolder/JSON stuff.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -665,13 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="102" column="39" lean-forward="true" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/getProgramSubjectsUsingJSON.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -733,8 +729,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/processImportData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="454" column="26" lean-forward="true" selection-start-line="454" selection-start-column="26" selection-end-line="454" selection-end-column="26" />
+        <state relative-caret-position="438">
+          <caret line="447" column="65" selection-start-line="447" selection-start-column="65" selection-end-line="447" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Example Scripts.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="81" column="35" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
         </state>
       </provider>
     </entry>
