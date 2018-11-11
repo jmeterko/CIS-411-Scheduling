@@ -547,4 +547,77 @@ function logSQLError($errorInfo) {
     $errorMessage = $errorInfo[2];
     include '../view/errorPage.php';
 }
+
+function combineJoinResults($pStudentArray){
+    //convert Program to an array so we can merge later
+    for ($i = 0; $i < count($pStudentArray); $i++) {
+        $temp = $pStudentArray[$i]['Program'];
+        $pStudentArray[$i]['Program'] = array($temp);
+    }
+    //merge the Program arrays that each studentRow holds with the Program arrays of matching students
+    for ($i = 0; $i < count($pStudentArray); $i++){
+        //take all the kiddos for ur array lasso
+        //a student can have up to five programs, so to avoid going out of bounds of the array, we use magic:
+        //So the parent looks at its children and grabs Programs:
+        if(isset($pStudentArray[$i]));{
+            if ($i < (count($pStudentArray) - 4)){    //don't look past the end of the array
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+1]['Program']);
+                    $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+2)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+2]['Program']);
+                    $pStudentArray[$i+2]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+3)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+3]['Program']);
+                    $pStudentArray[$i+3]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+4)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+4]['Program']);
+                    $pStudentArray[$i+4]['ID'] = 6666666; //children are the devil
+                }
+            }
+            if ($i == (count($pStudentArray) - 4)){    //don't look past the end of the array
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+1]['Program']);
+                    $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+2)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+2]['Program']);
+                    $pStudentArray[$i+2]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+3)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+3]['Program']);
+                    $pStudentArray[$i+3]['ID'] = 6666666; //children are the devil
+                }
+            }
+            if ($i == (count($pStudentArray) - 3)){    //don't look past the end of the array
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+1]['Program']);
+                    $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+2)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+2]['Program']);
+                    $pStudentArray[$i+2]['ID'] = 6666666; //children are the devil
+                }
+            }
+            if ($i == (count($pStudentArray) - 2)){    //don't look past the end of the array
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
+                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+1]['Program']);
+                    $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
+                }
+            }
+        }
+    }
+    //then, we send the children back to hell where they belong:
+    for ($i = 0; $i < count($pStudentArray); $i++){
+        if ($pStudentArray[$i]['ID'] == 6666666)
+            unset($pStudentArray[$i]);
+    }
+    //and we end up with the array that we need for Vinny's results page:
+    return $pStudentArray;
+
+
+}
 ?>

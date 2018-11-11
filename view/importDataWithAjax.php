@@ -3,11 +3,6 @@ $title = "Import Data Testing With Ajax";
 require '../view/headerInclude.php';
 ?>
 <!--
-    This page will replace importData.php, or we will route here from controller.
-    As of 11/6 this is working, it sends the form data to processImportData.php just like original importData
-    All we need to do is add the loading circle and the style, and it'll be ready for shipping.
-
-    We also still don't update settings like Latest Term yet.  When am i gonna get around to that?
 --><body style="
   width: 450px;
   margin: 100px auto;
