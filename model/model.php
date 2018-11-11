@@ -310,6 +310,21 @@ function getAllSubjects() {
         die;
     }
 }
+function getAllTerms() {
+    try {
+        $db = getDBConnection();
+        $query = "select Oldest_Term, Current_Term, Latest_Term from Settings";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetch();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 function getAllUsers() {
     try {
         $db = getDBConnection();

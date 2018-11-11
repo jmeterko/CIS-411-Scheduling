@@ -7,7 +7,8 @@ require_once '../model/model.php';
 <h3>Array converter testing page</h3>
 
 <?php
-
+//here's the array we'll be testing with
+//This is what the results of an INNER JOIN look like for students and student-majors
 $studentResults = array(
     array('ID' => '10017948','NAME' => 'Black,Katie Nicole','CURRENT' => 'N','Last_Term' => '2081','Total' => '125.000','GPA' => '3.208','Program' => 'BS CS', 'EagleMail_ID' => 'K.N.Black@eagle.clarion.edu'),
     array('ID' => '10017948','NAME' => 'Black,Katie Nicole','CURRENT' => 'N','Last_Term' => '2081','Total' => '125.000','GPA' => '3.208','Program' => 'BS IS', 'EagleMail_ID' => 'K.N.Black@eagle.clarion.edu'),
@@ -42,7 +43,7 @@ echo "<pre>";
 print_r($studentResults);
 echo "</pre>";
 
-echo "Then we print the processed array, with results in the format Vinny's results page needs:<br>";
+echo "Then we print the processed array, with results in the format our results page needs:<br>";
 echo "<pre>";
 print_r(combineJoinResults($studentResults));
 echo "</pre>";

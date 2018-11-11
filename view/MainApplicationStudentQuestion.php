@@ -7,7 +7,7 @@ require '../view/headerInclude.php';
 
 
 <!--                                     Should we fetch the data when the page is fully loaded? -->
-<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON);loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON);">
+<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON);loadDoc('../model/getTermsUsingJSON.php', getTermsUsingJSON);loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON);">
 <div class="container">
     <!DOCTYPE html>
     <html lang="en">
@@ -237,18 +237,6 @@ require '../view/headerInclude.php';
                                 <option value="Winter">Winter</option>
                             </select>
                             <select class="form-control, dropdownboxWidth" id="dropdownRange2" style="width:65px;">
-                                <option value="2007" selected>2007</option>
-                                <option value="2008">2008</option>
-                                <option value="2009">2009</option>
-                                <option value="2010">2010</option>
-                                <option value="2011">2011</option>
-                                <option value="2012">2012</option>
-                                <option value="2013">2013</option>
-                                <option value="2014">2014</option>
-                                <option value="2015">2015</option>
-                                <option value="2016">2016</option>
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>
                             </select>
                             -
                             <select class="form-control, dropdownboxWidth" id="dropdownRange3" style="width:65px;">
@@ -258,18 +246,6 @@ require '../view/headerInclude.php';
                                 <option value="Winter">Winter</option>
                             </select>
                             <select class="form-control, dropdownboxWidth" id="dropdownRange4" style="width:65px;">
-                                <option value="2007">2007</option>
-                                <option value="2008">2008</option>
-                                <option value="2009">2009</option>
-                                <option value="2010">2010</option>
-                                <option value="2011">2011</option>
-                                <option value="2012">2012</option>
-                                <option value="2013">2013</option>
-                                <option value="2014">2014</option>
-                                <option value="2015">2015</option>
-                                <option value="2016">2016</option>
-                                <option value="2017">2017</option>
-                                <option value="2018" selected>2018</option>
                             </select>
                         </div>
                         <br/>

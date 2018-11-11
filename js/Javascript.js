@@ -282,13 +282,14 @@ function getUsersUsingJSON(xhttp){
     console.log(JSONObjectHoldingAllOfOurUsers);
     return JSONObjectHoldingAllOfOurUsers;
 }
-// **JSON GLOBALS **
+// **AJAX GLOBALS **
 //
 //do we want to NOT use global variables
 //are they not the solution im looking for
 var JSONObjectHoldingAllOfOurCourses;
 var JSONObjectHoldingAllOfOurPrograms;
 var jsObjectHoldingAllOfOurSubjects;
+var jsObjectHoldingAllOfOurTerms;
 var ProgramSubjectsJSON;
 var UserProgramsJSON;
 var CurrentTermJSON;
@@ -484,6 +485,38 @@ function getSubjectsUsingJSON(xhttp){
 
 
     return jsObjectHoldingAllOfOurSubjects;
+    // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
+}
+//used for loading terms into dropdowns on student question page
+function getTermsUsingJSON(xhttp){
+    //parse the Ajax responseText into a JSON object, just as it was encoded into a JSON string
+    //create a JS Object to hold our unique term values much like a PHP associative array
+    JSONObjectHoldingAllOfOurTerms = JSON.parse(xhttp.responseText);
+    let oldestYear = "20" + JSONObjectHoldingAllOfOurTerms.Oldest_Term.substr(1,2);
+    let newestYear = "20" + JSONObjectHoldingAllOfOurTerms.Latest_Term.substr(1,2);
+    console.log("Our Oldest Term is: " + JSONObjectHoldingAllOfOurTerms.Oldest_Term);
+    console.log("Our Current Term is: " + JSONObjectHoldingAllOfOurTerms.Current_Term);
+    console.log("Our Latest Term is: " + JSONObjectHoldingAllOfOurTerms.Latest_Term);
+
+    console.log("Our oldest year is: " +  oldestYear);
+    console.log("Our newest year is: " +  newestYear);
+
+    document.getElementById("dropdownRange2").innerHTML += "";
+    document.getElementById("dropdownRange4").innerHTML += "";
+    for (let i = oldestYear; i <= newestYear; i++){
+        if (i == oldestYear)//first year
+            document.getElementById("dropdownRange2").innerHTML += "<option selected value='" + i + "'>" + i + "</option>";
+        else
+            document.getElementById("dropdownRange2").innerHTML += "<option value='" + i + "'>" + i + "</option>";
+        if (i == (newestYear))//last year
+            document.getElementById("dropdownRange4").innerHTML += "<option selected value='" + i + "'>" + i + "</option>";
+        else
+            document.getElementById("dropdownRange4").innerHTML += "<option value='" + i + "'>" + i + "</option>";
+        //console.log(i);
+    }
+
+
+    return JSONObjectHoldingAllOfOurTerms;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
 }
 function updateCurrentTermUsingJSON(pCurrentTerm){
