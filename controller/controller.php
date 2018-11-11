@@ -14,7 +14,7 @@ switch ($action) {
         include '../view/fileUploadPage.php';
         break;
     case 'ImportData':
-        include '../view/importData.php';
+        include '../view/importDataWithAjax.php';
         break;
     case 'Login':
         include '../view/LoginPage.php';

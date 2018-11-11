@@ -33,7 +33,12 @@ window.onclick = function(event) {
 function firstAndPress(){
 
 }
-
+function changeFileDiv(pID){
+    var filename = $('#' + pID).val().replace(/C:\fakepath\/i, '');
+    fileCounter=pID.replace( /[^0-9]/g, `` );
+    var currentFileDiv=$('#noFile' + fileCounter);
+    currentFileDiv.html(filename);
+}
 function makeDivVisibleAnd(){
     and++;
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");

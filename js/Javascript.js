@@ -33,6 +33,13 @@ window.onclick = function(event) {
 function firstAndPress(){
 
 }
+function changeFileDiv(pID){
+    console.log("changed file div");
+    var filename = $('#' + pID).val().replace('', '');
+    fileCounter=pID.replace( /[^0-9]/g, `` );
+    var currentFileDiv=$('#noFile' + fileCounter);
+    currentFileDiv.html(filename);
+}
 
 function makeDivVisibleAnd(pID){
     //alert("called");
