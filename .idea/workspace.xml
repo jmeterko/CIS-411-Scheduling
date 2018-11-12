@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/model/getTermsUsingJSON.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/Javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Javascript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/arrayConverterTestingPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/arrayConverterTestingPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/processImportData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/processImportData.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,11 +23,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainApplicationStudentQuestion.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="arrayConverterTestingPage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/arrayConverterTestingPage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="45" column="72" selection-start-line="45" selection-start-column="72" selection-end-line="45" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainApplicationStudentQuestion.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="100" lean-forward="true" selection-start-line="8" selection-start-column="100" selection-end-line="8" selection-end-column="100" />
+            <state relative-caret-position="484">
+              <caret line="22" column="66" lean-forward="true" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -39,8 +44,8 @@
       <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Javascript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="489" column="64" selection-start-line="489" selection-start-column="64" selection-end-line="489" selection-end-column="64" />
+            <state relative-caret-position="185">
+              <caret line="492" column="48" selection-start-line="492" selection-start-column="44" selection-end-line="492" selection-end-column="48" />
               <folding>
                 <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
@@ -52,17 +57,35 @@
       <file leaf-file-name="getTermsUsingJSON.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/getTermsUsingJSON.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
+            <state relative-caret-position="102">
               <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="updateCurrentTermUsingJSON.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="318" column="39" lean-forward="true" selection-start-line="318" selection-start-column="39" selection-end-line="318" selection-end-column="39" />
+            <state relative-caret-position="211">
+              <caret line="304" column="92" selection-start-line="304" selection-start-column="92" selection-end-line="304" selection-end-column="92" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="processImportData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/processImportData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="439" column="31" lean-forward="true" selection-start-line="439" selection-start-column="31" selection-end-line="439" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -78,10 +101,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>makedivinvi</find>
-      <find>ble()</find>
-      <find>()'</find>
-      <find>div()</find>
       <find>dropdownfreshly</find>
       <find>dropdownfre</find>
       <find>changed(</find>
@@ -106,8 +125,12 @@
       <find>in</find>
       <find>as</find>
       <find>update</find>
-      <find>term</find>
       <find>2007</find>
+      <find>studentqu</find>
+      <find>getCurren</find>
+      <find>term</find>
+      <find>getcurren</find>
+      <find>getcurrent</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -159,14 +182,14 @@
         <option value="$PROJECT_DIR$/css/Stylesheet.css" />
         <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php" />
-        <option value="$PROJECT_DIR$/view/processImportData.php" />
         <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
         <option value="$PROJECT_DIR$/view/importDataWithAjax.php" />
         <option value="$PROJECT_DIR$/view/arrayConverterTestingPage.php" />
-        <option value="$PROJECT_DIR$/model/model.php" />
         <option value="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" />
         <option value="$PROJECT_DIR$/js/Javascript.js" />
         <option value="$PROJECT_DIR$/model/getTermsUsingJSON.php" />
+        <option value="$PROJECT_DIR$/view/processImportData.php" />
+        <option value="$PROJECT_DIR$/model/model.php" />
       </list>
     </option>
   </component>
@@ -355,12 +378,12 @@
       <workItem from="1540506517180" duration="34866000" />
       <workItem from="1540835638364" duration="7368000" />
       <workItem from="1541890641003" duration="3683000" />
-      <workItem from="1541973894748" duration="3569000" />
+      <workItem from="1541973894748" duration="9838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261158000" />
+    <option name="totallyTimeSpent" value="267427000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -389,8 +412,9 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3298153" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15625" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15625" />
       <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
       <window_info id="Learn" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -404,7 +428,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="SciView" order="8" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,31 +660,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="29" lean-forward="true" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="752">
           <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/arrayConverterTestingPage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="72" selection-start-line="45" selection-start-column="72" selection-end-line="45" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/processImportData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="460" column="45" lean-forward="true" selection-start-line="460" selection-start-column="45" selection-end-line="460" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -672,10 +674,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="66" lean-forward="true" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/arrayConverterTestingPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="72" selection-start-line="45" selection-start-column="72" selection-end-line="45" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/Javascript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="489" column="64" selection-start-line="489" selection-start-column="64" selection-end-line="489" selection-end-column="64" />
+        <state relative-caret-position="185">
+          <caret line="492" column="48" selection-start-line="492" selection-start-column="44" selection-end-line="492" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
@@ -683,24 +699,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="318" column="39" lean-forward="true" selection-start-line="318" selection-start-column="39" selection-end-line="318" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/getTermsUsingJSON.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
+        <state relative-caret-position="102">
           <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
+    <entry file="file://$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="100" lean-forward="true" selection-start-line="8" selection-start-column="100" selection-end-line="8" selection-end-column="100" />
+        <state relative-caret-position="102">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/processImportData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="439" column="31" lean-forward="true" selection-start-line="439" selection-start-column="31" selection-end-line="439" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="304" column="92" selection-start-line="304" selection-start-column="92" selection-end-line="304" selection-end-column="92" />
         </state>
       </provider>
     </entry>

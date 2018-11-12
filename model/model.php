@@ -295,6 +295,64 @@ function getAllAcademicPrograms() {
         die;
     }
 }
+//////////////////////////////////////
+/// WHERE CLAUSE
+//////////////////////////////////////
+function getStudentQuestionResults() {
+    try {
+        $currentTerm = getCurrentTerm(); //we will use this to determine "taking", "completed", "scheduled for" etc
+        $db = getDBConnection();
+        //these are defaulted here, but change based on user selection from Student Question
+        $lowerTerm  = 2071; //spring 2007 is lowest term
+        $higherTerm = 2188; //fall 2018 is latest term
+
+                  //always start with this.  it determines what our results will look like
+        $query = "SELECT student.ID, NAME, LOCATION, CURRENT, Last_Term, Total, GPA, EagleMail_ID, Plan
+                  FROM student 
+                  INNER JOIN studentmajor ON student.ID = studentmajor.ID
+                  WHERE TRUE "
+
+                  //then, any number of AND statements that represent our selections:
+
+                  //Students with a CS Major
+                  ."AND ID IN 
+                  (SELECT ID FROM studentmajor WHERE PLAN = 'BS CS')"
+
+                  //Who are a Sophomore
+                  ."AND Total >= 30 AND Total < 60"
+
+                  //who's location is clarion
+                  ."AND LOCATION = 'Clarion'"
+
+                  //who are not current students
+                  ."AND CURRENT = 'N'"
+
+                  //who's GPA is greater than 2.0
+                  ."AND GPA > 2.000"
+
+                  //who have completed a 200's level CS class
+                  //where the class was between Spring 2002 (2021) and Fall 2009 (2098) **changed to variable value now
+                  //where the class was between lowerTerm and higherTerm, chosen from dropdowns on Student Question
+                    ."
+                          AND student.ID IN (
+                          SELECT ID FROM studentclass 
+                          WHERE Subject = 'CIS' 
+                          AND Catalog BETWEEN 200 AND 299
+                          AND Term BETWEEN $lowerTerm AND $higherTerm)"
+
+        ;
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+////////////////////////////////////////
 function getAllSubjects() {
     try {
         $db = getDBConnection();

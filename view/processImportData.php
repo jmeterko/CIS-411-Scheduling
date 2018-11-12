@@ -412,7 +412,6 @@ function loadClasses()
     $currentTerm = 0;
     $latestTerm = 0;
     $currentDate = date ("Y-m-d");
-    $currentTermInDB = getCurrentTerm();
     echo "<br> current date is " . $currentDate . "<br>";
     fgetcsv($file);//skip first line
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
