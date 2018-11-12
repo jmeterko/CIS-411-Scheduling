@@ -218,12 +218,12 @@ function addNewStudentMajor($rowTotal, $ID, $Plan) {
 }
 
 //rowtotal is just for debugging info
-function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section) {
+function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section, $Grade) {
     try {
         $db = getDBConnection();
         $query = "INSERT INTO `cis411_csaApp`.`studentclass` 
-                      (`ID`, `Term`, `Session`, `Subject`, `Catalog`, `Section`) 
-                      VALUES (:id, :term, :session, :subject, :catalog, :section)";
+                      (`ID`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Grade`) 
+                      VALUES (:id, :term, :session, :subject, :catalog, :section, :grade)";
         //$queryTest = "INSERT INTO `studentclass` (`ID`, `Name`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Descr`, `Grade`, `Type`) VALUES ('11020640', 'Aaron,Shianne E', '2098', '1', 'CIS', '217', '03', 'Appl Of Micro', 'A', 'OG');";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
         $statement->bindValue(':id', "$ID");
@@ -232,6 +232,7 @@ function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog
         $statement->bindValue(':subject', "$Subject");
         $statement->bindValue(':catalog', "$Catalog");
         $statement->bindValue(':section', "$Section");
+        $statement->bindValue(':grade', "$Grade");
         //echo $query;
         $statement->execute();
         $statement->closeCursor();
@@ -295,6 +296,75 @@ function getAllAcademicPrograms() {
         die;
     }
 }
+//////////////////////////////////////
+/// WHERE CLAUSE
+//////////////////////////////////////
+/// If you'd like to see the results of this current hardcoded question, visit SQL Example Scripts
+/// There, we also demonstrate the processed results after CombineJoinResults is used.
+///
+/// At this point, we still need to say for Taking / Scheduled For / Taking/Completed 
+///     WHERE Term == $currentTerm
+function getStudentQuestionResults() {
+    try {
+        $db = getDBConnection();
+
+        //we will use this to determine "taking", "scheduled for", "taking/completed"
+        $currentTerm = getCurrentTerm();
+
+        //we will use these ones for "Completed", "Not Completed" as this is the only time range matters.
+        //these are defaulted here, but change based on user selection from Student Question
+        $lowerTerm  = 2011; //spring 2001 is lowest term
+        $higherTerm = 2188; //fall 2018 is highest term
+
+                  //always start with this.  it determines what our results will look like
+        $query = "SELECT student.ID, NAME, LOCATION, CURRENT, Last_Term, Total, GPA, EagleMail_ID, Plan
+                  FROM student 
+                  INNER JOIN studentmajor ON student.ID = studentmajor.ID
+                  WHERE TRUE "
+
+                  //then, any number of AND statements that represent our selections:
+
+                  //Students with a CS Major
+                  ."AND ID IN 
+                  (SELECT ID FROM studentmajor WHERE PLAN = 'BS CS')"
+
+                  //Who are a Sophomore
+                  ."AND Total >= 30 AND Total < 60"
+
+                  //who's location is clarion
+                  ."AND LOCATION = 'Clarion'"
+
+                  //who are not current students
+                  ."AND CURRENT = 'N'"
+
+                  //who's GPA is greater than 2.0
+                  ."AND GPA > 2.000"
+
+                  //who have completed a 200's level CS class
+                  //where the class was completed between Spring 2002 (2021) and Fall 2009 (2098) **changed to variable value now
+                  //where the class was between lowerTerm and higherTerm, chosen from dropdowns on Student Question
+                  //where they got a C or higher
+                    ."
+                          AND student.ID IN (
+                          SELECT ID FROM studentclass 
+                          WHERE Subject = 'CIS' 
+                          AND Catalog BETWEEN 200 AND 299
+                          AND Term BETWEEN $lowerTerm AND $higherTerm
+                          AND Grade = 'A' OR 'B' OR 'C')"
+
+        ;
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+////////////////////////////////////////
 function getAllSubjects() {
     try {
         $db = getDBConnection();
@@ -302,6 +372,21 @@ function getAllSubjects() {
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+function getAllTerms() {
+    try {
+        $db = getDBConnection();
+        $query = "select Oldest_Term, Current_Term, Latest_Term from Settings";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetch();
         $statement->closeCursor();
         return $results;           // Assoc Array of Rows
     } catch (PDOException $e) {
@@ -461,7 +546,92 @@ function getLastInsertRow($columnName, $tableName){
     }
 }
 
-    function constructSavedSearch($serialID){
+function getCurrentTerm(){
+
+    try {
+        $db = getDBConnection();
+        $query = "SELECT Current_Term FROM settings
+                  ORDER BY Current_Term DESC
+                  LIMIT 1;";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result[0];
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+//returns the count of rows of a table, returns just a number, not an array
+function countRows($tablename){
+
+    try {
+        $db = getDBConnection();
+        $query = "SELECT COUNT(*) FROM $tablename";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result[0];
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
+//remove all the entries with that Program, then add the selected ones
+function updateSettings($pOldestTerm, $pCurrentTerm, $pLatestTerm, $pDate)
+{
+    try {
+        //clear the settings if they exist
+        clearTable('settings');
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`Settings` 
+                          ( `Oldest_Term`, `Current_Term`,`Latest_Term`, `Last_Import_Date`) 
+                          VALUES (:oldestterm, :currentterm, :latestterm, :date)";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':oldestterm', "$pOldestTerm");
+        $statement->bindValue(':currentterm', "$pCurrentTerm");
+        $statement->bindValue(':latestterm', "$pLatestTerm");
+        $statement->bindValue(':date', "$pDate");
+        $statement->execute();
+        $statement->closeCursor();
+        $errorCode = $statement->errorCode();
+        if ($statement->rowCount() < 1)
+            echo "Row was not inserted  Error code: " . $errorCode . "<br>";
+
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+}
+
+}
+function updateCurrentTerm($pCurrentTerm)
+{
+    try {
+        $db = getDBConnection();
+        $query = "    UPDATE Settings
+                          SET Current_Term = :currentterm;";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':currentterm', "$pCurrentTerm");
+        $statement->execute();
+        $statement->closeCursor();
+        $errorCode = $statement->errorCode();
+
+        return $pCurrentTerm;         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
+function constructSavedSearch($serialID){
        $row = getSerial($serialID);
 			if ($row == false) {
 				displayError("<p>Serial ID is not on file.</p> ");
@@ -495,5 +665,80 @@ function getLastInsertRow($columnName, $tableName){
 function logSQLError($errorInfo) {
     $errorMessage = $errorInfo[2];
     include '../view/errorPage.php';
+}
+
+function combineJoinResults($pStudentArray){
+    //convert Program to an array so we can merge later
+    for ($i = 0; $i < count($pStudentArray); $i++) {
+        $temp = $pStudentArray[$i]['Plan'];
+        $pStudentArray[$i]['Plan'] = array($temp);
+    }
+    //save the original length of the array, before casting the children back to hell where they belong:
+    $originalLength = count($pStudentArray);
+    //merge the Program arrays that each studentRow holds with the Program arrays of matching students
+    for ($i = 0; $i < count($pStudentArray); $i++){
+        //take all the kiddos for ur array lasso
+        //a student can have up to five programs, so to avoid going out of bounds of the array, we use magic:
+        //So the parent looks at its children and grabs Programs:
+        if(isset($pStudentArray[$i]));{
+            if ($i < (count($pStudentArray) - 4)){    //don't look past the end of the array
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+1]['Plan']);
+                    $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+2)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+2]['Plan']);
+                    $pStudentArray[$i+2]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+3)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+3]['Plan']);
+                    $pStudentArray[$i+3]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+4)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+4]['Plan']);
+                    $pStudentArray[$i+4]['ID'] = 6666666; //children are the devil
+                }
+            }
+            if ($i == (count($pStudentArray) - 4)){    //don't look past the end of the array
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+1]['Plan']);
+                    $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+2)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+2]['Plan']);
+                    $pStudentArray[$i+2]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+3)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+3]['Plan']);
+                    $pStudentArray[$i+3]['ID'] = 6666666; //children are the devil
+                }
+            }
+            if ($i == (count($pStudentArray) - 3)){    //don't look past the end of the array
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+1]['Plan']);
+                    $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
+                }
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+2)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+2]['Plan']);
+                    $pStudentArray[$i+2]['ID'] = 6666666; //children are the devil
+                }
+            }
+            if ($i == (count($pStudentArray) - 2)){    //don't look past the end of the array
+                if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+1]['Plan']);
+                    $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
+                }
+            }
+        }
+    }
+    //then, we send the children back to hell where they belong:
+    for ($i = 0; $i < $originalLength; $i++){
+        if ($pStudentArray[$i]['ID'] == 6666666)
+            unset($pStudentArray[$i]);
+    }
+    //and we end up with the array that we need for Vinny's results page:
+    return $pStudentArray;
+
+
 }
 ?>

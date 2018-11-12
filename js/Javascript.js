@@ -108,6 +108,13 @@ function setOrCounts(){
 	 orCount6 = document.getElementById("orCount6").value;
 	 orCount7 = document.getElementById("orCount7").value;
 }
+function changeFileDiv(pID){
+    console.log("changed file div");
+    var filename = $('#' + pID).val().replace('', '');
+    fileCounter=pID.replace( /[^0-9]/g, `` );
+    var currentFileDiv=$('#noFile' + fileCounter);
+    currentFileDiv.html(filename);
+}
 
 /***********  populateOrValues  ***************
 	Need to maintain these Javascript functions? I'd like to apologize if you need to make changes to these, but I'll do my best to explain whats going on.
@@ -1072,8 +1079,8 @@ function makeDivVisibleOr(){
     if(freshlyChanged || orButton) {
         if ($('#dropdown' + and + ' option:selected').text() == "Program") {
             //alert("called");
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='MajorMinor" + and + or +"' id='MajorMinor" + and  + or +"'><option value=''" +
-                ">Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadPrograms(this.id)' class='dropdownWidth' id='MajorMinor" + and  + or +"'><option value=''" +
+                "selected disabled hidden>Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
                 "</select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Location") {
@@ -1085,15 +1092,15 @@ function makeDivVisibleOr(){
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
-                ">Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
-                "<option value=''\ >Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"'><option value=''" +
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"' ><option value=''"+
-                ">Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
-                "<option value=''\ >Course #:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
-                "                \"<option value=''\\ >Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"' ><option value=''"+
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' id='MinGrade" + and  + or +"''>\" +\n" +
+                "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         freshlyChanged=false;
@@ -1106,8 +1113,8 @@ function makeDivVisibleOr(){
         }
         if ($('#dropdown' + and + ' option:selected').text() == "Program") {
             //alert("called");
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='MajorMinor" + and + or +"' id='MajorMinor" + and  + or +"'><option value=''" +
-                ">Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadPrograms(this.id)' class='dropdownWidth' id='MajorMinor" + and  + or +"'><option value=''" +
+                "selected disabled hidden>Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
                 "</select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Location") {
@@ -1119,15 +1126,15 @@ function makeDivVisibleOr(){
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
-                ">Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
-                "<option value=''\ >Course #:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"'><option value=''" +
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''"+
-                ">Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
-                "<option value=''\ >Course #:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
-                "                \"<option value=''\\ >Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"' ><option value=''"+
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' id='MinGrade" + and  + or +"''>\" +\n" +
+                "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         or++;
@@ -1306,7 +1313,7 @@ length: 52
 }
 //call this function with loadDoc(), pass in getCoursesUsingJSON.php
 function getProgramsUsingJSON(xhttp){
-    var JSONObjectHoldingAllOfOurPrograms = JSON.parse(xhttp.responseText);//#ReadableCode
+    JSONObjectHoldingAllOfOurPrograms = JSON.parse(xhttp.responseText);//#ReadableCode
     //then, do stuff with our JSON object that holds all of our courses
     console.log(JSONObjectHoldingAllOfOurPrograms);
     return JSONObjectHoldingAllOfOurPrograms;
@@ -1319,14 +1326,17 @@ function getUsersUsingJSON(xhttp){
     console.log(JSONObjectHoldingAllOfOurUsers);
     return JSONObjectHoldingAllOfOurUsers;
 }
-
+// **AJAX GLOBALS **
+//
 //do we want to NOT use global variables
 //are they not the solution im looking for
 var JSONObjectHoldingAllOfOurCourses;
 var JSONObjectHoldingAllOfOurPrograms;
 var jsObjectHoldingAllOfOurSubjects;
+var jsObjectHoldingAllOfOurTerms;
 var ProgramSubjectsJSON;
 var UserProgramsJSON;
+var CurrentTermJSON;
 
 //pass in the id of the Subject Dropdown and the Catalog dropdown you want to load
 //get the value of subject dropdown
@@ -1336,14 +1346,14 @@ function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
     var SubjectSelectedInOurDropdown = document.getElementById(pSubjectDropdownID).value;
     document.getElementById(pCatalogDropdownID).innerHTML = "<option value='Catalog' selected disabled hidden>" + "Course No." + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='Any...'>" + "Any..." + "</option>";
+    for (i =0; i < jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown].length; i++){
+        document.getElementById(pCatalogDropdownID).innerHTML += "<option value='" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "'>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
+    }
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='100&#39;s'>" + "100's" + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='200&#39;s'>" + "200's" + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='300&#39;s'>" + "300's" + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='400&#39;s'>" + "400's" + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='500&#39;s'>" + "500's" + "</option>";
-    for (i =0; i < jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown].length; i++){
-        document.getElementById(pCatalogDropdownID).innerHTML += "<option value='" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "'>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
-    }
 }
 
 //loads a particular dropdown with all of our subjects
@@ -1351,6 +1361,14 @@ function loadSubjects(pSubjectDropdownID){
     document.getElementById(pSubjectDropdownID).innerHTML = "<option value='Subject' selected disabled hidden>" + "Subject" + "</option>";
     for (ProgramSubjectPairFound in jsObjectHoldingAllOfOurSubjects){
         document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + ProgramSubjectPairFound + "'>" + ProgramSubjectPairFound + "</option>";
+    }
+}
+//loads a particular dropdown with all of our programs
+function loadPrograms(pProgramDropdownID){
+    console.log(JSONObjectHoldingAllOfOurPrograms);
+    document.getElementById(pProgramDropdownID).innerHTML = "<option value='Program' selected disabled hidden>" + "Program" + "</option>";
+    for (ProgramFound in JSONObjectHoldingAllOfOurPrograms){
+        document.getElementById(pProgramDropdownID).innerHTML += "<option value='" + JSONObjectHoldingAllOfOurPrograms[ProgramFound]['Plan'] + "'>" + JSONObjectHoldingAllOfOurPrograms[ProgramFound]['Plan'] + "</option>";
     }
 }
 function loadProgramSubjects(pProgramName){
@@ -1512,6 +1530,53 @@ function getSubjectsUsingJSON(xhttp){
 
     return jsObjectHoldingAllOfOurSubjects;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
+}
+//used for loading terms into dropdowns on student question page
+function getTermsUsingJSON(xhttp){
+    //parse the Ajax responseText into a JSON object, just as it was encoded into a JSON string
+    //create a JS Object to hold our unique term values much like a PHP associative array
+    JSONObjectHoldingAllOfOurTerms = JSON.parse(xhttp.responseText);
+    let oldestYear = "20" + JSONObjectHoldingAllOfOurTerms.Oldest_Term.substr(1,2);
+    let newestYear = "20" + JSONObjectHoldingAllOfOurTerms.Latest_Term.substr(1,2);
+    console.log("Our Oldest Term is: " + JSONObjectHoldingAllOfOurTerms.Oldest_Term);
+    console.log("Our Current Term is: " + JSONObjectHoldingAllOfOurTerms.Current_Term);
+    console.log("Our Latest Term is: " + JSONObjectHoldingAllOfOurTerms.Latest_Term);
+
+    console.log("Our oldest year is: " +  oldestYear);
+    console.log("Our newest year is: " +  newestYear);
+
+    document.getElementById("dropdownRange2").innerHTML += "";
+    document.getElementById("dropdownRange4").innerHTML += "";
+    for (let i = oldestYear; i <= newestYear; i++){
+        if (i == oldestYear)//first year
+            document.getElementById("dropdownRange2").innerHTML += "<option selected value='" + i + "'>" + i + "</option>";
+        else
+            document.getElementById("dropdownRange2").innerHTML += "<option value='" + i + "'>" + i + "</option>";
+        if (i == (newestYear))//last year
+            document.getElementById("dropdownRange4").innerHTML += "<option selected value='" + i + "'>" + i + "</option>";
+        else
+            document.getElementById("dropdownRange4").innerHTML += "<option value='" + i + "'>" + i + "</option>";
+        //console.log(i);
+    }
+
+
+    return JSONObjectHoldingAllOfOurTerms;
+    // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
+}
+function updateCurrentTermUsingJSON(pCurrentTerm){
+    console.log("Button clicked, pCurrentTerm is " + pCurrentTerm);
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(xhttp.responseText);
+            document.getElementById('updatedTermLabel').innerHTML = "**Current term has been updated** to: " + xhttp.responseText;
+        }
+    };
+    xhttp.open("GET", "../model/updateCurrentTermUsingJSON.php?CurrentTerm=" + pCurrentTerm, true);
+    xhttp.send();
+
+    return CurrentTermJSON;
 }
 
 

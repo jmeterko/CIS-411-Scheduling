@@ -33,7 +33,10 @@ switch ($action) {
     case 'CourseQuestion':
         include '../view/MainApplicationCourseQuestion.php';
         break;
-	case 'FileUpload':
+    case 'DisplayData':
+        include '../view/DisplayData.html';
+        break;
+    case 'FileUpload':
         include '../view/fileUploadPage.php';
 		break;
     case 'DisplayData':
@@ -43,7 +46,7 @@ switch ($action) {
         include '../view/HomePage.php';
         break;
     case 'ImportData':
-        include '../view/importData.php';
+        include '../view/importDataWithAjax.php';
         break;
     case 'Loading':
         include '../view/LoadingPage.php';

@@ -2,7 +2,8 @@
 $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
 ?>
-<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON)">
+<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON);loadDoc('../model/getTermsUsingJSON.php', getTermsUsingJSON);loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON);">
+
 <div class="container">
     <div class="container" style="margin: 0px auto">
 			<?php $rebuild = false; if (isset($form) && !empty($form)) { $rebuild = true; } if ($rebuild) { ?>
@@ -378,34 +379,8 @@ require '../view/headerInclude.php';
                                 <option value="Winter">Winter</option>								
 							<?php } ?>
                             </select>
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" name="startYear" style="width:65px;">
-							<?php if ($rebuild) {  ?>
-                                <option value="2007"<?=$form->startYear == '2007' ? ' selected="selected"' : '';?>>2007</option>
-                                <option value="2008"<?=$form->startYear == '2008' ? ' selected="selected"' : '';?>>2008</option>
-                                <option value="2009"<?=$form->startYear == '2009' ? ' selected="selected"' : '';?>>2009</option>
-                                <option value="2010"<?=$form->startYear == '2010' ? ' selected="selected"' : '';?>>2010</option>
-                                <option value="2011"<?=$form->startYear == '2011' ? ' selected="selected"' : '';?>>2011</option>
-                                <option value="2012"<?=$form->startYear == '2012' ? ' selected="selected"' : '';?>>2012</option>
-                                <option value="2013"<?=$form->startYear == '2013' ? ' selected="selected"' : '';?>>2013</option>
-                                <option value="2014"<?=$form->startYear == '2014' ? ' selected="selected"' : '';?>>2014</option>
-                                <option value="2015"<?=$form->startYear == '2015' ? ' selected="selected"' : '';?>>2015</option>
-                                <option value="2016"<?=$form->startYear == '2016' ? ' selected="selected"' : '';?>>2016</option>
-                                <option value="2017"<?=$form->startYear == '2017' ? ' selected="selected"' : '';?>>2017</option>
-                                <option value="2018"<?=$form->startYear == '2018' ? ' selected="selected"' : '';?>>2018</option>				
-							<?php } else { ?>
-                                <option value="2007" selected>2007</option>
-                                <option value="2008">2008</option>
-                                <option value="2009">2009</option>
-                                <option value="2010">2010</option>
-                                <option value="2011">2011</option>
-                                <option value="2012">2012</option>
-                                <option value="2013">2013</option>
-                                <option value="2014">2014</option>
-                                <option value="2015">2015</option>
-                                <option value="2016">2016</option>
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>							
-							<?php } ?>
+
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" style="width:65px;">
                             </select>
                             -
                             <select class="form-control, dropdownboxWidth" id="dropdownRange3" name="endSeason" style="width:65px;">
@@ -421,34 +396,7 @@ require '../view/headerInclude.php';
                                 <option value="Winter">Winter</option>								
 							<?php } ?>
                             </select>
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange4" name="endYear" style="width:65px;">
-							<?php if ($rebuild) {  ?>
-                                <option value="2007"<?=$form->endYear == '2007' ? ' selected="selected"' : '';?>>2007</option>
-                                <option value="2008"<?=$form->endYear == '2008' ? ' selected="selected"' : '';?>>2008</option>
-                                <option value="2009"<?=$form->endYear == '2009' ? ' selected="selected"' : '';?>>2009</option>
-                                <option value="2010"<?=$form->endYear == '2010' ? ' selected="selected"' : '';?>>2010</option>
-                                <option value="2011"<?=$form->endYear == '2011' ? ' selected="selected"' : '';?>>2011</option>
-                                <option value="2012"<?=$form->endYear == '2012' ? ' selected="selected"' : '';?>>2012</option>
-                                <option value="2013"<?=$form->endYear == '2013' ? ' selected="selected"' : '';?>>2013</option>
-                                <option value="2014"<?=$form->endYear == '2014' ? ' selected="selected"' : '';?>>2014</option>
-                                <option value="2015"<?=$form->endYear == '2015' ? ' selected="selected"' : '';?>>2015</option>
-                                <option value="2016"<?=$form->endYear == '2016' ? ' selected="selected"' : '';?>>2016</option>
-                                <option value="2017"<?=$form->endYear == '2017' ? ' selected="selected"' : '';?>>2017</option>
-                                <option value="2018"<?=$form->endYear == '2018' ? ' selected="selected"' : '';?>>2018</option>				
-							<?php } else { ?>
-                                <option value="2007" selected>2007</option>
-                                <option value="2008">2008</option>
-                                <option value="2009">2009</option>
-                                <option value="2010">2010</option>
-                                <option value="2011">2011</option>
-                                <option value="2012">2012</option>
-                                <option value="2013">2013</option>
-                                <option value="2014">2014</option>
-                                <option value="2015">2015</option>
-                                <option value="2016">2016</option>
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>							
-							<?php } ?>
+						    <select class="form-control, dropdownboxWidth" id="dropdownRange4" style="width:65px;">
                             </select>
                         </div>
                         <br/>
@@ -501,8 +449,8 @@ require '../view/headerInclude.php';
                         <br/>
                     </div>
                 </div>
-                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='HomePage.html'"/>
-                <input type="submit" value="Submit" style="float:right" class="btn btn-success" />
+                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../view/HomePage.html'"/>
+                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='../view/DisplayData.html'" />
             </form>
         </div>
     </div>
