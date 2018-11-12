@@ -430,3 +430,14 @@ td.text-right {
     text-align: right;
 }
 
+#exportResults {
+    display:none;
+}
+
+.result_table th, td{
+    padding: 5px;
+}
+
+.history_table th, td{
+    padding: 5px;
+}

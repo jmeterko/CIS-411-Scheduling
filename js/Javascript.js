@@ -565,7 +565,127 @@ function selectAll(id)
     }
 }
 
-//table
+//Vinny's stuff
+//the function that copies selected emails to clipboard
+function copyEmailsToClipboard() {
+    //this is pretty gross we have a hidden text box where the emails are typed
+    document.getElementById("emailList").style.visibility="visible";
+    //the list of emails
+    var emailsList = "";
+    //the table
+    var table = document.getElementById("result_table");
+    //which row we are on
+    var rows = table.getElementsByTagName("tr");
+    //row counter
+    var i;
+    //cycle through the table adding the email of the row we're on to emalList if that row is checked
+    for (i=1; i<rows.length; i++) {
+        if (table.rows[i].cells[0].getElementsByTagName('input')[0].checked) {
+            //alert(table.rows[i].cells[0].getElementsByTagName('input')[0].checked);
+            emailsList += (table.rows[i].cells[10].innerHTML);
+            emailsList += ", ";
+            // alert(emailsList);
+            // alert(rows.length);
+        }
+    }
+    //put our list of emails in a hidden textbox so we can select and copy them
+    document.getElementById("emailList").value = emailsList;
+    //select and copy the content of the textbox
+    var copyList = document.querySelector("#emailList");
+    copyList.select();
+    document.execCommand("copy");
+    //and then we hide that textbox after its all copied again
+    document.getElementById("emailList").style.visibility="hidden";
+    //alert to see if it all worked and nothing broke along  the way
+    alert("Emails of selected rows successfully copied.");
 
+}
 
+//check all the results
+function selectAllResults(){
+    //the table
+    var table = document.getElementById("result_table");
+    var rows = table.getElementsByTagName("tr");
+    //row counter
+    var i;
+    //cycle through the table checking all the boxes
+    for (i=1; i<rows.length;i++)
+    {
+        table.rows[i].cells[0].getElementsByTagName('input')[0].checked = true;
 
+    }
+}
+
+//uncheck all the results
+function deselectAllResults(){
+    //the table
+    var table = document.getElementById("result_table");
+    var rows = table.getElementsByTagName("tr");
+    //row counter
+    var i;
+    //cycle through the table unchecking all the boxes
+    for (i=1; i<rows.length;i++)
+    {
+        table.rows[i].cells[0].getElementsByTagName('input')[0].checked = false;
+
+    }
+}
+
+//hide the email list text box on page load
+function hideStuff(){
+    document.getElementById("emailList").style.visibility="hidden";
+    document.getElementById("exportResults").style.visibility="hidden";
+}
+
+// so i straight ripped this function from the internet i have no idea how it works
+
+//so this one i could not figure out how to rename so i scrapped that and copied a different one LUL
+// var tableToExcel = (function() {
+//
+//     var uri = 'data:application/vnd.ms-excel;base64,'
+//         , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+//         , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+//         , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+//     return function(table, name) {
+//         if (!table.nodeType) table = document.getElementById(table)
+//         var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+//         window.location.href = uri + base64(format(template, ctx))
+//     }
+//
+// })();
+/////////////////////////////////////// this one!
+function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+
+    // Create download link element
+    downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+        // Setting the file name
+        downloadLink.download = filename;
+
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
+function displayClassHistory(){
+    var tab = window.open('StudentHistory.php', '_blank');
+    tab.focus();
+}
