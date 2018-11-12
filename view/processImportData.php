@@ -509,7 +509,7 @@ function loadStudentsClasses()
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //INSERT INTO StudentsClasses <each field>
         $rowTotal++;
-        $rowCount += addNewStudentCourse($rowTotal, $data[0], $data[2], $data[3], $data[4], $data[5], $data[6]);
+        $rowCount += addNewStudentCourse($rowTotal, $data[0], $data[2], $data[3], $data[4], $data[5], $data[6], $data[8]);
         $subjectItem = $data[4];
         $subjectArray[strtoupper($subjectItem)] = $subjectItem;
     }                                           //addNewStudentsClasses^^^
