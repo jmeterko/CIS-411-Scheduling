@@ -299,13 +299,22 @@ function getAllAcademicPrograms() {
 //////////////////////////////////////
 /// WHERE CLAUSE
 //////////////////////////////////////
+/// If you'd like to see the results of this current hardcoded question, visit SQL Example Scripts
+/// There, we also demonstrate the processed results after CombineJoinResults is used.
+///
+/// At this point, we still need to say for Taking / Scheduled For / Taking/Completed 
+///     WHERE Term == $currentTerm
 function getStudentQuestionResults() {
     try {
-        $currentTerm = getCurrentTerm(); //we will use this to determine "taking", "completed", "scheduled for" etc
         $db = getDBConnection();
+
+        //we will use this to determine "taking", "scheduled for", "taking/completed"
+        $currentTerm = getCurrentTerm();
+
+        //we will use these ones for "Completed", "Not Completed" as this is the only time range matters.
         //these are defaulted here, but change based on user selection from Student Question
-        $lowerTerm  = 2071; //spring 2007 is lowest term
-        $higherTerm = 2188; //fall 2018 is latest term
+        $lowerTerm  = 2011; //spring 2001 is lowest term
+        $higherTerm = 2188; //fall 2018 is highest term
 
                   //always start with this.  it determines what our results will look like
         $query = "SELECT student.ID, NAME, LOCATION, CURRENT, Last_Term, Total, GPA, EagleMail_ID, Plan
@@ -332,14 +341,16 @@ function getStudentQuestionResults() {
                   ."AND GPA > 2.000"
 
                   //who have completed a 200's level CS class
-                  //where the class was between Spring 2002 (2021) and Fall 2009 (2098) **changed to variable value now
+                  //where the class was completed between Spring 2002 (2021) and Fall 2009 (2098) **changed to variable value now
                   //where the class was between lowerTerm and higherTerm, chosen from dropdowns on Student Question
+                  //where they got a C or higher
                     ."
                           AND student.ID IN (
                           SELECT ID FROM studentclass 
                           WHERE Subject = 'CIS' 
                           AND Catalog BETWEEN 200 AND 299
-                          AND Term BETWEEN $lowerTerm AND $higherTerm)"
+                          AND Term BETWEEN $lowerTerm AND $higherTerm
+                          AND Grade = 'A' OR 'B' OR 'C')"
 
         ;
         $statement = $db->prepare($query);
@@ -625,9 +636,11 @@ function logSQLError($errorInfo) {
 function combineJoinResults($pStudentArray){
     //convert Program to an array so we can merge later
     for ($i = 0; $i < count($pStudentArray); $i++) {
-        $temp = $pStudentArray[$i]['Program'];
-        $pStudentArray[$i]['Program'] = array($temp);
+        $temp = $pStudentArray[$i]['Plan'];
+        $pStudentArray[$i]['Plan'] = array($temp);
     }
+    //save the original length of the array, before casting the children back to hell where they belong:
+    $originalLength = count($pStudentArray);
     //merge the Program arrays that each studentRow holds with the Program arrays of matching students
     for ($i = 0; $i < count($pStudentArray); $i++){
         //take all the kiddos for ur array lasso
@@ -636,56 +649,56 @@ function combineJoinResults($pStudentArray){
         if(isset($pStudentArray[$i]));{
             if ($i < (count($pStudentArray) - 4)){    //don't look past the end of the array
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+1]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+1]['Plan']);
                     $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
                 }
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+2)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+2]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+2]['Plan']);
                     $pStudentArray[$i+2]['ID'] = 6666666; //children are the devil
                 }
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+3)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+3]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+3]['Plan']);
                     $pStudentArray[$i+3]['ID'] = 6666666; //children are the devil
                 }
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+4)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+4]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+4]['Plan']);
                     $pStudentArray[$i+4]['ID'] = 6666666; //children are the devil
                 }
             }
             if ($i == (count($pStudentArray) - 4)){    //don't look past the end of the array
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+1]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+1]['Plan']);
                     $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
                 }
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+2)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+2]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+2]['Plan']);
                     $pStudentArray[$i+2]['ID'] = 6666666; //children are the devil
                 }
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+3)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+3]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+3]['Plan']);
                     $pStudentArray[$i+3]['ID'] = 6666666; //children are the devil
                 }
             }
             if ($i == (count($pStudentArray) - 3)){    //don't look past the end of the array
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+1]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+1]['Plan']);
                     $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
                 }
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+2)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+2]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+2]['Plan']);
                     $pStudentArray[$i+2]['ID'] = 6666666; //children are the devil
                 }
             }
             if ($i == (count($pStudentArray) - 2)){    //don't look past the end of the array
                 if ($pStudentArray[$i]['ID'] == $pStudentArray[($i+1)]['ID']){
-                    $pStudentArray[$i]['Program'] = array_merge($pStudentArray[$i]['Program'], $pStudentArray[$i+1]['Program']);
+                    $pStudentArray[$i]['Plan'] = array_merge($pStudentArray[$i]['Plan'], $pStudentArray[$i+1]['Plan']);
                     $pStudentArray[$i+1]['ID'] = 6666666; //children are the devil
                 }
             }
         }
     }
     //then, we send the children back to hell where they belong:
-    for ($i = 0; $i < count($pStudentArray); $i++){
+    for ($i = 0; $i < $originalLength; $i++){
         if ($pStudentArray[$i]['ID'] == 6666666)
             unset($pStudentArray[$i]);
     }

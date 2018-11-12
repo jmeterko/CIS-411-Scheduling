@@ -10,33 +10,26 @@ require_once '../model/model.php';
 //here's the array we'll be testing with
 //This is what the results of an INNER JOIN look like for students and student-majors
 $studentResults = array(
-    array('ID' => '10017948','NAME' => 'Black,Katie Nicole','CURRENT' => 'N','Last_Term' => '2081','Total' => '125.000','GPA' => '3.208','Program' => 'BS CS', 'EagleMail_ID' => 'K.N.Black@eagle.clarion.edu'),
-    array('ID' => '10017948','NAME' => 'Black,Katie Nicole','CURRENT' => 'N','Last_Term' => '2081','Total' => '125.000','GPA' => '3.208','Program' => 'BS IS', 'EagleMail_ID' => 'K.N.Black@eagle.clarion.edu'),
-    array('ID' => '10017948','NAME' => 'Black,Katie Nicole','CURRENT' => 'N','Last_Term' => '2081','Total' => '125.000','GPA' => '3.208','Program' => 'MN SPAN', 'EagleMail_ID' => 'K.N.Black@eagle.clarion.edu'),
-    array('ID' => '10020394','NAME' => 'McNaughton,Torey Taylor','CURRENT' => 'Y','Last_Term' => '2188','Total' => '79.500','GPA' => '2.763','Program' => 'BS CS','EagleMail_ID' => 'T.T.Mcnaughton@eagle.clarion.edu'),
-    array('ID' => '10020394','NAME' => 'McNaughton,Torey Taylor','CURRENT' => 'Y','Last_Term' => '2188','Total' => '79.500','GPA' => '2.763','Program' => 'BS MATH','EagleMail_ID' => 'T.T.Mcnaughton@eagle.clarion.edu'),
-    array('ID' => '10028629','NAME' => 'Sanders,Robert Ethan','CURRENT' => 'N','Last_Term' => '2031','Total' => '38.000','GPA' => '1.830','Program' => 'BS CS','EagleMail_ID' => 'R.E.Sanders@eagle.clarion.edu'),
-    array('ID' => '10028629','NAME' => 'Sanders,Robert Ethan','CURRENT' => 'N','Last_Term' => '2031','Total' => '38.000','GPA' => '1.830','Program' => 'BS DA','EagleMail_ID' => 'R.E.Sanders@eagle.clarion.edu'),
-    array('ID' => '10031852','NAME' => 'Pruett,Robert Lee','CURRENT' => 'N','Last_Term' => '2078','Total' => '121.000','GPA' => '3.458','Program' => 'BS CS','EagleMail_ID' => 'R.L.Pruett@eagle.clarion.edu'),
-    array('ID' => '10031852','NAME' => 'Pruett,Robert Lee','CURRENT' => 'N','Last_Term' => '2078','Total' => '121.000','GPA' => '3.458','Program' => 'BS ENG','EagleMail_ID' => 'R.L.Pruett@eagle.clarion.edu'),
-    array('ID' => '10032557','NAME' => 'Barclay II,Roy L','CURRENT' => 'N','Last_Term' => '2088','Total' => '122.000','GPA' => '2.935','Program' => 'BS CS','EagleMail_ID' => 'R.L.Barclay@eagle.clarion.edu'),
-    array('ID' => '10032557','NAME' => 'Barclay II,Roy L','CURRENT' => 'N','Last_Term' => '2088','Total' => '122.000','GPA' => '2.935','Program' => 'BS QUAD','EagleMail_ID' => 'R.L.Barclay@eagle.clarion.edu'),
-    array('ID' => '10036901','NAME' => 'DeSantis,Kelley R','CURRENT' => 'N','Last_Term' => '2081','Total' => '120.000','GPA' => '2.544','Program' => 'BS CS','EagleMail_ID' => 'K.R.Desantis@eagle.clarion.edu'),
-    array('ID' => '10036901','NAME' => 'DeSantis,Kelley R','CURRENT' => 'N','Last_Term' => '2081','Total' => '120.000','GPA' => '2.544','Program' => 'BS BICH','EagleMail_ID' => 'K.R.Desantis@eagle.clarion.edu'),
-    array('ID' => '10041076','NAME' => 'Fox,Dylan Lewis','CURRENT' => 'N','Last_Term' => '2088','Total' => '26.000','GPA' => '1.548','Program' => 'BS CS','EagleMail_ID' => 'D.L.Fox@eagle.clarion.edu'),
-    array('ID' => '10041076','NAME' => 'Fox,Dylan Lewis','CURRENT' => 'N','Last_Term' => '2088','Total' => '26.000','GPA' => '1.548','Program' => 'BS GBY','EagleMail_ID' => 'D.L.Fox@eagle.clarion.edu'),
-    array('ID' => '10042711','NAME' => 'Janoski,Evan Joseph','CURRENT' => 'N','Last_Term' => '2078','Total' => '169.000','GPA' => '3.548','Program' => 'BS CS','EagleMail_ID' => 'E.J.Janoski@eagle.clarion.edu'),
-    array('ID' => '10042711','NAME' => 'Janoski,Evan Joseph','CURRENT' => 'N','Last_Term' => '2078','Total' => '169.000','GPA' => '3.548','Program' => 'BS IS','EagleMail_ID' => 'E.J.Janoski@eagle.clarion.edu'),
-    array('ID' => '10043657','NAME' => 'Rossey,Kenny Matthew','CURRENT' => 'N','Last_Term' => '2078','Total' => '156.000','GPA' => '3.275','Program' => 'BS CS','EagleMail_ID' => 'K.M.Rossey@eagle.clarion.edu'),
-    array('ID' => '10044761','NAME' => 'Shaw,Stevi Lynn','CURRENT' => 'N','Last_Term' => '2075','Total' => '95.000','GPA' => '2.953','Program' => 'BS IS','EagleMail_ID' => 'S.L.Shaw@eagle.clarion.edu'),
-    array('ID' => '10044761','NAME' => 'Shaw,Stevi Lynn','CURRENT' => 'N','Last_Term' => '2075','Total' => '95.000','GPA' => '2.953','Program' => 'MN CS','EagleMail_ID' => 'S.L.Shaw@eagle.clarion.edu'),
-    array('ID' => '10051018','NAME' => 'Ward,Mary Catherine','CURRENT' => 'N','Last_Term' => '2085','Total' => '120.000','GPA' => '2.564','Program' => 'BS QR','EagleMail_ID' => 'M.C.Ward@eagle.clarion.edu'),
-    array('ID' => '10051450','NAME' => 'Flaskos,Harry Michael','CURRENT' => 'N','Last_Term' => '2078','Total' => '120.000','GPA' => '3.100','Program' => 'BS ZL','EagleMail_ID' => 'H.M.Flaskos@eagle.clarion.edu'),
-    array('ID' => '10051450','NAME' => 'Flaskos,Harry Michael','CURRENT' => 'N','Last_Term' => '2078','Total' => '120.000','GPA' => '3.100','Program' => 'BS CS','EagleMail_ID' => 'H.M.Flaskos@eagle.clarion.edu'),
-    array('ID' => '10051487','NAME' => 'Gallo,Allison Marie','CURRENT' => 'N','Last_Term' => '2081','Total' => '132.000','GPA' => '2.969','Program' => 'BS HIST','EagleMail_ID' => 'A.M.Gallo@eagle.clarion.edu'),
-    array('ID' => '10051611','NAME' => 'Hurst,Lon J','CURRENT' => 'N','Last_Term' => '2161','Total' => '122.000','GPA' => '1.863','Program' => 'BS FOO','EagleMail_ID' => 'L.J.Hurst@eagle.clarion.edu'),
-
+    array('ID' => '10042603','NAME' => 'Porter,Hunter J','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2091','Total' => '42.000','GPA' => '2.224','EagleMail_ID' => 'H.J.Porter@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '10042603','NAME' => 'Porter,Hunter J','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2091','Total' => '42.000','GPA' => '2.224','EagleMail_ID' => 'H.J.Porter@eagle.clarion.edu','Plan' => 'MN INF SYS'),
+    array('ID' => '10509518','NAME' => 'Corvino,Melissa Marie','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2091','Total' => '39.000','GPA' => '3.923','EagleMail_ID' => 'M.M.Corvino@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11015216','NAME' => 'Walentosky,Matthew James','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2121','Total' => '30.000','GPA' => '3.667','EagleMail_ID' => 'M.J.Walentosky@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11018162','NAME' => 'Hoffmann,Maximilian','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2121','Total' => '32.000','GPA' => '2.682','EagleMail_ID' => 'M.Hoffmann1@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11021113','NAME' => 'Martin,Kenneth Earl','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2135','Total' => '30.000','GPA' => '2.735','EagleMail_ID' => 'K.E.Martin1@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11024439','NAME' => 'McCoy,Andrew Edward','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2141','Total' => '50.000','GPA' => '3.360','EagleMail_ID' => 'A.E.Mccoy@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11028036','NAME' => 'O\'Donnell,David Michael','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2149','Total' => '39.000','GPA' => '3.231','EagleMail_ID' => 'D.M.Odonnell@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11028036','NAME' => 'O\'Donnell,David Michael','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2149','Total' => '39.000','GPA' => '3.231','EagleMail_ID' => 'D.M.Odonnell@eagle.clarion.edu','Plan' => 'BS MATH'),
+    array('ID' => '11030628','NAME' => 'Kissick,Charles','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2151','Total' => '59.000','GPA' => '3.071','EagleMail_ID' => 'C.Kissick@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11030628','NAME' => 'Kissick,Charles','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2151','Total' => '59.000','GPA' => '3.071','EagleMail_ID' => 'C.Kissick@eagle.clarion.edu','Plan' => 'MN FRENCH'),
+    array('ID' => '11030628','NAME' => 'Kissick,Charles','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2151','Total' => '59.000','GPA' => '3.071','EagleMail_ID' => 'C.Kissick@eagle.clarion.edu','Plan' => 'MN MATH'),
+    array('ID' => '11037970','NAME' => 'Brown,Kegan Michael','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2158','Total' => '30.000','GPA' => '2.100','EagleMail_ID' => 'K.M.Brown4@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11038258','NAME' => 'Hinton,Lorri Ann','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2161','Total' => '33.000','GPA' => '3.719','EagleMail_ID' => 'L.A.Hinton@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11039847','NAME' => 'MacNamara,Drew William','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2168','Total' => '59.000','GPA' => '3.390','EagleMail_ID' => 'D.W.MacNamara@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '11039847','NAME' => 'MacNamara,Drew William','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2168','Total' => '59.000','GPA' => '3.390','EagleMail_ID' => 'D.W.MacNamara@eagle.clarion.edu','Plan' => 'MN ART'),
+    array('ID' => '11039847','NAME' => 'MacNamara,Drew William','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2168','Total' => '59.000','GPA' => '3.390','EagleMail_ID' => 'D.W.MacNamara@eagle.clarion.edu','Plan' => 'MN WEB DEV'),
+    array('ID' => '11041024','NAME' => 'Ramsey,Landon Arthur','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2168','Total' => '36.000','GPA' => '2.475','EagleMail_ID' => 'L.A.Ramsey@eagle.clarion.edu','Plan' => 'BS CS')
 );
+
 
 echo "First we print the original array, with INNERJOIN results:<br>";
 echo "<pre>";
