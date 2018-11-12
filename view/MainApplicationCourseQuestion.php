@@ -282,7 +282,7 @@ require '../view/headerInclude.php';
                         <br/>
                     </div>
                 </div>
-                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=Homepage'"/>
+                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
                 <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=DisplayData'" />
             </form>
         </div>

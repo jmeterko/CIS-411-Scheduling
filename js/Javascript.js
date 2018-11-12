@@ -60,6 +60,7 @@ function makeDivInvisible(pID){
 }
 
 function removeOrDiv(pID){
+    $('#testOrRemove').html(or);
     var placeholder=pID.replace( /[^0-9]/g, `` );
     and=placeholder.charAt(0);
     var attachDiv=document.getElementById('attach'+and);

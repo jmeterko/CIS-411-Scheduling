@@ -50,5 +50,8 @@ require '../view/headerInclude.php';
             <td>History&nbsp;&nbsp;&nbsp;&nbsp;</td>
         </tr>
     </table></center>
+    <br/>
+    <br/>
+    <input type="button" value="Return To Question" style="position:absolute" class="btn btn-success" onclick="window.location.href='../controller/controller.php?action=StudentQuestion'" />
 </body>
 </html>

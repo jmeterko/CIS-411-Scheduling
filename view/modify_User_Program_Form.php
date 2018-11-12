@@ -1,4 +1,4 @@
-?php
+<?php
 $title = "Modify Users' Programs";
 require '../view/headerInclude.php';
 ?>

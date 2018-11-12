@@ -16,6 +16,9 @@ switch ($action) {
     case 'DisplayData':
         include '../view/DisplayData.php';
         break;
+    case 'Home':
+        include '../view/LoginPage.php';
+        break;
     case 'HomePage':
         include '../view/HomePage.php';
         break;
@@ -28,19 +31,28 @@ switch ($action) {
     case 'Login':
         include '../view/LoginPage.php';
         break;
+    case 'ModifyAcadProgram':
+        include '../view/modifyAcadProgramUpdated.php';
+        break;
+    case 'ModifyUserProgram':
+        include '../view/modifyUserProgramUpdated.php';
+        break;
+    case 'ProcessModifyAcadProgram':
+        include '../view/modifyAcadProgramUpdated.php';
+        break;
+    case 'ProcessModifyUserProgram':
+        include '../view/processmodify_User_Program.php';
+        break;
+    case 'Settings':
+        include '../view/settings.php';
+        break;
     case 'StudentQuestion':
         $courseResults = getAllCourses();
         $programResults = getAllAcademicPrograms();
         include '../view/MainApplicationStudentQuestion.php';
         break;
-    case 'Home':
-        include '../view/LoginPage.php';
-        break;
     case 'ProcessImportData':
         include '../view/processImportData.php';
-        break;
-    case 'Wireframe':
-        include '../view/wireframe.php';
         break;
     default:
         include('../view/LoginPage.php');   // default

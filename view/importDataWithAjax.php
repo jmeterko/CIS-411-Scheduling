@@ -1,50 +1,37 @@
 <?php
-$title = "Import Data";
+$title = "Import Data Testing With Ajax";
 require '../view/headerInclude.php';
 ?>
+<!--
+    This page will replace importData.php, or we will route here from controller.
+    As of 11/6 this is working, it sends the form data to processImportData.php just like original importData
+    All we need to do is add the loading circle and the style, and it'll be ready for shipping.
 
-<body style="
-  width: 400px;
-  margin: 100px auto;
-  background-color: #becccc;"
-">
-
-    <form id="file-form" method="POST" action="">
-        <div class="file-upload">
-            <div class="file-select">
-                <div class="file-select-button" id="fileName">Students&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                <div class="file-select-name" id="noFile0">No file chosen...</div>
-                <input name="userfilestudents" type="file" value="Students" id="StudentsFile0" oninput="changeFileDiv(this.id)"/><br/>
-            </div>
-        </div>
-        <br/>
-        <div class="file-upload">
-            <div class="file-select">
-                <div class="file-select-button" id="fileName">Classes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                <div class="file-select-name" id="noFile1">No file chosen...</div>
-                <input name="userfileclasses" type="file" value="Classes" id="ClassesFile1" onchange="changeFileDiv(this.id)"/><br/>
-            </div>
-        </div>
-        <br/>
-        <div class="file-upload">
-            <div class="file-select">
-                <div class="file-select-button" id="fileName">Student-Classes</div>
-                <div class="file-select-name" id="noFile2">No file chosen...</div>
-                <input name="ufstudclass" type="file" value="StudentsClasses" id="StudentClassesFile2" onchange="changeFileDiv(this.id)"/><br/>
-            </div>
-        </div>
-    <br/>
-    <input type="button" value="Back" style="float:left" class="btn btn-danger"  onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
-    <input type="submit" value="Submit" id="upload-button" style="float:right" class="btn btn-success"/>
-    </form>
-</body>
+    We also still don't update settings like Latest Term yet.  When am i gonna get around to that?
+-->
+<form id="file-form" action="importDataWithAjax.php" method="POST">
+    <h1>Upload Files Using Ajax</h1>
+    Students:
+    <input id="userfilestudents" name="userfilestudents" type="file" value="Students"/>
+    <br>
+    Classes:
+    <input id="userfileclasses" name="userfileclasses" type="file" value="Classes" />
+    <br>
+    Students-Classes:
+    <input id="ufstudclass" name="ufstudclass" type="file" value="StudentsClasses"/>
+    <br>
+    <!--<input type="file" id="file-select" name="userfilestudents"/>
+    <input type="file" id="file-select" name="userfilestudents"/>
+    <input type="file" id="file-select" name="userfilestudents"/>-->
+    <button type="submit" id="upload-button">Upload</button>
+</form>
 
 <script>
     //set up references to form elements
     var form = document.getElementById('file-form');
-    var studentSelect = document.getElementById('StudentsFile0');
-    var classesSelect = document.getElementById('ClassesFile1');
-    var studclassSelect = document.getElementById('StudentClassesFile2');
+    var studentSelect = document.getElementById('userfilestudents');
+    var classesSelect = document.getElementById('userfileclasses');
+    var studclassSelect = document.getElementById('ufstudclass');
     var uploadButton = document.getElementById('upload-button');
 
     //set up listener for form submit event
@@ -99,3 +86,6 @@ require '../view/headerInclude.php';
         xhr.send(formData);
     }
 </script>
+<?php
+require '../view/footerInclude.php';
+?>
