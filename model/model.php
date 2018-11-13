@@ -218,12 +218,12 @@ function addNewStudentMajor($rowTotal, $ID, $Plan) {
 }
 
 //rowtotal is just for debugging info
-function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section, $Grade) {
+function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section, $Grade, $Descr) {
     try {
         $db = getDBConnection();
         $query = "INSERT INTO `cis411_csaApp`.`studentclass` 
-                      (`ID`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Grade`) 
-                      VALUES (:id, :term, :session, :subject, :catalog, :section, :grade)";
+                      (`ID`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Grade`, `Descr`) 
+                      VALUES (:id, :term, :session, :subject, :catalog, :section, :grade, :descr)";
         //$queryTest = "INSERT INTO `studentclass` (`ID`, `Name`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Descr`, `Grade`, `Type`) VALUES ('11020640', 'Aaron,Shianne E', '2098', '1', 'CIS', '217', '03', 'Appl Of Micro', 'A', 'OG');";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
         $statement->bindValue(':id', "$ID");
@@ -233,6 +233,7 @@ function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog
         $statement->bindValue(':catalog', "$Catalog");
         $statement->bindValue(':section', "$Section");
         $statement->bindValue(':grade', "$Grade");
+        $statement->bindValue(':descr', "$Descr");
         //echo $query;
         $statement->execute();
         $statement->closeCursor();

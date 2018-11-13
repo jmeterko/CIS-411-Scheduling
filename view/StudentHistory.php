@@ -14,6 +14,7 @@ require '../view/headerInclude.php';
 $studentID = $_GET['StudentHistoryID'];
 //echo 'student id is ' . $studentID;
 $studentCourseHistory = getCourseHistory($studentID);
+//print_r($studentCourseHistory);
 
 ?>
 <body>
@@ -24,7 +25,7 @@ $studentCourseHistory = getCourseHistory($studentID);
             <th>Subject</th>
             <th>Catalog</th>
             <th>Descr</th>
-            <th>Grade</th>>
+            <th>Grade</th>
             <th>Term</th>
             <th>Session</th>
             <th>Section</th>
@@ -36,7 +37,7 @@ $studentCourseHistory = getCourseHistory($studentID);
             <tr>
                 <td><?php echo $aResult['Subject']; ?></td>
                 <td><?php echo $aResult['Catalog']; ?></td>
-                <td><?php echo $aResult['Catalog'];  ?></td>
+                <td><?php echo $aResult['Descr'];  ?></td>
                 <td><?php echo $aResult['Grade']; ?></td>
                 <td><?php echo $aResult['Term']; ?></td>
                 <td><?php echo $aResult['Session']; ?></td>
