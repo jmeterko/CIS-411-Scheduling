@@ -777,7 +777,7 @@ $student2 = array(
     array('ID' => '11030628','NAME' => 'Kissick,Charles','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2151','Total' => '59.000','GPA' => '3.071','EagleMail_ID' => 'C.Kissick@eagle.clarion.edu','Plan' => 'MN FRENCH'),
     array('ID' => '11030628','NAME' => 'Kissick,Charles','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2151','Total' => '59.000','GPA' => '3.071','EagleMail_ID' => 'C.Kissick@eagle.clarion.edu','Plan' => 'MN MATH'),
     array('ID' => '11037970','NAME' => 'Brown,Kegan Michael','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2158','Total' => '30.000','GPA' => '2.100','EagleMail_ID' => 'K.M.Brown4@eagle.clarion.edu','Plan' => 'BS CS'),
-    array('ID' => '11038258','NAME' => 'Hinton,Lorri Ann','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2161','Total' => '33.000','GPA' => '3.719','EagleMail_ID' => 'L.A.Hinton@eagle.clarion.edu','Plan' => 'BS CS'),
+    array('ID' => '10000414','NAME' => 'Hinton,Lorri Ann','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2161','Total' => '33.000','GPA' => '3.719','EagleMail_ID' => 'L.A.Hinton@eagle.clarion.edu','Plan' => 'BS CS'),
     array('ID' => '11039847','NAME' => 'MacNamara,Drew William','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2168','Total' => '59.000','GPA' => '3.390','EagleMail_ID' => 'D.W.MacNamara@eagle.clarion.edu','Plan' => 'BS CS'),
     array('ID' => '11039847','NAME' => 'MacNamara,Drew William','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2168','Total' => '59.000','GPA' => '3.390','EagleMail_ID' => 'D.W.MacNamara@eagle.clarion.edu','Plan' => 'MN ART'),
     array('ID' => '11039847','NAME' => 'MacNamara,Drew William','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2168','Total' => '59.000','GPA' => '3.390','EagleMail_ID' => 'D.W.MacNamara@eagle.clarion.edu','Plan' => 'MN WEB DEV'),
@@ -844,7 +844,7 @@ function determineYear($credits){
                 </td>
 
                 <td><?php echo $aResult['EagleMail_ID']; ?></td>
-                <td><button onclick = "displayClassHistory()" > History </button></td>
+                <td><button onclick = "displayClassHistory(<?php echo $aResult['ID'] ?>)" > History </button></td>
             </tr>
             <?php
         }
@@ -895,7 +895,11 @@ function determineYear($credits){
                 <td><?php echo $aResult['Total']; ?></td>
                 <td><?php echo determineYear($aResult['Total']);  ?></td>
                 <td><?php echo $aResult['GPA']; ?></td>
-                <td><?php echo $aResult['NAME']; //need programs on this ?></td>
+                <td>    <?php
+                    foreach ($aResult['Plan'] as $program){
+                        echo $program . ',';
+                    } //need programs on this ?>
+                </td>
                 <td><?php echo $aResult['EagleMail_ID']; ?></td>
             </tr>
             <?php

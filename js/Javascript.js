@@ -293,6 +293,7 @@ var jsObjectHoldingAllOfOurTerms;
 var ProgramSubjectsJSON;
 var UserProgramsJSON;
 var CurrentTermJSON;
+var studentCourseHistory;
 
 //pass in the id of the Subject Dropdown and the Catalog dropdown you want to load
 //get the value of subject dropdown
@@ -685,7 +686,8 @@ function exportTableToExcel(tableID, filename = ''){
     }
 }
 
-function displayClassHistory(){
-    var tab = window.open('StudentHistory.php', '_blank');
+function displayClassHistory(pStudentID){
+    //console.log(pStudentID);
+    var tab = window.open('../controller/controller.php?action=StudentHistory&StudentHistoryID=' + pStudentID, '_blank'); //make the page exist before ajax stuff
     tab.focus();
 }

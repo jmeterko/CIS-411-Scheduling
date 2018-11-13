@@ -266,6 +266,26 @@ function clearTable($tableName ) {
         die;
     }
 }
+
+function getCourseHistory($pStudentToLookup) {
+    try {
+        //echo "Model is echoing," . $pStudentToLookup . '<br>';
+        $db = getDBConnection();
+        //$query = "SELECT * FROM `cis411_csaapp`.`studentclass` WHERE `ID` = " . "$pStudentToLookup" . "why are there symbols here";
+        $query = "SELECT * FROM `studentclass` WHERE ID = $pStudentToLookup";
+        //echo $query;
+        $statement = $db->prepare($query);
+        //$statement->bindValue(':id', "$pStudentToLookup");
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 function getAllCourses() {
     try {
         $db = getDBConnection();

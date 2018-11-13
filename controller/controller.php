@@ -43,12 +43,14 @@ switch ($action) {
     case 'ProcessImportData':
         include '../view/processImportData.php';
         break;
+    case 'StudentHistory':
+        include '../view/StudentHistory.php';
+        break;
     case 'Wireframe':
         include '../view/wireframe.php';
         break;
     default:
         include('../view/LoginPage.php');   // default
 }
-
 
 ?>
