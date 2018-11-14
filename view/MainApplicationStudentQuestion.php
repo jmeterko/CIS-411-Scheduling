@@ -450,7 +450,7 @@ require '../view/headerInclude.php';
                     </div>
                 </div>
                 <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../view/HomePage.html'"/>
-                <input type="button" value="Submit" style="float:right" class="btn btn-success" onclick="window.location.href='../view/DisplayData.html'" />
+                <input type="submit" value="Submit" style="float:right" class="btn btn-success" />
             </form>
         </div>
     </div>

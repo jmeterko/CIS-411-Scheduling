@@ -33,16 +33,31 @@ document.addEventListener("DOMContentLoaded", function() {
 			window.location.href = "../controller/controller.php?action=RebuildQuestion&SerialID=" + dropdown;
 		}
 	}); 
+	
 	if(!formRebuilt){
+			console.log("REBUILD FORM - START");
+			console.log(formRebuilt);
 		  setOrCounts();
+			console.log("Form Counts Set");
 		  populateElements(formRebuilt);
+		  	console.log("Elements Created");
 		  populateOrTaking(formRebuilt);
+		  	console.log("Populate Taking");
 		  populateOrProgram(formRebuilt);
+		  	console.log("Populate Programs");
 		  populateOrCompleted(formRebuilt)
+		  	console.log("Populate Completed");
 		  populateOrLocation(formRebuilt);
-		  formRebuilt = true;
+		  
+		  
+		  finishBuild();
 	}
 });
+
+function finishBuild(){
+	formRebuilt = true;
+	console.log("Finished");
+}
 
 function toggleSaveQuestion(){
 		if( document.getElementById("saveQuestion").checked == true ) { 
@@ -109,7 +124,6 @@ function setOrCounts(){
 	 orCount7 = document.getElementById("orCount7").value;
 }
 function changeFileDiv(pID){
-    console.log("changed file div");
     var filename = $('#' + pID).val().replace('', '');
     fileCounter=pID.replace( /[^0-9]/g, `` );
     var currentFileDiv=$('#noFile' + fileCounter);
@@ -525,8 +539,10 @@ function populateOrProgram(formRebuilt){
 					if(document.getElementById("dropdown0").value == "Program"){
 							//set the value from the hidden field to the dropdown value
 								pMaj = document.getElementById("val" + majLocation).value;
-
 								if(pMaj){
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
 									document.getElementById("MajorMinor" + loc + x).value = pMaj;					
 								}
 					} x++; 	
@@ -542,7 +558,10 @@ function populateOrProgram(formRebuilt){
 								pMaj = document.getElementById("val" + majLocation).value;
 
 								if(pMaj){
-									document.getElementById("MajorMinor" + loc + x).value = pMaj;					
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
 								}
 					} x++; 	
 				} loc++; x = 0;
@@ -557,7 +576,10 @@ function populateOrProgram(formRebuilt){
 								pMaj = document.getElementById("val" + majLocation).value;
 
 								if(pMaj){
-									document.getElementById("MajorMinor" + loc + x).value = pMaj;					
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
 								}
 					} x++; 	
 				} loc++; x = 0;			
@@ -572,7 +594,10 @@ function populateOrProgram(formRebuilt){
 								pMaj = document.getElementById("val" + majLocation).value;
 
 								if(pMaj){
-									document.getElementById("MajorMinor" + loc + x).value = pMaj;					
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
 								}
 					} x++; 	
 				} loc++; x = 0;		
@@ -587,7 +612,10 @@ function populateOrProgram(formRebuilt){
 								pMaj = document.getElementById("val" + majLocation).value;
 
 								if(pMaj){
-									document.getElementById("MajorMinor" + loc + x).value = pMaj;					
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
 								}
 					} x++; 	
 				} loc++; x = 0;		
@@ -602,7 +630,10 @@ function populateOrProgram(formRebuilt){
 								pMaj = document.getElementById("val" + majLocation).value;
 
 								if(pMaj){
-									document.getElementById("MajorMinor" + loc + x).value = pMaj;					
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
 								}
 					} x++; 	
 				} loc++; x = 0;
@@ -617,7 +648,10 @@ function populateOrProgram(formRebuilt){
 								pMaj = document.getElementById("val" + majLocation).value;
 
 								if(pMaj){
-									document.getElementById("MajorMinor" + loc + x).value = pMaj;					
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
 								}
 					} x++; 	
 				} loc++; x = 0;		
@@ -632,7 +666,10 @@ function populateOrProgram(formRebuilt){
 								pMaj = document.getElementById("val" + majLocation).value;
 
 								if(pMaj){
-									document.getElementById("MajorMinor" + loc + x).value = pMaj;					
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
 								}
 					} x++; 	
 				} loc++; x = 0;				
@@ -1020,7 +1057,7 @@ function rebuildDivs(){
 	document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
 }
 
-	function makeDivVisibleAnd(pID){
+function makeDivVisibleAnd(pID){
     //alert("called");
     and=pID.replace( /[^0-9]/g, `` );
     and++;
@@ -1079,7 +1116,7 @@ function makeDivVisibleOr(){
     if(freshlyChanged || orButton) {
         if ($('#dropdown' + and + ' option:selected').text() == "Program") {
             //alert("called");
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadPrograms(this.id)' class='dropdownWidth' id='MajorMinor" + and  + or +"'><option value=''" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"'  onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadPrograms(this.id)' class='dropdownWidth' name='MajorMinor" + and + or +"' id='MajorMinor" + and  + or +"'><option value=''" +
                 "selected disabled hidden>Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
                 "</select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
@@ -1092,14 +1129,14 @@ function makeDivVisibleOr(){
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"'><option value=''" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)' onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
                 "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"' ><option value=''"+
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
-                "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' id='MinGrade" + and  + or +"''>\" +\n" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"' ><option value=''"+
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
                 "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
@@ -1113,12 +1150,12 @@ function makeDivVisibleOr(){
         }
         if ($('#dropdown' + and + ' option:selected').text() == "Program") {
             //alert("called");
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadPrograms(this.id)' class='dropdownWidth' id='MajorMinor" + and  + or +"'><option value=''" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadPrograms(this.id)' class='dropdownWidth' name='MajorMinor" + and + or +"' id='MajorMinor" + and  + or +"'><option value=''" +
                 "selected disabled hidden>Select Option</option><option value='Any Major'>Any Major</option><option value='Any Minor'>Any Minor</option>" +
                 "</select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Location") {
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='Location" + and + or +"' id='Location" + and  + or +"' ><option value''" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' name='Location" + and + or +"' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='Location" + and + or +"' id='Location" + and  + or +"' ><option value''" +
                 ">Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
                 "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
@@ -1126,14 +1163,14 @@ function makeDivVisibleOr(){
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"'><option value=''" +
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' name='Subject" + and + or +"' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' id='Subject" + and  + or +"' ><option value=''"+
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' id='Catalog" + and  + or +"'>" +
-                "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' id='MinGrade" + and  + or +"''>\" +\n" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' name='Catalog" + and + or +"' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"' ><option value=''"+
+                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
                 "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }

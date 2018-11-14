@@ -1,0 +1,158 @@
+--
+-- Table structure for table `userroles`
+--
+
+CREATE TABLE `userroles` (
+  `UserID` int(11) NOT NULL,
+  `RoleID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userroles`
+--
+
+INSERT INTO `userroles` (`UserID`, `RoleID`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 3),
+(6, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `UserID` int(11) NOT NULL,
+  `FirstName` varchar(32) NOT NULL,
+  `LastName` varchar(32) NOT NULL,
+  `UserName` varchar(32) NOT NULL,
+  `Email` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `UserName`, `Email`) VALUES
+(1, 'Jon', 'ODonnell', 'admin', 'jodonnell@clarion.edu'),
+(2, 'Bill', 'Updater', 'bill', 'bill@localhost'),
+(3, 'Joe', 'Reader', 'joe', 'joe@localhost'),
+(4, 'guest', 'guest', 'guest', 'guest@localhost'),
+(5, 'reader', 'reader', 'reader', 'reader@reader.com'),
+(6, 'jerad', 'meterko', 's_jcmeterko', 'j.c.meterko@eagle.clarion.edu');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `acad_program`
+--
+
+
+--
+-- Indexes for table `functions`
+--
+ALTER TABLE `functions`
+  ADD PRIMARY KEY (`FunctionID`);
+
+--
+-- Indexes for table `rolefunctions`
+--
+ALTER TABLE `rolefunctions`
+  ADD KEY `RoleID` (`RoleID`),
+  ADD KEY `FunctionID` (`FunctionID`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`RoleID`);
+
+--
+-- Indexes for table `serials`
+--
+ALTER TABLE `serials`
+  ADD PRIMARY KEY (`id`);
+--
+-- Indexes for table `userroles`
+--
+ALTER TABLE `userroles`
+  ADD KEY `UserID` (`UserID`),
+  ADD KEY `RoleID` (`RoleID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`UserID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `functions`
+--
+ALTER TABLE `functions`
+  MODIFY `FunctionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `RoleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `serials`
+--
+ALTER TABLE `serials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `rolefunctions`
+--
+ALTER TABLE `rolefunctions`
+  ADD CONSTRAINT `rolefunctions_ibfk_1` FOREIGN KEY (`RoleID`) REFERENCES `roles` (`RoleID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `rolefunctions_ibfk_2` FOREIGN KEY (`FunctionID`) REFERENCES `functions` (`FunctionID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `studentclass`
+--
+ALTER TABLE `studentclass`
+  ADD CONSTRAINT `FK_studentclass_student` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`);
+
+--
+-- Constraints for table `studentmajor`
+--
+ALTER TABLE `studentmajor`
+  ADD CONSTRAINT `FK_studentmajor_acad_program` FOREIGN KEY (`Plan`) REFERENCES `acad_program` (`Plan`),
+  ADD CONSTRAINT `FK_studentmajor_student` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`);
+
+--
+-- Constraints for table `userprograms`
+--
+ALTER TABLE `userprograms`
+  ADD CONSTRAINT `FK_userprograms_acad_program` FOREIGN KEY (`Plan`) REFERENCES `acad_program` (`Plan`);
+
+--
+-- Constraints for table `userroles`
+--
+ALTER TABLE `userroles`
+  ADD CONSTRAINT `userroles_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `userroles_ibfk_2` FOREIGN KEY (`RoleID`) REFERENCES `roles` (`RoleID`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
