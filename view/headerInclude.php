@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../js/Javascript.js"></script>
 	<link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <script src ="../js/jquery-3.1.1.js"></script>

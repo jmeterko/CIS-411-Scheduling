@@ -9,7 +9,7 @@
 			//$s = file_get_contents('store');
 			//$a = unserialize($s);
   
-				 /*echo "Category 1: " . $stdq->cat0 . "<br>"; 
+				 echo "Category 1: " . $stdq->cat0 . "<br>"; 
 				 echo "Category 2: " . $stdq->cat1 . "<br>"; 
 				 echo "Category 3: " . $stdq->cat2 . "<br>"; 
 				 echo "Category 4: " . $stdq->cat3 . "<br>"; 
@@ -43,7 +43,7 @@
 					  echo $item . ": " . $value  . "\n";
 				  }//echo $item to see key/value pair
 
-				 */
+				 
 				/*   
 				 echo $u->cat1; 
 				 echo $u->cat2; 
