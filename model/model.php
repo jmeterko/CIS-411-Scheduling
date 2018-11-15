@@ -663,13 +663,13 @@ function constructSavedSearch($serialID){
         return $serial = $row["serial"];
     }
 }
-
+/*
 function AskQuestion(){
     $user = $_SESSION['username'];
     $results = getSerialsForUser($user);
 
     include '../view/MainApplicationStudentQuestion.php';
-}
+}*/
 
 function RebuildQuestion(){
     $serialID = 0;
