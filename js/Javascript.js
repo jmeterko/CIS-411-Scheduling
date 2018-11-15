@@ -1065,6 +1065,7 @@ function makeDivVisibleAnd(pID){
 
 function makeDivInvisible(pID){
     var attachID=`attach` + pID.replace( /[^0-9]/g, `` );
+    var ID_Only_Numerics = pID.replace( /[^0-9]/g, `` );
     //alert(attachID);
     while(document.getElementById(attachID).firstChild) {
         document.getElementById(attachID).removeChild(document.getElementById(attachID).firstChild);
@@ -1074,30 +1075,31 @@ function makeDivInvisible(pID){
             return this.defaultSelected;
         });
     });
-    document.getElementById("divAnd" + and).removeAttribute("class","visibleDiv");
-    document.getElementById("divAnd" + and).setAttribute("class","hiddenDiv");
+    document.getElementById("divAnd" + ID_Only_Numerics).removeAttribute("class","visibleDiv");
+    document.getElementById("divAnd" + ID_Only_Numerics).setAttribute("class","hiddenDiv");
     if(and>0)
         and--;
 }
 
 function removeOrDiv(pID){
     var orTemp = or;
+    let subOffset = 0;  //if we do reduce the OR value by 1, we set this to 1 before subtracting
     var placeholder=pID.replace( /[^0-9]/g, `` );
     and = placeholder.charAt(0);
     or = placeholder.charAt(1);
-    var attachDiv=document.getElementById('attach'+and);
+    var attachDiv=document.getElementById('attach' + and);
     if (or == 0 && attachDiv.children.length > 1){
-        attachDiv.removeChild(attachDiv.childNodes[ 1 ]);
+        attachDiv.removeChild(attachDiv.childNodes[ 0 ]);
     }
     else{
         if (or > attachDiv.children.length)
             or = attachDiv.children.length;
         if(attachDiv.children.length > 1) {
             attachDiv.removeChild(attachDiv.childNodes[ or - 1 ]);
-            or--;
+            subOffset = 1;
         }
     }
-    or = orTemp;
+    or = (orTemp - subOffset);//will be 0 or 1, where we used to use or--, we now use subOffset = 1
 }
 
 function howManyChildren(){
