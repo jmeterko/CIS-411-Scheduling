@@ -1081,13 +1081,23 @@ function makeDivInvisible(pID){
 }
 
 function removeOrDiv(pID){
+    var orTemp = or;
     var placeholder=pID.replace( /[^0-9]/g, `` );
-    and=placeholder.charAt(0);
+    and = placeholder.charAt(0);
+    or = placeholder.charAt(1);
     var attachDiv=document.getElementById('attach'+and);
-    if(attachDiv.children.length > 1) {
-        attachDiv.removeChild(attachDiv.childNodes[or - 1]);
-        or--;
+    if (or == 0 && attachDiv.children.length > 1){
+        attachDiv.removeChild(attachDiv.childNodes[ 1 ]);
     }
+    else{
+        if (or > attachDiv.children.length)
+            or = attachDiv.children.length;
+        if(attachDiv.children.length > 1) {
+            attachDiv.removeChild(attachDiv.childNodes[ or - 1 ]);
+            or--;
+        }
+    }
+    or = orTemp;
 }
 
 function howManyChildren(){
@@ -1099,7 +1109,6 @@ function getNumberOfChildren(){
     var attachDiv=document.getElementById('attach'+and);
     return attachDiv.children.length;
 }
-
 function makeDivVisibleOr(){
     //loadDoc("../model/getCoursesUsingAjax.php", loadCoursesUsingAjax);  //AJAX call
     //getSubjectsAndCatalogsForDropdown();
