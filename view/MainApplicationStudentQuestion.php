@@ -315,8 +315,8 @@ require '../view/headerInclude.php';
                     </select>
                     <div class="inline" id="attach7"></div>
                     <br/>
-                <br/>
-                <br/>
+                    <br/>
+                    <br/>
                 </div>
                 <br/><br/><br/>
                 <div class="blackBorderDiv" style="width: 20%; float: left;">
@@ -352,7 +352,7 @@ require '../view/headerInclude.php';
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
                     <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
-                <i>*Students who have been enrolled in the past year and have not graduated or applied for graduation</i>
+                    <i>*Students who have been enrolled in the past year and have not graduated or applied for graduation</i>
                 </div>
                 <div>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/></div>
 
@@ -365,7 +365,7 @@ require '../view/headerInclude.php';
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
                             <br/>
-                                <h5><b>Only check classes between:</b></h5>
+                            <h5><b>Only check classes between:</b></h5>
                             <select class="form-control, dropdownboxWidth" id="dropdownRange1" name="startSeason" style="width:65px;">				
 							 <?php if ($rebuild) {  ?>
 								<option value="Spring"<?=$form->startSeason == 'Spring' ? ' selected="selected"' : '';?>>Spring</option>
@@ -407,7 +407,6 @@ require '../view/headerInclude.php';
                             </input>
                             years
                         </div>
-
 				<input type="checkbox" id="saveQuestion" name="saveQuestion"> Remember this search</input>
 				<input type="text" id="searchName" class="hidden" placeholder="Enter Search Name" name="searchName"></input>
 				<?php if ($rebuild) { ?>
@@ -426,11 +425,6 @@ require '../view/headerInclude.php';
 				<?php $orDropdownValue = $form->data;
 				  foreach ($orDropdownValue as $item => $value) {
 					  echo ("<input type='hidden' name='val" . $item . "' id='val" . $item . "' value='" . $value . "'/>");
-					  
-					/*  $orDropdownValue = $form->data;
-				  foreach ($orDropdownValue as $item => $value) {
-					  echo $item . ": " . $value  . "\n";
-				  }*/
 				  }					
 				 } else { ?>
 					<input type='hidden' name='andCount' id="andCount" value='0'/>
@@ -443,13 +437,12 @@ require '../view/headerInclude.php';
 					<input type='hidden' name='orCount6' id="orCount6" value='0'/>
 					<input type='hidden' name='orCount7' id="orCount7" value='0'/>
 					<input type='hidden' name='rebuildFlag' id="rebuildFlag" value='false'/>	
-
 				<?php } ?>
 				<br/>
                         <br/>
                     </div>
                 </div>
-                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../view/HomePage.html'"/>
+                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
                 <input type="submit" value="Submit" style="float:right" class="btn btn-success" />
             </form>
         </div>

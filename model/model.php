@@ -218,12 +218,12 @@ function addNewStudentMajor($rowTotal, $ID, $Plan) {
 }
 
 //rowtotal is just for debugging info
-function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section, $Grade) {
+function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog, $Section, $Grade, $Descr) {
     try {
         $db = getDBConnection();
         $query = "INSERT INTO `cis411_csaApp`.`studentclass` 
-                      (`ID`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Grade`) 
-                      VALUES (:id, :term, :session, :subject, :catalog, :section, :grade)";
+                      (`ID`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Grade`, `Descr`) 
+                      VALUES (:id, :term, :session, :subject, :catalog, :section, :grade, :descr)";
         //$queryTest = "INSERT INTO `studentclass` (`ID`, `Name`, `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Descr`, `Grade`, `Type`) VALUES ('11020640', 'Aaron,Shianne E', '2098', '1', 'CIS', '217', '03', 'Appl Of Micro', 'A', 'OG');";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
         $statement->bindValue(':id', "$ID");
@@ -233,6 +233,7 @@ function addNewStudentCourse($rowTotal, $ID, $Term, $Session, $Subject, $Catalog
         $statement->bindValue(':catalog', "$Catalog");
         $statement->bindValue(':section', "$Section");
         $statement->bindValue(':grade', "$Grade");
+        $statement->bindValue(':descr', "$Descr");
         //echo $query;
         $statement->execute();
         $statement->closeCursor();
@@ -260,6 +261,26 @@ function clearTable($tableName ) {
         $statement->closeCursor();
         echo $count . " rows were deleted from table: " . $tableName . "<br>";
         return $count;           // return # of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
+function getCourseHistory($pStudentToLookup) {
+    try {
+        //echo "Model is echoing," . $pStudentToLookup . '<br>';
+        $db = getDBConnection();
+        //$query = "SELECT * FROM `cis411_csaapp`.`studentclass` WHERE `ID` = " . "$pStudentToLookup" . "why are there symbols here";
+        $query = "SELECT * FROM `studentclass` WHERE ID = $pStudentToLookup";
+        //echo $query;
+        $statement = $db->prepare($query);
+        //$statement->bindValue(':id', "$pStudentToLookup");
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
     } catch (PDOException $e) {
         $errorMessage = $e->getMessage();
         include '../view/errorPage.php';
@@ -666,6 +687,39 @@ function logSQLError($errorInfo) {
     $errorMessage = $errorInfo[2];
     include '../view/errorPage.php';
 }
+
+
+function constructSavedSearch($serialID){
+    $row = getSerial($serialID);
+    if ($row == false) {
+        displayError("<p>Serial ID is not on file.</p> ");
+    } else {
+        return $serial = $row["serial"];
+    }
+}
+/*
+function AskQuestion(){
+    $user = $_SESSION['username'];
+    $results = getSerialsForUser($user);
+
+    include '../view/MainApplicationStudentQuestion.php';
+}*/
+
+function RebuildQuestion(){
+    $serialID = 0;
+    try {
+        if( isset($_GET['SerialID']) ) { $serialID = $_GET['SerialID']; }
+        //save the serial string into a variable to be unserialized
+        $serial = constructSavedSearch($serialID);
+        $form = unserialize($serial);
+
+        include '../view/MainApplicationStudentQuestion.php';
+
+    } catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
+}
+
 
 function combineJoinResults($pStudentArray){
     //convert Program to an array so we can merge later
