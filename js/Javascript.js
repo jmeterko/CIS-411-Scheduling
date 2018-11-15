@@ -1,10 +1,10 @@
 //GLOBALS
-var and=0;
-var or=0;
-var freshlyChanged=true;
-var orButton=false;
-var firstAnd=false;
-var uniqueID=0;
+var and = 0;
+var or = 0;
+var freshlyChanged = true;
+var orButton = false;
+var firstAnd = false;
+var uniqueID = 0;
 var or0 = 0;
 var or1 = 0;
 var or2 = 0;
@@ -21,7 +21,7 @@ var orCount4 = 0;
 var orCount5 = 0;
 var orCount6 = 0;
 var orCount7 = 0;
-var fileCounter=0;
+var fileCounter = 0;
 
 var formRebuilt = false;
 
@@ -35,16 +35,13 @@ document.addEventListener("DOMContentLoaded", function() {
 	}); 
 	
 	if(!formRebuilt){
-			console.log("REBUILD FORM - START");
-			console.log(formRebuilt);
+		  console.log("REBUILD FORM - START");
 		  setOrCounts();						    console.log("Form Counts Set");
 		  populateElements(formRebuilt);		  	console.log("Elements Created");
 		  populateOrTaking(formRebuilt);		  	console.log("Populate Taking");
 		  populateOrProgram(formRebuilt);		  	console.log("Populate Programs");
 		  populateOrCompleted(formRebuilt);		  	console.log("Populate Completed");
 		  populateOrLocation(formRebuilt);
-		  
-		  
 		  finishBuild();
 	}
 });
@@ -248,7 +245,6 @@ function populateOrTaking(formRebuilt){
 					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
 							pSub = document.getElementById("val" + subLocation).value;
 							pCor = document.getElementById("val" + corLocation).value;
-							console.log(corLocation);
 
 							if(pSub){
 								document.getElementById("Subject" + loc + x).value = pSub;					
