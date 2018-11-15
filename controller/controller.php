@@ -29,7 +29,7 @@ switch ($action) {
         include '../view/LoadingPage.php';
         break;
     case 'Login':
-        include '../view/LoginPage.php';
+        include '../security/login_form.php';
         break;
     case 'ModifyAcadProgram':
         include '../view/modifyAcadProgramUpdated.php';
@@ -55,7 +55,6 @@ switch ($action) {
         include '../view/processImportData.php';
         break;
     default:
-        include('../view/LoginPage.php');   // default
+        include('../security/login_form.php');   // default
 }
-
 ?>

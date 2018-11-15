@@ -4,6 +4,7 @@ var or=0;
 var freshlyChanged=true;
 var orButton=false;
 var fileCounter=0;
+var makeXButton=false;
 
 //var $=document.getElementById();
 
@@ -60,14 +61,23 @@ function makeDivInvisible(pID){
 }
 
 function removeOrDiv(pID){
-    $('#testOrRemove').html(or);
+    var orTemp = or;
     var placeholder=pID.replace( /[^0-9]/g, `` );
-    and=placeholder.charAt(0);
+    and = placeholder.charAt(0);
+    or = placeholder.charAt(1);
     var attachDiv=document.getElementById('attach'+and);
-    if(attachDiv.children.length > 1) {
-        attachDiv.removeChild(attachDiv.childNodes[or - 1]);
-        or--;
+    if (or == 0 && attachDiv.children.length > 1){
+        attachDiv.removeChild(attachDiv.childNodes[ 1 ]);
     }
+    else{
+        if (or > attachDiv.children.length)
+            or = attachDiv.children.length;
+        if(attachDiv.children.length > 1) {
+            attachDiv.removeChild(attachDiv.childNodes[ or - 1 ]);
+            or--;
+        }
+    }
+    or = orTemp;
 }
 
 function howManyChildren(){
@@ -192,7 +202,7 @@ function checkIfUserWantsToSaveQuestion(){
     }
     else {
         //alert("no");
-        window.location.replace("../controller/controller.php?action=Loading");
+        window.open("../controller/controller.php?action=Loading",'_blank');
     }
 
     span.onclick = function() {

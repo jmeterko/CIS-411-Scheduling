@@ -253,16 +253,14 @@ require '../view/headerInclude.php';
                 <div>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/></div>
 
                 <div>
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#home">Term Range</a></li>
-                        <li><a data-toggle="tab" href="#menu1">By Year</a></li>
+                    <ul >
+                        <h2>Term Range</h2>
                     </ul>
 
-                    <div class="tab-content">
-                        <div id="home" class="tab-pane fade in active">
-                            <br/>
+                    <div>
+                        <div>
                                 <h5><b>Only check classes between:</b></h5>
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange1" style="width:65px;">
+                            <select class="dropdownboxWidth" id="dropdownRange1" style="width:65px;">
                                 <option value="Spring" selected>Spring</option>
                                 <option value="Summer">Summer</option>
                                 <option value="Fall">Fall</option>
@@ -305,13 +303,6 @@ require '../view/headerInclude.php';
                             </select>
                         </div>
                         <br/>
-                        <div id="menu1" class="tab-pane fade">
-                            <br/>
-                            Only check past
-                            <input type="text" style="width:65px;" id="pastYears">
-                            </input>
-                            years
-                        </div>
 
                         <b style="float:right">Save this question</b> <input type="checkbox" style="float:right" id="userSaveQuestion"/>
                         <br/>
