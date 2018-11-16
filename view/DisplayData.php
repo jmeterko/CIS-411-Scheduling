@@ -3,8 +3,8 @@ $title = "Result Page";
 require_once '../view/headerInclude.php';
 require_once '../model/model.php';
 
-//test data for filling table
-$student = array(
+//test data for filling table, vinnys early test data
+$student1 = array(
     array('ID' => '10000414','NAME' => 'Mengel,Justin Andrew','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2138','Total' => '120.000','GPA' => '3.447','EagleMail_ID' => 'J.A.Mengel@eagle.clarion.edu'),
     array('ID' => '10001641','NAME' => 'Sylvester,Dillon Ray','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2095','Total' => '19.000','GPA' => '1.038','EagleMail_ID' => 'D.R.Sylvester@eagle.clarion.edu'),
     array('ID' => '10002249','NAME' => 'Csorba,Lilla Katalynn','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2098','Total' => '146.000','GPA' => '2.884','EagleMail_ID' => 'L.K.Csorba@eagle.clarion.edu'),
@@ -763,6 +763,7 @@ $student = array(
     array('ID' => '11054745','NAME' => 'Foster,Nathan R.','LOCATION' => 'Clarion','CURRENT' => 'Y','Last_Term' => '2178','Total' => '15.000','GPA' => '3.200','EagleMail_ID' => 'N.R.Foster@eagle.clarion.edu'),
     array('ID' => '11064529','NAME' => 'Carper,Ryan Cameron','LOCATION' => 'Clarion','CURRENT' => 'Y','Last_Term' => '2188','Total' => '0.000','GPA' => '0.000','EagleMail_ID' => 'R.C.Carper@eagle.clarion.edu'));
 
+//test data, INNERJOIN'd results
 $student2 = array(
     array('ID' => '10042603','NAME' => 'Porter,Hunter J','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2091','Total' => '42.000','GPA' => '2.224','EagleMail_ID' => 'H.J.Porter@eagle.clarion.edu','Plan' => 'BS CS'),
     array('ID' => '10042603','NAME' => 'Porter,Hunter J','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2091','Total' => '42.000','GPA' => '2.224','EagleMail_ID' => 'H.J.Porter@eagle.clarion.edu','Plan' => 'MN INF SYS'),
@@ -783,7 +784,11 @@ $student2 = array(
     array('ID' => '11039847','NAME' => 'MacNamara,Drew William','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2168','Total' => '59.000','GPA' => '3.390','EagleMail_ID' => 'D.W.MacNamara@eagle.clarion.edu','Plan' => 'MN WEB DEV'),
     array('ID' => '11041024','NAME' => 'Ramsey,Landon Arthur','LOCATION' => 'Clarion','CURRENT' => 'N','Last_Term' => '2168','Total' => '36.000','GPA' => '2.475','EagleMail_ID' => 'L.A.Ramsey@eagle.clarion.edu','Plan' => 'BS CS')
 );
-$student = combineJoinResults($student2);
+$student2 = combineJoinResults($student2); //combine results of INNERJOIN into final array structure (Plan[])
+
+$student3 = combineJoinResults(getStudentQuestionResults($stdq));
+
+$student = $student3;
 
 //determine what year a student is
 function determineYear($credits){

@@ -325,32 +325,137 @@ function getAllAcademicPrograms() {
 ///
 /// At this point, we still need to say for Taking / Scheduled For / Taking/Completed 
 ///     WHERE Term == $currentTerm
-function getStudentQuestionResults() {
+function getStudentQuestionResults($stdq) {
     try {
         $db = getDBConnection();
 
         //we will use this to determine "taking", "scheduled for", "taking/completed"
         $currentTerm = getCurrentTerm();
-
         //we will use these ones for "Completed", "Not Completed" as this is the only time range matters.
         //these are defaulted here, but change based on user selection from Student Question
         $lowerTerm  = 2011; //spring 2001 is lowest term
         $higherTerm = 2188; //fall 2018 is highest term
 
+
+        //Begin our query.  It always begins the same, then appends our AND clauses after.
+        $query =
                   //always start with this.  it determines what our results will look like
-        $query = "SELECT student.ID, NAME, LOCATION, CURRENT, Last_Term, Total, GPA, EagleMail_ID, Plan
+                  "SELECT student.ID, NAME, LOCATION, CURRENT, Last_Term, Total, GPA, EagleMail_ID, Plan
                   FROM student 
                   INNER JOIN studentmajor ON student.ID = studentmajor.ID
-                  WHERE TRUE "
+                  WHERE TRUE 
+                  "
 
-                  //then, any number of AND statements that represent our selections:
+
+        ;//end initial query
+
+
+        //begin assembling AND clauses, these each represent a WHERE condition to add to our query
+        $clauseItem = "  ";     //this will hold a single AND condition
+        $clausesToAdd = "  ";   //we will collect our clauses here before adding them to the question
+        $SubjectCatalogGradeIndex = ""; //holds the ID of a given collection of sub, cat, gra   sub00   cor00   gra00
+        $CatItem = "";
+        $GraItem = "";
+        $elementName = "";
+        $gradeSet = false;
+
+        echo "<pre>"; //delet dis
+        echo "Our data is:<br>";
+        //jerad's accessor
+        $orDropdownValue = $stdq->data;
+        foreach ($orDropdownValue as $item => $value) {
+            echo $item . ": " . $value  . "\n";
+        }//echo $item to see key/value pair
+
+        echo "<br><br>And now we will try building:<br><br>";
+        //jerad's accessor
+        $orDropdownValue = $stdq->data;
+        foreach ($orDropdownValue as $item => $value) {
+
+            //PROGRAM category
+            if (substr($item, 0, 3) == 'maj'){          //if they selected a major or program
+                $clauseItem = "AND student.ID IN 
+                  (SELECT ID FROM studentmajor WHERE PLAN = '" . $value . "')
+                  ";
+                echo "Our clause item is: <br>" . $clauseItem . "  <br><br>";
+                $query .= $clauseItem; //append our AND clause to our query
+
+            }
+
+            //LOCATION category
+            if (substr($item, 0, 3) == 'loc'){          //if they selected a location
+                $clauseItem = "AND LOCATION = '" . $value . "'
+                ";
+                echo "Our clause item is:   " . $clauseItem . "    ___<br><br>";
+                $query .= $clauseItem; //append our AND clause to our query
+
+            }
+
+            //CLASSES category
+            if (substr($item, 0, 3) == 'sub'){  //FOR NOW we search all terms for classes (taken, completed, scheduled)
+
+                //here, we've found a sub, meaning there's at least 2: a sub and cat, but maybe 3: sub cat and gra
+                $SubjectCatalogGradeIndex = substr($item, 3, 6); //our index on sub12 would be 12
+                echo "Our Subject-Catalog-Grade Index is: " . $SubjectCatalogGradeIndex . "<br>";
+                //handle catalogs
+                $elementName = "cor" . $SubjectCatalogGradeIndex;
+                $CatItem = $orDropdownValue[$elementName];
+
+                //handle grades, which might not be set
+                $elementName = "gra" . $SubjectCatalogGradeIndex;//if grade is set
+                if (isset($orDropdownValue[$elementName])){
+
+                    $GraItem = $orDropdownValue[$elementName];
+                    $gradeSet = true;
+                }
+                else
+                    $gradeSet = false;
+
+                //create the AND clause, without the ending ) or the grade subclause
+                $clauseItem = "AND student.ID IN (
+                    SELECT ID FROM studentclass
+                        WHERE   Subject = '" . $value . "' 
+                        AND     Catalog = '" . $CatItem . "' ";
+                        //AND     Grade = 'A' OR 'B' OR 'C')";
+                if ($gradeSet){
+                    $clauseItem .= "AND     Grade = '" . $GraItem . "')
+                    ";    //if grade is set, factor it in
+                }
+                else{
+                    $clauseItem .= ") 
+                    ";                                    //if not set, end the AND clause
+                }
+
+                echo "Our clause item is:<br> " . $clauseItem . " <br><br>";
+                $query .= $clauseItem; //append our AND clause to our query
+
+            }
+        }//echo $item to see key/value pair
+
+
+        echo "Our query is: <br> $query <br>"; //print the query for testing
+        echo "</pre"; //delet dis
+
+        //now execute the statements and return the results
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}//end student question results
+/*//then, any number of AND statements that represent our selections:
 
                   //Students with a CS Major
-                  ."AND ID IN 
+                  ."AND student.ID IN
                   (SELECT ID FROM studentmajor WHERE PLAN = 'BS CS')"
 
                   //Who are a Sophomore
-                  ."AND Total >= 30 AND Total < 60"
+                  ."AND Total >= 30 AND Total < 60 "
 
                   //who's location is clarion
                   ."AND LOCATION = 'Clarion'"
@@ -367,24 +472,14 @@ function getStudentQuestionResults() {
                   //where they got a C or higher
                     ."
                           AND student.ID IN (
-                          SELECT ID FROM studentclass 
-                          WHERE Subject = 'CIS' 
+                          SELECT ID FROM studentclass
+                          WHERE Subject = 'CIS'
                           AND Catalog BETWEEN 200 AND 299
                           AND Term BETWEEN $lowerTerm AND $higherTerm
-                          AND Grade = 'A' OR 'B' OR 'C')"
+                          AND Grade = 'A' OR 'B' OR 'C')"*/
 
-        ;
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $results = $statement->fetchAll();
-        $statement->closeCursor();
-        return $results;           // Assoc Array of Rows
-    } catch (PDOException $e) {
-        $errorMessage = $e->getMessage();
-        include '../view/errorPage.php';
-        die;
-    }
-}
+
+
 ////////////////////////////////////////
 function getAllSubjects() {
     try {
