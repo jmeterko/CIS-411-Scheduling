@@ -55,7 +55,7 @@ unQuote();          //make sure that magic_quotes_gpc added slashes are stripped
             break;
         case 'StudentQuestion':
             AskQuestion();
-            include '../view/mainApplicationStudentQuestion.php';  //this is my code ignore jerad's question and login stuff
+            //include '../view/mainApplicationStudentQuestion.php';  //this is my code ignore jerad's question and login stuff
             break;
         case 'ProcessStudentQuestion':
             ProcessStudentQuestion();
