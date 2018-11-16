@@ -1,7 +1,8 @@
-<?php /*
-session_start();*/
-//require_once("../security/model.php");
-//require_once("../model/StudentQuestion.php");
+<?php
+session_start();
+$_SESSION['username'] = "admin";  //jeradstuff, comment or delete this later
+require_once("../security/model.php");
+require_once("../model/StudentQuestion.php");
 require_once '../model/model.php';//require the functions from the model.php file
 unQuote();          //make sure that magic_quotes_gpc added slashes are stripped back out if they are enabled.
 /*if (isset($_POST['action'])) {  // check get and post
@@ -34,9 +35,6 @@ unQuote();          //make sure that magic_quotes_gpc added slashes are stripped
         case 'CourseQuestion':
             include '../view/MainApplicationCourseQuestion.php';
             break;
-        case 'DisplayData':
-            include '../view/DisplayData.html';
-            break;
         case 'FileUpload':
             include '../view/fileUploadPage.php';
             break;
@@ -56,7 +54,7 @@ unQuote();          //make sure that magic_quotes_gpc added slashes are stripped
             include '../view/LoginPage.php';
             break;
         case 'StudentQuestion':
-            /*AskQuestion();*/
+            AskQuestion();
             include '../view/mainApplicationStudentQuestion.php';  //this is my code ignore jerad's question and login stuff
             break;
         case 'ProcessStudentQuestion':
@@ -85,6 +83,9 @@ unQuote();          //make sure that magic_quotes_gpc added slashes are stripped
             break;
         case 'ProcessImportData':
             include '../view/processImportData.php';
+            break;
+        case 'StudentHistory':
+            include '../view/StudentHistory.php';
             break;
         case 'Wireframe':
             include '../view/wireframe.php';

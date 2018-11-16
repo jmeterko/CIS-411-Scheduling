@@ -1,7 +1,7 @@
 <?php
 $title = "Result Page";
-require '../view/headerInclude.php';
-require '../model/model.php';
+require_once '../view/headerInclude.php';
+require_once '../model/model.php';
 
 //test data for filling table
 $student = array(

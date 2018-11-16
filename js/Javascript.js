@@ -24,7 +24,7 @@ var orCount7 = 0;
 var fileCounter=0;
 
 var formRebuilt = false;
-
+//jerad's stuff, commented out
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("saveQuestion").addEventListener("change", toggleSaveQuestion);
     document.getElementById("dropdown0").addEventListener("change", function(){
@@ -118,12 +118,7 @@ function setOrCounts(){
     orCount6 = document.getElementById("orCount6").value;
     orCount7 = document.getElementById("orCount7").value;
 }
-function changeFileDiv(pID){
-    var filename = $('#' + pID).val().replace('', '');
-    fileCounter=pID.replace( /[^0-9]/g, `` );
-    var currentFileDiv=$('#noFile' + fileCounter);
-    currentFileDiv.html(filename);
-}
+
 
 /***********  populateOrValues  ***************
  Need to maintain these Javascript functions? I'd like to apologize if you need to make changes to these, but I'll do my best to explain whats going on.

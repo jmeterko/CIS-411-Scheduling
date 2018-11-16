@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/Javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Javascript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/StudentQuestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/StudentQuestion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/DisplayData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/DisplayData.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +21,8 @@
       <file leaf-file-name="controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="e#5#26#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="600">
+              <caret line="66" column="18" lean-forward="true" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -28,12 +30,43 @@
       <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/Javascript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="1164" column="195" selection-start-line="1164" selection-start-column="195" selection-end-line="1164" selection-end-column="195" />
+            <state relative-caret-position="288">
+              <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
               <folding>
                 <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DisplayData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/DisplayData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+              <folding>
+                <element signature="e#139#161363#0#PHP" />
+                <element signature="e#161378#165564#0#PHP" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StudentQuestion.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/StudentQuestion.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2314">
+              <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/security/model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9468">
+              <caret line="526" column="45" selection-start-line="526" selection-start-column="45" selection-end-line="526" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -41,14 +74,8 @@
       <file leaf-file-name="MainApplicationStudentQuestion.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="57" column="99" selection-start-line="57" selection-start-column="99" selection-end-line="57" selection-end-column="99" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -56,8 +83,8 @@
       <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1247">
-              <caret line="668" column="40" selection-start-line="668" selection-start-column="40" selection-end-line="668" selection-end-column="40" />
+            <state relative-caret-position="275">
+              <caret line="673" column="9" selection-start-line="673" selection-start-column="9" selection-end-line="673" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -73,13 +100,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>makedivvisibleor</find>
-      <find>getallcourse</find>
-      <find>SELECT</find>
-      <find>history</find>
-      <find>displ</find>
-      <find>stgudent</find>
-      <find>hist</find>
       <find>studentclass</find>
       <find>action</find>
       <find>button</find>
@@ -103,6 +123,13 @@
       <find>$_SESSg</find>
       <find>makedivvisibleand</find>
       <find>makedivinv</find>
+      <find>removeOrDiv()</find>
+      <find>studentquestion</find>
+      <find>/*</find>
+      <find>require</find>
+      <find>history</find>
+      <find>addserial</find>
+      <find>changeFileDiv</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -156,14 +183,15 @@
         <option value="$PROJECT_DIR$/sql script/SQL Example Scripts.txt" />
         <option value="$PROJECT_DIR$/css/Stylesheet.css" />
         <option value="$PROJECT_DIR$/model/getCourseHistoryUsingAjax.php" />
-        <option value="$PROJECT_DIR$/view/DisplayData.php" />
         <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
         <option value="$PROJECT_DIR$/view/processImportData.php" />
-        <option value="$PROJECT_DIR$/view/StudentHistory.php" />
         <option value="$PROJECT_DIR$/view/HomePage.html" />
         <option value="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" />
+        <option value="$PROJECT_DIR$/view/StudentHistory.php" />
         <option value="$PROJECT_DIR$/model/model.php" />
         <option value="$PROJECT_DIR$/controller/controller.php" />
+        <option value="$PROJECT_DIR$/model/StudentQuestion.php" />
+        <option value="$PROJECT_DIR$/view/DisplayData.php" />
         <option value="$PROJECT_DIR$/js/Javascript.js" />
       </list>
     </option>
@@ -341,7 +369,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="296686000" />
+    <option name="totallyTimeSpent" value="301246000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -449,7 +477,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MainApplicationStudentQuestion.html" />
     <entry file="file://$PROJECT_DIR$/Javascript.js" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -619,13 +646,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/getCourseHistoryUsingAjax.php" />
-    <entry file="file://$PROJECT_DIR$/view/DisplayData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1241">
@@ -640,16 +660,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/StudentHistory.php" />
     <entry file="file://$PROJECT_DIR$/view/headerInclude.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/StudentQuestion.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/view/importData.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -668,23 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#5#26#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1247">
-          <caret line="668" column="40" selection-start-line="668" selection-start-column="40" selection-end-line="668" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/importDataWithAjax.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -692,23 +691,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/view/StudentHistory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/DisplayData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding>
+            <element signature="e#139#161363#0#PHP" />
+            <element signature="e#161378#165564#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="57" column="99" selection-start-line="57" selection-start-column="99" selection-end-line="57" selection-end-column="99" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/security/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9468">
+          <caret line="526" column="45" selection-start-line="526" selection-start-column="45" selection-end-line="526" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/StudentQuestion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2314">
+          <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="66" column="18" lean-forward="true" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="673" column="9" selection-start-line="673" selection-start-column="9" selection-end-line="673" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Javascript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="1164" column="195" selection-start-line="1164" selection-start-column="195" selection-end-line="1164" selection-end-column="195" />
+        <state relative-caret-position="288">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
           <folding>
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />

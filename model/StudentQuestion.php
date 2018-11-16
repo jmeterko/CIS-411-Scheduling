@@ -281,7 +281,8 @@
 			*	Accessing StudentQuestion class properties:
 			* 	$stdq->cat0 // accesses the value stored in the first category dropdown0 (see more examples in mainAppStudentQuestion.php)
 			*/
-			include '../view/index.php';			
+			include '../view/DisplayData.php';
+			//include '../view/index.php';
 		}
 	}
 ?>
