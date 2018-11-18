@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/DisplayData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/DisplayData.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,16 +66,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="376" column="31" lean-forward="true" selection-start-line="376" selection-start-column="31" selection-end-line="376" selection-end-column="31" />
+            <state relative-caret-position="250">
+              <caret line="426" column="62" selection-start-line="426" selection-start-column="62" selection-end-line="426" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainApplicationStudentQuestion.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainApplicationStudentQuestion.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -189,8 +187,8 @@
         <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/model/StudentQuestion.php" />
         <option value="$PROJECT_DIR$/view/DisplayData.php" />
-        <option value="$PROJECT_DIR$/model/model.php" />
         <option value="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" />
+        <option value="$PROJECT_DIR$/model/model.php" />
       </list>
     </option>
   </component>
@@ -362,7 +360,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="315583000" />
+    <option name="totallyTimeSpent" value="323434000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -737,17 +735,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="376" column="31" lean-forward="true" selection-start-line="376" selection-start-column="31" selection-end-line="376" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="426" column="62" selection-start-line="426" selection-start-column="62" selection-end-line="426" selection-end-column="62" />
         </state>
       </provider>
     </entry>

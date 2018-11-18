@@ -359,6 +359,27 @@ function getStudentQuestionResults($stdq) {
         $elementName = "";
         $gradeSet = false;
 
+
+        /*  For Program and Location, our algorithm is as follows:
+                If we find a value for Program
+                    We check it's AND value (maj10 -> 1)
+                        if it's not in our program map (list of indexes found for AND for PROGRAM so far)
+                            Begin our AND clause with:  AND PROGRAM = 'ValueFound'
+                            add that string to our array of PROGRAM clauses
+                        ELSE if it IS in our program map (else matters as we change the bool in our condition)
+                            add a new line to that specific program AND clause in our array:
+                            OR PROGRAM = 'ValueFound'
+                Then, we go through all of the clauses in that array, and end their sets with the    )   character
+        */
+        $and_index = '0';       //a single index found at a time, a "row of OR statements" for "which row we're on"
+
+        $programClausesArray = array();//a collection of programs's sought that share a "row"
+        $programMap = array();  //tells us which AND indexes we've found
+
+        $locationClausesArray = array(); //a collection of location's sought that share a "row"
+        $locationMap = array(); //tells us which AND indexes we've found for locations
+
+
         echo "<pre>"; //delet dis
         echo "Our data is:<br>";
         //jerad's accessor
@@ -372,30 +393,38 @@ function getStudentQuestionResults($stdq) {
         $orDropdownValue = $stdq->data;
         foreach ($orDropdownValue as $item => $value) {
 
-            //PROGRAM category
+            //PROGRAM CATEGORY
             if (substr($item, 0, 3) == 'maj'){          //if they selected a major or program
-                $clauseItem = "AND student.ID IN 
-                  (SELECT ID FROM studentmajor WHERE PLAN = '" . $value . "')
-                  ";
-                echo "Our clause item is: <br>" . $clauseItem . "  <br><br>";
-                $query .= $clauseItem; //append our AND clause to our query
-
+                $and_index = (substr($item, 3, 1));     //set the AND index of that selection (maj10 -> 1)
+                if (!in_array($and_index, $programMap)){ //if that and_index doesn't exist yet, we're handling a new row of conditions (OR'd with each other)
+                    $programMap[$and_index] = $and_index; //add that index to our map
+                    $programClausesArray[$and_index] = " 
+                    AND student.ID IN 
+                        (SELECT ID FROM studentmajor WHERE    PLAN = '$value'"; //then start the statement, to maybe be OR'd with by matching and_indexes later
+                }
+                else { //if that and_index DOES exist already... great usage of ELSE don't you think? or change the order...
+                    $programClausesArray[$and_index] .= "  OR PLAN = '$value' ";
+                }
             }
 
-            //LOCATION category
+            //LOCATION CATEGORY
             if (substr($item, 0, 3) == 'loc'){          //if they selected a location
-                $clauseItem = "AND LOCATION = '" . $value . "'
-                ";
-                echo "Our clause item is:   " . $clauseItem . "    ___<br><br>";
-                $query .= $clauseItem; //append our AND clause to our query
-
+                $and_index = (substr($item, 3, 1));     //set the AND index of that selection (maj10 -> 1)
+                if (!in_array($and_index, $locationMap)){ //if that and_index doesn't exist yet, we're handling a new row of conditions (OR'd with each other)
+                    $locationMap[$and_index] = $and_index; //add that index to our map
+                    $locationClausesArray[$and_index] = " 
+                    AND LOCATION = '$value'"; //then start the statement, to maybe be OR'd with by matching and_indexes later
+                }
+                else { //if that and_index DOES exist already... great usage of ELSE don't you think? or change the order...
+                    $locationClausesArray[$and_index] .= "  OR LOCATION = '$value' ";
+                }
             }
 
             //CLASSES category
             if (substr($item, 0, 3) == 'sub'){  //FOR NOW we search all terms for classes (taken, completed, scheduled)
 
                 //here, we've found a sub, meaning there's at least 2: a sub and cat, but maybe 3: sub cat and gra
-                $SubjectCatalogGradeIndex = substr($item, 3, 6); //our index on sub12 would be 12
+                $SubjectCatalogGradeIndex = substr($item, 3, 2); //our index on sub12 would be 12
                 echo "Our Subject-Catalog-Grade Index is: " . $SubjectCatalogGradeIndex . "<br>";
                 //handle catalogs
                 $elementName = "cor" . $SubjectCatalogGradeIndex;
@@ -412,7 +441,8 @@ function getStudentQuestionResults($stdq) {
                     $gradeSet = false;
 
                 //create the AND clause, without the ending ) or the grade subclause
-                $clauseItem = "AND student.ID IN (
+                $clauseItem = "
+                AND student.ID IN (
                     SELECT ID FROM studentclass
                         WHERE   Subject = '" . $value . "' 
                         AND     Catalog = '" . $CatItem . "' ";
@@ -433,8 +463,38 @@ function getStudentQuestionResults($stdq) {
         }//echo $item to see key/value pair
 
 
+
+        ////////// [[[[[[[[[[[[[[[[[[[[[[[[[        //PRINT PROGRAM AND LOCATION INFORMATION
+        echo "Our Program Clauses are:  <br>"; //print the program clauses for testing
+        foreach ($programClausesArray as $clauseValue) { //for each AND clause in our Program Clauses
+            echo "<br> $clauseValue <br>";
+        }
+        echo "Our program Indexes are: <br>";
+        print_r($programMap);
+
+        echo "Our LOCATION Clauses are:  <br>"; //print the location clauses for testing
+        foreach ($locationClausesArray as $locationValue) { //for each AND clause in our Location Clauses
+            echo "<br> $locationValue <br>";
+        }
+        echo "Our location Indexes are: <br>";
+        print_r($locationMap);
+        ////////// ]]]]]]]]]]]]]]]]]]]]]]]]]        //END PRINT PROGRAM AND LOCATION INFORMATION
+        ///
+
+        //Clean up the ends of the PROGRAM and LOCATION AND clauses and add them to our query
+        foreach ($programClausesArray as $programValue){
+            $programValue .= ") ";            //end the AND clause with one of these:   )
+            $query .= $programValue;
+        }
+        foreach ($locationClausesArray as $locationValue){
+            $query .= $locationValue;
+        }
+
+        //PRINT QUERY
         echo "Our query is: <br> $query <br>"; //print the query for testing
-        echo "</pre"; //delet dis
+
+        echo "</pre"; //DELETE WHEN DONE TESTING OUTPUT
+
 
         //now execute the statements and return the results
         $statement = $db->prepare($query);
