@@ -369,19 +369,19 @@ COMMIT;
 -- Table structure for table `classes`
 --
 
-CREATE TABLE `course` (
+CREATE TABLE IF NOT EXISTS `course` (
   `Subject` varchar(4) NOT NULL,
-  `Catalog` int(5) NOT NULL,
+  `Catalog` varchar(5) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Acad_Org` varchar(4) NOT NULL,
   constraint PK_course Primary Key (Subject, Catalog )
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `courseoffering` (
+CREATE TABLE IF NOT EXISTS`courseoffering` (
   `Term` int(11) NOT NULL,
   `Session` varchar(3) NOT NULL,
   `Subject` varchar(4) NOT NULL,
-  `Catalog` int(5) NOT NULL,
+  `Catalog` varchar(5) NOT NULL,
   `Section` varchar(4) NOT NULL,
   `InstructorName` varchar(22) NOT NULL,
   `Count_ID` int(11) NOT NULL,
@@ -394,7 +394,7 @@ CREATE TABLE `courseoffering` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-CREATE TABLE `student` (
+CREATE TABLE IF NOT EXISTS `student` (
   `ID` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Last_Term` int(11) NOT NULL,
@@ -418,12 +418,12 @@ CREATE TABLE `student` (
    constraint PK_student Primary Key (ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `studentclass` (
+CREATE TABLE IF NOT EXISTS `studentclass` (
   `ID` int(11) NOT NULL,
   `Term` int(11) NOT NULL,
   `Session` varchar(3) NOT NULL,
   `Subject` varchar(4) NOT NULL,
-  `Catalog` int(5) NOT NULL,
+  `Catalog` varchar(5) NOT NULL,
   `Section` varchar(4) NOT NULL,
   `Grade` varchar(2) NOT NULL,
   `Descr` varchar(30),
@@ -441,7 +441,7 @@ CREATE TABLE IF NOT EXISTS `acad_program` (
   constraint PK_acad_program Primary Key (Plan)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `studentmajor` (
+CREATE TABLE IF NOT EXISTS`studentmajor` (
   `ID` int(11) NOT NULL,
   `Plan` varchar(10) NOT NULL,
 

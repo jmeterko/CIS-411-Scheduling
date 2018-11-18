@@ -357,7 +357,8 @@ function getStudentQuestionResults($stdq) {
         $CatItem = "";
         $GraItem = "";
         $elementName = "";
-        $gradeSet = false;
+        $catSet = false;    //for Any... searches (Sub = CIS  CAT = ANY)
+        $gradeSet = false;  //for Passed searches (Sub = CIS  GRA = passed)
 
 
         /*  For Program and Location, our algorithm is as follows:
@@ -373,11 +374,14 @@ function getStudentQuestionResults($stdq) {
         */
         $and_index = '0';       //a single index found at a time, a "row of OR statements" for "which row we're on"
 
-        $programClausesArray = array();//a collection of programs's sought that share a "row"
+        $programClausesArray = array();//a collection of AND clauses, each can have any number of ORs
         $programMap = array();  //tells us which AND indexes we've found
 
-        $locationClausesArray = array(); //a collection of location's sought that share a "row"
+        $locationClausesArray = array(); //a collection of AND clauses, each can have any number of ORs
         $locationMap = array(); //tells us which AND indexes we've found for locations
+
+        $classClausesArray = array();//a collection of AND clauses, each can have any number of ORs
+        $classMap = array();//tells us which AND indexes we've found for classes
 
 
         echo "<pre>"; //delet dis
@@ -420,51 +424,105 @@ function getStudentQuestionResults($stdq) {
                 }
             }
 
+
             //CLASSES category
+            //More complex than the first two
             if (substr($item, 0, 3) == 'sub'){  //FOR NOW we search all terms for classes (taken, completed, scheduled)
-
-                //here, we've found a sub, meaning there's at least 2: a sub and cat, but maybe 3: sub cat and gra
-                $SubjectCatalogGradeIndex = substr($item, 3, 2); //our index on sub12 would be 12
+                $and_index = (substr($item, 3, 1));     //set the AND index of that selection (maj10 -> 1)
+                //here, we've found a sub, meaning there's at least a sub, but maybe also a cat and a gra
+                $SubjectCatalogGradeIndex = substr($item, 3, 2); //our index on sub12 would be 12; sub, cat, and gra see each other
                 echo "Our Subject-Catalog-Grade Index is: " . $SubjectCatalogGradeIndex . "<br>";
-                //handle catalogs
-                $elementName = "cor" . $SubjectCatalogGradeIndex;
-                $CatItem = $orDropdownValue[$elementName];
+                if (!in_array($and_index, $classMap)){ //if that and_index doesn't exist yet, we're handling a new row of conditions (OR'd with each other)
+                    $classMap[$and_index] = $and_index; //add that index to our map
 
-                //handle grades, which might not be set
-                $elementName = "gra" . $SubjectCatalogGradeIndex;//if grade is set
-                if (isset($orDropdownValue[$elementName])){
 
-                    $GraItem = $orDropdownValue[$elementName];
-                    $gradeSet = true;
+                    //handle catalogs
+                    $elementName = "cor" . $SubjectCatalogGradeIndex;
+                    if (isset($orDropdownValue[$elementName]) and $orDropdownValue[$elementName] != 'Any...'){
+
+                        $CatItem = $orDropdownValue[$elementName];
+                        $catSet = true;
+                    }
+                    else
+                        $catSet = false;
+
+                    //handle grades, which might not be set
+                    $elementName = "gra" . $SubjectCatalogGradeIndex;//if grade is set
+                    if (isset($orDropdownValue[$elementName]) and $orDropdownValue[$elementName] != 'Passed'){
+
+                        $GraItem = $orDropdownValue[$elementName];
+                        $gradeSet = true;
+                    }
+                    else
+                        $gradeSet = false;
+
+                    //create the AND clause, without the ending ) or the grade subclause
+                    $classClausesArray[$and_index] = "
+                    AND student.ID IN (
+                        SELECT ID FROM studentclass
+                            WHERE   (
+                                Subject = '" . $value . "' ";
+                    //AND     Grade = 'A' OR 'B' OR 'C')";
+                    if ($catSet){
+                        $classClausesArray[$and_index] .= "
+                                AND     Catalog = '" . $CatItem . "' ";    //if grade is set, factor it in
+                    }
+                    //AND     Grade = 'A' OR 'B' OR 'C')";
+                    if ($gradeSet){
+                        $classClausesArray[$and_index] .= "
+                                AND     Grade   = '$GraItem')";    //if grade is set, factor it in
+                    }
+                    else
+                        $classClausesArray[$and_index] .= "
+                          )";    //if grade is set, factor it in
+
                 }
-                else
-                    $gradeSet = false;
+                else { //if that and_index DOES exist already... great usage of ELSE don't you think? or change the order...
 
-                //create the AND clause, without the ending ) or the grade subclause
-                $clauseItem = "
-                AND student.ID IN (
-                    SELECT ID FROM studentclass
-                        WHERE   Subject = '" . $value . "' 
-                        AND     Catalog = '" . $CatItem . "' ";
-                        //AND     Grade = 'A' OR 'B' OR 'C')";
-                if ($gradeSet){
-                    $clauseItem .= "AND     Grade = '" . $GraItem . "')
-                    ";    //if grade is set, factor it in
-                }
-                else{
-                    $clauseItem .= ") 
-                    ";                                    //if not set, end the AND clause
+                    //handle catalogs
+                    $elementName = "cor" . $SubjectCatalogGradeIndex;
+                    if (isset($orDropdownValue[$elementName])){
+
+                        $CatItem = $orDropdownValue[$elementName];
+                        $catSet = true;
+                    }
+                    else
+                        $catSet = false;
+
+                    //handle grades, which might not be set
+                    $elementName = "gra" . $SubjectCatalogGradeIndex;//if grade is set
+                    if (isset($orDropdownValue[$elementName])){
+
+                        $GraItem = $orDropdownValue[$elementName];
+                        $gradeSet = true;
+                    }
+                    else
+                        $gradeSet = false;
+
+                    $classClausesArray[$and_index] .= "
+                            OR      (
+                                Subject = '" . $value . "' ";
+                    if ($catSet){
+                        $classClausesArray[$and_index] .= "
+                                AND     Catalog = '" . $CatItem . "' ";    //if grade is set, factor it in
+                    }
+                    //AND     Grade = 'A' OR 'B' OR 'C')";
+                    if ($gradeSet){
+                        $classClausesArray[$and_index] .= "
+                                AND     Grade   = '$GraItem')";    //if grade is set, factor it in
+                    }
+                    else
+                        $classClausesArray[$and_index] .= "
+                          )";    //if grade is set, factor it in
                 }
 
-                echo "Our clause item is:<br> " . $clauseItem . " <br><br>";
-                $query .= $clauseItem; //append our AND clause to our query
 
             }
         }//echo $item to see key/value pair
 
 
 
-        ////////// [[[[[[[[[[[[[[[[[[[[[[[[[        //PRINT PROGRAM AND LOCATION INFORMATION
+        ////////// [[[[[[[[[[[[[[[[[[[[[[[[[        //PRINT PROGRAM CLASS & LOCATION INFORMATION
         echo "Our Program Clauses are:  <br>"; //print the program clauses for testing
         foreach ($programClausesArray as $clauseValue) { //for each AND clause in our Program Clauses
             echo "<br> $clauseValue <br>";
@@ -478,16 +536,27 @@ function getStudentQuestionResults($stdq) {
         }
         echo "Our location Indexes are: <br>";
         print_r($locationMap);
-        ////////// ]]]]]]]]]]]]]]]]]]]]]]]]]        //END PRINT PROGRAM AND LOCATION INFORMATION
+
+        echo "Our CLASS Clauses are:  <br>"; //     PRINT CLASS INFORMATION
+        foreach ($classClausesArray as $classValue) { //for each AND clause in our Class Clauses
+            echo "<br> $classValue <br>";
+        }
+        echo "Our class Indexes are: <br>";
+        print_r($classMap);
+        ////////// ]]]]]]]]]]]]]]]]]]]]]]]]]        //END PRINT PROGRAM CLASS & LOCATION INFORMATION
         ///
 
-        //Clean up the ends of the PROGRAM and LOCATION AND clauses and add them to our query
+        //Clean up the ends of the PROGRAM CLASS & LOCATION AND clauses and add them to our query
         foreach ($programClausesArray as $programValue){
             $programValue .= ") ";            //end the AND clause with one of these:   )
             $query .= $programValue;
         }
         foreach ($locationClausesArray as $locationValue){
             $query .= $locationValue;
+        }
+        foreach ($classClausesArray as $classValue){
+            $classValue .= ") ";            //end the AND clause with one of these:   )
+            $query .= $classValue;
         }
 
         //PRINT QUERY
