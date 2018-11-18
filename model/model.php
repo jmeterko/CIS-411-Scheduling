@@ -359,7 +359,7 @@ function getStudentQuestionResults($stdq) {
         $elementName = "";
         $catSet = false;    //for Any... searches (Sub = CIS  CAT = ANY)
         $gradeSet = false;  //for Passed searches (Sub = CIS  GRA = passed)
-
+        $catClause = "";    //used for determining if Category will be a comparison, or a LIKE clause
 
         /*  For Program and Location, our algorithm is as follows:
                 If we find a value for Program
@@ -436,22 +436,25 @@ function getStudentQuestionResults($stdq) {
                     $classMap[$and_index] = $and_index; //add that index to our map
 
 
-                    //handle catalogs
-                    $elementName = "cor" . $SubjectCatalogGradeIndex;
-                    if (isset($orDropdownValue[$elementName]) and $orDropdownValue[$elementName] != 'Any...'){
-
+                    //handle catalogs, which might not be set
+                    $elementName = "cor" . $SubjectCatalogGradeIndex; //cor12, cor00 etc
+                    if (isset($orDropdownValue[$elementName]) and $orDropdownValue[$elementName] != 'Any...'){//not set or chosen: 'any'
                         $CatItem = $orDropdownValue[$elementName];
-                        $catSet = true;
+                        $catSet = true;     //assign it and flag it as set
+                        if (substr($CatItem, 3, 1) == 's'){    //if user chose 100s, 200s etc
+                            $catClause = " AND     Catalog LIKE '" . substr($CatItem, 0, 1) . "%' ";    //if grade is set, factor it in ";
+                        }
+                        else //user chose a specific number
+                            $catClause = " AND     Catalog = '" . $CatItem . "' ";
                     }
                     else
                         $catSet = false;
 
                     //handle grades, which might not be set
-                    $elementName = "gra" . $SubjectCatalogGradeIndex;//if grade is set
-                    if (isset($orDropdownValue[$elementName]) and $orDropdownValue[$elementName] != 'Passed'){
-
+                    $elementName = "gra" . $SubjectCatalogGradeIndex;//gra00, gra13 etc
+                    if (isset($orDropdownValue[$elementName]) and $orDropdownValue[$elementName] != 'Passed'){//not set or chosen 'passed'
                         $GraItem = $orDropdownValue[$elementName];
-                        $gradeSet = true;
+                        $gradeSet = true;   //assign it and flag it as set
                     }
                     else
                         $gradeSet = false;
@@ -464,8 +467,7 @@ function getStudentQuestionResults($stdq) {
                                 Subject = '" . $value . "' ";
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($catSet){
-                        $classClausesArray[$and_index] .= "
-                                AND     Catalog = '" . $CatItem . "' ";    //if grade is set, factor it in
+                        $classClausesArray[$and_index] .= $catClause;    //if cat is set, factor it in
                     }
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($gradeSet){
@@ -479,12 +481,16 @@ function getStudentQuestionResults($stdq) {
                 }
                 else { //if that and_index DOES exist already... great usage of ELSE don't you think? or change the order...
 
-                    //handle catalogs
-                    $elementName = "cor" . $SubjectCatalogGradeIndex;
-                    if (isset($orDropdownValue[$elementName])){
-
+                    //handle catalogs, which might not be set
+                    $elementName = "cor" . $SubjectCatalogGradeIndex; //cor12, cor00 etc
+                    if (isset($orDropdownValue[$elementName]) and $orDropdownValue[$elementName] != 'Any...'){//not set or chosen: 'any'
                         $CatItem = $orDropdownValue[$elementName];
-                        $catSet = true;
+                        $catSet = true;     //assign it and flag it as set
+                        if (substr($CatItem, 3, 1) == 's'){    //if user chose 100s, 200s etc
+                            $catClause = " AND     Catalog LIKE '" . substr($CatItem, 0, 1) . "%' ";    //if cat is set, factor it in ";
+                        }
+                        else //user chose a specific number
+                            $catClause = " AND     Catalog = '" . $CatItem . "' ";
                     }
                     else
                         $catSet = false;
@@ -502,9 +508,8 @@ function getStudentQuestionResults($stdq) {
                     $classClausesArray[$and_index] .= "
                             OR      (
                                 Subject = '" . $value . "' ";
-                    if ($catSet){
-                        $classClausesArray[$and_index] .= "
-                                AND     Catalog = '" . $CatItem . "' ";    //if grade is set, factor it in
+                    if ($catSet){                         //catclause could be:  CAT = LIKE 100s    ~or~    CAT = 235
+                        $classClausesArray[$and_index] .= $catClause;    //if cat is set, factor it in
                     }
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($gradeSet){

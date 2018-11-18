@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,8 +69,8 @@
       <file leaf-file-name="model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1802">
-              <caret line="431" column="105" selection-start-line="431" selection-start-column="105" selection-end-line="431" selection-end-column="105" />
+            <state relative-caret-position="450">
+              <caret line="510" column="111" selection-start-line="510" selection-start-column="111" selection-end-line="510" selection-end-column="111" />
             </state>
           </provider>
         </entry>
@@ -366,7 +365,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="330624000" />
+    <option name="totallyTimeSpent" value="331974000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -746,8 +745,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1802">
-          <caret line="431" column="105" selection-start-line="431" selection-start-column="105" selection-end-line="431" selection-end-column="105" />
+        <state relative-caret-position="450">
+          <caret line="510" column="111" selection-start-line="510" selection-start-column="111" selection-end-line="510" selection-end-column="111" />
         </state>
       </provider>
     </entry>
