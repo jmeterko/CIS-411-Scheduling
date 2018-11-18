@@ -9,6 +9,10 @@ include '../view/headerInclude.php';
         //$s = file_get_contents('store');
         //$a = unserialize($s);
 
+        //davids debugging stuff
+        //love me some pre tags
+        echo "<pre>"; print_r($stdq); echo "</pre>";
+
         echo "Category 1: " . $stdq->cat0 . "<br>";
         echo "Category 2: " . $stdq->cat1 . "<br>";
         echo "Category 3: " . $stdq->cat2 . "<br>";

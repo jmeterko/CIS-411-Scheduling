@@ -380,7 +380,7 @@ require '../view/headerInclude.php';
                                 <?php } ?>
                             </select>
 
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" name="startYear" style="width:65px;">
                             </select>
                             -
                             <select class="form-control, dropdownboxWidth" id="dropdownRange3" name="endSeason" style="width:65px;">
@@ -396,7 +396,7 @@ require '../view/headerInclude.php';
                                     <option value="Winter">Winter</option>
                                 <?php } ?>
                             </select>
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange4" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange4" name="endYear" style="width:65px;">
                             </select>
                         </div>
                         <br/>

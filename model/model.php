@@ -332,10 +332,8 @@ function getStudentQuestionResults($stdq) {
         //we will use this to determine "taking", "scheduled for", "taking/completed"
         $currentTerm = getCurrentTerm();
         //we will use these ones for "Completed", "Not Completed" as this is the only time range matters.
-        //these are defaulted here, but change based on user selection from Student Question
-        $lowerTerm  = 2011; //spring 2001 is lowest term
-        $higherTerm = 2188; //fall 2018 is highest term
-
+        $lowerTerm  = convertRangeToTerm($stdq->startSeason, $stdq->startYear); //spring 2001 is lowest term
+        $higherTerm = convertRangeToTerm($stdq->endSeason, $stdq->endYear); //fall 2018 is highest term
 
         //Begin our query.  It always begins the same, then appends our AND clauses after.
         $query =
@@ -345,8 +343,6 @@ function getStudentQuestionResults($stdq) {
                   INNER JOIN studentmajor ON student.ID = studentmajor.ID
                   WHERE TRUE 
                   "
-
-
         ;//end initial query
 
 
@@ -476,7 +472,7 @@ function getStudentQuestionResults($stdq) {
                     }
                     else
                         $classClausesArray[$and_index] .= "
-                          )";    //if grade is set, factor it in
+                                )";    //if grade is set, factor it in
 
                 }
                 else { //if that and_index DOES exist already... great usage of ELSE don't you think? or change the order...
@@ -567,6 +563,10 @@ function getStudentQuestionResults($stdq) {
         //PRINT QUERY
         echo "Our query is: <br> $query <br>"; //print the query for testing
 
+        //testing all of our StudentObject stuff
+        echo "Our term range is $lowerTerm and $higherTerm<br>";
+        echo "Our Object Data is:<br>";
+        print_r($stdq);
         echo "</pre"; //DELETE WHEN DONE TESTING OUTPUT
 
 
@@ -582,6 +582,7 @@ function getStudentQuestionResults($stdq) {
         die;
     }
 }//end student question results
+
 /*//then, any number of AND statements that represent our selections:
 
                   //Students with a CS Major
@@ -612,8 +613,18 @@ function getStudentQuestionResults($stdq) {
                           AND Term BETWEEN $lowerTerm AND $higherTerm
                           AND Grade = 'A' OR 'B' OR 'C')"*/
 
-
-
+//takes something like SUMMER 2018 and converts it to 2185
+function convertRangeToTerm($pSeason, $pYear){
+    if ($pSeason == 'Spring')
+        $seasonResult = '1';
+    if ($pSeason == 'Summer')
+        $seasonResult = '5';
+    if ($pSeason == 'Fall' or $pSeason == 'Winter')  //2018 = 2                  //2018 = 18
+        $seasonResult = '8';
+    $yearToTerm = substr($pYear, 0, 1) . substr($pYear, 2, 2);
+    $finalResult = $yearToTerm . $seasonResult; // = 2185
+    return $finalResult;
+}
 ////////////////////////////////////////
 function getAllSubjects() {
     try {

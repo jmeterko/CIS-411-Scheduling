@@ -796,7 +796,7 @@ function determineYear($credits){
         return "Freshman";
     }
     else if ($credits < 60) {
-        return "Sophmore";
+        return "Sophomore";
     }
     else if ($credits <90 ) {
         return "Junior";
