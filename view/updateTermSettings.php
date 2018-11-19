@@ -1,5 +1,5 @@
 <?php
-$title = "Import Data";
+$title = "Update Current Semester";
 require '../view/headerInclude.php';
 ?>
 

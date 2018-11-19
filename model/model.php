@@ -640,6 +640,8 @@ function getStudentQuestionResults($stdq) {
             $query .= $classValue;
         }
 
+        //SORT RESULTS
+        $query .= " ORDER BY NAME ";
         //PRINT QUERY
         echo "Our query is: <br> $query <br>"; //print the query for testing
 

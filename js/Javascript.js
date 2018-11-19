@@ -1130,7 +1130,7 @@ function makeDivVisibleOr(){
         else if ($('#dropdown' + and + ' option:selected').text() == "Taking" || $('#dropdown' + and + ' option:selected').text() == "Scheduled For" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
-            $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
+            $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For" || $('#dropdown' + and + ' option:selected').text() == "Course") { +
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)' onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
                 "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
@@ -1164,7 +1164,7 @@ function makeDivVisibleOr(){
         else if ($('#dropdown' + and + ' option:selected').text() == "Taking" || $('#dropdown' + and + ' option:selected').text() == "Scheduled For" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
-            $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
+            $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For" || $('#dropdown' + and + ' option:selected').text() == "Course") { +
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' name='Subject" + and + or +"' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
                 "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
