@@ -273,7 +273,7 @@ function getCourseHistory($pStudentToLookup) {
         //echo "Model is echoing," . $pStudentToLookup . '<br>';
         $db = getDBConnection();
         //$query = "SELECT * FROM `cis411_csaapp`.`studentclass` WHERE `ID` = " . "$pStudentToLookup" . "why are there symbols here";
-        $query = "SELECT * FROM `studentclass` WHERE ID = $pStudentToLookup";
+        $query = "SELECT * FROM `studentclass` WHERE ID = $pStudentToLookup ORDER BY Subject, Catalog";
         //echo $query;
         $statement = $db->prepare($query);
         //$statement->bindValue(':id', "$pStudentToLookup");
@@ -477,7 +477,7 @@ function getStudentQuestionResults($stdq) {
                     AND student.ID IN (
                         SELECT ID FROM studentclass
                             WHERE   
-                            (           Subject = '" . $value . "' ";
+                            (           Subject =  '" . $value . "' ";
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($catSet){
                         $classClausesArray[$and_index] .= $catClause;    //if cat is set, factor it in
@@ -551,7 +551,7 @@ function getStudentQuestionResults($stdq) {
 
                     $classClausesArray[$and_index] .= "
                             OR      
-                            (           Subject = '" . $value . "' ";
+                            (           Subject =  '" . $value . "' ";
                     if ($catSet){                         //catclause could be:  CAT = LIKE 100s    ~or~    CAT = 235
                         $classClausesArray[$and_index] .= $catClause;    //if cat is set, factor it in
                     }
