@@ -329,21 +329,22 @@ function getStudentQuestionResults($stdq) {
     try {
         $db = getDBConnection();
 
+        //Begin our query.  It always begins the same, then appends our AND clauses after.
+        $query =
+            //always start with this.  it determines what our results will look like
+            "SELECT student.ID, NAME, LOCATION, CURRENT, Last_Term, Total, GPA, EagleMail_ID, Plan
+                  FROM student 
+                  INNER JOIN studentmajor ON student.ID = studentmajor.ID
+                  WHERE TRUE 
+                  "
+        ;//end initial query
+
         //we will use this to determine "taking", "scheduled for", "taking/completed"
         $currentTerm = getCurrentTerm();
         //we will use these ones for "Completed", "Not Completed" as this is the only time range matters.
         $lowerTerm  = convertRangeToTerm($stdq->startSeason, $stdq->startYear); //spring 2001 is lowest term
         $higherTerm = convertRangeToTerm($stdq->endSeason, $stdq->endYear); //fall 2018 is highest term
 
-        //Begin our query.  It always begins the same, then appends our AND clauses after.
-        $query =
-                  //always start with this.  it determines what our results will look like
-                  "SELECT student.ID, NAME, LOCATION, CURRENT, Last_Term, Total, GPA, EagleMail_ID, Plan
-                  FROM student 
-                  INNER JOIN studentmajor ON student.ID = studentmajor.ID
-                  WHERE TRUE 
-                  "
-        ;//end initial query
 
 
         //begin assembling AND clauses, these each represent a WHERE condition to add to our query
@@ -388,6 +389,20 @@ function getStudentQuestionResults($stdq) {
             echo $item . ": " . $value  . "\n";
         }//echo $item to see key/value pair
 
+        //testing some term stuff
+        $categoryItem = "";
+        $categoryArray = array();
+        echo "Our categories are:<br>";
+        for ($i = 0; $i < 8; $i++){ //wow this actually works, but it's the type of thing that might break on other PHP versions
+            $categoryItem = "cat" . $i;//cat0, cat1, cat2...cat7
+            echo $categoryItem . ' is: ' . $stdq->$categoryItem . '<br>';  // $stdq->cat1 might be equal to "Taking" etc
+            if (isset($stdq->$categoryItem))
+                $categoryArray[$categoryItem] = $stdq->$categoryItem;
+        }
+        echo "Our category array we made is:<br>";
+        print_r($categoryArray);
+
+        //begin build
         echo "<br><br>And now we will try building:<br><br>";
         //jerad's accessor
         $orDropdownValue = $stdq->data;
@@ -438,10 +453,12 @@ function getStudentQuestionResults($stdq) {
                         $CatItem = $orDropdownValue[$elementName];
                         $catSet = true;     //assign it and flag it as set
                         if (substr($CatItem, 3, 1) == 's'){    //if user chose 100s, 200s etc
-                            $catClause = " AND     Catalog LIKE '" . substr($CatItem, 0, 1) . "%' ";    //if grade is set, factor it in ";
+                            $catClause = "
+                                AND     Catalog LIKE '" . substr($CatItem, 0, 1) . "%' ";    //if grade is set, factor it in ";
                         }
                         else //user chose a specific number
-                            $catClause = " AND     Catalog = '" . $CatItem . "' ";
+                            $catClause = " 
+                                AND     Catalog = '" . $CatItem . "' ";
                     }
                     else
                         $catSet = false;
@@ -467,15 +484,46 @@ function getStudentQuestionResults($stdq) {
                     }
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($gradeSet){
-                        $classClausesArray[$and_index] .= "
-                                AND     Grade   = '$GraItem')";    //if grade is set, factor it in
+                        $classClausesArray[$and_index] .= " 
+                                AND     Grade   = '$GraItem' ";    //*REMOVED THE ) FROM HERE
                     }
-                    else
-                        $classClausesArray[$and_index] .= "
-                                )";    //if grade is set, factor it in
-
-                }
-                else { //if that and_index DOES exist already... great usage of ELSE don't you think? or change the order...
+                    //Handle Term comparison
+                    switch($categoryArray['cat' . $and_index]) {//$categoryArray[cat0] = Taking  etc
+                        case 'Taking':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    = '$currentTerm') ";
+                            break;
+                        case 'Completed':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    < '$currentTerm') ";
+                            break;
+                        case 'Taking/Completed':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    <= '$currentTerm') ";
+                            break;
+                        case 'Scheduled For':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    > '$currentTerm') ";
+                            break;
+                        case 'Not Taking':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    <> '$currentTerm') ";
+                            break;
+                        case 'Not Completed':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    >= '$currentTerm') ";//what if they completed it and are retaking?
+                            break;
+                        case 'Not Taking/Not Completed':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
+                            break;
+                        case 'Not Scheduled For':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
+                            break;
+                    }
+                }//end inArray block, meaning section for a new AND row
+                else { //if that and_index DOES exist already... great usage of ELSE... continuing with ORs on a row
 
                     //handle catalogs, which might not be set
                     $elementName = "cor" . $SubjectCatalogGradeIndex; //cor12, cor00 etc
@@ -510,11 +558,43 @@ function getStudentQuestionResults($stdq) {
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($gradeSet){
                         $classClausesArray[$and_index] .= "
-                                AND     Grade   = '$GraItem')";    //if grade is set, factor it in
+                                AND     Grade   = '$GraItem' ";    //if grade is set, factor it in
                     }
-                    else
-                        $classClausesArray[$and_index] .= "
-                          )";    //if grade is set, factor it in
+                    //Handle Term comparison
+                    switch($categoryArray['cat' . $and_index]) {//$categoryArray[cat0] = Taking  etc
+                        case 'Taking':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    = '$currentTerm') ";
+                            break;
+                        case 'Completed':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    < '$currentTerm') ";
+                            break;
+                        case 'Taking/Completed':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    <= '$currentTerm') ";
+                            break;
+                        case 'Scheduled For':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    > '$currentTerm') ";
+                            break;
+                        case 'Not Taking':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    <> '$currentTerm') ";
+                            break;
+                        case 'Not Completed':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    >= '$currentTerm') ";//what if they completed it and are retaking?
+                            break;
+                        case 'Not Taking/Not Completed':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
+                            break;
+                        case 'Not Scheduled For':
+                            $classClausesArray[$and_index] .= "
+                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
+                            break;
+                    }
                 }
 
 
