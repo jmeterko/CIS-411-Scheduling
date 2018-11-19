@@ -87,6 +87,9 @@ unQuote();          //make sure that magic_quotes_gpc added slashes are stripped
         case 'StudentHistory':
             include '../view/StudentHistory.php';
             break;
+        case 'UpdateTermSettings':
+            include '../view/updateTermSettings.php';
+            break;
         case 'Wireframe':
             include '../view/wireframe.php';
             break;

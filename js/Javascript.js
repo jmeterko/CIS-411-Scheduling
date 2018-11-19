@@ -1602,6 +1602,17 @@ function getTermsUsingJSON(xhttp){
     return JSONObjectHoldingAllOfOurTerms;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
 }
+function convertRangeToTermJS(pSeason, pYear){
+    if (pSeason == 'Spring')
+        seasonResult = '1';
+    if (pSeason == 'Summer')
+        seasonResult = '5';
+    if (pSeason == 'Fall' || pSeason == 'Winter')  //2018 = 2                  //2018 = 18
+        seasonResult = '8';
+    yearToTerm = pYear.substring(0,1) + pYear.substring(2,4);
+    finalResult = yearToTerm + seasonResult; // = 2185
+    return finalResult;
+}
 function updateCurrentTermUsingJSON(pCurrentTerm){
     console.log("Button clicked, pCurrentTerm is " + pCurrentTerm);
     let xhttp;
