@@ -454,11 +454,11 @@ function getStudentQuestionResults($stdq) {
                         $catSet = true;     //assign it and flag it as set
                         if (substr($CatItem, 3, 1) == 's'){    //if user chose 100s, 200s etc
                             $catClause = "
-                                AND     Catalog LIKE '" . substr($CatItem, 0, 1) . "%' ";    //if grade is set, factor it in ";
+                                AND     Catalog LIKE  '" . substr($CatItem, 0, 1) . "%' ";    //if grade is set, factor it in ";
                         }
                         else //user chose a specific number
                             $catClause = " 
-                                AND     Catalog = '" . $CatItem . "' ";
+                                AND     Catalog =  '" . $CatItem . "' ";
                     }
                     else
                         $catSet = false;
@@ -476,8 +476,8 @@ function getStudentQuestionResults($stdq) {
                     $classClausesArray[$and_index] = "
                     AND student.ID IN (
                         SELECT ID FROM studentclass
-                            WHERE   (
-                                Subject = '" . $value . "' ";
+                            WHERE   
+                            (           Subject = '" . $value . "' ";
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($catSet){
                         $classClausesArray[$and_index] .= $catClause;    //if cat is set, factor it in
@@ -485,17 +485,17 @@ function getStudentQuestionResults($stdq) {
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($gradeSet){
                         $classClausesArray[$and_index] .= " 
-                                AND     Grade   = '$GraItem' ";    //*REMOVED THE ) FROM HERE
+                                AND     Grade   =  '$GraItem' ";    //*REMOVED THE ) FROM HERE
                     }
                     //Handle Term comparison
                     switch($categoryArray['cat' . $and_index]) {//$categoryArray[cat0] = Taking  etc
                         case 'Taking':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    = '$currentTerm') ";
+                                AND     Term    =  '$currentTerm') ";
                             break;
                         case 'Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    < '$currentTerm') ";
+                                AND     Term    <  '$currentTerm') ";
                             break;
                         case 'Taking/Completed':
                             $classClausesArray[$and_index] .= "
@@ -503,7 +503,7 @@ function getStudentQuestionResults($stdq) {
                             break;
                         case 'Scheduled For':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    > '$currentTerm') ";
+                                AND     Term    >  '$currentTerm') ";
                             break;
                         case 'Not Taking':
                             $classClausesArray[$and_index] .= "
@@ -531,10 +531,10 @@ function getStudentQuestionResults($stdq) {
                         $CatItem = $orDropdownValue[$elementName];
                         $catSet = true;     //assign it and flag it as set
                         if (substr($CatItem, 3, 1) == 's'){    //if user chose 100s, 200s etc
-                            $catClause = " AND     Catalog LIKE '" . substr($CatItem, 0, 1) . "%' ";    //if cat is set, factor it in ";
+                            $catClause = " AND     Catalog  LIKE '" . substr($CatItem, 0, 1) . "%' ";    //if cat is set, factor it in ";
                         }
                         else //user chose a specific number
-                            $catClause = " AND     Catalog = '" . $CatItem . "' ";
+                            $catClause = " AND     Catalog =  '" . $CatItem . "' ";
                     }
                     else
                         $catSet = false;
@@ -550,25 +550,25 @@ function getStudentQuestionResults($stdq) {
                         $gradeSet = false;
 
                     $classClausesArray[$and_index] .= "
-                            OR      (
-                                Subject = '" . $value . "' ";
+                            OR      
+                            (           Subject = '" . $value . "' ";
                     if ($catSet){                         //catclause could be:  CAT = LIKE 100s    ~or~    CAT = 235
                         $classClausesArray[$and_index] .= $catClause;    //if cat is set, factor it in
                     }
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($gradeSet){
                         $classClausesArray[$and_index] .= "
-                                AND     Grade   = '$GraItem' ";    //if grade is set, factor it in
+                                AND     Grade   =  '$GraItem' ";    //if grade is set, factor it in
                     }
                     //Handle Term comparison
                     switch($categoryArray['cat' . $and_index]) {//$categoryArray[cat0] = Taking  etc
                         case 'Taking':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    = '$currentTerm') ";
+                                AND     Term    =  '$currentTerm') ";
                             break;
                         case 'Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    < '$currentTerm') ";
+                                AND     Term    <  '$currentTerm') ";
                             break;
                         case 'Taking/Completed':
                             $classClausesArray[$and_index] .= "
@@ -576,7 +576,7 @@ function getStudentQuestionResults($stdq) {
                             break;
                         case 'Scheduled For':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    > '$currentTerm') ";
+                                AND     Term    >  '$currentTerm') ";
                             break;
                         case 'Not Taking':
                             $classClausesArray[$and_index] .= "
