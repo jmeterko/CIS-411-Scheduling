@@ -3,7 +3,7 @@
 function addNewCourse($Subject, $Catalog, $Name, $Acad_Org) {
     try {
         $db = getDBConnection();
-        $query = "INSERT INTO `cis411_csaApp`.`Course` 
+        $query = "INSERT INTO `cis411_csaApp`.`course` 
                       ( `Subject`, `Catalog`, `Name`,`Acad_Org`) 
                       VALUES (:subject, :catalog, :name, :acad_org)";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
@@ -32,7 +32,7 @@ function addNewCourse($Subject, $Catalog, $Name, $Acad_Org) {
 function addNewCourseOffering($rowTotal, $Instructor, $InstructorName, $Term, $Session, $Subject, $Catalog, $Section, $Descr, $Count_ID, $Acad_Org, $Start_Time, $End_Time, $Days, $Cap_Enrl) {
     try {
         $db = getDBConnection();
-        $query = "INSERT INTO `cis411_csaApp`.`CourseOffering` 
+        $query = "INSERT INTO `cis411_csaApp`.`courseoffering` 
                       ( `Term`, `Session`, `Subject`, `Catalog`, `Section`, `InstructorName`, `Count_ID`,`Start_Time`, `End_Time`, `Days`, `Cap_Enrl`) 
                       VALUES (:term, :session, :subject, :catalog, :section,:instructorname, :count_id, :start_time, :end_time, :days, :cap_enrl)";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
@@ -78,7 +78,7 @@ function addNewCourseOffering($rowTotal, $Instructor, $InstructorName, $Term, $S
 function addNewStudent($ID, $Name, $Last_Term, $Current, $Location,$Total, $GPA, $Plan_1, $Plan_1_Descr, $Plan_2, $Plan_2_Descr, $Plan_3, $Plan_3_Descr, $Plan_4, $Plan_4_Descr, $Plan_5, $Plan_5_Descr, $Phone, $EagleMail_ID, $Advisor_1, $Advisor_1_Email, $Advisor_2, $Advisor_2_Email, $Degree_Term, $Degree, $Deg_Plan_1, $Deg_Plan_2, $Deg_Plan_3, $Deg_Plan_4, $Deg_Plan_5 ) {
     try {
         $db = getDBConnection();
-        $query = "INSERT INTO `cis411_csaApp`.`Student` 
+        $query = "INSERT INTO `cis411_csaApp`.`student` 
                       (`ID`, `Name`, `Last_Term`, `Current`, `Location`, `Total`, `GPA`, `Phone`, `EagleMail_ID`, `Advisor_1`, `Advisor_1_Email`, `Advisor_2`, `Advisor_2_Email`, `Degree_Term`, `Degree`, `Graduated_Plan_1`, `Graduated_Plan_2`, `Graduated_Plan_3`, `Graduated_Plan_4`, `Graduated_Plan_5`) 
                       VALUES (:id, :name, :last_term, :current, :location, :total, :gpa, :phone, :eaglemail_id, :advisor_1, :advisor_1_email, :advisor_2, :advisor_2_email, :degree_term, :degree, :deg_plan_1, :deg_plan_2, :deg_plan_3, :deg_plan_4, :deg_plan_5)";
         //$queryTest = "INSERT INTO `cis411_csaApp`.`Students`
@@ -128,7 +128,7 @@ function addNewStudent($ID, $Name, $Last_Term, $Current, $Location,$Total, $GPA,
 function addNewSubject($Subject) {
     try {
         $db = getDBConnection();
-        $query = "INSERT INTO `cis411_csaApp`.`Subject` 
+        $query = "INSERT INTO `cis411_csaApp`.`subject` 
                       ( `Subject`) 
                       VALUES (:subject)";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
@@ -290,7 +290,7 @@ function getCourseHistory($pStudentToLookup) {
 function getAllCourses() {
     try {
         $db = getDBConnection();
-        $query = "select * from Course";
+        $query = "select * from course";
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
@@ -305,7 +305,7 @@ function getAllCourses() {
 function getAllAcademicPrograms() {
     try {
         $db = getDBConnection();
-        $query = "select * from Acad_Program";
+        $query = "select * from acad_Program";
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
@@ -711,7 +711,7 @@ function convertRangeToTerm($pSeason, $pYear){
 function getAllSubjects() {
     try {
         $db = getDBConnection();
-        $query = "select * from Subject";
+        $query = "select * from subject";
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
@@ -726,7 +726,7 @@ function getAllSubjects() {
 function getAllTerms() {
     try {
         $db = getDBConnection();
-        $query = "select Oldest_Term, Current_Term, Latest_Term from Settings";
+        $query = "select Oldest_Term, Current_Term, Latest_Term from settings";
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetch();
@@ -741,7 +741,7 @@ function getAllTerms() {
 function getAllUsers() {
     try {
         $db = getDBConnection();
-        $query = "select * from Users";
+        $query = "select * from users";
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
@@ -860,7 +860,7 @@ function getNotProgramSubjects($pProgramName) {
 function getDBConnection() {
     $dsn = 'mysql:host=localhost;dbname=cis411_csaApp';
     $username = 's_dmodonnell';
-    $password = 'Mysteriummmm06';
+    $password = 'JSVD06';
 
     try {
         $db = new PDO($dsn, $username, $password);
@@ -930,7 +930,7 @@ function updateSettings($pOldestTerm, $pCurrentTerm, $pLatestTerm, $pDate)
         //clear the settings if they exist
         clearTable('settings');
         $db = getDBConnection();
-        $query = "INSERT INTO `cis411_csaApp`.`Settings` 
+        $query = "INSERT INTO `cis411_csaApp`.`settings` 
                           ( `Oldest_Term`, `Current_Term`,`Latest_Term`, `Last_Import_Date`) 
                           VALUES (:oldestterm, :currentterm, :latestterm, :date)";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^

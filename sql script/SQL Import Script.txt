@@ -72,8 +72,7 @@ INSERT IGNORE INTO `users` (`FirstName`, `LastName`, `UserName`, `Email`) VALUES
 ('Joe', 'Reader', 'joe', 'joe@localhost'),
 ('guest', 'guest', 'guest', 'guest@localhost');
 
-ALTER TABLE `users`
-  ADD PRIMARY KEY IF NOT EXISTS (`UserName`);
+
 
   -- ---------------------- ^USERS^ -------------------------------------------------------------------------
 
@@ -290,38 +289,38 @@ CREATE TABLE IF NOT EXISTS `serials` (
 -- Indexes for table `functions`
 --
 ALTER TABLE `functions`
-  ADD PRIMARY KEY IF NOT EXISTS (`FunctionID`);
+  ADD PRIMARY KEY  (`FunctionID`);
 
 --
 -- Indexes for table `rolefunctions`
 --
 ALTER TABLE `rolefunctions`
-  ADD KEY IF NOT EXISTS `RoleID` (`RoleID`),
-  ADD KEY  IF NOT EXISTS`FunctionID` (`FunctionID`);
+  ADD KEY  `RoleID` (`RoleID`),
+  ADD KEY  `FunctionID` (`FunctionID`);
 
 --
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
-  ADD PRIMARY KEY  IF NOT EXISTS(`RoleID`);
+  ADD PRIMARY KEY  (`RoleID`);
 
 --
 -- Indexes for table `serials`
 --
 ALTER TABLE `serials`
-  ADD PRIMARY KEY  IF NOT EXISTS(`id`);
+  ADD PRIMARY KEY  (`id`);
 --
 -- Indexes for table `userroles`
 --
 ALTER TABLE `userroles`
-  ADD KEY  IF NOT EXISTS`UserName` (`UserName`),
-  ADD KEY IF NOT EXISTS `RoleID` (`RoleID`);
+  ADD KEY `UserName` (`UserName`),
+  ADD KEY `RoleID` (`RoleID`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY IF NOT EXISTS(`UserName`);
+  ADD PRIMARY KEY (`UserName`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -474,7 +473,7 @@ CREATE TABLE IF NOT EXISTS `programsubject` (
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `cis411_csaapp`.`programsubject`
-    ADD INDEX IF NOT EXISTS `FK_programsubject_subject` (`Subject`) USING BTREE;
+    ADD INDEX  `FK_programsubject_subject` (`Subject`) USING BTREE;
 
 -- why isn't our CREATE working for our student ID FK?
 -- for now, we add the INDEX after creating the table
@@ -496,5 +495,5 @@ CREATE TABLE IF NOT EXISTS `userprograms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `cis411_csaapp`.`userprograms`
-    ADD INDEX IF NOT EXISTS `FK_userprograms_users` (`UserName`) USING BTREE;
+    ADD INDEX  `FK_userprograms_users` (`UserName`) USING BTREE;
 -- -------------------- ^USERPROGRAMS^ ----------------------------------------------------------------------
