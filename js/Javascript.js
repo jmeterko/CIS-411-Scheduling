@@ -1455,7 +1455,7 @@ function loadUserPrograms(pUserName){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             UserProgramsJSON = JSON.parse(xhttp.responseText);
-            console.log(UserProgramsJSON);
+            console.log("Our User's programs are: "); console.log(UserProgramsJSON);
             //alert(ProgramSubjectsJSON);
             document.getElementById('hasProgramsSelect').innerHTML = "<option>Has these programs: </option><option></option>";
             document.getElementById('hasNotProgramsSelect').innerHTML = "<option>Does not have: </option><option></option>";
@@ -1512,7 +1512,7 @@ function loadNotUserPrograms(pUserName){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             allProgramsJSON = JSON.parse(xhttp.responseText);
-            console.log(allProgramsJSON);
+            console.log("In loadNotUserPrograms, our allProgramsJSON is: "); console.log(allProgramsJSON);
             //alert(ProgramSubjectsJSON);
 
             //remove the subjects that we DO have

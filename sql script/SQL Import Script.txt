@@ -494,6 +494,5 @@ CREATE TABLE IF NOT EXISTS `userprograms` (
   constraint FK_userprograms_acad_program Foreign Key (Plan) references acad_program(Plan)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE `cis411_csaapp`.`userprograms`
-    ADD INDEX  `FK_userprograms_users` (`UserName`) USING BTREE;
+
 -- -------------------- ^USERPROGRAMS^ ----------------------------------------------------------------------

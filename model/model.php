@@ -305,7 +305,7 @@ function getAllCourses() {
 function getAllAcademicPrograms() {
     try {
         $db = getDBConnection();
-        $query = "select * from acad_Program";
+        $query = "select * from acad_program";
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
@@ -988,7 +988,7 @@ function getSubjectsForUser($pUser){
                     WHERE subject IN
                         (SELECT subject FROM programsubject
                             WHERE Plan IN
-                                (SELECT PLAN FROM USERPROGRAMS
+                                (SELECT PLAN FROM userprograms
                                     WHERE USERNAME = '$pUser'))";
         $statement = $db->prepare($query);
         $statement->execute();

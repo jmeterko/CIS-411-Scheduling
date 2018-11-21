@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/model/getSubjectsForUserJSON.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Student-Class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-ENG-LANG-Students-Classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-ENG-LANG-Students-Classes.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/Javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Javascript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/modify_Acad_Program_Form.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/modify_Acad_Program_Form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,20 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Javascript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="1353" column="20" lean-forward="true" selection-start-line="1353" selection-start-column="20" selection-end-line="1353" selection-end-column="20" />
+            <state relative-caret-position="728">
+              <caret line="1536" column="43" selection-start-line="1536" selection-start-column="43" selection-end-line="1536" selection-end-column="43" />
               <folding>
                 <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
@@ -41,38 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modify_Acad_Program_Form.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/view/modify_Acad_Program_Form.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="getProgramsUsingJSON.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/getProgramsUsingJSON.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="41" lean-forward="true" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainApplicationStudentQuestion.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="255" lean-forward="true" selection-start-line="4" selection-start-column="255" selection-end-line="4" selection-end-column="255" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getUserProgramsUsingJSON.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/getUserProgramsUsingJSON.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+            <state relative-caret-position="130">
+              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -80,8 +45,62 @@
       <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="845" column="9" selection-start-line="845" selection-start-column="9" selection-end-line="845" selection-end-column="9" />
+            <state relative-caret-position="472">
+              <caret line="990" column="62" selection-start-line="990" selection-start-column="62" selection-end-line="990" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2088-2188-CIS-Students-Classes.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="33066" column="79" selection-start-line="33066" selection-start-column="79" selection-end-line="33066" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Combined LANG-CIS Student-Class" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Student-Class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="814">
+              <caret line="84899" selection-start-line="84899" selection-end-line="84899" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Combined LANG-CIS Students.csv" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Students.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="770">
+              <caret line="2332" column="116" lean-forward="true" selection-start-line="2332" selection-start-column="116" selection-end-line="2332" selection-end-column="116" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2088-2188-ENG-LANG-Students-Classes.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-ENG-LANG-Students-Classes.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="51798" column="48" selection-start-line="51798" selection-start-column="48" selection-end-line="51798" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Combined LANG-CIS Classes.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getSubjectsForUserJSON.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/getSubjectsForUserJSON.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -97,8 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>range</find>
-      <find>convert</find>
       <find>term</find>
       <find>convertrang</find>
       <find>year</find>
@@ -126,6 +143,8 @@
       <find>SubjFound</find>
       <find>getprog</find>
       <find>season</find>
+      <find>name</find>
+      <find>instructor</find>
       <find>loadprog</find>
     </findStrings>
     <replaceStrings>
@@ -141,8 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FileUploadPage.html" />
-        <option value="$PROJECT_DIR$/Wireframe.html" />
         <option value="$PROJECT_DIR$/Stylesheet.css" />
         <option value="$PROJECT_DIR$/LoginPage.html" />
         <option value="$PROJECT_DIR$/MainApplicationStudentQuestion.html" />
@@ -153,7 +170,6 @@
         <option value="$PROJECT_DIR$/model/JSONgetCourses.php" />
         <option value="$PROJECT_DIR$/view/headerInclude.php" />
         <option value="$PROJECT_DIR$/model/getCoursesUsingJSON.php" />
-        <option value="$PROJECT_DIR$/model/getProgramsUsingJSON.php" />
         <option value="$PROJECT_DIR$/model/getProgramSubjectsUsingJSON.php" />
         <option value="$PROJECT_DIR$/model/getNotProgramSubjectsJSON.php" />
         <option value="$PROJECT_DIR$/model/getNotProgramSubjectsUsingJSON.php" />
@@ -162,7 +178,6 @@
         <option value="$PROJECT_DIR$/model/getUsersUsingJSON.php" />
         <option value="$PROJECT_DIR$/view/processmodify_User_Program.php" />
         <option value="$PROJECT_DIR$/model/getUserProgramsUsingJSON.php" />
-        <option value="$PROJECT_DIR$/view/modify_User_Program_Form.php" />
         <option value="$PROJECT_DIR$/GhettoVersioningFolder/JSON stuff.js" />
         <option value="$PROJECT_DIR$/view/importData.php" />
         <option value="$PROJECT_DIR$/view/processImportDataTestAjax.php" />
@@ -185,13 +200,17 @@
         <option value="$PROJECT_DIR$/view/index.php" />
         <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/view/updateTermSettings.php" />
-        <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
         <option value="$PROJECT_DIR$/sql script/SQL Example Scripts.txt" />
-        <option value="$PROJECT_DIR$/model/model.php" />
         <option value="$PROJECT_DIR$/model/getSubjectsForUserJSON.php" />
         <option value="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" />
-        <option value="$PROJECT_DIR$/js/Javascript.js" />
         <option value="$PROJECT_DIR$/view/modify_Acad_Program_Form.php" />
+        <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
+        <option value="$PROJECT_DIR$/view/modify_User_Program_Form.php" />
+        <option value="$PROJECT_DIR$/js/Javascript.js" />
+        <option value="$PROJECT_DIR$/model/getProgramsUsingJSON.php" />
+        <option value="$PROJECT_DIR$/model/model.php" />
+        <option value="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv" />
+        <option value="$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Student-Class" />
       </list>
     </option>
   </component>
@@ -236,6 +255,18 @@
               <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
               <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
               <item name="CSV_Test_Files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
+              <item name="CSV_Test_Files" type="462c0819:PsiDirectoryNode" />
+              <item name="Combined Files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
+              <item name="CSV_Test_Files" type="462c0819:PsiDirectoryNode" />
+              <item name="Large Files" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
@@ -390,12 +421,12 @@
       <workItem from="1542147474142" duration="4664000" />
       <workItem from="1542235534001" duration="324000" />
       <workItem from="1542739440107" duration="4342000" />
-      <workItem from="1542765730295" duration="9949000" />
+      <workItem from="1542765730295" duration="12840000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="369468000" />
+    <option name="totallyTimeSpent" value="372359000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -480,48 +511,11 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/2088-2188-CIS-Classes.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="415" selection-start-line="415" selection-end-line="418" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/2088-2188-CIS-Students-Classes.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/processmodify_User_Program.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/processmodify_Acad_Program.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GhettoVersioningFolder/Javascript (2).js" />
-    <entry file="file://$PROJECT_DIR$/GhettoVersioningFolder/JSON stuff.js" />
     <entry file="file://$PROJECT_DIR$/view/processImportDataTestAjax.php" />
     <entry file="file://$PROJECT_DIR$/view/testingProcessAjaxImport.php" />
     <entry file="file://$PROJECT_DIR$/view/testingProcessAjaxImportFILESWORK.php" />
     <entry file="file://$PROJECT_DIR$/view/fileUploadPage.php" />
     <entry file="file://$PROJECT_DIR$/view/adsfonasf.php" />
-    <entry file="file://$PROJECT_DIR$/view/modify_User_Program_Form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CSV_Test_Files/2088-2188-CIS-Students.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
@@ -677,13 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/getProgramSubjectsUsingJSON.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="5" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/getUsersUsingJSON.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -695,13 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-789">
           <caret line="51" column="75" selection-start-line="51" selection-start-column="75" selection-end-line="51" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="485" column="2" lean-forward="true" selection-start-line="485" selection-start-column="2" selection-end-line="485" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -726,34 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/getSubjectsForUserJSON.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="845" column="9" selection-start-line="845" selection-start-column="9" selection-end-line="845" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/getProgramsUsingJSON.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="41" lean-forward="true" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/getUserProgramsUsingJSON.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/MainApplicationStudentQuestion.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -761,10 +713,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/getProgramSubjectsUsingJSON.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="480" column="42" lean-forward="true" selection-start-line="480" selection-start-column="42" selection-end-line="480" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/modify_Acad_Program_Form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="78" lean-forward="true" selection-start-line="12" selection-start-column="78" selection-end-line="12" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/modify_User_Program_Form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="69" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/getUserProgramsUsingJSON.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/Javascript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="1353" column="20" lean-forward="true" selection-start-line="1353" selection-start-column="20" selection-end-line="1353" selection-end-column="20" />
+        <state relative-caret-position="728">
+          <caret line="1536" column="43" selection-start-line="1536" selection-start-column="43" selection-end-line="1536" selection-end-column="43" />
           <folding>
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
@@ -773,10 +760,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/modify_Acad_Program_Form.php">
+    <entry file="file://$PROJECT_DIR$/model/getProgramsUsingJSON.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        <state relative-caret-position="130">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/getSubjectsForUserJSON.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="990" column="62" selection-start-line="990" selection-start-column="62" selection-end-line="990" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="33066" column="79" selection-start-line="33066" selection-start-column="79" selection-end-line="33066" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="41" lean-forward="true" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-ENG-LANG-Students-Classes.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="51798" column="48" selection-start-line="51798" selection-start-column="48" selection-end-line="51798" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Student-Class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="84899" selection-start-line="84899" selection-end-line="84899" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Students.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="2332" column="116" lean-forward="true" selection-start-line="2332" selection-start-column="116" selection-end-line="2332" selection-end-column="116" />
         </state>
       </provider>
     </entry>
