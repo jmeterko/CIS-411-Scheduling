@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/Javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Javascript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql script/SQL Example Scripts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Example Scripts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/MainApplicationStudentQuestion.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,8 +47,8 @@
       <file leaf-file-name="model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="679">
-              <caret line="684" column="35" selection-start-line="684" selection-start-column="35" selection-end-line="684" selection-end-column="35" />
+            <state relative-caret-position="504">
+              <caret line="509" column="117" selection-start-line="509" selection-start-column="117" selection-end-line="509" selection-end-column="117" />
             </state>
           </provider>
         </entry>
@@ -361,12 +357,12 @@
       <workItem from="1542147474142" duration="4664000" />
       <workItem from="1542235534001" duration="324000" />
       <workItem from="1542739440107" duration="4342000" />
-      <workItem from="1542765730295" duration="5297000" />
+      <workItem from="1542765730295" duration="6110000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="364816000" />
+    <option name="totallyTimeSpent" value="365629000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -733,8 +729,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="684" column="35" selection-start-line="684" selection-start-column="35" selection-end-line="684" selection-end-column="35" />
+        <state relative-caret-position="504">
+          <caret line="509" column="117" selection-start-line="509" selection-start-column="117" selection-end-line="509" selection-end-column="117" />
         </state>
       </provider>
     </entry>

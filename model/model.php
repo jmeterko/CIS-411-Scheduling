@@ -507,8 +507,7 @@ function getStudentQuestionResults($stdq) {
                     }
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($gradeSet){
-                        $classClausesArray[$and_index] .= " 
-                                AND     Grade   =  '$GraItem' ";    //*REMOVED THE ) FROM HERE
+                        $classClausesArray[$and_index] .= minimizeGrade($GraItem);    //if grade is set, factor it in
                     }
                     //Handle Term comparison
                     switch($categoryArray['cat' . $and_index]) {//$categoryArray[cat0] = Taking  etc
@@ -580,8 +579,7 @@ function getStudentQuestionResults($stdq) {
                     }
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($gradeSet){
-                        $classClausesArray[$and_index] .= "
-                                AND     Grade   =  '$GraItem' ";    //if grade is set, factor it in
+                        $classClausesArray[$and_index] .= minimizeGrade($GraItem);    //if grade is set, factor it in
                     }
                     //Handle Term comparison
                     switch($categoryArray['cat' . $and_index]) {//$categoryArray[cat0] = Taking  etc
@@ -687,7 +685,7 @@ function getStudentQuestionResults($stdq) {
         }
 
 
-        // AND LAST_TERM BETWEEN 
+        // AND LAST_TERM BETWEEN
         $query .= "
                     AND Last_Term BETWEEN $lowerTerm AND $higherTerm ";
         // AND CURRENT = 'Y'
@@ -762,6 +760,26 @@ function convertRangeToTerm($pSeason, $pYear){
     $yearToTerm = substr($pYear, 0, 1) . substr($pYear, 2, 2);
     $finalResult = $yearToTerm . $seasonResult; // = 2185
     return $finalResult;
+}
+//saves some room in our student question
+function minimizeGrade($pGrade){
+    $result = "";
+    if ($pGrade == 'A')
+        $result = "
+                                AND     Grade   =  'A' ";
+    else if ($pGrade == 'B')
+        $result = "
+                                AND     Grade   =  'A' OR Grade   = 'B' ";
+
+    else if ($pGrade == 'C')
+        $result = "
+                                AND     Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' ";
+
+    else if ($pGrade == 'D')
+        $result = "
+                                AND     Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' OR Grade   = 'D' ";
+    return $result;
+
 }
 ////////////////////////////////////////
 function getAllSubjects() {
