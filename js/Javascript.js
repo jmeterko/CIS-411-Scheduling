@@ -1351,11 +1351,20 @@ length: 52
     // ***
 }
 //call this function with loadDoc(), pass in getCoursesUsingJSON.php
-function getProgramsUsingJSON(xhttp){
-    JSONObjectHoldingAllOfOurPrograms = JSON.parse(xhttp.responseText);//#ReadableCode
-    //then, do stuff with our JSON object that holds all of our courses
-    console.log(JSONObjectHoldingAllOfOurPrograms);
-    return JSONObjectHoldingAllOfOurPrograms;
+function getProgramsUsingJSON(pUser){
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            JSONObjectHoldingAllOfOurPrograms = JSON.parse(xhttp.responseText);//#ReadableCode
+            //then, do stuff with our JSON object that holds all of our courses
+            console.log(JSONObjectHoldingAllOfOurPrograms);
+            return JSONObjectHoldingAllOfOurPrograms;
+        }
+    };
+    xhttp.open("GET", "../model/getUserProgramsUsingJSON.php?UserSelected=" + pUser, true);
+    xhttp.send();
+
 }
 
 //call this function with loadDoc(), pass in getUsersUsingJSON.php
@@ -1376,6 +1385,7 @@ var jsObjectHoldingAllOfOurTerms;
 var ProgramSubjectsJSON;
 var UserProgramsJSON;
 var CurrentTermJSON;
+var SubjectsForUserJSON;
 
 //pass in the id of the Subject Dropdown and the Catalog dropdown you want to load
 //get the value of subject dropdown
@@ -1385,8 +1395,9 @@ function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
     var SubjectSelectedInOurDropdown = document.getElementById(pSubjectDropdownID).value;
     document.getElementById(pCatalogDropdownID).innerHTML = "<option value='Catalog' selected disabled hidden>" + "Course No." + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='Any...'>" + "Any..." + "</option>";
-    for (i =0; i < jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown].length; i++){
-        document.getElementById(pCatalogDropdownID).innerHTML += "<option value='" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "'>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
+    if (jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown] != undefined)
+        for (i =0; i < jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown].length; i++){
+            document.getElementById(pCatalogDropdownID).innerHTML += "<option value='" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "'>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
     }
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='100s'>" + "100s" + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='200s'>" + "200s" + "</option>";
@@ -1402,8 +1413,8 @@ function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
 function loadSubjects(pSubjectDropdownID){
     console.log("Our subjects are: ");  console.log(jsObjectHoldingAllOfOurSubjects);
     document.getElementById(pSubjectDropdownID).innerHTML = "<option value='Subject' selected disabled hidden>" + "Subject" + "</option>";
-    for (ProgramSubjectPairFound in jsObjectHoldingAllOfOurSubjects){
-        document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + ProgramSubjectPairFound + "'>" + ProgramSubjectPairFound + "</option>";
+    for (SubjFound in SubjectsForUserJSON){
+        document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + SubjectsForUserJSON[SubjFound]['Subject'] + "'>" + SubjectsForUserJSON[SubjFound]['Subject'] + "</option>";
     }
 }
 //loads a particular dropdown with all of our programs
@@ -1572,6 +1583,25 @@ function getSubjectsUsingJSON(xhttp){
 
 
     return jsObjectHoldingAllOfOurSubjects;
+    // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
+}
+//For USER CONTEXT
+function getSubjectsForUserUsingJSON(pUser){
+    //parse the Ajax responseText into a JSON object, just as it was encoded into a JSON string
+    //create a JS Object to hold our unique subject values much like a PHP associative array
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            SubjectsForUserJSON = JSON.parse(xhttp.responseText);
+            console.log("The Subjects for this user are: ");
+            console.log(SubjectsForUserJSON);
+        }
+    };
+    xhttp.open("GET", "../model/getSubjectsForUserJSON.php?UserSelected=" + pUser, true);
+    xhttp.send();
+
+    return SubjectsForUserJSON;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
 }
 //used for loading terms into dropdowns on student question page

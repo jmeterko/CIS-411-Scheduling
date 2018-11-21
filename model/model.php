@@ -979,6 +979,29 @@ function getCurrentTerm(){
         die;
     }
 }
+//gets all the subjects associated with a certain user
+//important for our USER CONTEXT
+function getSubjectsForUser($pUser){
+    try {
+        $db = getDBConnection();
+        $query = "SELECT * FROM `subject`
+                    WHERE subject IN
+                        (SELECT subject FROM programsubject
+                            WHERE Plan IN
+                                (SELECT PLAN FROM USERPROGRAMS
+                                    WHERE USERNAME = '$pUser'))";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
 //returns the count of rows of a table, returns just a number, not an array
 function countRows($tablename){
 

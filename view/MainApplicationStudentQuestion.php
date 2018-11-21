@@ -1,8 +1,8 @@
 <?php
 $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
-?>
-<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON);loadDoc('../model/getTermsUsingJSON.php', getTermsUsingJSON);loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON);">
+?>                  <!-- getSubjectsForUser is for User Context -->
+<body style="background-color: #becccc;" onload="getSubjectsForUserUsingJSON('<?php echo $_SESSION['username'] ?>');loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON);loadDoc('../model/getTermsUsingJSON.php', getTermsUsingJSON);getProgramsUsingJSON('<?php echo $_SESSION['username'] ?>');">
 
 <div class="container">
     <div class="container" style="margin: 0px auto">
