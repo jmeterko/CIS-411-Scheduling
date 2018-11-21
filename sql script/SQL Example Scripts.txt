@@ -139,3 +139,13 @@ Array (
   [17] => Array ( [ID] => 11041024 [NAME] => Ramsey,Landon Arthur [LOCATION] => Clarion [CURRENT] => N [Last_Term] => 2168 [Total] => 36.000 [GPA] => 2.475 [EagleMail_ID] => L.A.Ramsey@eagle.clarion.edu
       [Plan] => Array ( [0] => BS CS ) )
 )
+
+Example of User Context:
+
+SELECT * FROM `subject`
+WHERE subject IN
+	(SELECT subject FROM programsubject
+     	WHERE Plan IN
+         	(SELECT PLAN FROM USERPROGRAMS
+             	WHERE USERNAME = 'admin')
+     );  /* SHOW ME ALL THE SUBJECTS FOR A GIVEN USER */

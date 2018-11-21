@@ -1396,7 +1396,11 @@ function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
 }
 
 //loads a particular dropdown with all of our subjects
+//**FOR USER CONTEXT we will load it with the results of a USER CONTEXT SQL QUERY
+//**I THINK THE LOADCATALOGS FUNCTION CAN REMAIN THE SAME AND OUR JSON OBJECT IS STILL USEFUL
+//**FOR PERFORMANCE, WE MIGHT WANT TO MAKE GETALLSUBJECTSUSINGJSON ALSO IMPLEMENT USER CONTEXT TO LIMIT RESULT SIZE
 function loadSubjects(pSubjectDropdownID){
+    console.log("Our subjects are: ");  console.log(jsObjectHoldingAllOfOurSubjects);
     document.getElementById(pSubjectDropdownID).innerHTML = "<option value='Subject' selected disabled hidden>" + "Subject" + "</option>";
     for (ProgramSubjectPairFound in jsObjectHoldingAllOfOurSubjects){
         document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + ProgramSubjectPairFound + "'>" + ProgramSubjectPairFound + "</option>";

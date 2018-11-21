@@ -351,7 +351,7 @@ require '../view/headerInclude.php';
                     <?php } ?>
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
-                    <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
+                    <input type="checkbox" checked="checked" id="currentStudentsOnly" name="currentStudentsOnly">Current Students Only</input>
                     <i>*Students who have been enrolled in the past year and have not graduated or applied for graduation</i>
                 </div>
                 <div>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/></div>
@@ -392,7 +392,7 @@ require '../view/headerInclude.php';
                                 <?php } else { ?>
                                     <option value="Spring" selected>Spring</option>
                                     <option value="Summer">Summer</option>
-                                    <option value="Fall">Fall</option>
+                                    <option value="Fall" selected="selected">Fall</option>
                                     <option value="Winter">Winter</option>
                                 <?php } ?>
                             </select>

@@ -345,6 +345,29 @@ function getStudentQuestionResults($stdq) {
         $lowerTerm  = convertRangeToTerm($stdq->startSeason, $stdq->startYear); //spring 2001 is lowest term
         $higherTerm = convertRangeToTerm($stdq->endSeason, $stdq->endYear); //fall 2018 is highest term
 
+        //search options bleh
+        $gpaStart = 0;  //default to 0 through 4 (includes all GPA's), later we query on it
+        $gpaEnd = 4;
+        if (isset($stdq->startGPA) and isset($stdq->endGPA)){ //if GPA's were both chosen, we will query on it
+            $gpaStart = $stdq->startGPA;
+            $gpaEnd = $stdq->endGPA;
+        }
+        $FR = false;
+        $SO = false;
+        $JR = false;
+        $SR = false;
+        if (isset($stdq->rankFR))
+            $FR = true;
+        if (isset($stdq->rankSO))
+            $SO = true;
+        if (isset($stdq->rankJR))
+            $JR = true;
+        if (isset($stdq->rankSR))
+            $SR = true;
+        $currentStudentsOnly = "off";
+        if (isset($stdq->currentStudentsOnly)){
+            $currentStudentsOnly = $stdq->currentStudentsOnly; //default value for POST checkbox set is 'on'
+        }
 
 
         //begin assembling AND clauses, these each represent a WHERE condition to add to our query
@@ -640,8 +663,41 @@ function getStudentQuestionResults($stdq) {
             $query .= $classValue;
         }
 
+        // ******LAST CLAUSES
+        // GPA SETTINGS ONLY APPLY IF GPASTART AND GPAEND BOTH SET
+        $query .= " 
+                    AND GPA BETWEEN $gpaStart AND $gpaEnd ";
+        // RANK SELECTIONS DEFAULT TO ALL RANKS, IF AT LEAST ONE IS SET, IT ORS THEM WITH 'FALSE'
+        if ($FR or $SO or $JR or $SR){
+            $query .= "
+                        AND (False ";
+            if ($FR)
+                $query .= " 
+                        OR Total BETWEEN 0 AND 29 ";
+            if ($SO)
+                $query .= " 
+                        OR Total BETWEEN 30 AND 59 ";
+            if ($JR)
+                $query .= " 
+                        OR Total BETWEEN 60 AND 89 ";
+            if ($SR)
+                $query .= " 
+                        OR Total >= 90 ";
+            $query .= " ) ";
+        }
+
+
+        // AND LAST_TERM BETWEEN 
+        $query .= "
+                    AND Last_Term BETWEEN $lowerTerm AND $higherTerm ";
+        // AND CURRENT = 'Y'
+        if ($currentStudentsOnly == 'on')
+            $query .= " 
+                    AND CURRENT = 'Y' ";
+
         //SORT RESULTS
-        $query .= " ORDER BY NAME ";
+        $query .= " 
+                    ORDER BY NAME ";
         //PRINT QUERY
         echo "Our query is: <br> $query <br>"; //print the query for testing
 
