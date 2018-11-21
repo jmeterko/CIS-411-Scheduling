@@ -774,37 +774,7 @@ function getStudentQuestionResults($stdq) {
     }
 }//end student question results
 
-/*//then, any number of AND statements that represent our selections:
 
-                  //Students with a CS Major
-                  ."AND student.ID IN
-                  (SELECT ID FROM studentmajor WHERE PLAN = 'BS CS')"
-
-                  //Who are a Sophomore
-                  ."AND Total >= 30 AND Total < 60 "
-
-                  //who's location is clarion
-                  ."AND LOCATION = 'Clarion'"
-
-                  //who are not current students
-                  ."AND CURRENT = 'N'"
-
-                  //who's GPA is greater than 2.0
-                  ."AND GPA > 2.000"
-
-                  //who have completed a 200's level CS class
-                  //where the class was completed between Spring 2002 (2021) and Fall 2009 (2098) **changed to variable value now
-                  //where the class was between lowerTerm and higherTerm, chosen from dropdowns on Student Question
-                  //where they got a C or higher
-                    ."
-                          AND student.ID IN (
-                          SELECT ID FROM studentclass
-                          WHERE Subject = 'CIS'
-                          AND Catalog BETWEEN 200 AND 299
-                          AND Term BETWEEN $lowerTerm AND $higherTerm
-                          AND Grade = 'A' OR 'B' OR 'C')"*/
-
-//takes something like SUMMER 2018 and converts it to 2185
 function convertRangeToTerm($pSeason, $pYear){
     if ($pSeason == 'Spring')
         $seasonResult = '1';
