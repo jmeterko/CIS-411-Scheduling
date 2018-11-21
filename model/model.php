@@ -1053,7 +1053,7 @@ function updateCurrentTerm($pCurrentTerm)
 {
     try {
         $db = getDBConnection();
-        $query = "    UPDATE Settings
+        $query = "    UPDATE settings
                           SET Current_Term = :currentterm;";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
         $statement->bindValue(':currentterm', "$pCurrentTerm");

@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Student-Class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-ENG-LANG-Students-Classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-ENG-LANG-Students-Classes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/Javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Javascript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,6 +14,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="processImportData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/processImportData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="443" column="90" selection-start-line="443" selection-start-column="90" selection-end-line="443" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Javascript.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -42,65 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="990" column="62" selection-start-line="990" selection-start-column="62" selection-end-line="990" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2088-2188-CIS-Students-Classes.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="33066" column="79" selection-start-line="33066" selection-start-column="79" selection-end-line="33066" selection-end-column="79" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Combined LANG-CIS Student-Class" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Student-Class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="814">
-              <caret line="84899" selection-start-line="84899" selection-end-line="84899" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Combined LANG-CIS Students.csv" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Students.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="2332" column="116" lean-forward="true" selection-start-line="2332" selection-start-column="116" selection-end-line="2332" selection-end-column="116" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2088-2188-ENG-LANG-Students-Classes.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-ENG-LANG-Students-Classes.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="51798" column="48" selection-start-line="51798" selection-start-column="48" selection-end-line="51798" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Combined LANG-CIS Classes.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getSubjectsForUserJSON.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/getSubjectsForUserJSON.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+            <state relative-caret-position="288">
+              <caret line="1023" column="23" selection-start-line="1023" selection-start-column="15" selection-end-line="1023" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -116,10 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>term</find>
-      <find>convertrang</find>
-      <find>year</find>
-      <find>loadcatal</find>
       <find>convertra</find>
       <find>question</find>
       <find>category</find>
@@ -143,9 +89,13 @@
       <find>SubjFound</find>
       <find>getprog</find>
       <find>season</find>
-      <find>name</find>
       <find>instructor</find>
       <find>loadprog</find>
+      <find>name</find>
+      <find>oldest term is</find>
+      <find>term,</find>
+      <find>term</find>
+      <find>settings</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -160,7 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Stylesheet.css" />
         <option value="$PROJECT_DIR$/LoginPage.html" />
         <option value="$PROJECT_DIR$/MainApplicationStudentQuestion.html" />
         <option value="$PROJECT_DIR$/Javascript.js" />
@@ -208,9 +157,10 @@
         <option value="$PROJECT_DIR$/view/modify_User_Program_Form.php" />
         <option value="$PROJECT_DIR$/js/Javascript.js" />
         <option value="$PROJECT_DIR$/model/getProgramsUsingJSON.php" />
-        <option value="$PROJECT_DIR$/model/model.php" />
         <option value="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv" />
         <option value="$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Student-Class" />
+        <option value="$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.csv" />
+        <option value="$PROJECT_DIR$/model/model.php" />
       </list>
     </option>
   </component>
@@ -421,12 +371,12 @@
       <workItem from="1542147474142" duration="4664000" />
       <workItem from="1542235534001" duration="324000" />
       <workItem from="1542739440107" duration="4342000" />
-      <workItem from="1542765730295" duration="12840000" />
+      <workItem from="1542765730295" duration="13658000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="372359000" />
+    <option name="totallyTimeSpent" value="373177000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -664,13 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/processImportData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3366">
-          <caret line="204" column="28" selection-start-line="204" selection-start-column="28" selection-end-line="204" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/getUsersUsingJSON.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -774,13 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="990" column="62" selection-start-line="990" selection-start-column="62" selection-end-line="990" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -802,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Student-Class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
@@ -820,6 +749,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="770">
           <caret line="2332" column="116" lean-forward="true" selection-start-line="2332" selection-start-column="116" selection-end-line="2332" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/processImportData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="443" column="90" selection-start-line="443" selection-start-column="90" selection-end-line="443" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="812" column="89" selection-start-line="812" selection-start-column="89" selection-end-line="812" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="1023" column="23" selection-start-line="1023" selection-start-column="15" selection-end-line="1023" selection-end-column="23" />
         </state>
       </provider>
     </entry>

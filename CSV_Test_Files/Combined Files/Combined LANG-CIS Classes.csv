@@ -811,7 +811,6 @@ Instructor,Name,Term,Session,Subject,Catalog,Section,Descr,Count ID,Acad Org,Sta
 11045400,"Annadatha,Jayakumar",2188,1,DA,570,W01,Big Data Analytics,14,CIS,,,,25
 11045400,"Annadatha,Jayakumar",2188,7W1,DA,510,W01,Database Management Systems,26,CIS,,,,25
 11045400,"Annadatha,Jayakumar",2188,7W2,DA,520,W01,Intro to Data Warehousing,27,CIS,,,,25
-Instructor,Name,Term,Session,Subject,Catalog,Section,Descr,Count ID,Acad Org,Start Time,End Time,Days,Cap Enrl
 10460810,Welsch K,2078,1,ENG,110,1,Writing I,13,ENG,,,,0
 10460169,"Downes,Melissa Kimball",2078,1,ENG,111,1,Writing II,25,ENG,,,,0
 10460169,"Downes,Melissa Kimball",2078,1,ENG,111,2,Writing II,25,ENG,,,,0
