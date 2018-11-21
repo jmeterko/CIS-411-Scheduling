@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/Javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Javascript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/DisplayData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/DisplayData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/processmodify_Acad_Program.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/processmodify_Acad_Program.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,10 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Javascript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
+            <state relative-caret-position="1248">
               <caret line="1878" column="1" selection-start-line="1878" selection-start-column="1" selection-end-line="1878" selection-end-column="1" />
               <folding>
                 <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
@@ -61,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="871" column="54" lean-forward="true" selection-start-line="871" selection-start-column="54" selection-end-line="871" selection-end-column="54" />
+            <state relative-caret-position="150">
+              <caret line="666" column="50" selection-start-line="666" selection-start-column="50" selection-end-line="666" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -171,11 +168,11 @@
         <option value="$PROJECT_DIR$/CSV_Test_Files/Large Files/2088-2188-CIS-Students-Classes.csv" />
         <option value="$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Student-Class" />
         <option value="$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Classes.csv" />
-        <option value="$PROJECT_DIR$/model/model.php" />
         <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/view/processmodify_Acad_Program.php" />
         <option value="$PROJECT_DIR$/view/DisplayData.php" />
         <option value="$PROJECT_DIR$/js/Javascript.js" />
+        <option value="$PROJECT_DIR$/model/model.php" />
       </list>
     </option>
   </component>
@@ -349,12 +346,12 @@
       <workItem from="1542147474142" duration="4664000" />
       <workItem from="1542235534001" duration="324000" />
       <workItem from="1542739440107" duration="4342000" />
-      <workItem from="1542765730295" duration="15660000" />
+      <workItem from="1542765730295" duration="17241000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="375179000" />
+    <option name="totallyTimeSpent" value="376760000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -724,13 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="871" column="54" lean-forward="true" selection-start-line="871" selection-start-column="54" selection-end-line="871" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/StudentHistory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -751,13 +741,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Javascript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
+        <state relative-caret-position="1248">
           <caret line="1878" column="1" selection-start-line="1878" selection-start-column="1" selection-end-line="1878" selection-end-column="1" />
           <folding>
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
             <element signature="e#55696#63314#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="666" column="50" selection-start-line="666" selection-start-column="50" selection-end-line="666" selection-end-column="50" />
         </state>
       </provider>
     </entry>

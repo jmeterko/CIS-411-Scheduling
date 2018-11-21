@@ -496,11 +496,64 @@ function getStudentQuestionResults($stdq) {
                         $gradeSet = false;
 
                     //create the AND clause, without the ending ) or the grade subclause
-                    $classClausesArray[$and_index] = "
+                    switch($categoryArray['cat' . $and_index]) {//$categoryArray[cat0] = Taking  etc
+                        case 'Taking':
+                            $classClausesArray[$and_index] = "
                     AND student.ID IN (
                         SELECT ID FROM studentclass
                             WHERE   
                             (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Completed':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Taking/Completed':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Scheduled For':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Not Taking':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID NOT IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Not Completed':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID NOT IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Not Taking/Not Completed':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID NOT IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Not Scheduled For':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID NOT IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                    }
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($catSet){
                         $classClausesArray[$and_index] .= $catClause;    //if cat is set, factor it in
@@ -529,21 +582,23 @@ function getStudentQuestionResults($stdq) {
                             break;
                         case 'Not Taking':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    <> '$currentTerm') ";
+                                AND     Term    =  '$currentTerm') ";
                             break;
                         case 'Not Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    >= '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    < '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                         case 'Not Taking/Not Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                         case 'Not Scheduled For':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                     }
+
+                    //BEGIN ORS FOR CLASSES
                 }//end inArray block, meaning section for a new AND row
                 else { //if that and_index DOES exist already... great usage of ELSE... continuing with ORs on a row
 
@@ -601,19 +656,19 @@ function getStudentQuestionResults($stdq) {
                             break;
                         case 'Not Taking':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    <> '$currentTerm') ";
+                                AND     Term    =  '$currentTerm') ";
                             break;
                         case 'Not Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    >= '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    <  '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                         case 'Not Taking/Not Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                         case 'Not Scheduled For':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                     }
                 }
