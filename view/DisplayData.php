@@ -811,19 +811,20 @@ function determineYear($credits){
 <body style="font-size: 20px; " onload="hideStuff()">
 <center><h1>Results</h1></center>
 <center>
+    <h2> Click a column header to sort by that column.</h2>
     <table class="result_table" id ="result_table">
         <tr>
             <th id="checkboxes">&nbsp;</th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Current</th>
-            <th>Last Term</th>
-            <th>Total Credits</th>
-            <th>Rank</th>
-            <th>GPA</th>
-            <th>Programs</th>
-            <th>Eagle Mail</th>
+            <th onclick = sortTable(1)>ID</th>
+            <th onclick = sortTable(2)>Name</th>
+            <th onclick = sortTable(3)>Location</th>
+            <th onclick = sortTable(4)>Current</th>
+            <th onclick = sortTable(5)>Last Term</th>
+            <th onclick = sortTable(6)>Total Credits</th>
+            <th onclick = sortTable(7)>Rank</th>
+            <th onclick = sortTable(8)>GPA</th>
+            <th onclick = sortTable(9)>Programs</th>
+            <th onclick = sortTable(10)>Eagle Mail</th>
             <th>History</th>
         </tr>
 

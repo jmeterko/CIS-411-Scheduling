@@ -5,6 +5,10 @@ require '../view/headerInclude.php';
 <?php
 
 $addSubjects = $_POST["hasSubjects"];
+foreach ($addSubjects as $subject){
+    if ($subject == ' ' or $subject == '' or $subject == null )
+        unset($subject);
+}
 //print_r($addSubjects) ;
 $selectedProgram = $_POST["programSelect"];
 $rowsAdded = updateProgramSubjects($selectedProgram, $addSubjects);
