@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql script/SQL MergeScript.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/processmodify_User_Program.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/processmodify_User_Program.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +22,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SQL Import Script.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SQL Import Script.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6776">
-              <caret line="47" column="2" lean-forward="true" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
+            <state relative-caret-position="449">
+              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SQL Import Script NO USERID.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="474">
+              <caret line="477" column="54" lean-forward="true" selection-start-line="477" selection-start-column="54" selection-end-line="477" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -104,7 +110,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getprog</find>
       <find>season</find>
       <find>instructor</find>
       <find>name</find>
@@ -134,6 +139,7 @@
       <find>userid</find>
       <find>`users`</find>
       <find>acad_pro</find>
+      <find>`users</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -393,7 +399,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="386191000" />
+    <option name="totallyTimeSpent" value="387015000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -740,13 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="489" column="13" selection-start-line="489" selection-start-column="13" selection-end-line="489" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/security/model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1012">
@@ -849,8 +848,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6776">
-          <caret line="47" column="2" lean-forward="true" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
+        <state relative-caret-position="449">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="477" column="54" lean-forward="true" selection-start-line="477" selection-start-column="54" selection-end-line="477" selection-end-column="54" />
         </state>
       </provider>
     </entry>
