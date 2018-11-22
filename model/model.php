@@ -911,22 +911,38 @@ function updateProgramSubjects($pProgramName, $addSubjects)
         //die;
     }
 }
-
+//returns a string
+function getUserIDforUserName($pUserName){
+    try{
+        $db = getDBConnection();
+        $query = "SELECT UserID FROM users WHERE UserName ='" . $pUserName . "'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetch();
+        $statement->closeCursor();
+        return $results['UserID'];           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 //remove all the entries with that Program, then add the selected ones
-function updateUserPrograms($pUserName, $addPrograms)
+function updateUserPrograms($pUserID, $pUserName, $addPrograms)
 {
     try {
         $rowCount = 0;
         $db = getDBConnection();
-        $query = "DELETE FROM userprograms WHERE UserName= :userName";
+        $query = "DELETE FROM userprograms WHERE UserID = $pUserID";
         $statement = $db->prepare($query);
         $statement->bindValue(':userName', $pUserName);
         $statement->execute();
         ////process the array that was passed in
         for ($i = 0; $i < count($addPrograms); $i++) {
             $programToAdd = $addPrograms[$i];
-            $query = "INSERT INTO userprograms (`UserName`, `Plan`) VALUES (:userName, :programToAdd)";
+            $query = "INSERT INTO userprograms (`UserID`, `UserName`, `Plan`) VALUES (:userID, :userName, :programToAdd)";
             $statement = $db->prepare($query);
+            $statement->bindValue(':userID', $pUserID);
             $statement->bindValue(':userName', $pUserName);
             $statement->bindValue(':programToAdd', $programToAdd);
             $success = $statement->execute();

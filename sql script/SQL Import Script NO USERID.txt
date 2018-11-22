@@ -38,46 +38,41 @@ INSERT IGNORE INTO `roles` (`RoleID`, `Name`, `Description`) VALUES
 -- Table structure for table `userroles`
 --
 
-CREATE TABLE `userroles` (
-  `UserID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `userroles` (
+  `UserName` varchar(32) NOT NULL,
   `RoleID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
--- Error reading data for table s_jcmeterko_bookdata.userroles: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `s_jcmeterko_bookdata`.`userroles`' at line 1
 
 --
 -- Dumping data for table `userroles`
 --
 
+INSERT IGNORE INTO `userroles` (`UserName`, `RoleID`) VALUES
+('admin', 1),
+('bill', 2),
+('joe', 3),
+('guest', 4);
 
-
-INSERT IGNORE INTO `userroles` (`UserID`, `RoleID`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4);
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `UserID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
   `FirstName` varchar(32) NOT NULL,
   `LastName` varchar(32) NOT NULL,
   `UserName` varchar(32) NOT NULL,
-  `Password` varchar(40) NOT NULL,
   `Email` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT IGNORE INTO `users` (`FirstName`, `LastName`, `UserName`, `Email`) VALUES
+('Jon', 'ODonnell', 'admin', 'jodonnell@clarion.edu'),
+('Bill', 'Updater', 'bill', 'bill@localhost'),
+('Joe', 'Reader', 'joe', 'joe@localhost'),
+('guest', 'guest', 'guest', 'guest@localhost');
 
 
-
-INSERT IGNORE INTO `users` (`UserID`, `FirstName`, `LastName`, `UserName`, `Password`, `Email`) VALUES
-(1, 'Jon', 'ODonnell', 'admin', 'admin', 'jodonnell@clarion.edu'),
-(2, 'Bill', 'Updater', 'bill', 'c692d6a10598e0a801576fdd4ecf3c37e45bfbc4', 'bill@localhost'),
-(3, 'Joe', 'Reader', 'joe', '16a9a54ddf4259952e3c118c763138e83693d7fd', 'joe@localhost'),
-(4, 'guest', 'guest', 'guest', '35675e68f4b5af7b995d9205ad0fc43842f16450', 'guest@localhost');
 
   -- ---------------------- ^USERS^ -------------------------------------------------------------------------
 
@@ -317,20 +312,15 @@ ALTER TABLE `serials`
 --
 -- Indexes for table `userroles`
 --
-
 ALTER TABLE `userroles`
-  ADD KEY `UserID` (`UserID`),
+  ADD KEY `UserName` (`UserName`),
   ADD KEY `RoleID` (`RoleID`);
 
 --
 -- Indexes for table `users`
-
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserID`);
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
+  ADD PRIMARY KEY (`UserName`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -368,10 +358,9 @@ ALTER TABLE `rolefunctions`
 -- Constraints for table `userroles`
 --
 ALTER TABLE `userroles`
-  ADD CONSTRAINT `userroles_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `userroles_ibfk_1` FOREIGN KEY (`UserName`) REFERENCES `users` (`UserName`) ON DELETE CASCADE,
   ADD CONSTRAINT `userroles_ibfk_2` FOREIGN KEY (`RoleID`) REFERENCES `roles` (`RoleID`) ON DELETE CASCADE;
 COMMIT;
-
 
 
 -- -------------------------------------------------------------------------------------------------------------------------------
@@ -483,6 +472,14 @@ CREATE TABLE IF NOT EXISTS `programsubject` (
   constraint FK_programsubject_acad_program Foreign Key (Plan) references acad_program(Plan)
   )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE `cis411_csaapp`.`programsubject`
+    ADD INDEX  `FK_programsubject_subject` (`Subject`) USING BTREE;
+
+-- why isn't our CREATE working for our student ID FK?
+-- for now, we add the INDEX after creating the table
+-- Need to fix our CREATE statement before shipping, this is some janky shit
+ALTER TABLE `cis411_csaapp`.`studentmajor`
+    ADD INDEX `FK_studentmajor_student` (`ID`) USING BTREE;
 
 
 -- Table structure for table `users`
@@ -491,9 +488,9 @@ CREATE TABLE IF NOT EXISTS `programsubject` (
 
 -- -------------------- ˇUSERPROGRAMSˇ ----------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `userprograms` (
-  `UserID` int(11) NOT NULL,
+  `UserName` varchar(32) NOT NULL,
   `Plan` varchar(10) NOT NULL,
-  constraint PK_userprograms Primary Key (UserID, Plan),
+  constraint PK_userprograms Primary Key (UserName, Plan),
   constraint FK_userprograms_acad_program Foreign Key (Plan) references acad_program(Plan)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

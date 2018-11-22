@@ -3,11 +3,12 @@ $title = "Import Data";
 require '../view/headerInclude.php';
 ?>
 <?php
-
 $addPrograms = $_POST["hasPrograms"];
 //print_r($addSubjects) ;
 $selectedUser = $_POST["UserSelect"];
-$rowsAdded = updateUserPrograms($selectedUser, $addPrograms);
+$selectedUserID = getUserIDforUserName($selectedUser);
+echo "Our USER ID is $selectedUserID <br>";
+$rowsAdded = updateUserPrograms($selectedUserID, $selectedUser, $addPrograms);
 
 echo "<br>There were " . $rowsAdded . " programs added to the user " . $selectedUser . ".";
 echo "<br>" . $selectedUser . " now includes:  <br>";
