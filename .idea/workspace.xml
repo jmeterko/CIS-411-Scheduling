@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/sql script/CSA + Security Merge" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql script/SQL Script - No security, just our DB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql script/CSA + Security Merge" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/CSA + Security Merge" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,17 +16,17 @@
       <file leaf-file-name="SQL Import Script.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="20" column="34" selection-start-line="8" selection-end-line="20" selection-end-column="34" />
+            <state relative-caret-position="416">
+              <caret line="1481" lean-forward="true" selection-start-line="1481" selection-end-line="1481" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SQL Script - No security, just our DB" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sql script/SQL Script - No security, just our DB">
+      <file leaf-file-name="CSA + Security Merge" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sql script/CSA + Security Merge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+            <state relative-caret-position="119">
+              <caret line="794" column="37" lean-forward="true" selection-start-line="794" selection-start-column="37" selection-end-line="794" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -44,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CSA + Security Merge" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sql script/CSA + Security Merge">
+      <file leaf-file-name="creation_script.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/security/creation_script.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="104" column="39" lean-forward="true" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
+            <state relative-caret-position="117">
+              <caret line="45" column="71" selection-start-line="45" selection-start-column="71" selection-end-line="45" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -64,18 +60,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>construct</find>
-      <find>alter table `userro</find>
-      <find>userpro</find>
-      <find>insert</find>
-      <find>insert into</find>
-      <find>insert ign</find>
-      <find>inser</find>
       <find>table `roles</find>
       <find>insert into `users</find>
       <find>create table `roles</find>
       <find>insert into `userroles</find>
-      <find>userprograms</find>
       <find>`user</find>
       <find>add inde</find>
       <find>create table `roles`</find>
@@ -85,7 +73,6 @@
       <find>`users`</find>
       <find>acad_pro</find>
       <find>`users</find>
-      <find>userroles</find>
       <find>major_stud</find>
       <find>users</find>
       <find>username</find>
@@ -94,6 +81,15 @@
       <find>s `users</find>
       <find>serials</find>
       <find>`serials</find>
+      <find>insert</find>
+      <find>insert into `func</find>
+      <find>userroles</find>
+      <find>rolefunc</find>
+      <find>userprograms</find>
+      <find>insert into `userp</find>
+      <find>insert into subj</find>
+      <find>`subject</find>
+      <find>chin</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -358,7 +354,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="390143000" />
+    <option name="totallyTimeSpent" value="392960000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -375,6 +371,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3298153" />
+      <window_info anchor="bottom" id="PHP-CGI Server" order="11" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -386,7 +383,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3298153" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14427084" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14427084" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Learn" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -396,7 +393,6 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="PHP-CGI Server" order="11" />
       <window_info id="Learn" order="6" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3298153" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14427084" />
@@ -772,8 +768,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/security/creation_script.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="33" column="78" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
+        <state relative-caret-position="117">
+          <caret line="45" column="71" selection-start-line="45" selection-start-column="71" selection-end-line="45" selection-end-column="71" />
         </state>
       </provider>
     </entry>
@@ -791,13 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" column="34" selection-start-line="8" selection-end-line="20" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql script/security_framework_example.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
@@ -812,10 +801,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="1481" lean-forward="true" selection-start-line="1481" selection-end-line="1481" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sql script/CSA + Security Merge">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="104" column="39" lean-forward="true" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
+        <state relative-caret-position="119">
+          <caret line="794" column="37" lean-forward="true" selection-start-line="794" selection-start-column="37" selection-end-line="794" selection-end-column="37" />
         </state>
       </provider>
     </entry>
