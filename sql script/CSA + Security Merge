@@ -154,26 +154,7 @@ INSERT INTO `functions` (`FunctionID`, `Name`, `Description`) VALUES
 (16, 'SecurityLogin', 'Provide Username and Password'),
 (17, 'SecurityLogOut', 'Exit the application.'),
 (18, 'SecurityProcessLogin', 'Try to authorize a user login.'),
-(19, 'SecurityHome', 'Default security page with login button.'),
-(20, 'SecurityManageUsers', 'Allows for reading users and interface to add, change, and delete.'),
-(21, 'SecurityUserAdd', 'Allows for adding of users by enabling link on manage form.'),
-(22, 'SecurityUserEdit', 'Allows for editing of users by enabling link on manage form.'),
-(23, 'SecurityUserDelete', 'Allows for deleting of users by enabling checkbox on manage form.'),
-(24, 'SecurityProcessUserAddEdit', 'Required to process an add, change, or delete of users.'),
-(25, 'SecurityManageFunctions', 'Allows for reading functions and interface to add, change, and delete.'),
-(26, 'SecurityFunctionAdd', 'Allows for adding of functions by enabling link on manage form.'),
-(27, 'SecurityFunctionEdit', 'Allows for editing of functions by enabling link on manage form.'),
-(28, 'SecurityFunctionDelete', 'Allows for deleting of functions by enabling checkbox on manage form.'),
-(29, 'SecurityProcessFunctionAddEdit', 'Required to process an add, change, or delete of functions.'),
-(30, 'SecurityManageRoles', 'Allows for reading roles and interface to add, change, and delete.'),
-(31, 'SecurityRoleAdd', 'Allows for adding of roles by enabling link on manage form.'),
-(32, 'SecurityRoleEdit', 'Allows for editing of roles by enabling link on manage form.'),
-(33, 'SecurityRoleDelete', 'Allows for deleting of roles by enabling checkbox on manage form.'),
-(34, 'SecurityProcessRoleAddEdit', 'Required to process an add, change, or delete of roles.'),
-(35, 'SecurityLogin', 'Provide Username and Password'),
-(36, 'SecurityLogOut', 'Exit the application.'),
-(37, 'SecurityProcessLogin', 'Try to authorize a user login.'),
-(38, 'SecurityHome', 'Default security page with login button.');
+(19, 'SecurityHome', 'Default security page with login button.');
 
 -- --------------------------------------------------------
 
@@ -265,11 +246,7 @@ INSERT INTO `roles` (`RoleID`, `Name`, `Description`) VALUES
 (1, 'admin', 'Full privileges.'),
 (2, 'updater', 'Update/Read privileges.'),
 (3, 'reader', 'Read-only privileges.'),
-(4, 'guest', 'Features available to all visitors without logging in.'),
-(5, 'admin', 'Full privileges.'),
-(6, 'updater', 'Update/Read privileges.'),
-(7, 'reader', 'Read-only privileges.'),
-(8, 'guest', 'Features available to all visitors without logging in.');
+(4, 'guest', 'Features available to all visitors without logging in.');
 
 -- --------------------------------------------------------
 
@@ -315,11 +292,7 @@ INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `UserName`, `Password`, 
 (1, 'Jon', 'ODonnell', 'admin', 'admin', 'jodonnell@clarion.edu'),
 (2, 'Bill', 'Updater', 'bill', 'c692d6a10598e0a801576fdd4ecf3c37e45bfbc4', 'bill@localhost'),
 (3, 'Joe', 'Reader', 'joe', '16a9a54ddf4259952e3c118c763138e83693d7fd', 'joe@localhost'),
-(4, 'guest', 'guest', 'guest', '35675e68f4b5af7b995d9205ad0fc43842f16450', 'guest@localhost'),
-(5, 'Jon', 'ODonnell', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'jodonnell@clarion.edu'),
-(6, 'Bill', 'Updater', 'bill', 'c692d6a10598e0a801576fdd4ecf3c37e45bfbc4', 'bill@localhost'),
-(7, 'Joe', 'Reader', 'joe', '16a9a54ddf4259952e3c118c763138e83693d7fd', 'joe@localhost'),
-(8, 'guest', 'guest', 'guest', '35675e68f4b5af7b995d9205ad0fc43842f16450', 'guest@localhost');
+(4, 'guest', 'guest', 'guest', '35675e68f4b5af7b995d9205ad0fc43842f16450', 'guest@localhost');
 
 --
 -- Indexes for dumped tables
