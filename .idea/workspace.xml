@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/sql script/CSA + Security Merge" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql script/SQL Script - No security, just our DB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql script/SQL Import Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sql script/SQL Import Script.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,88 +17,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="80" column="40" lean-forward="true" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SQL Import Script.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="480">
+              <caret line="20" column="34" selection-start-line="8" selection-end-line="20" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SQL Import Script NO USERID.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt">
+      <file leaf-file-name="SQL Script - No security, just our DB" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sql script/SQL Script - No security, just our DB">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="477" column="54" lean-forward="true" selection-start-line="477" selection-start-column="54" selection-end-line="477" selection-end-column="54" />
+            <state relative-caret-position="323">
+              <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modify_User_Program_Form.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/modify_User_Program_Form.php">
+      <file leaf-file-name="security_framework_example.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sql script/security_framework_example.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+            <state relative-caret-position="287">
+              <caret line="275" column="19" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="processmodify_User_Program.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/processmodify_User_Program.php">
+      <file leaf-file-name="CSA + Security Merge" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sql script/CSA + Security Merge">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Javascript.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Javascript.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="1450" column="9" selection-start-line="1450" selection-start-column="9" selection-end-line="1450" selection-end-column="9" />
-              <folding>
-                <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
-                <element signature="e#55696#63314#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getUserProgramsUsingJSON.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/getUserProgramsUsingJSON.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="919" column="30" lean-forward="true" selection-start-line="919" selection-start-column="30" selection-end-line="919" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getUsersUsingJSON.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/getUsersUsingJSON.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            <state relative-caret-position="508">
+              <caret line="104" column="39" lean-forward="true" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -110,14 +64,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>season</find>
-      <find>instructor</find>
-      <find>name</find>
-      <find>oldest term is</find>
-      <find>term,</find>
-      <find>term</find>
-      <find>settings</find>
-      <find>loadprog</find>
       <find>construct</find>
       <find>alter table `userro</find>
       <find>userpro</find>
@@ -130,7 +76,6 @@
       <find>create table `roles</find>
       <find>insert into `userroles</find>
       <find>userprograms</find>
-      <find>userroles</find>
       <find>`user</find>
       <find>add inde</find>
       <find>create table `roles`</find>
@@ -140,6 +85,15 @@
       <find>`users`</find>
       <find>acad_pro</find>
       <find>`users</find>
+      <find>userroles</find>
+      <find>major_stud</find>
+      <find>users</find>
+      <find>username</find>
+      <find>create table `user</find>
+      <find>create table `users</find>
+      <find>s `users</find>
+      <find>serials</find>
+      <find>`serials</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -154,9 +108,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/model/getCourses.php" />
-        <option value="$PROJECT_DIR$/model/JSONgetCourses.php" />
-        <option value="$PROJECT_DIR$/view/headerInclude.php" />
         <option value="$PROJECT_DIR$/model/getCoursesUsingJSON.php" />
         <option value="$PROJECT_DIR$/model/getProgramSubjectsUsingJSON.php" />
         <option value="$PROJECT_DIR$/model/getNotProgramSubjectsJSON.php" />
@@ -202,9 +153,12 @@
         <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/security/add_user_form.php" />
         <option value="$PROJECT_DIR$/css/main.css" />
-        <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
         <option value="$PROJECT_DIR$/view/processmodify_User_Program.php" />
         <option value="$PROJECT_DIR$/model/model.php" />
+        <option value="$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt" />
+        <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
+        <option value="$PROJECT_DIR$/sql script/SQL Script - No security, just our DB" />
+        <option value="$PROJECT_DIR$/sql script/CSA + Security Merge" />
       </list>
     </option>
   </component>
@@ -253,6 +207,11 @@
               <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
               <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
@@ -399,7 +358,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="387015000" />
+    <option name="totallyTimeSpent" value="390143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -506,27 +465,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/stubs/date/date.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="291" column="9" selection-start-line="291" selection-start-column="9" selection-end-line="291" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/footerInclude.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="51" lean-forward="true" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/Stylesheet.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="859">
@@ -616,13 +554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-789">
           <caret line="51" column="75" selection-start-line="51" selection-start-column="75" selection-end-line="51" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Example Scripts.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="147" column="21" lean-forward="true" selection-start-line="147" selection-start-column="21" selection-end-line="147" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -739,13 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/security_framework_example.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="210" column="39" lean-forward="true" selection-start-line="202" selection-end-line="210" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/security/model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1012">
@@ -846,17 +770,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
+    <entry file="file://$PROJECT_DIR$/security/creation_script.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="423">
+          <caret line="33" column="78" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script NO USERID.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="477" column="54" lean-forward="true" selection-start-line="477" selection-start-column="54" selection-end-line="477" selection-end-column="54" />
+        <state relative-caret-position="653">
+          <caret line="82" column="39" lean-forward="true" selection-start-line="82" selection-start-column="39" selection-end-line="82" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Example Scripts.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="749">
+          <caret line="147" column="21" lean-forward="true" selection-start-line="147" selection-start-column="21" selection-end-line="147" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Import Script.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="20" column="34" selection-start-line="8" selection-end-line="20" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/security_framework_example.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="275" column="19" selection-start-line="275" selection-start-column="19" selection-end-line="275" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/SQL Script - No security, just our DB">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql script/CSA + Security Merge">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="104" column="39" lean-forward="true" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
         </state>
       </provider>
     </entry>
