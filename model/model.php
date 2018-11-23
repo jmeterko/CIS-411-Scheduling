@@ -454,7 +454,7 @@ function getStudentQuestionResults($stdq) {
                 if (!in_array($and_index, $locationMap)){ //if that and_index doesn't exist yet, we're handling a new row of conditions (OR'd with each other)
                     $locationMap[$and_index] = $and_index; //add that index to our map
                     $locationClausesArray[$and_index] = " 
-                    AND LOCATION = '$value'"; //then start the statement, to maybe be OR'd with by matching and_indexes later
+                    AND (LOCATION = '$value'"; //then start the statement, to maybe be OR'd with by matching and_indexes later
                 }
                 else { //if that and_index DOES exist already... great usage of ELSE don't you think? or change the order...
                     $locationClausesArray[$and_index] .= "  OR LOCATION = '$value' ";
@@ -712,6 +712,7 @@ function getStudentQuestionResults($stdq) {
             $query .= $programValue;
         }
         foreach ($locationClausesArray as $locationValue){
+            $locationValue .= ") ";
             $query .= $locationValue;
         }
         foreach ($classClausesArray as $classValue){
