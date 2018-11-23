@@ -20,8 +20,8 @@ require '../view/headerInclude.php';
         </select>
         &nbsp;
         <select name="hasSubjects[]" id="hasSubjectsSelect" size="10" multiple="multiple">
-            <option >Has these subjects:</option>
-            <option ></option>
+            <option disabled>Has these subjects:</option>
+            <option disabled></option>
             <td>
                 <input type="button" value=">>" onclick="for (let i=0; i<200; i++){swap('hasSubjectsSelect','hasNotSubjectsSelect')}">
 
@@ -30,8 +30,8 @@ require '../view/headerInclude.php';
         </select>
         &nbsp;
         <select name="hasNotSubjects" id="hasNotSubjectsSelect" size="10" multiple>
-            <option >Does not have:</option>
-            <option ></option>
+            <option disabled>Does not have:</option>
+            <option disabled></option>
 
 
         </select>

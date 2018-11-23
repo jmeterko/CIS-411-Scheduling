@@ -20,8 +20,8 @@ $allUsers = getAllUsers();
     </select>
     &nbsp;
     <select name="hasPrograms[]" id="hasProgramsSelect" size="10" multiple="multiple">
-        <option >Has these programs:</option>
-        <option ></option>
+        <option disabled>Has these programs:</option>
+        <option disabled ></option>
         <td>
             <input type="button" value=">>" onclick="for (let i=0; i<200; i++){swap('hasProgramsSelect','hasNotProgramsSelect')}">
 
@@ -30,8 +30,8 @@ $allUsers = getAllUsers();
     </select>
     &nbsp;
     <select name="hasNotPrograms" id="hasNotProgramsSelect" size="10" multiple>
-        <option >Does not have:</option>
-        <option ></option>
+        <option disabled>Does not have:</option>
+        <option disabled></option>
 
 
     </select>

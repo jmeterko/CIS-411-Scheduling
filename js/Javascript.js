@@ -1446,8 +1446,8 @@ function loadProgramSubjects(pProgramName){
             ProgramSubjectsJSON = JSON.parse(xhttp.responseText);
             console.log(ProgramSubjectsJSON);
             //alert(ProgramSubjectsJSON);
-            document.getElementById('hasSubjectsSelect').innerHTML = "<option>Has these subjects: </option><option></option>";
-            document.getElementById('hasNotSubjectsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            document.getElementById('hasSubjectsSelect').innerHTML = "<option disabled>Has these subjects: </option><option disabled></option>";
+            document.getElementById('hasNotSubjectsSelect').innerHTML = "<option disabled>Does not have: </option><option disabled></option>";
             for (ProgramSubjectPairFound in ProgramSubjectsJSON){
                 document.getElementById('hasSubjectsSelect').innerHTML +=
                     "<option value='" + ProgramSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "'>" + ProgramSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "</option>";
@@ -1469,8 +1469,8 @@ function loadUserPrograms(pUserName){
             UserProgramsJSON = JSON.parse(xhttp.responseText);
             console.log("Our User's programs are: "); console.log(UserProgramsJSON);
             //alert(ProgramSubjectsJSON);
-            document.getElementById('hasProgramsSelect').innerHTML = "<option>Has these programs: </option><option></option>";
-            document.getElementById('hasNotProgramsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            document.getElementById('hasProgramsSelect').innerHTML = "<option disabled>Has these programs: </option><option disabled></option>";
+            document.getElementById('hasNotProgramsSelect').innerHTML = "<option disabled>Does not have: </option><option disabled></option>";
             for (UserProgramPairFound in UserProgramsJSON){
                 document.getElementById('hasProgramsSelect').innerHTML +=
                     "<option value='" + UserProgramsJSON[UserProgramPairFound][`Plan`] + "'>" + UserProgramsJSON[UserProgramPairFound][`Plan`] + "</option>";
