@@ -177,6 +177,8 @@
 			$email = $_POST["Email"];
 			if (empty($UserID)) {   // No UserID means we are processing an ADD
 				$UserID = addUser($firstName, $lastName, $userName, $email);
+				//default that new user to a Reader role
+                updateUserToReader($UserID);
 			} else {
 				$hasAttributes = "";
                                 if (isset($_POST['hasAttributes'])) { $hasAttributes = $_POST["hasAttributes"]; }
@@ -311,12 +313,12 @@
 			displayError($errors);
 		}
     }
-    
+
     function CheckSecurityNameExists() {
 		$username = $_GET['username'];
 		$duplicate = FALSE;
 		$id = 0;
-		
+
 		$row = getUserByUsername($username);
 		if ($row) {
 			$duplicate = TRUE;
