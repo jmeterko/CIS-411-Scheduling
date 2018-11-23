@@ -32,7 +32,10 @@ var formRebuilt = false;
 
 function incrementAjaxCompletionCounter(){
     ajaxCompletedCount++;
-    if (ajaxCompletedCount >= AJAX_CALL_TOTAL){
+    console.log("ajaxCompleted count is now: " + ajaxCompletedCount);
+    if (ajaxCompletedCount == AJAX_CALL_TOTAL ){
+        console.log("AJAX_CALL_TOTAL REACHED: ajaxCompleted count is: " + ajaxCompletedCount);
+        console.log("We will now get serials ready:");
         getSerialsReady();
     }
 }
@@ -1370,8 +1373,8 @@ function getProgramsUsingJSON(pUser){
             JSONObjectHoldingAllOfOurPrograms = JSON.parse(xhttp.responseText);//#ReadableCode
             //then, do stuff with our JSON object that holds all of our courses
             console.log(JSONObjectHoldingAllOfOurPrograms);
-            return JSONObjectHoldingAllOfOurPrograms;
             incrementAjaxCompletionCounter();//when this gets to four, we load serial data
+            return JSONObjectHoldingAllOfOurPrograms;
         }
     };
     xhttp.open("GET", "../model/getUserProgramsUsingJSON.php?UserSelected=" + pUser, true);
@@ -1650,8 +1653,8 @@ function getTermsUsingJSON(xhttp){
         else
             document.getElementById("dropdownRange4").innerHTML += "<option value='" + i + "'>" + i + "</option>";
         //console.log(i);
-        incrementAjaxCompletionCounter();//when this gets to four, we load serial data
     }
+    incrementAjaxCompletionCounter();//when this gets to four, we load serial data
 
 
     return JSONObjectHoldingAllOfOurTerms;
