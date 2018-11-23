@@ -406,30 +406,30 @@ function getStudentQuestionResults($stdq) {
         $classClausesArray = array();//a collection of AND clauses, each can have any number of ORs
         $classMap = array();//tells us which AND indexes we've found for classes
 
-
-        echo "<pre>"; //delet dis
-        echo "Our data is:<br>";
+        $debugString = ""; //HOLDS OUR DEBUGGING INFO
+        $debugString .= "<pre>"; //delet dis
+        $debugString .= "Our data is:<br>";
         //jerad's accessor
         $orDropdownValue = $stdq->data;
         foreach ($orDropdownValue as $item => $value) {
-            echo $item . ": " . $value  . "\n";
+            $debugString .=  $item . ": " . $value  . "\n";
         }//echo $item to see key/value pair
 
         //testing some term stuff
         $categoryItem = "";
         $categoryArray = array();
-        echo "Our categories are:<br>";
+        $debugString .=  "Our categories are:<br>";
         for ($i = 0; $i < 8; $i++){ //wow this actually works, but it's the type of thing that might break on other PHP versions
             $categoryItem = "cat" . $i;//cat0, cat1, cat2...cat7
-            echo $categoryItem . ' is: ' . $stdq->$categoryItem . '<br>';  // $stdq->cat1 might be equal to "Taking" etc
+            $debugString .=  $categoryItem . ' is: ' . $stdq->$categoryItem . '<br>';  // $stdq->cat1 might be equal to "Taking" etc
             if (isset($stdq->$categoryItem))
                 $categoryArray[$categoryItem] = $stdq->$categoryItem;
         }
-        echo "Our category array we made is:<br>";
-        print_r($categoryArray);
+        $debugString .=  "Our category array we made is:<br>";
+        $debugString .= print_r($categoryArray, true);
 
         //begin build
-        echo "<br><br>And now we will try building:<br><br>";
+        $debugString .=  "<br><br>And now we will try building:<br><br>";
         //jerad's accessor
         $orDropdownValue = $stdq->data;
         foreach ($orDropdownValue as $item => $value) {
@@ -468,7 +468,7 @@ function getStudentQuestionResults($stdq) {
                 $and_index = (substr($item, 3, 1));     //set the AND index of that selection (maj10 -> 1)
                 //here, we've found a sub, meaning there's at least a sub, but maybe also a cat and a gra
                 $SubjectCatalogGradeIndex = substr($item, 3, 2); //our index on sub12 would be 12; sub, cat, and gra see each other
-                echo "Our Subject-Catalog-Grade Index is: " . $SubjectCatalogGradeIndex . "<br>";
+                $debugString .=  "Our Subject-Catalog-Grade Index is: " . $SubjectCatalogGradeIndex . "<br>";
                 if (!in_array($and_index, $classMap)){ //if that and_index doesn't exist yet, we're handling a new row of conditions (OR'd with each other)
                     $classMap[$and_index] = $and_index; //add that index to our map
 
@@ -683,26 +683,26 @@ function getStudentQuestionResults($stdq) {
 
 
         ////////// [[[[[[[[[[[[[[[[[[[[[[[[[        //PRINT PROGRAM CLASS & LOCATION INFORMATION
-        echo "Our Program Clauses are:  <br>"; //print the program clauses for testing
+        $debugString .=  "Our Program Clauses are:  <br>"; //print the program clauses for testing
         foreach ($programClausesArray as $clauseValue) { //for each AND clause in our Program Clauses
-            echo "<br> $clauseValue <br>";
+            $debugString .= "<br> $clauseValue <br>";
         }
-        echo "Our program Indexes are: <br>";
-        print_r($programMap);
+        $debugString .=  "Our program Indexes are: <br>";
+        $debugString .= print_r($programMap, true);
 
-        echo "Our LOCATION Clauses are:  <br>"; //print the location clauses for testing
+        $debugString .=  "Our LOCATION Clauses are:  <br>"; //print the location clauses for testing
         foreach ($locationClausesArray as $locationValue) { //for each AND clause in our Location Clauses
-            echo "<br> $locationValue <br>";
+            $debugString .=  "<br> $locationValue <br>";
         }
-        echo "Our location Indexes are: <br>";
-        print_r($locationMap);
+        $debugString .=  "Our location Indexes are: <br>";
+        $debugString .= print_r($locationMap, true);
 
-        echo "Our CLASS Clauses are:  <br>"; //     PRINT CLASS INFORMATION
+        $debugString .= "Our CLASS Clauses are:  <br>"; //     PRINT CLASS INFORMATION
         foreach ($classClausesArray as $classValue) { //for each AND clause in our Class Clauses
-            echo "<br> $classValue <br>";
+            $debugString .=  "<br> $classValue <br>";
         }
-        echo "Our class Indexes are: <br>";
-        print_r($classMap);
+        $debugString .=  "Our class Indexes are: <br>";
+        $debugString .= print_r($classMap, true);
         ////////// ]]]]]]]]]]]]]]]]]]]]]]]]]        //END PRINT PROGRAM CLASS & LOCATION INFORMATION
         ///
 
@@ -753,7 +753,7 @@ function getStudentQuestionResults($stdq) {
                     AND CURRENT = 'Y' ";
 
         // USER CONTEXT -- ONLY STUDENTS WITH A PROGRAM RELEVANT TO A USER
-        echo "USER CONTEXT user is " . $_SESSION['username'] . " and their programs are: <br>";
+        $debugString .=  "USER CONTEXT user is " . $_SESSION['username'] . " and their programs are: <br>";
         if (isset($_SESSION['username'])){
             $userProgramResults = getUserPrograms($_SESSION['username']);
             //print_r($userProgramResults);
@@ -777,16 +777,21 @@ function getStudentQuestionResults($stdq) {
         $query .= " 
                     ORDER BY NAME ";
         //PRINT QUERY
-        echo "Our query is: <br> $query <br>"; //print the query for testing
+        $debugString .=  "Our query is: <br> $query <br>"; //print the query for testing
 
         //testing all of our StudentObject stuff
-        echo "Our term range is $lowerTerm and $higherTerm<br>";
-        echo "Our Object Data is:<br>";
-        print_r($stdq);
-        echo "</pre"; //DELETE WHEN DONE TESTING OUTPUT
+        $debugString .=  "Our term range is $lowerTerm and $higherTerm<br>";
+        $debugString .=  "Our Object Data is:<br>";
+        $debugString .= print_r($stdq, true);
+        $debugString .= "</pre>"; //DELETE WHEN DONE TESTING OUTPUT
+        //echo $debugString;//PRINT DEBUGGING INFO
+
+        //invisible section on Results Page lets you double click to toggle debug info on/off
+        echo "<div  id='debug'  ondblclick='document.getElementById(`invisibleDebugInfo`).hidden = !document.getElementById(`invisibleDebugInfo`).hidden'  >&nbsp &nbsp &nbsp &nbsp </div>";
+        echo "<div id='invisibleDebugInfo' hidden='false'> $debugString </div>";
 
 
-        //now execute the statements and return the results
+            //now execute the statements and return the results
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
