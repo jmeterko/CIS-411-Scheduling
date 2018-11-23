@@ -187,7 +187,7 @@
 			} else {
 				$hasAttributes = "";
                                 if (isset($_POST['hasAttributes'])) { $hasAttributes = $_POST["hasAttributes"]; }
-				updateUser($UserID, $firstName, $lastName, $userName, $email, $hasAttributes);
+				updateUser($UserID, $firstName, $lastName, $userName, '', $email, $hasAttributes);
 			}
 			$results = getAllUsers();
 			include('../security/manage_users_form.php');

@@ -5,6 +5,7 @@ require '../view/headerInclude.php';
 <?php
     $acadPrograms = getAllAcademicPrograms();
 ?>
+<?php if (isset($programSubjectsDump)) {echo "<pre style='font-size:18px;'>" . $programSubjectsDump . "</pre>";} ?>
 <body  >
     <form enctype="multipart/form-data"
           action="../controller/controller.php?action=ProcessModifyAcadProgram" onsubmit="selectAll('hasSubjectsSelect')" method="post">

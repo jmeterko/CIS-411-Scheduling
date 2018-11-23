@@ -1,28 +1,25 @@
-<?php
-$title = "Import Data";
-require '../view/headerInclude.php';
-?>
-<?php
 
-$addSubjects = $_POST["hasSubjects"];
-foreach ($addSubjects as $subject){
-    if ($subject == ' ' or $subject == '' or $subject == null )
-        unset($subject);
+<?php
+if (isset($_POST['hasSubjects'], $_POST['programSelect'])){
+    $addSubjects = $_POST["hasSubjects"];
+    foreach ($addSubjects as $subject){
+        if ($subject == ' ' or $subject == '' or $subject == null )
+            unset($subject);
+    }
+    //print_r($addSubjects) ;
+    $selectedProgram = $_POST["programSelect"];
+    $rowsAdded = updateProgramSubjects($selectedProgram, $addSubjects);
+
+    $programSubjectsDump .= "";
+    $programSubjectsDump .=  "<br>There were " . $rowsAdded . " subjects added to the program " . $selectedProgram . ".";
+    $programSubjectsDump .=  "<br>" . $selectedProgram . " now includes:  <br>";
+    for ($i = 0; $i < count($addSubjects); $i++)
+        $programSubjectsDump .=   "   " . $addSubjects[$i] . "<br>";
+    $programSubjectsDump .= '<h3>Your modifications have been made.</h3>';
 }
-//print_r($addSubjects) ;
-$selectedProgram = $_POST["programSelect"];
-$rowsAdded = updateProgramSubjects($selectedProgram, $addSubjects);
+include "../view/modify_Acad_Program_Form.php";
 
-echo "<br>There were " . $rowsAdded . " subjects added to the program " . $selectedProgram . ".";
-echo "<br>" . $selectedProgram . " now includes:  <br>";
-for ($i = 0; $i < count($addSubjects); $i++)
-echo $addSubjects[$i] . "<br>";
-//updateUser($UserID, $firstName, $lastName, $userName, $password, $email, $hasAttributes);
-//$results = getAllUsers();
 ?>
 
-<h3>Your modifications have been made.</h3>
 
-<?php
-require '../view/footerInclude.php';
-?>
+

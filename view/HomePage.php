@@ -1,6 +1,6 @@
 <?php
 $title = "Homepage";
-require '../view/headerInclude.php';
+require_once '../view/headerInclude.php';
 ?>
 
 <body style="background-color: #becccc;">

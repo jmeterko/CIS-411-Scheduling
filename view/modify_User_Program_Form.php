@@ -6,6 +6,7 @@ require '../view/headerInclude.php';
 $allUsers = getAllUsers();
 ?>
 <body onload="loadDoc('../model/getUsersUsingJSON.php', getUsersUsingJSON)" >
+<?php if (isset($userProgramDump)) {echo "<pre style='font-size:18px;'>" . $userProgramDump . "</pre>";} ?>
 <form enctype="multipart/form-data"
       action="../controller/controller.php?action=ProcessModifyUserProgram" onsubmit="selectAll('hasProgramsSelect')" method="post">
     <h3>Modify a user's programs:</h3>
