@@ -91,11 +91,11 @@
         
         $isValidLogin = clarionLogin($username, $password);//run credentials through shell command - are they a valid clarion user?
         
-        //if($isValidLogin){//user is clarion verified         
+        if($isValidLogin){//user is clarion verified
                 if(login($username)){//find matching username and create 
 				    $_SESSION["username"] = $username;    
 					header("Location:../security/index.php?action=SecurityLogin");
-                //}
+                }
         }
         else {//user does NOT have a valid clarion login
             header("Location:../security/index.php?action=SecurityLogin&LoginFailure&RequestedPage=" . urlencode($_POST["RequestedPage"]));

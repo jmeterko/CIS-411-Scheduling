@@ -192,9 +192,6 @@ INSERT INTO `functions` (`FunctionID`, `Name`, `Description`) VALUES
 (53, 'CourseQuestion', 'Ask a Course Question and receive Course Results'),
 (54, 'DisplayData', 'Display the result set for a StudentQuestion'),
 (55, 'ImportData', 'Import students, classes, and students-classes files into database'),
-(56, 'ProcessStudentQuestion', 'Process the results of a query built by a user'),
-(57, 'ProcessDisplaySerials', 'Process the results of displaying saved searches'),
-(58, 'RebuildQuestion', 'Populate a StudentQuestion form with saved search data'),
 (59, 'ModifyAcadProgram', 'Associate Subjects with Academic Programs'),
 (60, 'ModifyUserProgram', 'Associate Users with Academic Programs'),
 (61, 'ProcessImportData', 'Process the files imported for our database'),
@@ -290,7 +287,14 @@ INSERT INTO `rolefunctions` (`RoleID`, `FunctionID`) VALUES
 (1, 61),
 (1, 62),
 (1, 63),
-(1, 64);
+(1, 64),
+(3, 48),
+(3, 49),
+(3, 50),
+(3, 51),
+(3, 53),
+(3, 54),
+(3, 62);
 
 -- --------------------------------------------------------
 
@@ -335,7 +339,10 @@ INSERT INTO `userroles` (`UserID`, `RoleID`) VALUES
 (3, 3),
 (4, 4),
 (11, 1),
-(13, 1);
+(13, 1),
+(5, 1),
+(6, 1),
+(7, 1);
 
 -- --------------------------------------------------------
 
@@ -362,7 +369,10 @@ INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `UserName`, `Password`, 
 (3, 'Joe', 'Reader', 'joe', '16a9a54ddf4259952e3c118c763138e83693d7fd', 'joe@localhost'),
 (4, 'guest', 'guest', 'guest', '35675e68f4b5af7b995d9205ad0fc43842f16450', 'guest@localhost'),
 (11, 'David', 'O\'Donnell', 'DavidTheAdmin', '', 'd.m.odonnell@eagle.clarion.edu'),
-(13, 'David', 'O\'Donnell', 'Admin_All_Programs', '', 'd.m.odonnell@eagle.clarion.edu');
+(13, 'David', 'O\'Donnell', 'Admin_All_Programs', '', 'd.m.odonnell@eagle.clarion.edu'),
+(5, 'David', 'ODonnell', 's_dmodonnell', 'admin', 's_dmodonnell@clarion.edu'),
+(6, 'Jon', 'ODonnell', 'jodonnell', 'admin', 'jodonnell@clarion.edu'),
+(7, 'Katy', 'ODonnell', 'kodonnell', 'admin', 'kodonnell@clarion.edu');
 
 --
 -- Indexes for dumped tables
@@ -429,9 +439,6 @@ ALTER TABLE `users`
 --
 -- Constraints for table `rolefunctions`
 --
-ALTER TABLE `rolefunctions`
-  ADD CONSTRAINT `rolefunctions_ibfk_1` FOREIGN KEY (`RoleID`) REFERENCES `roles` (`RoleID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `rolefunctions_ibfk_2` FOREIGN KEY (`FunctionID`) REFERENCES `functions` (`FunctionID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `userroles`
@@ -799,7 +806,11 @@ INSERT IGNORE INTO `userprograms` (`UserID`, `Plan`, `UserName`) VALUES
 (13, 'PRE OPT', 'Admin_All_Programs'),
 (13, 'PRE PHARM', 'Admin_All_Programs'),
 (13, 'PRE VET', 'Admin_All_Programs'),
-(13, 'UN UND', 'Admin_All_Programs');
+(13, 'UN UND', 'Admin_All_Programs'),
+(5, 'BS CS', 's_dmodonnell'),
+(5, 'BA ENG', 's_dmodonnell'),
+(5, 'BA SPAN', 's_dmodonnell'),
+(5, 'BA FR', 's_dmodonnell');
 
 CREATE TABLE IF NOT EXISTS `subject` (
   `Subject` varchar(4) NOT NULL,

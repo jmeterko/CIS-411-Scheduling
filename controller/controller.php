@@ -1,6 +1,6 @@
 <?php
 session_start();
-/*$_SESSION['username'] = "admin";  //jeradstuff, comment or delete this later*/
+/*$_SESSION['username'] = "s_dmodonnell";  //jeradstuff, comment or delete this later*/
 require_once("../security/model.php");
 require_once("../model/StudentQuestion.php");
 require_once '../model/model.php';//require the functions from the model.php file
