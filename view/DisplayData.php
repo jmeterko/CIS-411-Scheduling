@@ -809,7 +809,7 @@ function determineYear($credits){
 
 
 <body style="font-size: 20px; " onload="hideStuff()">
-<center><h1>Results</h1></center>
+<center><h1>Results Found: <?php echo count($student); ?></h1></center>
 <center>
     <h2> Click a column header to sort by that column.</h2>
     <table class="result_table" id ="result_table">

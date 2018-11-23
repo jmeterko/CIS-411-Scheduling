@@ -1609,6 +1609,7 @@ function getTermsUsingJSON(xhttp){
     //parse the Ajax responseText into a JSON object, just as it was encoded into a JSON string
     //create a JS Object to hold our unique term values much like a PHP associative array
     JSONObjectHoldingAllOfOurTerms = JSON.parse(xhttp.responseText);
+    console.log(JSONObjectHoldingAllOfOurTerms);
     let oldestYear = "20" + JSONObjectHoldingAllOfOurTerms.Oldest_Term.substr(1,2);
     let newestYear = "20" + JSONObjectHoldingAllOfOurTerms.Latest_Term.substr(1,2);
     console.log("Our Oldest Term is: " + JSONObjectHoldingAllOfOurTerms.Oldest_Term);

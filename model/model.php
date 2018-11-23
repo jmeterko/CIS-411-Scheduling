@@ -369,6 +369,9 @@ function getStudentQuestionResults($stdq) {
             $currentStudentsOnly = $stdq->currentStudentsOnly; //default value for POST checkbox set is 'on'
         }
 
+        //USER CONTEXT array of programs that are relevant to the logged in user, results must match
+        $userProgramResults= array();
+        $relevantPrograms = array();
 
         //begin assembling AND clauses, these each represent a WHERE condition to add to our query
         $clauseItem = "  ";     //this will hold a single AND condition
@@ -748,6 +751,27 @@ function getStudentQuestionResults($stdq) {
             $query .= " 
                     AND CURRENT = 'Y' ";
 
+        // USER CONTEXT -- ONLY STUDENTS WITH A PROGRAM RELEVANT TO A USER
+        echo "USER CONTEXT user is " . $_SESSION['username'] . " and their programs are: <br>";
+        if (isset($_SESSION['username'])){
+            $userProgramResults = getUserPrograms($_SESSION['username']);
+            print_r($userProgramResults);
+        }
+        foreach ($userProgramResults as $userProgramResult){
+            array_push($relevantPrograms, " 
+                        OR PLAN = '" .  $userProgramResult['Plan'] . "' ");
+        }
+        print_r($relevantPrograms);
+        //SEARCH BY USER'S PROGRAMS FOR QUERY
+        if (isset($_SESSION['username'])){
+            $query .= "
+                    AND (FALSE ";
+            foreach ($relevantPrograms as $program){
+                $query .= $program;
+            }
+            $query .= " ) ";
+        }
+
         //SORT RESULTS
         $query .= " 
                     ORDER BY NAME ";
@@ -781,6 +805,8 @@ function convertRangeToTerm($pSeason, $pYear){
     if ($pSeason == 'Summer')
         $seasonResult = '5';
     if ($pSeason == 'Fall' or $pSeason == 'Winter')  //2018 = 2                  //2018 = 18
+        $seasonResult = '8';
+    else
         $seasonResult = '8';
     $yearToTerm = substr($pYear, 0, 1) . substr($pYear, 2, 2);
     $finalResult = $yearToTerm . $seasonResult; // = 2185
