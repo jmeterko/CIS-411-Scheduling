@@ -84,6 +84,10 @@ if (isset($_POST['action'])) {  // check get and post
         case 'ProcessImportData':
             include '../view/processImportData.php';
             break;
+        case 'Settings':
+            include '../view/Settings.php';
+            break;
+
         case 'StudentHistory':
             include '../view/StudentHistory.php';
             break;

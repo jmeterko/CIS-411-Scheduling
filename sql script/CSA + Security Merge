@@ -198,7 +198,9 @@ INSERT INTO `functions` (`FunctionID`, `Name`, `Description`) VALUES
 (62, 'StudentHistory', 'Display the results of a single students\' course history'),
 (63, 'UpdateTermSettings', 'Update the \"CURRENT TERM\" in our database\'s saved settings'),
 (64, 'ProcessModifyAcadProgram', 'Process the selections made when associating subjects with programs'),
-(65, 'ProcessModifyUserProgram', 'Process the selections made when associating users with programs');
+(65, 'ProcessModifyUserProgram', 'Process the selections made when associating users with programs'),
+(66, 'HomePage', 'Standard navigation page'),
+(67, 'Settings', 'Manage User Programs, Progam Subjects, and Current Term');
 
 
 -- --------------------------------------------------------
@@ -294,7 +296,10 @@ INSERT INTO `rolefunctions` (`RoleID`, `FunctionID`) VALUES
 (3, 51),
 (3, 53),
 (3, 54),
-(3, 62);
+(3, 62),
+(3, 66),
+(1, 66),
+(1, 67);
 
 -- --------------------------------------------------------
 

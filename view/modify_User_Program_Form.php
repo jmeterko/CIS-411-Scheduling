@@ -1,11 +1,17 @@
 <?php
-$title = "Modify Users' Programs";
+$title = "ModifyUserProgram";
 require '../view/headerInclude.php';
 ?>
 <?php
 $allUsers = getAllUsers();
 ?>
-<body onload="loadDoc('../model/getUsersUsingJSON.php', getUsersUsingJSON)" >
+<div style="
+  width: 550px;
+  margin:  auto;
+  background-color: #becccc;"
+
+     id = "body">
+<body onload="loadDoc('../model/getUsersUsingJSON.php', getUsersUsingJSON)" style="background-color: #becccc;" >
 <?php if (isset($userProgramDump)) {echo "<pre style='font-size:18px;'>" . $userProgramDump . "</pre>";} ?>
 <form enctype="multipart/form-data"
       action="../controller/controller.php?action=ProcessModifyUserProgram" onsubmit="selectAll('hasProgramsSelect')" method="post">
@@ -40,8 +46,6 @@ $allUsers = getAllUsers();
     <input type="submit" value="Submit"  />
 </form>
 <br>
-
-</body>
 <?php
 require '../view/footerInclude.php';
 ?>

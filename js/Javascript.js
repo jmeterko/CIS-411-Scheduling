@@ -1678,7 +1678,7 @@ function updateCurrentTermUsingJSON(pCurrentTerm){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(xhttp.responseText);
-            document.getElementById('updatedTermLabel').innerHTML = "**Current term has been updated** to: " + xhttp.responseText;
+            document.getElementById('updatedTermLabel').innerHTML = "<br>**Current term has been updated** to: " + xhttp.responseText;
         }
     };
     xhttp.open("GET", "../model/updateCurrentTermUsingJSON.php?CurrentTerm=" + pCurrentTerm, true);

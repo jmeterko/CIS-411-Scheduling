@@ -1,12 +1,18 @@
 <?php
-$title = "Modify Program";
+$title = "ModifyAcadProgram";
 require '../view/headerInclude.php';
 ?>
 <?php
     $acadPrograms = getAllAcademicPrograms();
 ?>
 <?php if (isset($programSubjectsDump)) {echo "<pre style='font-size:18px;'>" . $programSubjectsDump . "</pre>";} ?>
-<body  >
+<div style="
+  width: 550px;
+  margin:  auto;
+  background-color: #becccc;"
+
+     id = "body">
+<body style="background-color: #becccc;" >
     <form enctype="multipart/form-data"
           action="../controller/controller.php?action=ProcessModifyAcadProgram" onsubmit="selectAll('hasSubjectsSelect')" method="post">
         <h3>Modify a program:</h3>

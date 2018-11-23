@@ -26,8 +26,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
-<!--<div>
     <?php
-/*    include '../view/navbar.php';   //php for including navbar, previously js
-    */?>
-</div>-->
+        if (isset($title))
+            if ($title != "HomePage" && $title != "Settings")
+                include '../view/navbar.php';   //php for including navbar, previously js
+    ?>
