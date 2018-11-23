@@ -86,7 +86,9 @@
     }
 
     function ProcessLogin(){
-        $username = $_POST['username'];    
+        $username = $_POST['username'];
+        $usernameWithoutDomain = explode('@',$username);
+        $username = $usernameWithoutDomain[0];
         $password = $_POST['password'];
         
         $isValidLogin = clarionLogin($username, $password);//run credentials through shell command - are they a valid clarion user?
