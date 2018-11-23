@@ -22,10 +22,21 @@ var orCount5 = 0;
 var orCount6 = 0;
 var orCount7 = 0;
 var fileCounter=0;
+var ajaxCompletedCount=0;
+const AJAX_CALL_TOTAL=4;
+var SubjectOptionsString = "<option value='CIS'>CIS</option><option value='DA'>DA</option>";
 
 var formRebuilt = false;
 //jerad's stuff, commented out
-document.addEventListener("DOMContentLoaded", function() {
+//document.addEventListener("DOMContentLoaded", function(){getSerialsReady()});
+
+function incrementAjaxCompletionCounter(){
+    ajaxCompletedCount++;
+    if (ajaxCompletedCount >= AJAX_CALL_TOTAL){
+        getSerialsReady();
+    }
+}
+function getSerialsReady() {
     document.getElementById("saveQuestion").addEventListener("change", toggleSaveQuestion);
     document.getElementById("dropdown0").addEventListener("change", function(){
         var dropdown = document.getElementById("dropdown0").value;
@@ -47,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         finishBuild();
     }
-});
+}
 
 function finishBuild(){
     formRebuilt = true;
@@ -1132,12 +1143,12 @@ function makeDivVisibleOr(){
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For" || $('#dropdown' + and + ' option:selected').text() == "Course") { +
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)' onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "selected disabled hidden>Subject</option>" + SubjectOptionsString + "</select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"' ><option value=''"+
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "selected disabled hidden>Subject</option>" + SubjectOptionsString + "</select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
                 "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
@@ -1166,12 +1177,12 @@ function makeDivVisibleOr(){
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For" || $('#dropdown' + and + ' option:selected').text() == "Course") { +
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' name='Subject" + and + or +"' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "selected disabled hidden>Subject</option>" + SubjectOptionsString + "</select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"' ><option value=''"+
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "selected disabled hidden>Subject</option>" + SubjectOptionsString + "</select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
                 "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
@@ -1360,6 +1371,7 @@ function getProgramsUsingJSON(pUser){
             //then, do stuff with our JSON object that holds all of our courses
             console.log(JSONObjectHoldingAllOfOurPrograms);
             return JSONObjectHoldingAllOfOurPrograms;
+            incrementAjaxCompletionCounter();//when this gets to four, we load serial data
         }
     };
     xhttp.open("GET", "../model/getUserProgramsUsingJSON.php?UserSelected=" + pUser, true);
@@ -1398,7 +1410,7 @@ function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
     if (jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown] != undefined)
         for (i =0; i < jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown].length; i++){
             document.getElementById(pCatalogDropdownID).innerHTML += "<option value='" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "'>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
-    }
+        }
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='100s'>" + "100s" + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='200s'>" + "200s" + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='300s'>" + "300s" + "</option>";
@@ -1577,6 +1589,7 @@ function getSubjectsUsingJSON(xhttp){
         jsObjectHoldingAllOfOurSubjects[JSONObjectHoldingAllOfOurCourses[rowEntry].Subject].push(JSONObjectHoldingAllOfOurCourses[rowEntry].Catalog);
     }
     console.log(jsObjectHoldingAllOfOurSubjects);
+    incrementAjaxCompletionCounter();//when this gets to four, we load serial data
 
     //if you want, you can use this line to load the first dropdown:
     //loadSubjects("JSONTestingSelect3434");
@@ -1589,6 +1602,7 @@ function getSubjectsUsingJSON(xhttp){
 function getSubjectsForUserUsingJSON(pUser){
     //parse the Ajax responseText into a JSON object, just as it was encoded into a JSON string
     //create a JS Object to hold our unique subject values much like a PHP associative array
+    console.log("Current User: " + pUser);
     let xhttp;
     xhttp=new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -1596,6 +1610,11 @@ function getSubjectsForUserUsingJSON(pUser){
             SubjectsForUserJSON = JSON.parse(xhttp.responseText);
             console.log("The Subjects for this user are: ");
             console.log(SubjectsForUserJSON);
+            SubjectOptionsString = "";
+            for (SubjFound in SubjectsForUserJSON){
+                SubjectOptionsString += "<option value='" + SubjectsForUserJSON[SubjFound]['Subject'] + "'>" + SubjectsForUserJSON[SubjFound]['Subject'] + "</option>";
+            }
+            incrementAjaxCompletionCounter();//when this gets to four, we load serial data
         }
     };
     xhttp.open("GET", "../model/getSubjectsForUserJSON.php?UserSelected=" + pUser, true);
@@ -1631,6 +1650,7 @@ function getTermsUsingJSON(xhttp){
         else
             document.getElementById("dropdownRange4").innerHTML += "<option value='" + i + "'>" + i + "</option>";
         //console.log(i);
+        incrementAjaxCompletionCounter();//when this gets to four, we load serial data
     }
 
 
