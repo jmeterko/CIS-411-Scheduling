@@ -755,13 +755,13 @@ function getStudentQuestionResults($stdq) {
         echo "USER CONTEXT user is " . $_SESSION['username'] . " and their programs are: <br>";
         if (isset($_SESSION['username'])){
             $userProgramResults = getUserPrograms($_SESSION['username']);
-            print_r($userProgramResults);
+            //print_r($userProgramResults);
         }
         foreach ($userProgramResults as $userProgramResult){
             array_push($relevantPrograms, " 
                         OR PLAN = '" .  $userProgramResult['Plan'] . "' ");
         }
-        print_r($relevantPrograms);
+        //print_r($relevantPrograms);
         //SEARCH BY USER'S PROGRAMS FOR QUERY
         if (isset($_SESSION['username'])){
             $query .= "

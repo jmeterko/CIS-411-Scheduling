@@ -1,6 +1,6 @@
 
 
--- Drops everything and creates CSA tables but not security
+-- Drops everything and creates CSA tables, then security, then UserPrograms, then Serials
 
    DROP TABLE IF EXISTS studentclass;
    DROP TABLE IF EXISTS studentmajor;
@@ -14,6 +14,7 @@
    DROP TABLE IF EXISTS users;
    DROP TABLE IF EXISTS roles;
    DROP TABLE IF EXISTS functions;
+   DROP TABLE IF EXISTS serials;
 
 CREATE TABLE IF NOT EXISTS `course` (
   `Subject` varchar(4) NOT NULL,
@@ -822,3 +823,25 @@ INSERT IGNORE INTO `programsubject` (`Plan`, `Subject`) VALUES
 ('BA ENG', 'ENGL'),
 ('BA SPAN', 'SPAN'),
 ('BA FR', 'FR');
+
+
+CREATE TABLE IF NOT EXISTS `serials` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `serial` varchar(5000) NOT NULL,
+  `name` varchar(21) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `serials` (`id`, `username`, `serial`, `name`) VALUES
+(191, 'Admin_All_Programs', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:16:\"Taking/Completed\";s:4:\"cat1\";s:17:\"Not Scheduled For\";s:4:\"cat2\";N;s:4:\"cat3\";N;s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"1\";s:3:\"or1\";s:1:\"1\";s:3:\"or2\";s:1:\"0\";s:3:\"or3\";s:1:\"0\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"1\";s:11:\"startSeason\";s:6:\"Summer\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"2.0\";s:9:\"startYear\";s:4:\"2010\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:16:\"Needs Algorithms\";s:4:\"data\";a:5:{s:5:\"sub00\";s:3:\"CIS\";s:5:\"cor00\";s:3:\"254\";s:5:\"gra00\";s:6:\"Passed\";s:5:\"sub10\";s:3:\"CIS\";s:5:\"cor10\";s:3:\"356\";}}', 'Needs Algorithms'),
+(192, 'Admin_All_Programs', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:16:\"Taking/Completed\";s:4:\"cat1\";s:16:\"Taking/Completed\";s:4:\"cat2\";s:17:\"Not Scheduled For\";s:4:\"cat3\";s:17:\"Not Scheduled For\";s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"3\";s:3:\"or1\";s:1:\"1\";s:3:\"or2\";s:1:\"1\";s:3:\"or3\";s:1:\"1\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"3\";s:11:\"startSeason\";s:6:\"Summer\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"2.0\";s:9:\"startYear\";s:4:\"2007\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:25:\"English Freshman Template\";s:4:\"data\";a:16:{s:5:\"sub00\";s:3:\"ENG\";s:5:\"cor00\";s:3:\"111\";s:5:\"gra00\";s:6:\"Passed\";s:5:\"sub01\";s:4:\"ENGL\";s:5:\"cor01\";s:3:\"111\";s:5:\"gra01\";s:6:\"Passed\";s:5:\"sub10\";s:3:\"ENG\";s:5:\"cor10\";s:4:\"200s\";s:5:\"gra10\";s:6:\"Passed\";s:5:\"sub11\";s:4:\"ENGL\";s:5:\"cor11\";s:4:\"200s\";s:5:\"gra11\";s:6:\"Passed\";s:5:\"sub20\";s:3:\"ENG\";s:5:\"cor20\";s:4:\"300s\";s:5:\"sub30\";s:4:\"ENGL\";s:5:\"cor30\";s:4:\"300s\";}}', 'English Freshman Tem'),
+(194, 'Admin_All_Programs', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:9:\"Completed\";s:4:\"cat1\";N;s:4:\"cat2\";N;s:4:\"cat3\";N;s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"2\";s:3:\"or1\";s:1:\"0\";s:3:\"or2\";s:1:\"0\";s:3:\"or3\";s:1:\"0\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"0\";s:11:\"startSeason\";s:6:\"Spring\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"0.0\";s:9:\"startYear\";s:4:\"2007\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:8:\"CIS & DA\";s:4:\"data\";a:6:{s:5:\"sub00\";s:3:\"CIS\";s:5:\"cor00\";s:3:\"202\";s:5:\"gra00\";s:1:\"A\";s:5:\"sub01\";s:2:\"DA\";s:5:\"cor01\";s:4:\"500s\";s:5:\"gra01\";s:1:\"B\";}}', 'CIS & DA'),
+(204, 'Admin_All_Programs', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:7:\"Program\";s:4:\"cat1\";N;s:4:\"cat2\";N;s:4:\"cat3\";N;s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"3\";s:3:\"or1\";s:1:\"0\";s:3:\"or2\";s:1:\"0\";s:3:\"or3\";s:1:\"0\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"1\";s:11:\"startSeason\";s:6:\"Spring\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"0.0\";s:9:\"startYear\";s:4:\"2007\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:16:\"CS,IS, DA Majors\";s:4:\"data\";a:3:{s:5:\"maj00\";s:5:\"BS CS\";s:5:\"maj01\";s:5:\"BS IS\";s:5:\"maj02\";s:5:\"MS DA\";}}', 'CS,IS, DA Majors'),
+(206, 'admin', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:7:\"Program\";s:4:\"cat1\";s:16:\"Taking/Completed\";s:4:\"cat2\";s:24:\"Not Taking/Not Completed\";s:4:\"cat3\";N;s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"1\";s:3:\"or1\";s:1:\"1\";s:3:\"or2\";s:1:\"1\";s:3:\"or3\";s:1:\"0\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"2\";s:11:\"startSeason\";s:6:\"Spring\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"0.0\";s:9:\"startYear\";s:4:\"2007\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:9:\"Needs 356\";s:4:\"data\";a:6:{s:5:\"maj00\";s:5:\"BS CS\";s:5:\"sub10\";s:3:\"CIS\";s:5:\"cor10\";s:3:\"254\";s:5:\"gra10\";s:6:\"Passed\";s:5:\"sub20\";s:3:\"CIS\";s:5:\"cor20\";s:3:\"356\";}}', 'Needs 356');
+
+ALTER TABLE `serials`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `serials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
