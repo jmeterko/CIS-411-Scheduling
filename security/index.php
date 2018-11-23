@@ -93,8 +93,11 @@
         
         if($isValidLogin){//user is clarion verified
                 if(login($username)){//find matching username and create 
-				    $_SESSION["username"] = $username;    
-					header("Location:../security/index.php?action=SecurityLogin");
+				    $_SESSION["username"] = $username;
+				    if ($username != 'admin' && $username != 'jodonnell')
+				        header("Location:../controller/controller.php?action=StudentQuestion");//for now, we are not redirecting to RequestedPage correctly
+				    else                                                                                //so, we redirect to Student Question if logged in as not-an-admin
+					    header("Location:../security/index.php?action=SecurityLogin"); //
                 }
         }
         else {//user does NOT have a valid clarion login
