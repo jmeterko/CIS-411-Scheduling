@@ -354,7 +354,7 @@ CREATE TABLE `users` (
   `UserID` int(11) NOT NULL,
   `FirstName` varchar(32) NOT NULL,
   `LastName` varchar(32) NOT NULL,
-  `UserName` varchar(32) NOT NULL,
+  `UserName` varchar(32) UNIQUE NOT NULL,
   `Password` varchar(40) NOT NULL,
   `Email` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
