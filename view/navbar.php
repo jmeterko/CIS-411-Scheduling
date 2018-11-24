@@ -27,7 +27,7 @@
                     <li><a href="../controller/controller.php?action=ImportData">Import Data</a></li>
 
                 <?php } }
-        if (userIsAuthorized("SecurityManageUsers")) {  ?>
+        if (userIsAuthorized("SecurityAddUser")) {  ?>
             <li><a href="../security/index.php">Admin</a></li>
         <?php }
         if (loggedIn()) {  ?>
