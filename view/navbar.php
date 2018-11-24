@@ -14,14 +14,14 @@
                 <li><a href="../controller/controller.php?action=UpdateTermSettings">Update Term</a></li>
 
             <?php } }else{
-                if (userIsAuthorized("Settings")) {  ?>
-                    <li><a href="../controller/controller.php?action=Settings">Settings</a></li>
-                <?php }
                 if (userIsAuthorized("StudentQuestion")) {  ?>
                     <li><a href="../controller/controller.php?action=StudentQuestion">Student Question</a></li>
                     <?php /*}
                 if (userIsAuthorized("CourseQuestion")) {  */?><!--
                     <li><a href="../controller/controller.php?action=CourseQuestion">Course Question</a></li>-->
+                <?php }
+                if (userIsAuthorized("Settings")) {  ?>
+                    <li><a href="../controller/controller.php?action=Settings">Settings</a></li>
                 <?php }
                 if (userIsAuthorized("ImportData")) {  ?>
                     <li><a href="../controller/controller.php?action=ImportData">Import Data</a></li>
