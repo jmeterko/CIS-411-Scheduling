@@ -22,7 +22,7 @@
 			
 	public $or0, $or1, $or2, $or3, $or4, $or5, $or6, $or7, $andCount, $startSeason, $endSeason = '';
 	
-	public $rankFR, $rankSO, $rankJR, $rankSR, $currentStudentsOnly, $startGPA, $startYear, $endGPA, $endYear, $searchName = '';
+	public $rankFR, $rankSO, $rankJR, $rankSR, $currentStudentsOnly, $startGPA, $startYear, $endGPA, $endYear, $searchName, $updateFlag = '';
 		
 	public function __construct() {
         //ONLY ASSIGN VARIABLES IF THEIR RESPECTIVE FORM ELEMENT WAS SET BY USER
@@ -69,6 +69,7 @@
 		
 		//OTHER VARIABLES
 		if (isset($_POST["searchName"])) { $this->searchName = $_POST['searchName']; }
+		if (isset($_POST["updateFlag"])) { $this->updateFlag = $_POST['updateFlag']; }
     }
 	
 		/*_set takes 2 parameters : the $name of the variable you want to create, and the $value to store there
@@ -266,11 +267,19 @@
 				include '../view/errorPage.php';			
 			}
 			
-			//user wants to save a provided a name 
+			//user wants to save under provided name 
 			else {//serialize and save to user profile under their given search name
 				$s = serialize($stdq); 			        //serialize the object, store string in $s
 				$user = $_SESSION['username'];          //see who the current user is
-				addSerial($user, $s, $stdq->searchName);//save the search under the saved name and user who created it. 
+				
+				if($stdq->updateFlag){//if the search was overriding an exisiting search
+					$previousRecordID = getSerialByName($stdq->searchName);
+					updateSerial($previousRecordID, $user, $s, $stdq->searchName);//update the search under the newly given name and user who changed it. 
+				}
+				
+				else {//if the search is newly created (no update)
+					addSerial($user, $s, $stdq->searchName);//save the search under the saved name and user who created it. 
+				}
 			}
 			
 			/**IMPORTANT* index.php is my current output page for testing my seriailzier. Instead of going here after the form is submitted, 

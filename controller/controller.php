@@ -57,6 +57,9 @@ switch ($action) {
     case 'StudentQuestion':
 		AskQuestion();
         break;
+	case 'CheckSearchNameExists':
+		CheckSearchName();
+        break;
 	case 'ProcessStudentQuestion':
         ProcessStudentQuestion();
         break;
