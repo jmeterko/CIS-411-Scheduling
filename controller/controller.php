@@ -1,6 +1,6 @@
 <?php
 session_start();
-/*$_SESSION['username'] = "s_dmodonnell";  //jeradstuff, comment or delete this later*/
+$_SESSION['username'] = "s_dmodonnell";  //jeradstuff, comment or delete this later
 require_once("../security/model.php");
 require_once("../model/StudentQuestion.php");
 require_once '../model/model.php';//require the functions from the model.php file
@@ -15,13 +15,13 @@ if (isset($_POST['action'])) {  // check get and post
 }
 
 
-if (!userIsAuthorized($action)) {
+/*if (!userIsAuthorized($action)) {
     if(!loggedIn()) {
         header("Location:../security/index.php?action=SecurityLogin&RequestedPage=" . urlencode($_SERVER['REQUEST_URI']));
     } else {
         include('../security/not_authorized.html');
     }
-} else
+} else*/
     {
 
     if (isset($_POST['action'])) {  // check get and post

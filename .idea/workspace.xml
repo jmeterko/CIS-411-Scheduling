@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/view/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/navbar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/simplexlsx.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/2088-2188-ENG-LANG-Students.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV_Test_Files/2088-2188-ENG-LANG-Students.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/DisplayData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/DisplayData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/processImportData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/processImportData.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +21,8 @@
       <file leaf-file-name="controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+            <state relative-caret-position="357">
+              <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -25,70 +30,45 @@
       <file leaf-file-name="importDataWithAjax.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/importDataWithAjax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="45" lean-forward="true" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#body#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modify_User_Program_Form.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/modify_User_Program_Form.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+            <state relative-caret-position="50">
+              <caret line="2" column="36" lean-forward="true" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#body#0;n#body#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#pre#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modify_Acad_Program_Form.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/modify_Acad_Program_Form.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-              <folding>
-                <element signature="n#style#0;n#pre#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#body#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="updateTermSettings.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/updateTermSettings.php">
+      <file leaf-file-name="processImportData.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/view/processImportData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+            <state relative-caret-position="339">
+              <caret line="97" column="36" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
               <folding>
-                <element signature="n#style#0;n#body#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#112#135#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/security/index.php">
+      <file leaf-file-name="simplexlsx.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/simplexlsx.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1776">
-              <caret line="118" column="13" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="13" />
+            <state relative-caret-position="11628">
+              <caret line="684" column="2" selection-start-line="684" selection-start-column="2" selection-end-line="684" selection-end-column="2" />
+              <folding>
+                <element signature="e#6#1922#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navbar.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/view/navbar.php">
+      <file leaf-file-name="headerInclude.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/headerInclude.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            <state relative-caret-position="544">
+              <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -96,8 +76,17 @@
       <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
+            <state relative-caret-position="17">
               <caret line="836" column="124" selection-start-line="836" selection-start-column="124" selection-end-line="836" selection-end-column="124" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navbar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/navbar.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -113,7 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>32</find>
       <find>into `userroles</find>
       <find>rolefunctions</find>
       <find>clarion</find>
@@ -143,6 +131,7 @@
       <find>question</find>
       <find>tquestion</find>
       <find>minimize</find>
+      <find>occurred</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -157,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/view/processImportDataTestAjax.php" />
         <option value="$PROJECT_DIR$/view/testingProcessAjaxImportFILESWORK.php" />
         <option value="$PROJECT_DIR$/view/testingProcessAjaxImport.php" />
         <option value="$PROJECT_DIR$/view/importDataTestingWithAjax.php" />
@@ -166,7 +154,6 @@
         <option value="$PROJECT_DIR$/model/updateCurrentTermUsingJSON.php" />
         <option value="$PROJECT_DIR$/view/arrayConverterTestingPage.php" />
         <option value="$PROJECT_DIR$/model/getCourseHistoryUsingAjax.php" />
-        <option value="$PROJECT_DIR$/view/processImportData.php" />
         <option value="$PROJECT_DIR$/view/HomePage.html" />
         <option value="$PROJECT_DIR$/view/StudentHistory.php" />
         <option value="$PROJECT_DIR$/view/index.php" />
@@ -186,7 +173,6 @@
         <option value="$PROJECT_DIR$/sql script/SQL Import Script.txt" />
         <option value="$PROJECT_DIR$/sql script/SQL Script - No security, just our DB" />
         <option value="$PROJECT_DIR$/model/getTermsUsingJSON.php" />
-        <option value="$PROJECT_DIR$/view/DisplayData.php" />
         <option value="$PROJECT_DIR$/model/StudentQuestion.php" />
         <option value="$PROJECT_DIR$/css/Stylesheet.css" />
         <option value="$PROJECT_DIR$/security/model.php" />
@@ -200,14 +186,17 @@
         <option value="$PROJECT_DIR$/view/HomePage.php" />
         <option value="$PROJECT_DIR$/view/headerInclude.php" />
         <option value="$PROJECT_DIR$/security/headerInclude.php" />
-        <option value="$PROJECT_DIR$/view/importDataWithAjax.php" />
         <option value="$PROJECT_DIR$/js/Javascript.js" />
         <option value="$PROJECT_DIR$/view/modify_User_Program_Form.php" />
         <option value="$PROJECT_DIR$/view/modify_Acad_Program_Form.php" />
         <option value="$PROJECT_DIR$/view/updateTermSettings.php" />
-        <option value="$PROJECT_DIR$/controller/controller.php" />
         <option value="$PROJECT_DIR$/model/model.php" />
         <option value="$PROJECT_DIR$/view/navbar.php" />
+        <option value="$PROJECT_DIR$/view/DisplayData.php" />
+        <option value="$PROJECT_DIR$/view/importDataWithAjax.php" />
+        <option value="$PROJECT_DIR$/model/simplexlsx.class.php" />
+        <option value="$PROJECT_DIR$/controller/controller.php" />
+        <option value="$PROJECT_DIR$/view/processImportData.php" />
       </list>
     </option>
   </component>
@@ -229,6 +218,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -277,7 +267,6 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,6 +276,9 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\David\Documents\GitHub\CIS-411-Scheduling\model" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\David\Documents\GitHub\CIS-411-Scheduling\sql script" />
       <recent name="C:\Users\David\Documents\GitHub\CIS-411-Scheduling\GhettoVersioningFolder" />
@@ -402,12 +394,13 @@
       <workItem from="1542235534001" duration="324000" />
       <workItem from="1542739440107" duration="4342000" />
       <workItem from="1542765730295" duration="17241000" />
-      <workItem from="1542956824703" duration="21874000" />
+      <workItem from="1542956824703" duration="23076000" />
+      <workItem from="1543036646735" duration="7446000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="440422000" />
+    <option name="totallyTimeSpent" value="449070000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -492,17 +485,24 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/model/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14212">
+          <caret line="836" column="124" selection-start-line="836" selection-start-column="124" selection-end-line="836" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/DisplayData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13804">
+          <caret line="812" column="8" selection-start-line="812" selection-start-column="8" selection-end-line="812" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Students.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="770">
           <caret line="2332" column="116" lean-forward="true" selection-start-line="2332" selection-start-column="116" selection-end-line="2332" selection-end-column="116" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/processImportData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="443" column="90" selection-start-line="443" selection-start-column="90" selection-end-line="443" selection-end-column="90" />
         </state>
       </provider>
     </entry>
@@ -657,9 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -671,29 +668,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/security/modify_role_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/loginPage.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/importData.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/security/modify_user_form.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
           <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -708,13 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/DisplayData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="788" column="50" lean-forward="true" selection-start-line="788" selection-start-column="50" selection-end-line="788" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -736,9 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -746,9 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -759,35 +726,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/headerInclude.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="30" column="60" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/importDataWithAjax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="45" lean-forward="true" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#body#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/footerInclude.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/Javascript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
           <caret line="1680" column="73" selection-start-line="1680" selection-start-column="73" selection-end-line="1680" selection-end-column="73" />
-          <folding>
-            <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#2;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -795,11 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#body#0;n#body#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#pre#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,11 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#pre#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#body#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -824,11 +756,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/updateTermSettings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -841,15 +770,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/security/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1776">
+        <state relative-caret-position="2006">
           <caret line="118" column="13" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -860,17 +782,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/view/DisplayData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="812" column="8" selection-start-line="812" selection-start-column="8" selection-end-line="812" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
+        <state relative-caret-position="17">
           <caret line="836" column="124" selection-start-line="836" selection-start-column="124" selection-end-line="836" selection-end-column="124" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/navbar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        <state relative-caret-position="462">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/headerInclude.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/simplexlsx.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11628">
+          <caret line="684" column="2" selection-start-line="684" selection-start-column="2" selection-end-line="684" selection-end-column="2" />
+          <folding>
+            <element signature="e#6#1922#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/importDataWithAjax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="36" lean-forward="true" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#body#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/processImportData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="97" column="36" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
+          <folding>
+            <element signature="e#112#135#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

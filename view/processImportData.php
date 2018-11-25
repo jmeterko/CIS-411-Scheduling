@@ -1,6 +1,5 @@
 <?php
 $title = "Import Data";
-require '../view/headerInclude.php';
 require_once '../model/model.php';
 ?>
 
