@@ -21,78 +21,90 @@
         }
     } else {
 
-if (isset($_POST['action'])) {  // check get and post
-    $action = $_POST['action'];
-} else if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-} else {
-    include('../view/LoginPage.php');  // default action
-    exit();
-}
-switch ($action) {
-    case 'CourseQuestion':
-        include '../view/MainApplicationCourseQuestion.php';
-        break;
-    case 'DisplayData':
+	if (isset($_POST['action'])) {  // check get and post
+		$action = $_POST['action'];
+	} else if (isset($_GET['action'])) {
+		$action = $_GET['action'];
+	} else {
+		include('../view/LoginPage.php');  // default action
+		exit();
+	}	
+	    switch ($action) {
+	  case 'CourseQuestion':
+            include '../view/MainApplicationCourseQuestion.php';
+            break;
+		case 'DisplayData':
         include '../view/DisplayData.html';
-        break;
-    case 'FileUpload':
-        include '../view/fileUploadPage.php';
-		break;
-    case 'DisplayData':
-        include '../view/DisplayData.php';
-        break;
-    case 'HomePage':
-        include '../view/HomePage.php';
-        break;
-    case 'ImportData':
-        include '../view/importDataWithAjax.php';
-        break;
-    case 'Loading':
-        include '../view/LoadingPage.php';
-        break;
-    case 'Login':
-        include '../view/LoginPage.php';
-        break;
-    case 'StudentQuestion':
-		AskQuestion();
-        break;
-	case 'CheckSearchNameExists':
-		CheckSearchName();
-        break;
-	case 'ProcessStudentQuestion':
-        ProcessStudentQuestion();
-        break;
-	case 'ProcessDisplaySerials':
-        ProcessDisplaySerials();
-        break;	
-	case 'RebuildQuestion':
-        RebuildQuestion();
-        break;
-    case 'Home':
-        include '../view/LoginPage.php';
-        break;
-    case 'ModifyAcadProgram':
-        include '../view/modify_Acad_Program_Form.php';
-        break;
-    case 'ModifyUserProgram':
-        include '../view/modify_User_Program_Form.php';
-        break;
-    case 'ProcessModifyAcadProgram':
-        include '../view/processmodify_Acad_Program.php';
-        break;
-    case 'ProcessModifyUserProgram':
-        include '../view/processmodify_User_Program.php';
-        break;
-    case 'ProcessImportData':
-        include '../view/processImportData.php';
-        break;
-    case 'Wireframe':
-        include '../view/wireframe.php';
-        break;
-    default:
-        include('../view/LoginPage.php');   // default
-}
+			break;
+        case 'FileUpload':
+            include '../view/fileUploadPage.php';
+            break;
+        case 'DisplayData':
+            include '../view/DisplayData.php';
+            break;
+        case 'HomePage':
+            include '../view/HomePage.php';
+            break;
+        case 'ImportData':
+            include '../view/importDataWithAjax.php';
+            break;
+        case 'ImportDataTest':
+            include '../view/importData.php';
+            break;
+        case 'Loading':
+            include '../view/LoadingPage.php';
+            break;
+        case 'Login':
+            include '../view/LoginPage.php';
+            break;
+        case 'StudentQuestion':
+            AskQuestion();
+            break;		
+		case 'CheckSearchNameExists':
+			CheckSearchName();
+			break;
+        case 'ProcessStudentQuestion':
+            ProcessStudentQuestion();
+            break;
+        case 'ProcessDisplaySerials':
+            ProcessDisplaySerials();
+            break;
+        case 'RebuildQuestion':
+            RebuildQuestion();
+            break;
+        case 'Home':
+            include '../view/LoginPage.php';
+            break;
+        case 'ModifyAcadProgram':
+            include '../view/modify_Acad_Program_Form.php';
+            break;
+        case 'ModifyUserProgram':
+            include '../view/modify_User_Program_Form.php';
+            break;
+        case 'ProcessModifyAcadProgram':
+            include '../view/processmodify_Acad_Program.php';
+            break;
+        case 'ProcessModifyUserProgram':
+            include '../view/processmodify_User_Program.php';
+            break;
+        case 'ProcessImportData':
+            include '../view/processImportData.php';
+            break;
+        case 'ProcessImportDataTest':
+            include '../view/processImportDataTest.php';
+            break;
+        case 'Settings':
+            include '../view/Settings.php';
+            break;
+        case 'StudentHistory':
+            include '../view/StudentHistory.php';
+            break;
+        case 'UpdateTermSettings':
+            include '../view/updateTermSettings.php';
+            break;
+        default:
+            include('../view/LoginPage.php');   // default	
+		}
 	}
 
     function unQuote() {//strips out added slashes if magic_quotes_gpc is on
