@@ -823,18 +823,18 @@ function minimizeGrade($pGrade){
     $result = "";
     if ($pGrade == 'A')
         $result = "
-                                AND     Grade   =  'A' OR Grade   = 'TR' ";
+                                AND     (Grade   =  'A' OR Grade   = 'TR' ) ";
     else if ($pGrade == 'B')
         $result = "
-                                AND     Grade   =  'A' OR Grade   = 'B' OR Grade   = 'TR'  ";
+                                AND     (Grade   =  'A' OR Grade   = 'B' OR Grade   = 'TR' )  ";
 
     else if ($pGrade == 'C')
         $result = "
-                                AND     Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' OR Grade   = 'TR'  ";
+                                AND     (Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' OR Grade   = 'TR' )  ";
 
     else if ($pGrade == 'D')
         $result = "
-                                AND     Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' OR Grade   = 'D' OR Grade   = 'TR'  ";
+                                AND     (Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' OR Grade   = 'D' OR Grade   = 'TR' ) ";
     return $result;
 
 }
