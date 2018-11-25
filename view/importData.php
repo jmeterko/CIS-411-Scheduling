@@ -2,13 +2,10 @@
 $title = "Import Data";
 require '../view/headerInclude.php';
 ?>
-
-<body style="
-  width: 400px;
-  margin: 100px auto;
-  background-color: #becccc;"
-">
-
+<form enctype="multipart/form-data"
+      action="../controller/controller.php?action=ProcessImportDataTest" method="post">
+    Upload files:
+    <br><br>
     <form enctype="multipart/form-data"
           action="../controller/controller.php?action=ProcessImportData" method="post">
         <div class="file-upload">

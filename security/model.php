@@ -210,6 +210,25 @@
             displayError($e->getMessage());
         }
     }
+
+    function updateUserToReader($userID){
+        try{
+        $db = connectToMySQL();
+            $query = "INSERT IGNORE INTO userroles (UserID, RoleID) VALUES (:UserID, 3)";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':UserID', $userID);
+            $success = $statement->execute();
+        $statement->closeCursor();
+        if ($success) {
+            return $statement->rowCount();         // Number of rows affected
+        } else {
+            logSQLError($statement->errorInfo());  // Log error to debug
+        }
+    } catch (PDOException $e) {
+        displayError($e->getMessage());
+        }
+    }
+
     function updateUser($userID, $firstName, $lastName, $userName, $password, $email, $hasAttributes){
         try {
             $db = connectToMySQL();

@@ -20,16 +20,23 @@
 	<div class="row">
 	<?php if(!loggedIn()){ ?>
 				<div class="col-md-4 login-sec pad-bottom">
-	<?php } else { ?>         
+	<?php } else { ?>
 				<div class="col-md-8 login-sec pad-bottom">
 		<h1>Control Panel</h1>
 
-		<?php if (userIsAuthorized("SecurityManageUsers")) {  ?>
-				<a class="left" href="../security/index.php?action=SecurityManageUsers">Manage Users</a> &nbsp;
-		<?php } 
-			if (userIsAuthorized("SecurityManageFunctions")) {  ?>
-				<a class="left" href="../security/index.php?action=SecurityManageFunctions">Manage Functions</a> &nbsp;
-		<?php } 
+		<?php
+            if (userIsAuthorized("HomePage")) {  ?>
+				<a class="left" href="../controller/controller.php?action=HomePage">Home</a> &nbsp;
+        <?php }
+        if (userIsAuthorized("Settings")) {  ?>
+            <a class="left" href="../controller/controller.php?action=Settings">Settings</a> &nbsp;
+        <?php }
+        if (userIsAuthorized("SecurityManageUsers")) {  ?>
+            <a class="left" href="../security/index.php?action=SecurityManageUsers">Manage Users</a> &nbsp;
+        <?php }
+        if (userIsAuthorized("SecurityManageFunctions")) {  ?>
+            <a class="left" href="../security/index.php?action=SecurityManageFunctions">Manage Functions</a> &nbsp;
+        <?php }
 			if (userIsAuthorized("SecurityManageRoles")) {  ?>
 				<a class="left" href="../security/index.php?action=SecurityManageRoles">Manage Roles</a> &nbsp;
 		<?php }

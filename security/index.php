@@ -99,16 +99,18 @@
     }
 
     function ProcessLogin(){
-        $username = $_POST['username'];    
+        $username = $_POST['username'];
+        $usernameWithoutDomain = explode('@',$username);
+        $username = $usernameWithoutDomain[0];
         $password = $_POST['password'];
         
         $isValidLogin = clarionLogin($username, $password);//run credentials through shell command - are they a valid clarion user?
         
-        //if($isValidLogin){//user is clarion verified         
+        if($isValidLogin){//user is clarion verified
                 if(login($username)){//find matching username and create 
-				    $_SESSION["username"] = $username;    
-					header("Location:../security/index.php?action=SecurityLogin");
-                //}
+				    $_SESSION["username"] = $username;
+				    header("Location:../controller/controller.php?action=HomePage");
+                }
         }
         else {//user does NOT have a valid clarion login
             header("Location:../security/index.php?action=SecurityLogin&LoginFailure&RequestedPage=" . urlencode($_POST["RequestedPage"]));
@@ -190,10 +192,12 @@
 			$email = $_POST["Email"];
 			if (empty($UserID)) {   // No UserID means we are processing an ADD
 				$UserID = addUser($firstName, $lastName, $userName, $email);
+				//default that new user to a Reader role
+                updateUserToReader($UserID);
 			} else {
 				$hasAttributes = "";
                                 if (isset($_POST['hasAttributes'])) { $hasAttributes = $_POST["hasAttributes"]; }
-				updateUser($UserID, $firstName, $lastName, $userName, $email, $hasAttributes);
+				updateUser($UserID, $firstName, $lastName, $userName, '', $email, $hasAttributes);
 			}
 			$results = getAllUsers();
 			include('../security/manage_users_form.php');
@@ -421,12 +425,12 @@
 			displayError($errors);
 		}
     }
-    
+
     function CheckSecurityNameExists() {
 		$username = $_GET['username'];
 		$duplicate = FALSE;
 		$id = 0;
-		
+
 		$row = getUserByUsername($username);
 		if ($row) {
 			$duplicate = TRUE;

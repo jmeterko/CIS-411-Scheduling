@@ -3,11 +3,13 @@ $title = "Import Data Testing With Ajax";
 require '../view/headerInclude.php';
 ?>
 <!--
---><body style="
+--><div style="
   width: 450px;
   margin: 100px auto;
   background-color: #becccc;"
+
   id = "body">
+    <body style="background-color: #becccc;">
 <form id="file-form" action="" method="POST">
     <h1>Upload Files Using Ajax</h1>
     <div class="file-upload">

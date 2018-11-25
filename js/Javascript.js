@@ -22,6 +22,9 @@ var orCount5 = 0;
 var orCount6 = 0;
 var orCount7 = 0;
 var fileCounter=0;
+var ajaxCompletedCount=0;
+const AJAX_CALL_TOTAL=4;
+var SubjectOptionsString = "<option value='CIS'>CIS</option><option value='DA'>DA</option>";
 
 var formRebuilt = false;
 
@@ -54,6 +57,39 @@ document.addEventListener("DOMContentLoaded", function() {
 		  finishBuild();
 	}
 });
+
+function incrementAjaxCompletionCounter(){
+    ajaxCompletedCount++;
+    console.log("ajaxCompleted count is now: " + ajaxCompletedCount);
+    if (ajaxCompletedCount == AJAX_CALL_TOTAL ){
+        console.log("AJAX_CALL_TOTAL REACHED: ajaxCompleted count is: " + ajaxCompletedCount);
+        console.log("We will now get serials ready:");
+        getSerialsReady();
+    }
+}
+function getSerialsReady() {
+    document.getElementById("saveQuestion").addEventListener("change", toggleSaveQuestion);
+    document.getElementById("dropdown0").addEventListener("change", function(){
+        var dropdown = document.getElementById("dropdown0").value;
+        if (dropdown > 0){
+            window.location.href = "../controller/controller.php?action=RebuildQuestion&SerialID=" + dropdown;
+        }
+    });
+
+    if(!formRebuilt){
+        console.log("REBUILD FORM - START");
+        console.log(formRebuilt);
+        setOrCounts();						    console.log("Form Counts Set");
+        populateElements(formRebuilt);		  	console.log("Elements Created");
+        populateOrTaking(formRebuilt);		  	console.log("Populate Taking");
+        populateOrProgram(formRebuilt);		  	console.log("Populate Programs");
+        populateOrCompleted(formRebuilt);		  	console.log("Populate Completed");
+        populateOrLocation(formRebuilt);
+
+
+        finishBuild();
+    }
+}
 
 function finishBuild(){
 	formRebuilt = true;
@@ -141,12 +177,7 @@ function setOrCounts(){
 	 orCount6 = document.getElementById("orCount6").value;
 	 orCount7 = document.getElementById("orCount7").value;
 }
-function changeFileDiv(pID){
-    var filename = $('#' + pID).val().replace('', '');
-    fileCounter=pID.replace( /[^0-9]/g, `` );
-    var currentFileDiv=$('#noFile' + fileCounter);
-    currentFileDiv.html(filename);
-}
+
 
 /***********  populateOrValues  ***************
 	Need to maintain these Javascript functions? I'd like to apologize if you need to make changes to these, but I'll do my best to explain whats going on.
@@ -1088,6 +1119,7 @@ function makeDivVisibleAnd(pID){
 
 function makeDivInvisible(pID){
     var attachID=`attach` + pID.replace( /[^0-9]/g, `` );
+    var ID_Only_Numerics = pID.replace( /[^0-9]/g, `` );
     //alert(attachID);
     while(document.getElementById(attachID).firstChild) {
         document.getElementById(attachID).removeChild(document.getElementById(attachID).firstChild);
@@ -1097,30 +1129,31 @@ function makeDivInvisible(pID){
             return this.defaultSelected;
         });
     });
-    document.getElementById("divAnd" + and).removeAttribute("class","visibleDiv");
-    document.getElementById("divAnd" + and).setAttribute("class","hiddenDiv");
+    document.getElementById("divAnd" + ID_Only_Numerics).removeAttribute("class","visibleDiv");
+    document.getElementById("divAnd" + ID_Only_Numerics).setAttribute("class","hiddenDiv");
     if(and>0)
         and--;
 }
 
 function removeOrDiv(pID){
     var orTemp = or;
+    let subOffset = 0;  //if we do reduce the OR value by 1, we set this to 1 before subtracting
     var placeholder=pID.replace( /[^0-9]/g, `` );
     and = placeholder.charAt(0);
     or = placeholder.charAt(1);
-    var attachDiv=document.getElementById('attach'+and);
+    var attachDiv=document.getElementById('attach' + and);
     if (or == 0 && attachDiv.children.length > 1){
-        attachDiv.removeChild(attachDiv.childNodes[ 1 ]);
+        attachDiv.removeChild(attachDiv.childNodes[ 0 ]);
     }
     else{
         if (or > attachDiv.children.length)
             or = attachDiv.children.length;
         if(attachDiv.children.length > 1) {
             attachDiv.removeChild(attachDiv.childNodes[ or - 1 ]);
-            or--;
+            subOffset = 1;
         }
     }
-    or = orTemp;
+    or = (orTemp - subOffset);//will be 0 or 1, where we used to use or--, we now use subOffset = 1
 }
 
 function howManyChildren(){
@@ -1150,21 +1183,21 @@ function makeDivVisibleOr(){
                 "</select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Location") {
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='Location" + and + or +"' id='Location" + and  + or +"' ><option value''" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select class='dropdownWidth' name='Location" + and + or +"' id='Location" + and  + or +"' ><option value''" +
                 ">Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
                 "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Taking" || $('#dropdown' + and + ' option:selected').text() == "Scheduled For" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
-            $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
+            $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For" || $('#dropdown' + and + ' option:selected').text() == "Course") { +
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)' onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "selected disabled hidden>Subject</option>" + SubjectOptionsString + "</select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"' ><option value=''"+
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "selected disabled hidden>Subject</option>" + SubjectOptionsString + "</select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
                 "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
@@ -1184,21 +1217,21 @@ function makeDivVisibleOr(){
                 "</select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Location") {
-            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' name='Location" + and + or +"' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id) onclick='removeOrDiv()'></button>&nbsp;<select class='dropdownWidth' name='Location" + and + or +"' id='Location" + and  + or +"' ><option value''" +
+            $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' name='Location" + and + or +"' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select class='dropdownWidth' name='Location" + and + or +"' id='Location" + and  + or +"' ><option value''" +
                 ">Select Option</option><option value='Clarion'>Clarion</option><option value='Online'>Online</option>" +
                 "<option value='Venango'>Venango</option></select>&nbsp;<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Taking" || $('#dropdown' + and + ' option:selected').text() == "Scheduled For" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking" || $('#dropdown' + and + ' option:selected').text() == "Not Completed" ||
             $('#dropdown' + and + ' option:selected').text() == "Not Taking/Not Completed" ||
-            $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For") { +
+            $('#dropdown' + and + ' option:selected').text() == "Not Scheduled For" || $('#dropdown' + and + ' option:selected').text() == "Course") { +
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' name='Subject" + and + or +"' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"'><option value=''" +
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "selected disabled hidden>Subject</option>" + SubjectOptionsString + "</select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
         }
         else if ($('#dropdown' + and + ' option:selected').text() == "Completed" || $('#dropdown' + and + ' option:selected').text() == "Taking/Completed") {
             $(dynamicDiv).html("&nbsp;&nbsp;<button type='button' class='glyphicon glyphicon-remove' id='removeOrDiv" + and  + or +"' onclick='removeOrDiv(this.id)'></button>&nbsp;<select onfocus='loadSubjects(this.id)'  onchange='loadCatalogs(this.id, `Catalog` + this.id.replace( /[^0-9]/g, `` ))' class='dropdownWidth' name='Subject" + and + or +"' id='Subject" + and  + or +"' ><option value=''"+
-                "selected disabled hidden>Subject</option><option value='CIS'>CIS</option><option value='DA'>DA</option></select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
+                "selected disabled hidden>Subject</option>" + SubjectOptionsString + "</select>&nbsp;<select class='dropdownboxWidthSmall' name='Catalog" + and + or +"' id='Catalog" + and  + or +"'>" +
                 "<option value=''\ selected disabled hidden>Course No:</option></select>&nbsp;<select style='20%;' name='MinGrade" + and + or +"' id='MinGrade" + and  + or +"''>\" +\n" +
                 "                \"<option value=''\\ selected disabled hidden>Min. Grade</option><option value='Passed'>Passed</option><option value='A'>A</option>" +
                 "<option value='B'>B</option><option value='C'>C</option><option value='D'>D</option></select>&nbsp<button type='button' class='btn btn-danger' id='orButton" + and  + or +"' onclick='orButtonPressed(this.id)'>Or</button>&nbsp;&nbsp;");
@@ -1378,11 +1411,21 @@ length: 52
     // ***
 }
 //call this function with loadDoc(), pass in getCoursesUsingJSON.php
-function getProgramsUsingJSON(xhttp){
-    JSONObjectHoldingAllOfOurPrograms = JSON.parse(xhttp.responseText);//#ReadableCode
-    //then, do stuff with our JSON object that holds all of our courses
-    console.log(JSONObjectHoldingAllOfOurPrograms);
-    return JSONObjectHoldingAllOfOurPrograms;
+function getProgramsUsingJSON(pUser){
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            JSONObjectHoldingAllOfOurPrograms = JSON.parse(xhttp.responseText);//#ReadableCode
+            //then, do stuff with our JSON object that holds all of our courses
+            console.log(JSONObjectHoldingAllOfOurPrograms);
+            incrementAjaxCompletionCounter();//when this gets to four, we load serial data
+            return JSONObjectHoldingAllOfOurPrograms;
+        }
+    };
+    xhttp.open("GET", "../model/getUserProgramsUsingJSON.php?UserSelected=" + pUser, true);
+    xhttp.send();
+
 }
 
 //call this function with loadDoc(), pass in getUsersUsingJSON.php
@@ -1403,6 +1446,7 @@ var jsObjectHoldingAllOfOurTerms;
 var ProgramSubjectsJSON;
 var UserProgramsJSON;
 var CurrentTermJSON;
+var SubjectsForUserJSON;
 
 //pass in the id of the Subject Dropdown and the Catalog dropdown you want to load
 //get the value of subject dropdown
@@ -1412,9 +1456,10 @@ function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
     var SubjectSelectedInOurDropdown = document.getElementById(pSubjectDropdownID).value;
     document.getElementById(pCatalogDropdownID).innerHTML = "<option value='Catalog' selected disabled hidden>" + "Course No." + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='Any...'>" + "Any..." + "</option>";
-    for (i =0; i < jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown].length; i++){
-        document.getElementById(pCatalogDropdownID).innerHTML += "<option value='" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "'>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
-    }
+    if (jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown] != undefined)
+        for (i =0; i < jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown].length; i++){
+            document.getElementById(pCatalogDropdownID).innerHTML += "<option value='" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "'>" + jsObjectHoldingAllOfOurSubjects[SubjectSelectedInOurDropdown][i] + "</option>";
+        }
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='100s'>" + "100s" + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='200s'>" + "200s" + "</option>";
     document.getElementById(pCatalogDropdownID).innerHTML += "<option value='300s'>" + "300s" + "</option>";
@@ -1423,10 +1468,14 @@ function loadCatalogs(pSubjectDropdownID, pCatalogDropdownID){
 }
 
 //loads a particular dropdown with all of our subjects
+//**FOR USER CONTEXT we will load it with the results of a USER CONTEXT SQL QUERY
+//**I THINK THE LOADCATALOGS FUNCTION CAN REMAIN THE SAME AND OUR JSON OBJECT IS STILL USEFUL
+//**FOR PERFORMANCE, WE MIGHT WANT TO MAKE GETALLSUBJECTSUSINGJSON ALSO IMPLEMENT USER CONTEXT TO LIMIT RESULT SIZE
 function loadSubjects(pSubjectDropdownID){
+    console.log("Our subjects are: ");  console.log(jsObjectHoldingAllOfOurSubjects);
     document.getElementById(pSubjectDropdownID).innerHTML = "<option value='Subject' selected disabled hidden>" + "Subject" + "</option>";
-    for (ProgramSubjectPairFound in jsObjectHoldingAllOfOurSubjects){
-        document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + ProgramSubjectPairFound + "'>" + ProgramSubjectPairFound + "</option>";
+    for (SubjFound in SubjectsForUserJSON){
+        document.getElementById(pSubjectDropdownID).innerHTML += "<option value='" + SubjectsForUserJSON[SubjFound]['Subject'] + "'>" + SubjectsForUserJSON[SubjFound]['Subject'] + "</option>";
     }
 }
 //loads a particular dropdown with all of our programs
@@ -1446,8 +1495,8 @@ function loadProgramSubjects(pProgramName){
             ProgramSubjectsJSON = JSON.parse(xhttp.responseText);
             console.log(ProgramSubjectsJSON);
             //alert(ProgramSubjectsJSON);
-            document.getElementById('hasSubjectsSelect').innerHTML = "<option>Has these subjects: </option><option></option>";
-            document.getElementById('hasNotSubjectsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            document.getElementById('hasSubjectsSelect').innerHTML = "<option disabled>Has these subjects: </option><option disabled></option>";
+            document.getElementById('hasNotSubjectsSelect').innerHTML = "<option disabled>Does not have: </option><option disabled></option>";
             for (ProgramSubjectPairFound in ProgramSubjectsJSON){
                 document.getElementById('hasSubjectsSelect').innerHTML +=
                     "<option value='" + ProgramSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "'>" + ProgramSubjectsJSON[ProgramSubjectPairFound][`Subject`] + "</option>";
@@ -1467,10 +1516,10 @@ function loadUserPrograms(pUserName){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             UserProgramsJSON = JSON.parse(xhttp.responseText);
-            console.log(UserProgramsJSON);
+            console.log("Our User's programs are: "); console.log(UserProgramsJSON);
             //alert(ProgramSubjectsJSON);
-            document.getElementById('hasProgramsSelect').innerHTML = "<option>Has these programs: </option><option></option>";
-            document.getElementById('hasNotProgramsSelect').innerHTML = "<option>Does not have: </option><option></option>";
+            document.getElementById('hasProgramsSelect').innerHTML = "<option disabled>Has these programs: </option><option disabled></option>";
+            document.getElementById('hasNotProgramsSelect').innerHTML = "<option disabled>Does not have: </option><option disabled></option>";
             for (UserProgramPairFound in UserProgramsJSON){
                 document.getElementById('hasProgramsSelect').innerHTML +=
                     "<option value='" + UserProgramsJSON[UserProgramPairFound][`Plan`] + "'>" + UserProgramsJSON[UserProgramPairFound][`Plan`] + "</option>";
@@ -1524,7 +1573,7 @@ function loadNotUserPrograms(pUserName){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             allProgramsJSON = JSON.parse(xhttp.responseText);
-            console.log(allProgramsJSON);
+            console.log("In loadNotUserPrograms, our allProgramsJSON is: "); console.log(allProgramsJSON);
             //alert(ProgramSubjectsJSON);
 
             //remove the subjects that we DO have
@@ -1589,6 +1638,7 @@ function getSubjectsUsingJSON(xhttp){
         jsObjectHoldingAllOfOurSubjects[JSONObjectHoldingAllOfOurCourses[rowEntry].Subject].push(JSONObjectHoldingAllOfOurCourses[rowEntry].Catalog);
     }
     console.log(jsObjectHoldingAllOfOurSubjects);
+    incrementAjaxCompletionCounter();//when this gets to four, we load serial data
 
     //if you want, you can use this line to load the first dropdown:
     //loadSubjects("JSONTestingSelect3434");
@@ -1597,11 +1647,37 @@ function getSubjectsUsingJSON(xhttp){
     return jsObjectHoldingAllOfOurSubjects;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
 }
+//For USER CONTEXT
+function getSubjectsForUserUsingJSON(pUser){
+    //parse the Ajax responseText into a JSON object, just as it was encoded into a JSON string
+    //create a JS Object to hold our unique subject values much like a PHP associative array
+    console.log("Current User: " + pUser);
+    let xhttp;
+    xhttp=new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            SubjectsForUserJSON = JSON.parse(xhttp.responseText);
+            console.log("The Subjects for this user are: ");
+            console.log(SubjectsForUserJSON);
+            SubjectOptionsString = "";
+            for (SubjFound in SubjectsForUserJSON){
+                SubjectOptionsString += "<option value='" + SubjectsForUserJSON[SubjFound]['Subject'] + "'>" + SubjectsForUserJSON[SubjFound]['Subject'] + "</option>";
+            }
+            incrementAjaxCompletionCounter();//when this gets to four, we load serial data
+        }
+    };
+    xhttp.open("GET", "../model/getSubjectsForUserJSON.php?UserSelected=" + pUser, true);
+    xhttp.send();
+
+    return SubjectsForUserJSON;
+    // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
+}
 //used for loading terms into dropdowns on student question page
 function getTermsUsingJSON(xhttp){
     //parse the Ajax responseText into a JSON object, just as it was encoded into a JSON string
     //create a JS Object to hold our unique term values much like a PHP associative array
     JSONObjectHoldingAllOfOurTerms = JSON.parse(xhttp.responseText);
+    console.log(JSONObjectHoldingAllOfOurTerms);
     let oldestYear = "20" + JSONObjectHoldingAllOfOurTerms.Oldest_Term.substr(1,2);
     let newestYear = "20" + JSONObjectHoldingAllOfOurTerms.Latest_Term.substr(1,2);
     console.log("Our Oldest Term is: " + JSONObjectHoldingAllOfOurTerms.Oldest_Term);
@@ -1624,10 +1700,22 @@ function getTermsUsingJSON(xhttp){
             document.getElementById("dropdownRange4").innerHTML += "<option value='" + i + "'>" + i + "</option>";
         //console.log(i);
     }
+    incrementAjaxCompletionCounter();//when this gets to four, we load serial data
 
 
     return JSONObjectHoldingAllOfOurTerms;
     // { "CIS": ["202", "244", "254", "306"], "DA": ["510", "512", "520"]  }
+}
+function convertRangeToTermJS(pSeason, pYear){
+    if (pSeason == 'Spring')
+        seasonResult = '1';
+    if (pSeason == 'Summer')
+        seasonResult = '5';
+    if (pSeason == 'Fall' || pSeason == 'Winter')  //2018 = 2                  //2018 = 18
+        seasonResult = '8';
+    yearToTerm = pYear.substring(0,1) + pYear.substring(2,4);
+    finalResult = yearToTerm + seasonResult; // = 2185
+    return finalResult;
 }
 function updateCurrentTermUsingJSON(pCurrentTerm){
     console.log("Button clicked, pCurrentTerm is " + pCurrentTerm);
@@ -1636,7 +1724,7 @@ function updateCurrentTermUsingJSON(pCurrentTerm){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(xhttp.responseText);
-            document.getElementById('updatedTermLabel').innerHTML = "**Current term has been updated** to: " + xhttp.responseText;
+            document.getElementById('updatedTermLabel').innerHTML = "<br>**Current term has been updated** to: " + xhttp.responseText;
         }
     };
     xhttp.open("GET", "../model/updateCurrentTermUsingJSON.php?CurrentTerm=" + pCurrentTerm, true);
@@ -1676,6 +1764,181 @@ function selectAll(id)
     }
 }
 
-//table
+function copyEmailsToClipboard() {
+    //this is pretty gross we have a hidden text box where the emails are typed
+    document.getElementById("emailList").style.visibility="visible";
+    //the list of emails
+    var emailsList = "";
+    //the table
+    var table = document.getElementById("result_table");
+    //which row we are on
+    var rows = table.getElementsByTagName("tr");
+    //row counter
+    var i;
+    //cycle through the table adding the email of the row we're on to emalList if that row is checked
+    for (i=1; i<rows.length; i++) {
+        if (table.rows[i].cells[0].getElementsByTagName('input')[0].checked) {
+            //alert(table.rows[i].cells[0].getElementsByTagName('input')[0].checked);
+            emailsList += (table.rows[i].cells[10].innerHTML);
+            emailsList += ", ";
+            // alert(emailsList);
+            // alert(rows.length);
+        }
+    }
+    //put our list of emails in a hidden textbox so we can select and copy them
+    document.getElementById("emailList").value = emailsList;
+    //select and copy the content of the textbox
+    var copyList = document.querySelector("#emailList");
+    copyList.select();
+    document.execCommand("copy");
+    //and then we hide that textbox after its all copied again
+    document.getElementById("emailList").style.visibility="hidden";
+    //alert to see if it all worked and nothing broke along  the way
+    alert("Emails of selected rows successfully copied.");
 
+}
 
+//check all the results
+function selectAllResults(){
+    //the table
+    var table = document.getElementById("result_table");
+    var rows = table.getElementsByTagName("tr");
+    //row counter
+    var i;
+    //cycle through the table checking all the boxes
+    for (i=1; i<rows.length;i++)
+    {
+        table.rows[i].cells[0].getElementsByTagName('input')[0].checked = true;
+
+    }
+}
+
+//uncheck all the results
+function deselectAllResults(){
+    //the table
+    var table = document.getElementById("result_table");
+    var rows = table.getElementsByTagName("tr");
+    //row counter
+    var i;
+    //cycle through the table unchecking all the boxes
+    for (i=1; i<rows.length;i++)
+    {
+        table.rows[i].cells[0].getElementsByTagName('input')[0].checked = false;
+
+    }
+}
+
+//hide the email list text box on page load
+function hideStuff(){
+    document.getElementById("emailList").style.visibility="hidden";
+    document.getElementById("exportResults").style.visibility="hidden";
+}
+
+// so i straight ripped this function from the internet i have no idea how it works
+
+//so this one i could not figure out how to rename so i scrapped that and copied a different one LUL
+// var tableToExcel = (function() {
+//
+//     var uri = 'data:application/vnd.ms-excel;base64,'
+//         , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+//         , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+//         , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+//     return function(table, name) {
+//         if (!table.nodeType) table = document.getElementById(table)
+//         var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+//         window.location.href = uri + base64(format(template, ctx))
+//     }
+//
+// })();
+/////////////////////////////////////// this one!
+function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+
+    // Create download link element
+    downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+        // Setting the file name
+        downloadLink.download = filename;
+
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
+function displayClassHistory(pStudentID){
+    //console.log(pStudentID);
+    var tab = window.open('../controller/controller.php?action=StudentHistory&StudentHistoryID=' + pStudentID, '_blank'); //make the page exist before ajax stuff
+    tab.focus();
+}
+
+function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("result_table");
+    switching = true;
+    // Set the sorting direction to ascending:
+    dir = "asc";
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+        // Start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /* Loop through all table rows (except the
+        first, which contains table headers): */
+        for (i = 1; i < (rows.length - 1); i++) {
+            // Start by saying there should be no switching:
+            shouldSwitch = false;
+            /* Get the two elements you want to compare,
+            one from current row and one from the next: */
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            /* Check if the two rows should switch place,
+            based on the direction, asc or desc: */
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    // If so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    // If so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+        if (shouldSwitch) {
+            /* If a switch has been marked, make the switch
+            and mark that a switch has been done: */
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            // Each time a switch is done, increase this count by 1:
+            switchcount++;
+        } else {
+            /* If no switching has been done AND the direction is "asc",
+            set the direction to "desc" and run the while loop again. */
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}

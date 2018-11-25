@@ -1,8 +1,8 @@
 <?php
 $title = "MainApplicationStudentPage.html";
 require '../view/headerInclude.php';
-?>
-<body style="background-color: #becccc;" onload="loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON);loadDoc('../model/getTermsUsingJSON.php', getTermsUsingJSON);loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON);">
+?>                  <!-- getSubjectsForUser is for User Context -->
+<body style="background-color: #becccc;" onload="getSubjectsForUserUsingJSON('<?php echo $_SESSION['username'] ?>');loadDoc('../model/getCoursesUsingJSON.php', getSubjectsUsingJSON);loadDoc('../model/getTermsUsingJSON.php', getTermsUsingJSON);getProgramsUsingJSON('<?php echo $_SESSION['username'] ?>');">
 
 <div class="container">
     <div class="container" style="margin: 0px auto">
@@ -351,8 +351,8 @@ require '../view/headerInclude.php';
 					<?php } ?>
                 </div>
                 <div class="dropdownboxWidth, containerDiv" style="width: 20%; float: right">
-                    <input type="checkbox" checked="checked" id="currentStudentsOnly">Current Students Only</input>
-                <i>*Students who have been enrolled in the past year and have not graduated or applied for graduation</i>
+                    <input type="checkbox" checked="checked" id="currentStudentsOnly" name="currentStudentsOnly">Current Students Only</input>
+                    <i>*Students who have been enrolled in the past year and have not graduated or applied for graduation</i>
                 </div>
                 <div>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/></div>
 
@@ -380,23 +380,23 @@ require '../view/headerInclude.php';
 							<?php } ?>
                             </select>
 
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" name="startYear" style="width:65px;">
                             </select>
                             -
                             <select class="form-control, dropdownboxWidth" id="dropdownRange3" name="endSeason" style="width:65px;">
-							 <?php if ($rebuild) {  ?>
-								<option value="Spring"<?=$form->endSeason == 'Spring' ? ' selected="selected"' : '';?>>Spring</option>
-								<option value="Summer"<?=$form->endSeason == 'Summer' ? ' selected="selected"' : '';?>>Summer</option>
-								<option value="Fall"<?=$form->endSeason == 'Fall' ? ' selected="selected"' : '';?>>Fall</option>
-								<option value="Winter"<?=$form->endSeason == 'Winter' ? ' selected="selected"' : '';?>>Winter</option>							
-							<?php } else { ?>
-                                <option value="Spring" selected>Spring</option>
-                                <option value="Summer">Summer</option>
-                                <option value="Fall">Fall</option>
-                                <option value="Winter">Winter</option>								
-							<?php } ?>
+                                <?php if ($rebuild) {  ?>
+                                    <option value="Spring"<?=$form->endSeason == 'Spring' ? ' selected="selected"' : '';?>>Spring</option>
+                                    <option value="Summer"<?=$form->endSeason == 'Summer' ? ' selected="selected"' : '';?>>Summer</option>
+                                    <option value="Fall"<?=$form->endSeason == 'Fall' ? ' selected="selected"' : '';?>>Fall</option>
+                                    <option value="Winter"<?=$form->endSeason == 'Winter' ? ' selected="selected"' : '';?>>Winter</option>
+                                <?php } else { ?>
+                                    <option value="Spring" selected>Spring</option>
+                                    <option value="Summer">Summer</option>
+                                    <option value="Fall" selected="selected">Fall</option>
+                                    <option value="Winter">Winter</option>
+                                <?php } ?>
                             </select>
-						    <select class="form-control, dropdownboxWidth" id="dropdownRange4" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange4" name="endYear" style="width:65px;">
                             </select>
                         </div>
                         <br/>
@@ -426,15 +426,10 @@ require '../view/headerInclude.php';
 				<?php 
 				$orDropdownValue = $form->data;
 				  foreach ($orDropdownValue as $item => $value) {
-					  echo ("<input type='hidden' name='val" . $item . "' id='val" . $item . "' value='" . $value . "'/>");
-					  
-					/*  $orDropdownValue = $form->data;
-				  foreach ($orDropdownValue as $item => $value) {
-					  echo $item . ": " . $value  . "\n";
-				  }*/
-				  		
+					  echo ("<input type='hidden' name='val" . $item . "' id='val" . $item . "' value='" . $value . "'/>");			  		
 				}				  
 				 } else { ?>
+				 
 					<input type='hidden' name='andCount' id="andCount" value='0'/>
 					<input type='hidden' name='orCount0' id="orCount0" value='0'/>
 					<input type='hidden' name='orCount1' id="orCount1" value='0'/>
