@@ -1162,13 +1162,6 @@ function updateCurrentTerm($pCurrentTerm)
     }
 }
 	
-	function AskQuestion(){
-		$user = $_SESSION['username']; 
-		$results = getSerialsForUser($user);	
-		
-		include '../view/MainApplicationStudentQuestion.php';
-	}
-	
 	function RebuildQuestion(){
 		 $serialID = 0;
 		 try {
@@ -1206,22 +1199,6 @@ function AskQuestion(){
 
     include '../view/MainApplicationStudentQuestion.php';
 }
-
-function RebuildQuestion(){
-    $serialID = 0;
-    try {
-        if( isset($_GET['SerialID']) ) { $serialID = $_GET['SerialID']; }
-        //save the serial string into a variable to be unserialized
-        $serial = constructSavedSearch($serialID);
-        $form = unserialize($serial);
-
-        include '../view/MainApplicationStudentQuestion.php';
-
-    } catch (Exception $e) {
-        echo 'Caught exception: ',  $e->getMessage(), "\n";
-    }
-}
-
 
 function combineJoinResults($pStudentArray){
     //convert Program to an array so we can merge later
