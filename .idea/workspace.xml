@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d1cb5d8-f214-4254-a821-0303f278d13a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/model/simplexlsx.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV_Test_Files/2088-2188-ENG-LANG-Students.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV_Test_Files/2088-2188-ENG-LANG-Students.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/DisplayData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/DisplayData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/importData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/importData.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/processImportData.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/processImportData.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +19,26 @@
       <file leaf-file-name="controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+            <state relative-caret-position="695">
+              <caret line="91" column="50" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="importData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/importData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="71" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/security/model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="234" column="16" selection-start-line="234" selection-start-column="16" selection-end-line="234" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -30,12 +46,8 @@
       <file leaf-file-name="importDataWithAjax.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/importDataWithAjax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="36" lean-forward="true" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#body#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -43,10 +55,10 @@
       <file leaf-file-name="processImportData.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/processImportData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="97" column="36" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
+            <state relative-caret-position="365">
+              <caret line="163" column="12" lean-forward="true" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="12" />
               <folding>
-                <element signature="e#112#135#0#PHP" expanded="true" />
+                <element signature="e#75#98#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,38 +67,8 @@
       <file leaf-file-name="simplexlsx.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/simplexlsx.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11628">
-              <caret line="684" column="2" selection-start-line="684" selection-start-column="2" selection-end-line="684" selection-end-column="2" />
-              <folding>
-                <element signature="e#6#1922#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="headerInclude.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/headerInclude.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="836" column="124" selection-start-line="836" selection-start-column="124" selection-end-line="836" selection-end-column="124" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navbar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/navbar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            <state relative-caret-position="320">
+              <caret line="374" column="42" lean-forward="true" selection-start-line="374" selection-start-column="42" selection-end-line="374" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -102,9 +84,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>into `userroles</find>
-      <find>rolefunctions</find>
-      <find>clarion</find>
       <find>alter table `rolefun</find>
       <find>username</find>
       <find>securityprocesslogin</find>
@@ -132,6 +111,9 @@
       <find>tquestion</find>
       <find>minimize</find>
       <find>occurred</find>
+      <find>loadstudents(</find>
+      <find>student</find>
+      <find>dprogram</find>
     </findStrings>
     <replaceStrings>
       <replace>document.getElementById</replace>
@@ -146,8 +128,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/view/testingProcessAjaxImportFILESWORK.php" />
-        <option value="$PROJECT_DIR$/view/testingProcessAjaxImport.php" />
         <option value="$PROJECT_DIR$/view/importDataTestingWithAjax.php" />
         <option value="$PROJECT_DIR$/view/adsfonasf.php" />
         <option value="$PROJECT_DIR$/GhettoVersioningFolder/Javascript.js" />
@@ -195,7 +175,9 @@
         <option value="$PROJECT_DIR$/view/DisplayData.php" />
         <option value="$PROJECT_DIR$/view/importDataWithAjax.php" />
         <option value="$PROJECT_DIR$/model/simplexlsx.class.php" />
+        <option value="$PROJECT_DIR$/view/importData.php" />
         <option value="$PROJECT_DIR$/controller/controller.php" />
+        <option value="$PROJECT_DIR$/view/processImportDataTest.php" />
         <option value="$PROJECT_DIR$/view/processImportData.php" />
       </list>
     </option>
@@ -251,11 +233,6 @@
               <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
               <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CIS-411-Scheduling" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CIS-411-Scheduling" type="b2602c69:ProjectViewProjectNode" />
@@ -395,12 +372,12 @@
       <workItem from="1542739440107" duration="4342000" />
       <workItem from="1542765730295" duration="17241000" />
       <workItem from="1542956824703" duration="23076000" />
-      <workItem from="1543036646735" duration="7446000" />
+      <workItem from="1543036646735" duration="12949000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="449070000" />
+    <option name="totallyTimeSpent" value="454573000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -485,20 +462,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14212">
-          <caret line="836" column="124" selection-start-line="836" selection-start-column="124" selection-end-line="836" selection-end-column="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/DisplayData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13804">
-          <caret line="812" column="8" selection-start-line="812" selection-start-column="8" selection-end-line="812" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CSV_Test_Files/Combined Files/Combined LANG-CIS Students.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="770">
@@ -775,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/security/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="234" column="16" selection-start-line="234" selection-start-column="16" selection-end-line="234" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/DisplayData.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -796,13 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/navbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/headerInclude.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -810,40 +759,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/simplexlsx.class.php">
+    <entry file="file://$PROJECT_DIR$/view/navbar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11628">
-          <caret line="684" column="2" selection-start-line="684" selection-start-column="2" selection-end-line="684" selection-end-column="2" />
-          <folding>
-            <element signature="e#6#1922#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="462">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        <state relative-caret-position="695">
+          <caret line="91" column="50" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/simplexlsx.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="374" column="42" lean-forward="true" selection-start-line="374" selection-start-column="42" selection-end-line="374" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/importData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="71" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/processImportDataTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="92" column="30" lean-forward="true" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
+          <folding>
+            <element signature="e#160#183#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/security/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="234" column="16" selection-start-line="234" selection-start-column="16" selection-end-line="234" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/importDataWithAjax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="36" lean-forward="true" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#body#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/processImportData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="97" column="36" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
+        <state relative-caret-position="365">
+          <caret line="163" column="12" lean-forward="true" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="12" />
           <folding>
-            <element signature="e#112#135#0#PHP" expanded="true" />
+            <element signature="e#75#98#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

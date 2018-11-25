@@ -48,6 +48,9 @@ if (isset($_POST['action'])) {  // check get and post
         case 'ImportData':
             include '../view/importDataWithAjax.php';
             break;
+        case 'ImportDataTest':
+            include '../view/importData.php';
+            break;
         case 'Loading':
             include '../view/LoadingPage.php';
             break;
@@ -84,6 +87,9 @@ if (isset($_POST['action'])) {  // check get and post
             break;
         case 'ProcessImportData':
             include '../view/processImportData.php';
+            break;
+        case 'ProcessImportDataTest':
+            include '../view/processImportDataTest.php';
             break;
         case 'Settings':
             include '../view/Settings.php';

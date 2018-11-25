@@ -1,6 +1,7 @@
 <?php
 $title = "Import Data";
 require_once '../model/model.php';
+require_once '../model/simplexlsx.class.php';
 ?>
 
 <?php
@@ -80,14 +81,30 @@ function loadStudents(){
     }
 
     //check if its a CSV file
-        if (checkIfCSV($_FILES['userfilestudents']['type'])){
-            echo "This file is compatible as a CSV" . "<br>";
-        }
-        else echo "this file is not compatible as a CSV" . "<br>";
+    if (checkIfCSV($_FILES['userfilestudents']['type'])){
+        $isCSV = true;
+        echo "This file is compatible as a CSV" . "<br>";
+    }
+    else {
+        $isCSV = false;
+        echo "this file is not compatible as a CSV" . "<br>";
+    }
 
-    //open file and validate that it is the right file
+    if ($isCSV){
         $file = fopen($_FILES['userfilestudents']['tmp_name'], "r");
-        $headerRow = fgetcsv($file); //load first line before looping, skips first line for output
+    }
+    else {
+        //open file and validate that it is the right file
+        $xlsx = new SimpleXLSX( $_FILES['userfilestudents']['tmp_name'] );
+        $file = tmpfile();
+        foreach( $xlsx->rows() as $fields ) {
+            fputcsv( $file, $fields);
+        }
+        rewind($file); //go to top
+    }
+
+
+    $headerRow = fgetcsv($file); //load first line before looping, skips first line for output
         if ($headerRow[6] == "GPA"){
             if($headerRow[2] == "Last Term")
                 if($headerRow[3] == "Current")
@@ -144,12 +161,27 @@ function loadPrograms()
 
     //check if its a CSV file
     if (checkIfCSV($_FILES['userfilestudents']['type'])){
+        $isCSV = true;
         echo "This file is compatible as a CSV" . "<br>";
     }
-    else echo "this file is not compatible as a CSV" . "<br>";
+    else {
+        $isCSV = false;
+        echo "this file is not compatible as a CSV" . "<br>";
+    }
 
-    //open file and validate that it is the right file
-    $file = fopen($_FILES['userfilestudents']['tmp_name'], "r");
+    if ($isCSV){
+        $file = fopen($_FILES['userfilestudents']['tmp_name'], "r");
+    }
+    else {
+        //open file and validate that it is the right file
+        $xlsx = new SimpleXLSX( $_FILES['userfilestudents']['tmp_name'] );
+        $file = tmpfile();
+        foreach( $xlsx->rows() as $fields ) {
+            fputcsv( $file, $fields);
+        }
+        rewind($file); //go to top
+    }
+
     $headerRow = fgetcsv($file); //load first line before looping, skips first line for output
     if ($headerRow[6] == "GPA"){
         if($headerRow[2] == "Last Term")
@@ -322,13 +354,28 @@ function loadClasses()
     }
 
     //check if its a CSV file
-    if (checkIfCSV($_FILES['userfilestudents']['type'])){
+    if (checkIfCSV($_FILES['userfileclasses']['type'])){
+        $isCSV = true;
         echo "This file is compatible as a CSV" . "<br>";
     }
-    else echo "this file is not compatible as a CSV" . "<br>";
+    else {
+        $isCSV = false;
+        echo "this file is not compatible as a CSV" . "<br>";
+    }
 
-    ////open file and validate that it is the right file
-    $file = fopen($_FILES['userfileclasses']['tmp_name'], "r");
+    if ($isCSV){
+        $file = fopen($_FILES['userfileclasses']['tmp_name'], "r");
+    }
+    else {
+        //open file and validate that it is the right file
+        $xlsx = new SimpleXLSX( $_FILES['userfileclasses']['tmp_name'] );
+        $file = tmpfile();
+        foreach( $xlsx->rows() as $fields ) {
+            fputcsv( $file, $fields);
+        }
+        rewind($file); //go to top
+    }
+
     $headerRow = fgetcsv($file); //load first line before looping, skips first line for output
     if ($headerRow[8] == "Count ID"){
         if ($headerRow[9] == "Acad Org")
@@ -491,13 +538,28 @@ function loadStudentsClasses()
     }
 
     //check if its a CSV file
-    if (checkIfCSV($_FILES['userfilestudents']['type'])){
+    if (checkIfCSV($_FILES['ufstudclass']['type'])){
+        $isCSV = true;
         echo "This file is compatible as a CSV" . "<br>";
     }
-    else echo "this file is not compatible as a CSV" . "<br>";
+    else {
+        $isCSV = false;
+        echo "this file is not compatible as a CSV" . "<br>";
+    }
 
-    ////open file and validate that it is the right file                              //Maximum File Size Unknown
-    $file = fopen($_FILES['ufstudclass']['tmp_name'], "r");
+    if ($isCSV){
+        $file = fopen($_FILES['ufstudclass']['tmp_name'], "r");
+    }
+    else {
+        //open file and validate that it is the right file
+        $xlsx = new SimpleXLSX( $_FILES['ufstudclass']['tmp_name'] );
+        $file = tmpfile();
+        foreach( $xlsx->rows() as $fields ) {
+            fputcsv( $file, $fields);
+        }
+        rewind($file); //go to top
+    }
+
     $headerRow = fgetcsv($file); //load first line before looping, skips first line for output$headerRow = fgetcsv($file); //load first line before looping, skips first line for output
     if ($headerRow[8] != "Grade" or $headerRow[9] != "Type"){
         echo "Please choose an accurate *STUDENTSCLASSES* file." . "<br>";
