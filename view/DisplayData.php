@@ -860,7 +860,7 @@ else if (isset($_POST['loadedSearch'])){
                     else echo $aResult['Total'];
                     ?></td>
                 <td><?php echo determineYear($aResult['Total']); //need year on this ?></td>
-                <td><?php echo $aResult['GPA']; ?></td>
+                <td><?php echo ($aResult['GPA'] + 0); ?></td>
 
                 <td>    <?php
                         foreach ($aResult['Plan'] as $program){ //for each program
