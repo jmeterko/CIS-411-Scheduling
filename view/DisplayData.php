@@ -2,7 +2,6 @@
 $title = "Result Page";
 require_once '../view/headerInclude.php';
 require_once '../model/model.php';
-unquote();
 
 //test data for filling table, vinnys early test data
 $student1 = array(
@@ -851,7 +850,7 @@ else if (isset($_POST['loadedSearch'])){
                 <td><?php echo $aResult['LOCATION']; // need location on this ?></td>
                 <td><?php echo $aResult['CURRENT']; ?></td>
                 <td><?php echo $aResult['Last_Term']; ?></td>
-                <td><?php//programs
+                <td><?php
                     if (strlen(($aResult['Total'])) == 1)
                         echo '   ' . $aResult['Total'];
                     else if (strlen(($aResult['Total'])) == 2)
@@ -859,7 +858,7 @@ else if (isset($_POST['loadedSearch'])){
                     else if (strlen(($aResult['Total'])) == 3)
                         echo ' ' . $aResult['Total'];
                     else echo $aResult['Total'];
-                    ?></td><!-- end program section -->
+                    ?></td>
                 <td><?php echo determineYear($aResult['Total']); //need year on this ?></td>
                 <td><?php echo $aResult['GPA']; ?></td>
 
@@ -885,6 +884,7 @@ else if (isset($_POST['loadedSearch'])){
     </table></center>
 
 <!--this is a div that contains all the buttons the user can interact with-->
+<br>
 <div id = "resultsButtons"><center>
     <button onclick = "copyEmailsToClipboard()" > Copy Selected Emails to Clipboard </button>
     <button onclick = "selectAllResults()" > Check all </button>
