@@ -809,21 +809,31 @@ function determineYear($credits){
 
 
 <body style="font-size: 20px; " onload="hideStuff()">
-<center><h1>Results</h1></center>
+<h1><center>
+<?php
+if (isset($stdq->searchName) and $stdq->searchName != "" and $stdq->searchName != null){
+    echo $stdq->searchName;
+}
+else if (isset($_POST['loadedSearch'])){
+    echo $_POST['loadedSearch'];
+}
+?>
+</h1></center>
+<center><br><h3>Results Found: <?php echo count($student); ?></h3></center>
 <center>
     <table class="result_table" id ="result_table">
         <tr>
             <th id="checkboxes">&nbsp;</th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Current</th>
-            <th>Last Term</th>
-            <th>Total Credits</th>
-            <th>Rank</th>
-            <th>GPA</th>
-            <th>Programs</th>
-            <th>Eagle Mail</th>
+            <th onclick = sortTable(1)>ID</th>
+            <th onclick = sortTable(2)>Name</th>
+            <th onclick = sortTable(3)>Location</th>
+            <th onclick = sortTable(4)>Current</th>
+            <th onclick = sortTable(5)>Last Term</th>
+            <th onclick = sortTable(6)>Total Credits</th>
+            <th onclick = sortTable(7)>Rank</th>
+            <th onclick = sortTable(8)>GPA</th>
+            <th onclick = sortTable(9)>Programs</th>
+            <th onclick = sortTable(10)>Eagle Mail</th>
             <th>History</th>
         </tr>
 
@@ -844,12 +854,15 @@ function determineYear($credits){
 
                 <td>    <?php
                         foreach ($aResult['Plan'] as $program){
-                                echo $program . ',';
+                            if (count($aResult['Plan']) == 1){
+                                echo $program;
+                            }
+                                else echo $program . ',';
                             } //need programs on this ?>
                 </td>
 
                 <td><?php echo $aResult['EagleMail_ID']; ?></td>
-                <td><button onclick = "displayClassHistory(<?php echo $aResult['ID'] ?>)" > History </button></td>
+                <td><button onclick = "displayClassHistory(<?php echo $aResult['ID'] . ',`' . $aResult['NAME'] . '`' ?>)" > History </button></td>
             </tr>
             <?php
         }

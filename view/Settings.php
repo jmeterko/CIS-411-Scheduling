@@ -1,26 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$title = "Settings";
+require_once '../view/headerInclude.php';
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="Javascript.js"></script>
-    <link rel="stylesheet" href="Stylesheet.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <!--for proper mobile scaling-->
-    <title>Class Scheduler</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
-<body>
+<body style="background-color: #becccc;">
+<br/>
+<br/>
+<br/>
 <div class="container">
-    <center><h1>Course Scheduling Aid</h1></center>
+    <h1 class="headline">Course Scheduling Aid</h1>
+    <br/>
+    <ul class="menu cf">
+        <?php if (userIsAuthorized("HomePage")) {  ?>
+            <li><a href="../controller/controller.php?action=HomePage">Home</a></li>
+            <?php }
+			if (userIsAuthorized("ModifyUserProgram")) {  ?>
+                <li><a href="../controller/controller.php?action=ModifyUserProgram">Modify User-Programs</a></li>
+        <?php }
+        if (userIsAuthorized("ModifyAcadProgram")) {  ?>
+            <li><a href="../controller/controller.php?action=ModifyAcadProgram">Modify Program-Subjects</a></li>
+        <?php }
+        if (userIsAuthorized("UpdateTermSettings")) {  ?>
+            <li><a href="../controller/controller.php?action=UpdateTermSettings">Update Term</a></li>
+        <?php }
+        if (userIsAuthorized("SecurityManageRoles")) {  ?>
+            <li><a href="../security/index.php">Admin</a></li>
+        <?php }
+        if (loggedIn()) {  ?>
+            <li><a href="../security/index.php?action=SecurityLogOut">Logout</a></li>
+        <?php } else {
+            echo "<a href=\"../security/index.php?action=SecurityLogin&RequestedPage=" . urlencode($_SERVER['REQUEST_URI']) . "\">Log In</a>";
+        } ?>
+
+    </ul>
 </div>
 </body>
 </html>

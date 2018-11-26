@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/Stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="http://chancejs.com/chance.min.js"></script>
+    <script src="http://chancejs.com/chance.min.js"></script><!-- can we delete this yet -->
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         <!--for proper mobile scaling-->
         <title>Class Scheduler</title>
@@ -26,8 +26,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
-<!--<div>
     <?php
-/*    include '../view/navbar.php';   //php for including navbar, previously js
-    */?>
-</div>-->
+        if (isset($title))
+            if ($title != "HomePage" && $title != "Settings")
+                include '../view/navbar.php';   //php for including navbar, previously js
+    ?>

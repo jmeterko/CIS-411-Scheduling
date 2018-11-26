@@ -305,7 +305,7 @@ function getAllCourses() {
 function getAllAcademicPrograms() {
     try {
         $db = getDBConnection();
-        $query = "select * from acad_Program";
+        $query = "select * from acad_program";
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
@@ -369,6 +369,9 @@ function getStudentQuestionResults($stdq) {
             $currentStudentsOnly = $stdq->currentStudentsOnly; //default value for POST checkbox set is 'on'
         }
 
+        //USER CONTEXT array of programs that are relevant to the logged in user, results must match
+        $userProgramResults= array();
+        $relevantPrograms = array();
 
         //begin assembling AND clauses, these each represent a WHERE condition to add to our query
         $clauseItem = "  ";     //this will hold a single AND condition
@@ -403,30 +406,30 @@ function getStudentQuestionResults($stdq) {
         $classClausesArray = array();//a collection of AND clauses, each can have any number of ORs
         $classMap = array();//tells us which AND indexes we've found for classes
 
-
-        echo "<pre>"; //delet dis
-        echo "Our data is:<br>";
+        $debugString = ""; //HOLDS OUR DEBUGGING INFO
+        $debugString .= "<pre>"; //delet dis
+        $debugString .= "Our data is:<br>";
         //jerad's accessor
         $orDropdownValue = $stdq->data;
         foreach ($orDropdownValue as $item => $value) {
-            echo $item . ": " . $value  . "\n";
+            $debugString .=  $item . ": " . $value  . "\n";
         }//echo $item to see key/value pair
 
         //testing some term stuff
         $categoryItem = "";
         $categoryArray = array();
-        echo "Our categories are:<br>";
+        $debugString .=  "Our categories are:<br>";
         for ($i = 0; $i < 8; $i++){ //wow this actually works, but it's the type of thing that might break on other PHP versions
             $categoryItem = "cat" . $i;//cat0, cat1, cat2...cat7
-            echo $categoryItem . ' is: ' . $stdq->$categoryItem . '<br>';  // $stdq->cat1 might be equal to "Taking" etc
+            $debugString .=  $categoryItem . ' is: ' . $stdq->$categoryItem . '<br>';  // $stdq->cat1 might be equal to "Taking" etc
             if (isset($stdq->$categoryItem))
                 $categoryArray[$categoryItem] = $stdq->$categoryItem;
         }
-        echo "Our category array we made is:<br>";
-        print_r($categoryArray);
+        $debugString .=  "Our category array we made is:<br>";
+        $debugString .= print_r($categoryArray, true);
 
         //begin build
-        echo "<br><br>And now we will try building:<br><br>";
+        $debugString .=  "<br><br>And now we will try building:<br><br>";
         //jerad's accessor
         $orDropdownValue = $stdq->data;
         foreach ($orDropdownValue as $item => $value) {
@@ -451,7 +454,7 @@ function getStudentQuestionResults($stdq) {
                 if (!in_array($and_index, $locationMap)){ //if that and_index doesn't exist yet, we're handling a new row of conditions (OR'd with each other)
                     $locationMap[$and_index] = $and_index; //add that index to our map
                     $locationClausesArray[$and_index] = " 
-                    AND LOCATION = '$value'"; //then start the statement, to maybe be OR'd with by matching and_indexes later
+                    AND (LOCATION = '$value'"; //then start the statement, to maybe be OR'd with by matching and_indexes later
                 }
                 else { //if that and_index DOES exist already... great usage of ELSE don't you think? or change the order...
                     $locationClausesArray[$and_index] .= "  OR LOCATION = '$value' ";
@@ -465,7 +468,7 @@ function getStudentQuestionResults($stdq) {
                 $and_index = (substr($item, 3, 1));     //set the AND index of that selection (maj10 -> 1)
                 //here, we've found a sub, meaning there's at least a sub, but maybe also a cat and a gra
                 $SubjectCatalogGradeIndex = substr($item, 3, 2); //our index on sub12 would be 12; sub, cat, and gra see each other
-                echo "Our Subject-Catalog-Grade Index is: " . $SubjectCatalogGradeIndex . "<br>";
+                $debugString .=  "Our Subject-Catalog-Grade Index is: " . $SubjectCatalogGradeIndex . "<br>";
                 if (!in_array($and_index, $classMap)){ //if that and_index doesn't exist yet, we're handling a new row of conditions (OR'd with each other)
                     $classMap[$and_index] = $and_index; //add that index to our map
 
@@ -496,11 +499,64 @@ function getStudentQuestionResults($stdq) {
                         $gradeSet = false;
 
                     //create the AND clause, without the ending ) or the grade subclause
-                    $classClausesArray[$and_index] = "
+                    switch($categoryArray['cat' . $and_index]) {//$categoryArray[cat0] = Taking  etc
+                        case 'Taking':
+                            $classClausesArray[$and_index] = "
                     AND student.ID IN (
                         SELECT ID FROM studentclass
                             WHERE   
                             (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Completed':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Taking/Completed':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Scheduled For':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Not Taking':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID NOT IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Not Completed':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID NOT IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Not Taking/Not Completed':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID NOT IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                        case 'Not Scheduled For':
+                            $classClausesArray[$and_index] = "
+                    AND student.ID NOT IN (
+                        SELECT ID FROM studentclass
+                            WHERE   
+                            (           Subject =  '" . $value . "' ";
+                            break;
+                    }
                     //AND     Grade = 'A' OR 'B' OR 'C')";
                     if ($catSet){
                         $classClausesArray[$and_index] .= $catClause;    //if cat is set, factor it in
@@ -529,21 +585,23 @@ function getStudentQuestionResults($stdq) {
                             break;
                         case 'Not Taking':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    <> '$currentTerm') ";
+                                AND     Term    =  '$currentTerm') ";
                             break;
                         case 'Not Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    >= '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    < '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                         case 'Not Taking/Not Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                         case 'Not Scheduled For':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                     }
+
+                    //BEGIN ORS FOR CLASSES
                 }//end inArray block, meaning section for a new AND row
                 else { //if that and_index DOES exist already... great usage of ELSE... continuing with ORs on a row
 
@@ -601,19 +659,19 @@ function getStudentQuestionResults($stdq) {
                             break;
                         case 'Not Taking':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    <> '$currentTerm') ";
+                                AND     Term    =  '$currentTerm') ";
                             break;
                         case 'Not Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    >= '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    <  '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                         case 'Not Taking/Not Completed':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                         case 'Not Scheduled For':
                             $classClausesArray[$and_index] .= "
-                                AND     Term    <= '$currentTerm') ";//what if they completed it and are retaking?
+                                AND     Term    >  '$currentTerm') ";//what if they completed it and are retaking?
                             break;
                     }
                 }
@@ -625,26 +683,26 @@ function getStudentQuestionResults($stdq) {
 
 
         ////////// [[[[[[[[[[[[[[[[[[[[[[[[[        //PRINT PROGRAM CLASS & LOCATION INFORMATION
-        echo "Our Program Clauses are:  <br>"; //print the program clauses for testing
+        $debugString .=  "Our Program Clauses are:  <br>"; //print the program clauses for testing
         foreach ($programClausesArray as $clauseValue) { //for each AND clause in our Program Clauses
-            echo "<br> $clauseValue <br>";
+            $debugString .= "<br> $clauseValue <br>";
         }
-        echo "Our program Indexes are: <br>";
-        print_r($programMap);
+        $debugString .=  "Our program Indexes are: <br>";
+        $debugString .= print_r($programMap, true);
 
-        echo "Our LOCATION Clauses are:  <br>"; //print the location clauses for testing
+        $debugString .=  "Our LOCATION Clauses are:  <br>"; //print the location clauses for testing
         foreach ($locationClausesArray as $locationValue) { //for each AND clause in our Location Clauses
-            echo "<br> $locationValue <br>";
+            $debugString .=  "<br> $locationValue <br>";
         }
-        echo "Our location Indexes are: <br>";
-        print_r($locationMap);
+        $debugString .=  "Our location Indexes are: <br>";
+        $debugString .= print_r($locationMap, true);
 
-        echo "Our CLASS Clauses are:  <br>"; //     PRINT CLASS INFORMATION
+        $debugString .= "Our CLASS Clauses are:  <br>"; //     PRINT CLASS INFORMATION
         foreach ($classClausesArray as $classValue) { //for each AND clause in our Class Clauses
-            echo "<br> $classValue <br>";
+            $debugString .=  "<br> $classValue <br>";
         }
-        echo "Our class Indexes are: <br>";
-        print_r($classMap);
+        $debugString .=  "Our class Indexes are: <br>";
+        $debugString .= print_r($classMap, true);
         ////////// ]]]]]]]]]]]]]]]]]]]]]]]]]        //END PRINT PROGRAM CLASS & LOCATION INFORMATION
         ///
 
@@ -654,6 +712,7 @@ function getStudentQuestionResults($stdq) {
             $query .= $programValue;
         }
         foreach ($locationClausesArray as $locationValue){
+            $locationValue .= ") ";
             $query .= $locationValue;
         }
         foreach ($classClausesArray as $classValue){
@@ -693,20 +752,46 @@ function getStudentQuestionResults($stdq) {
             $query .= " 
                     AND CURRENT = 'Y' ";
 
+        // USER CONTEXT -- ONLY STUDENTS WITH A PROGRAM RELEVANT TO A USER
+        $debugString .=  "USER CONTEXT user is " . $_SESSION['username'] . " and their programs are: <br>";
+        if (isset($_SESSION['username'])){
+            $userProgramResults = getUserPrograms($_SESSION['username']);
+            //print_r($userProgramResults);
+        }
+        foreach ($userProgramResults as $userProgramResult){
+            array_push($relevantPrograms, " 
+                        OR PLAN = '" .  $userProgramResult['Plan'] . "' ");
+        }
+        //print_r($relevantPrograms);
+        //SEARCH BY USER'S PROGRAMS FOR QUERY
+        if (isset($_SESSION['username'])){
+            $query .= "
+                    AND (FALSE ";
+            foreach ($relevantPrograms as $program){
+                $query .= $program;
+            }
+            $query .= " ) ";
+        }
+
         //SORT RESULTS
         $query .= " 
                     ORDER BY NAME ";
         //PRINT QUERY
-        echo "Our query is: <br> $query <br>"; //print the query for testing
+        $debugString .=  "Our query is: <br> $query <br>"; //print the query for testing
 
         //testing all of our StudentObject stuff
-        echo "Our term range is $lowerTerm and $higherTerm<br>";
-        echo "Our Object Data is:<br>";
-        print_r($stdq);
-        echo "</pre"; //DELETE WHEN DONE TESTING OUTPUT
+        $debugString .=  "Our term range is $lowerTerm and $higherTerm<br>";
+        $debugString .=  "Our Object Data is:<br>";
+        $debugString .= print_r($stdq, true);
+        $debugString .= "</pre>"; //DELETE WHEN DONE TESTING OUTPUT
+        //echo $debugString;//PRINT DEBUGGING INFO
+
+        //invisible section on Results Page lets you double click to toggle debug info on/off
+        echo "<div  id='debug'  ondblclick='document.getElementById(`invisibleDebugInfo`).hidden = !document.getElementById(`invisibleDebugInfo`).hidden'  >&nbsp &nbsp &nbsp &nbsp </div>";
+        echo "<div id='invisibleDebugInfo' hidden='false'> $debugString </div>";
 
 
-        //now execute the statements and return the results
+            //now execute the statements and return the results
         $statement = $db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll();
@@ -719,43 +804,15 @@ function getStudentQuestionResults($stdq) {
     }
 }//end student question results
 
-/*//then, any number of AND statements that represent our selections:
 
-                  //Students with a CS Major
-                  ."AND student.ID IN
-                  (SELECT ID FROM studentmajor WHERE PLAN = 'BS CS')"
-
-                  //Who are a Sophomore
-                  ."AND Total >= 30 AND Total < 60 "
-
-                  //who's location is clarion
-                  ."AND LOCATION = 'Clarion'"
-
-                  //who are not current students
-                  ."AND CURRENT = 'N'"
-
-                  //who's GPA is greater than 2.0
-                  ."AND GPA > 2.000"
-
-                  //who have completed a 200's level CS class
-                  //where the class was completed between Spring 2002 (2021) and Fall 2009 (2098) **changed to variable value now
-                  //where the class was between lowerTerm and higherTerm, chosen from dropdowns on Student Question
-                  //where they got a C or higher
-                    ."
-                          AND student.ID IN (
-                          SELECT ID FROM studentclass
-                          WHERE Subject = 'CIS'
-                          AND Catalog BETWEEN 200 AND 299
-                          AND Term BETWEEN $lowerTerm AND $higherTerm
-                          AND Grade = 'A' OR 'B' OR 'C')"*/
-
-//takes something like SUMMER 2018 and converts it to 2185
 function convertRangeToTerm($pSeason, $pYear){
     if ($pSeason == 'Spring')
         $seasonResult = '1';
     if ($pSeason == 'Summer')
         $seasonResult = '5';
     if ($pSeason == 'Fall' or $pSeason == 'Winter')  //2018 = 2                  //2018 = 18
+        $seasonResult = '8';
+    else
         $seasonResult = '8';
     $yearToTerm = substr($pYear, 0, 1) . substr($pYear, 2, 2);
     $finalResult = $yearToTerm . $seasonResult; // = 2185
@@ -766,18 +823,18 @@ function minimizeGrade($pGrade){
     $result = "";
     if ($pGrade == 'A')
         $result = "
-                                AND     Grade   =  'A' ";
+                                AND     (Grade   =  'A' OR Grade   = 'TR' ) ";
     else if ($pGrade == 'B')
         $result = "
-                                AND     Grade   =  'A' OR Grade   = 'B' ";
+                                AND     (Grade   =  'A' OR Grade   = 'B' OR Grade   = 'TR' )  ";
 
     else if ($pGrade == 'C')
         $result = "
-                                AND     Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' ";
+                                AND     (Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' OR Grade   = 'TR' )  ";
 
     else if ($pGrade == 'D')
         $result = "
-                                AND     Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' OR Grade   = 'D' ";
+                                AND     (Grade   =  'A' OR Grade   = 'B' OR Grade   = 'C' OR Grade   = 'D' OR Grade   = 'TR' ) ";
     return $result;
 
 }
@@ -886,22 +943,38 @@ function updateProgramSubjects($pProgramName, $addSubjects)
         //die;
     }
 }
-
+//returns a string
+function getUserIDforUserName($pUserName){
+    try{
+        $db = getDBConnection();
+        $query = "SELECT UserID FROM users WHERE UserName ='" . $pUserName . "'";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetch();
+        $statement->closeCursor();
+        return $results['UserID'];           // Assoc Array of Rows
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
 //remove all the entries with that Program, then add the selected ones
-function updateUserPrograms($pUserName, $addPrograms)
+function updateUserPrograms($pUserID, $pUserName, $addPrograms)
 {
     try {
         $rowCount = 0;
         $db = getDBConnection();
-        $query = "DELETE FROM userprograms WHERE UserName= :userName";
+        $query = "DELETE FROM userprograms WHERE UserID = $pUserID";
         $statement = $db->prepare($query);
         $statement->bindValue(':userName', $pUserName);
         $statement->execute();
         ////process the array that was passed in
         for ($i = 0; $i < count($addPrograms); $i++) {
             $programToAdd = $addPrograms[$i];
-            $query = "INSERT INTO userprograms (`UserName`, `Plan`) VALUES (:userName, :programToAdd)";
+            $query = "INSERT INTO userprograms (`UserID`, `UserName`, `Plan`) VALUES (:userID, :userName, :programToAdd)";
             $statement = $db->prepare($query);
+            $statement->bindValue(':userID', $pUserID);
             $statement->bindValue(':userName', $pUserName);
             $statement->bindValue(':programToAdd', $programToAdd);
             $success = $statement->execute();
@@ -988,7 +1061,7 @@ function getSubjectsForUser($pUser){
                     WHERE subject IN
                         (SELECT subject FROM programsubject
                             WHERE Plan IN
-                                (SELECT PLAN FROM USERPROGRAMS
+                                (SELECT PLAN FROM userprograms
                                     WHERE USERNAME = '$pUser'))";
         $statement = $db->prepare($query);
         $statement->execute();
@@ -1053,7 +1126,7 @@ function updateCurrentTerm($pCurrentTerm)
 {
     try {
         $db = getDBConnection();
-        $query = "    UPDATE Settings
+        $query = "    UPDATE settings
                           SET Current_Term = :currentterm;";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
         $statement->bindValue(':currentterm', "$pCurrentTerm");

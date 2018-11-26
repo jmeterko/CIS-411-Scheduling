@@ -4,7 +4,7 @@ require '../view/headerInclude.php';
 ?>
 
 <form enctype="multipart/form-data"
-      action="../controller/controller.php?action=ProcessImportData" method="post">
+      action="../controller/controller.php?action=ProcessImportDataTest" method="post">
     Upload files:
     <br><br>
 
