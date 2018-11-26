@@ -449,7 +449,7 @@ require '../view/headerInclude.php';
                         <br/>
                     </div>
                 </div>
-                <?php if($rebuild) {echo "<input type = 'text' hidden name='loadedSearch' id='loadedSearch' value='" . $form->searchName . "'></input>";} ?>
+                <?php if($rebuild) {echo "<input hidden type = 'text' name='loadedSearch' id='loadedSearch' value='" . str_replace("'", '', $form->searchName) . "'>  </input>";} ?>
                 <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
                 <input type="submit" value="Submit" style="float:right" class="btn btn-success" />
             </form>

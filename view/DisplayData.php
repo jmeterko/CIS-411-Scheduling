@@ -814,7 +814,7 @@ function determineYear($credits){
         <input type="button" value="Back"  class="btn btn-danger left"  onclick="window.history.back()"/>
 <?php
 if (isset($stdq->searchName) and $stdq->searchName != "" and $stdq->searchName != null){
-    echo $stdq->searchName;
+    echo ($stdq->searchName);
 }
 else if (isset($_POST['loadedSearch'])){
     echo $_POST['loadedSearch'];
@@ -851,7 +851,7 @@ else if (isset($_POST['loadedSearch'])){
                 <td><?php echo $aResult['LOCATION']; // need location on this ?></td>
                 <td><?php echo $aResult['CURRENT']; ?></td>
                 <td><?php echo $aResult['Last_Term']; ?></td>
-                <td><?php
+                <td><?php//programs
                     if (strlen(($aResult['Total'])) == 1)
                         echo '   ' . $aResult['Total'];
                     else if (strlen(($aResult['Total'])) == 2)
@@ -859,7 +859,7 @@ else if (isset($_POST['loadedSearch'])){
                     else if (strlen(($aResult['Total'])) == 3)
                         echo ' ' . $aResult['Total'];
                     else echo $aResult['Total'];
-                    ?></td>
+                    ?></td><!-- end program section -->
                 <td><?php echo determineYear($aResult['Total']); //need year on this ?></td>
                 <td><?php echo $aResult['GPA']; ?></td>
 
@@ -885,7 +885,7 @@ else if (isset($_POST['loadedSearch'])){
     </table></center>
 
 <!--this is a div that contains all the buttons the user can interact with-->
-<div id = "resultsButtons">
+<div id = "resultsButtons"><center>
     <button onclick = "copyEmailsToClipboard()" > Copy Selected Emails to Clipboard </button>
     <button onclick = "selectAllResults()" > Check all </button>
     <button onclick = "deselectAllResults()" > Uncheck all </button>
@@ -894,7 +894,7 @@ else if (isset($_POST['loadedSearch'])){
 
     <!--this is where the list of emails is stored-->
     <input id="emailList" type="text" readonly>
-</div>
+    </center></div>
 
 
 <!--this here is where we hold the table that gets exported to excel sheet-->
