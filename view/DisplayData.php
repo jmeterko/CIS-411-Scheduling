@@ -864,11 +864,14 @@ else if (isset($_POST['loadedSearch'])){
                 <td><?php echo $aResult['GPA']; ?></td>
 
                 <td>    <?php
-                        foreach ($aResult['Plan'] as $program){
-                            if (count($aResult['Plan']) == 1){
+                        foreach ($aResult['Plan'] as $program){ //for each program
+                            if (count($aResult['Plan']) == 1){  //if its the ONLY PROGRAM, no comma
                                 echo $program;
                             }
-                                else echo $program . ',';
+                            else if($aResult['Plan'][count($program) - 1] == $program){//if its the last program, NO COMMA
+                                    echo $program . ',';
+                            }
+                            else echo $program;//if we're here, we'll have more programs, so YES COMMA
                             } //need programs on this ?>
                 </td>
 
