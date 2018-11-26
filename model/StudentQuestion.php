@@ -271,13 +271,17 @@
 			else {//serialize and save to user profile under their given search name
 				$s = serialize($stdq); 			        //serialize the object, store string in $s
 				$user = $_SESSION['username'];          //see who the current user is
+				$action = '';							//action to determine if its a save or update
 				
-				if($stdq->updateFlag){//if the search was overriding an exisiting search
+				//if(isset($_POST['UpdateSearch'])) { $action = $_POST['UpdateSearch']; }
+				//if(isset($_POST['AddSearch'])) { $action = $_POST['AddSearch']; }
+						
+				if(isset($_POST['UpdateSearch'])){//if the search was overriding an exisiting search
 					$previousRecordID = getSerialByName($stdq->searchName);
-					updateSerial($previousRecordID, $user, $s, $stdq->searchName);//update the search under the newly given name and user who changed it. 
+					updateSerial($previousRecordID['id'], $user, $s);//update the search under the newly given name and user who changed it. 
 				}
 				
-				else {//if the search is newly created (no update)
+				if(isset($_POST['AddSearch'])) {//if the search is newly created (no update)
 					addSerial($user, $s, $stdq->searchName);//save the search under the saved name and user who created it. 
 				}
 			}
@@ -291,7 +295,7 @@
 			* 	$stdq->cat0 // accesses the value stored in the first category dropdown0 (see more examples in mainAppStudentQuestion.php)
 			*/
 			//include '../view/DisplayData.php';
-			include '../view/DisplayData.php';
+			include '../view/index.php';
 		}
 		//david testing stuff, can delete later
         //only do this if user did NOT save

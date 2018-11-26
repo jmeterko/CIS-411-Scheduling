@@ -451,7 +451,8 @@ require '../view/headerInclude.php';
                     </div>
                 </div>
                 <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../view/HomePage.html'"/>
-                <input type="submit" id="submitButton" value="Submit" style="float:right" class="btn btn-success" />
+				<input type="submit" id="submitButton" name="AddSearch" style="float:right" class="btn btn-success" value="Submit" />
+
 				<!-- Modal -->
 					<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
@@ -466,9 +467,8 @@ require '../view/headerInclude.php';
 							You have a search already saved with that name. Would you like to override the old search with the new form data?
 						  </div>
 						  <div class="modal-footer">
-							<button type="button" id="modalClose" class="btn btn-secondary" data-dismiss="modal">Change Name</button>
-							<button type="button" id="updateSearch" class="btn btn-primary">Save changes</button>
-							<input type='hidden' name='updateFlag' id="updateFlag" value='false'/>	
+							<button type="button" id="modalClose" class="btn btn-secondary" data-dismiss="modal">Change Name</button>				 
+							<input type="submit"  id="updateSearch" name="UpdateSearch" class="btn btn-primary" value="Submit" />
 						  </div>
 						</div>
 					  </div>

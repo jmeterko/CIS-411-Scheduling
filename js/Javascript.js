@@ -41,6 +41,11 @@ function incrementAjaxCompletionCounter(){
 
 function getSerialsReady() {
     document.getElementById("saveQuestion").addEventListener("change", toggleSaveQuestion);
+	
+	document.getElementById("updateSearch").addEventListener("click", function(){
+		document.getElementById("issueInputForm").submit();
+	});	
+	
     document.getElementById("dropdown0").addEventListener("change", function(){
         var dropdown = document.getElementById("dropdown0").value;
         if (dropdown > 0){
@@ -88,10 +93,12 @@ function toggleSaveQuestion(){
 		if( document.getElementById("saveQuestion").checked == true ) { 
 			document.getElementById("searchName").classList.remove('hidden');
 			document.getElementById("searchName").required = true;
+			document.getElementById('submitButton').disabled = true;
 		}
 		if( document.getElementById("saveQuestion").checked == false ) { 
 			document.getElementById("searchName").classList.add('hidden'); 
 			document.getElementById("searchName").required = false;
+			document.getElementById('submitButton').disabled = false;
 		}	
 		
 }

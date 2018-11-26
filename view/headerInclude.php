@@ -23,7 +23,7 @@
     <?php
         if (isset($title))
             if ($title != "HomePage" && $title != "Settings")
-                include '../view/navbar.php';   //php for including navbar, previously js
+                include_once '../view/navbar.php';   //php for including navbar, previously js
     ?>
 
 

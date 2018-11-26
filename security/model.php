@@ -555,20 +555,16 @@
             displayError($e->getMessage());
         }
     }
-	
-	function updateSerial($id, $user, $s, $name){
+
+	function updateSerial($id, $user, $serial){
         try {
             $db = connectToMySQL();
-            $query = 'UPDATE serials SET id = :id,
-									     username = :user,
-										 serial = :s,
-										 name = :name
-                                   WHERE id = :id';
+			$query = 'UPDATE serials SET serial = :s WHERE id = :id AND username = :user';
+      
             $statement = $db->prepare($query);
-            $statement->bindValue(':id', 214);
+            $statement->bindValue(':id', $id);
             $statement->bindValue(':user', $user);
-            $statement->bindValue(':s', $s);
-            $statement->bindValue(':name', $name);
+            $statement->bindValue(':s', $serial);
 			$success = $statement->execute();
 			$statement->closeCursor();
 
@@ -581,6 +577,13 @@
             displayError($e->getMessage());
         }
     }	
+	
+		
+	/*function updateSerial($oldID, $user, $serial, $name){
+        try {
+            deleteSearch($oldID);
+			addSerial($user, $serial, $name);
+    }	*/
 	
 	    function getSerial($serialID){
         try {
