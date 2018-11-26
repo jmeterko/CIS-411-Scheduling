@@ -808,8 +808,9 @@ function determineYear($credits){
 ?>
 
 
-<body style="font-size: 20px; " onload="hideStuff()">
+<body style="font-size: 20px; " class="wowItLooksReallyNice" onload="hideStuff()">
 <h1><center>
+        <input type="button" value="Back"  class="btn btn-danger left"  onclick="window.history.back()"/>
 <?php
 if (isset($stdq->searchName) and $stdq->searchName != "" and $stdq->searchName != null){
     echo $stdq->searchName;

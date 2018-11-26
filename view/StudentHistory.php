@@ -18,7 +18,7 @@ $studentCourseHistory = getCourseHistory($studentID);
 //print_r($studentCourseHistory);
 
 ?>
-<body>
+<body class="wowItLooksReallyNice">
 <h1> <center> <?php echo $studentName ?></h1></center>
 <center>
     <table class="history_table" id ="history_table">
