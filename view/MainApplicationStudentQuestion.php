@@ -15,8 +15,29 @@ require '../view/headerInclude.php';
             <form id="issueInputForm" action="../controller/controller.php?action=ProcessStudentQuestion" method="post">
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
-                    <select class="form-control, dropdownboxWidth" id="dropdown0" name="dropdown0" onchange="dropdownFreshlyChanged(this.id)">
-                        <?php  { ?>
+                    <select class="form-control, dropdownboxWidth" id="dropdown0" name="dropdown0" onchange="dropdownFreshlyChanged(this.id); enableSubmitButton();">
+                        <?php $rebuild = false; if (isset($form) && !empty($form)) { $rebuild = true; } if ($rebuild) { ?>
+                            <option value="" selected disabled hidden>Select Category</option>
+                            <option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>
+                            <option value="Location"<?=$form->cat0 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
+                            <option value="courses" disabled><b>---COURSES---</b></option>
+                            <option value="Taking"<?=$form->cat0 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
+                            <option value="Completed"<?=$form->cat0 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
+                            <option value="Taking/Completed"<?=$form->cat0 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
+                            <option value="Scheduled For"<?=$form->cat0 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
+                            <option value="Not Taking"<?=$form->cat0 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
+                            <option value="Not Completed"<?=$form->cat0 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
+                            <option value="Not Taking/Not Completed"<?=$form->cat0 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
+                            <option value="Not Scheduled For"<?=$form->cat0 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+                        <?php if(!empty($results)){ ?>
+                            <option value="courses" disabled><b>---SAVED SEARCHES---</b></option>
+                            <?php         $i = 0;
+                            foreach ($results as $row) { $i++; ?>
+
+                            <option value="<?php echo $row['id'] ?>"><?php echo htmlspecialchars($row['name']) ?></option>
+                        <?php }} ?>
+
+                        <?php } else { ?>
                             <option value="" selected disabled hidden>Select Category</option>
                             <option value="Program">Program</option>
                             <option value="Location">Location</option>
@@ -346,7 +367,7 @@ require '../view/headerInclude.php';
                 <div>
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#home">Term Range</a></li>
-                        <li><a data-toggle="tab" href="#menu1">By Year</a></li>
+                        <!--<li><a data-toggle="tab" href="#menu1">By Year</a></li>-->
                     </ul>
 
                     <div class="tab-content">
@@ -438,7 +459,9 @@ require '../view/headerInclude.php';
                 </div>
                 <?php if($rebuild) {echo "<input hidden type = 'text' name='loadedSearch' id='loadedSearch' value='" . str_replace("'", '', $form->searchName) . "'>  </input>";} ?>
                 <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
-                <input type="submit" value="Submit" style="float:right" class="btn btn-success" />
+                <?php if ($rebuild) {echo '                <input type="submit" value="Submit" style="float:right" class="btn btn-success" id="submitButton"  />';}
+                else echo '                <input type="submit" value="Submit" style="float:right" class="btn btn-success" id="submitButton"  disabled />
+'?>
             </form>
         </div>
     </div>

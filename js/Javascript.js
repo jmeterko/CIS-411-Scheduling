@@ -1901,3 +1901,10 @@ function sortTable(n) {
         }
     }
 }
+function addslashes( str ) {
+    return (str+'').replace(/([\\"'])/g, "\\$1").replace(/\0/g, "\\0");
+}
+
+function enableSubmitButton () {
+    document.getElementById('submitButton').disabled = false;
+}
