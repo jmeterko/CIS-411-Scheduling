@@ -820,6 +820,7 @@ else if (isset($_POST['loadedSearch'])){
 ?>
 </h1></center>
 <center><br><h3>Results Found: <?php echo count($student); ?></h3></center>
+
 <center>
     <table class="result_table" id ="result_table">
         <tr>

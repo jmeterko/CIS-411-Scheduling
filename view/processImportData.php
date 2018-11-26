@@ -181,7 +181,6 @@ function loadPrograms()
         }
         rewind($file); //go to top
     }
-    
     $headerRow = fgetcsv($file); //load first line before looping, skips first line for output
     if ($headerRow[6] == "GPA"){
         if($headerRow[2] == "Last Term")

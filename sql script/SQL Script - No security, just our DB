@@ -1,0 +1,125 @@
+
+-- Drops everything and creates CSA tables but not security
+
+   DROP TABLE IF EXISTS studentclass;
+   DROP TABLE IF EXISTS studentmajor;
+   DROP TABLE IF EXISTS courseoffering;
+   DROP TABLE IF EXISTS course;
+   DROP TABLE IF EXISTS student;
+   DROP TABLE IF EXISTS userroles;
+   DROP TABLE IF EXISTS rolefunctions;
+   DROP TABLE IF EXISTS userprograms;
+   DROP TABLE IF EXISTS programsubject;
+   DROP TABLE IF EXISTS users;
+   DROP TABLE IF EXISTS roles;
+   DROP TABLE IF EXISTS functions;
+
+CREATE TABLE IF NOT EXISTS `course` (
+  `Subject` varchar(4) NOT NULL,
+  `Catalog` varchar(5) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `Acad_Org` varchar(4) NOT NULL,
+  constraint PK_course Primary Key (Subject, Catalog )
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS`courseoffering` (
+  `Term` int(11) NOT NULL,
+  `Session` varchar(3) NOT NULL,
+  `Subject` varchar(4) NOT NULL,
+  `Catalog` varchar(5) NOT NULL,
+  `Section` varchar(4) NOT NULL,
+  `InstructorName` varchar(22) NOT NULL,
+  `Count_ID` int(11) NOT NULL,
+  `Start_Time` varchar(5) DEFAULT NULL,
+  `End_Time` varchar(5) DEFAULT NULL,
+  `Days` varchar(5) DEFAULT NULL,
+  `Cap_Enrl` int(11) NOT NULL,
+  constraint PK_courseoffering Primary Key (Term, Session, Subject, Catalog, Section),
+  constraint FK_courseoffering_course Foreign Key (Subject, Catalog) references course(Subject, Catalog)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `student` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `Last_Term` int(11) NOT NULL,
+  `Current` varchar(1) NOT NULL,
+  `Location` varchar(7) NOT NULL,
+  `Total` decimal(7,3) NOT NULL,
+  `GPA` decimal(5,3) NOT NULL,
+  `Phone` varchar(14) NOT NULL,
+  `EagleMail_ID` varchar(38) NOT NULL,
+  `Advisor_1` varchar(27) DEFAULT NULL,
+  `Advisor_1_Email` varchar(24) DEFAULT NULL,
+  `Advisor_2` varchar(22) DEFAULT NULL,
+  `Advisor_2_Email` varchar(24) DEFAULT NULL,
+  `Degree_Term` int(11) DEFAULT NULL,
+  `Degree` varchar(4) DEFAULT NULL,
+  `Graduated_Plan_1` varchar(10) DEFAULT NULL,
+  `Graduated_Plan_2` varchar(10) DEFAULT NULL,
+  `Graduated_Plan_3` varchar(10) DEFAULT NULL,
+  `Graduated_Plan_4` varchar(10) DEFAULT NULL,
+  `Graduated_Plan_5` varchar(30) DEFAULT NULL,
+   constraint PK_student Primary Key (ID)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `studentclass` (
+  `ID` int(11) NOT NULL,
+  `Term` int(11) NOT NULL,
+  `Session` varchar(3) NOT NULL,
+  `Subject` varchar(4) NOT NULL,
+  `Catalog` varchar(5) NOT NULL,
+  `Section` varchar(4) NOT NULL,
+  `Grade` varchar(2) NOT NULL,
+  `Descr` varchar(30),
+  constraint PK_studentclass Primary Key (ID, Term, Session, Subject, Catalog, Section),
+  constraint FK_studentclass_student Foreign Key (ID) references student(ID)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+  CREATE INDEX IDX_STUDENTCLASS
+  ON studentclass (Subject, Catalog);
+
+CREATE TABLE IF NOT EXISTS `acad_program` (
+  `Plan` varchar(10) NOT NULL,
+  `Plan_Descr` varchar(30) DEFAULT NULL,
+
+  constraint PK_acad_program Primary Key (Plan)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS`studentmajor` (
+  `ID` int(11) NOT NULL,
+  `Plan` varchar(10) NOT NULL,
+
+  constraint PK_studentmajor Primary Key (ID, Plan),
+  constraint FK_studentmajor_student Foreign Key (ID) references student(ID),
+  constraint FK_studentmajor_acad_program Foreign Key (Plan) references acad_program(Plan)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `Oldest_Term` int(4) NOT NULL,
+  `Current_Term` int(4) NOT NULL,
+  `Latest_Term` int(4) NOT NULL,
+  `Last_Import_Date` date NOT NULL,
+  constraint PK_settings Primary Key (Oldest_Term)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `subject` (
+  `Subject` varchar(4) NOT NULL,
+
+  constraint PK_subject Primary Key (Subject)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `programsubject` (
+  `Plan` varchar(10) NOT NULL,
+  `Subject` varchar(4) NOT NULL,
+
+  constraint PK_programsubject Primary Key (Subject, Plan),
+  constraint FK_programsubject_subject Foreign Key (Subject) references subject(Subject),
+  constraint FK_programsubject_acad_program Foreign Key (Plan) references acad_program(Plan)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+-- why isn't our CREATE working for our student ID FK?
+-- for now, we add the INDEX after creating the table
+-- Need to fix our CREATE statement before shipping, this is some janky shit
