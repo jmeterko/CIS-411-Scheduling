@@ -15,7 +15,7 @@ require '../view/headerInclude.php';
         <li><a href="../controller/controller.php?action=CourseQuestion">New Course Question</a></li>
         <li><a href="../controller/controller.php?action=ImportData">Import Data</a></li>
         <li><a href="../controller/controller.php?action=Settings">Settings</a></li>
-        <li><a href="">Logout</a></li>
+        <li><a href="../controller/controller.php?action=Login">Logout</a></li>
     </ul>
 </div>
 </body>

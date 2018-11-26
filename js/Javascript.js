@@ -1196,6 +1196,7 @@ function orButtonPressed(pID){
     makeDivVisibleOr();
 }
 function dropdownFreshlyChanged(pID){
+    document.getElementById("submitButton").disabled=false;
     and=pID.replace( /[^0-9]/g, `` );
     //alert(and);
     or=0;

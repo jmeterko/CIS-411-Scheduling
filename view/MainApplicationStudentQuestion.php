@@ -450,7 +450,7 @@ require '../view/headerInclude.php';
                     </div>
                 </div>
                 <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
-                <input type="submit" value="Submit" style="float:right" class="btn btn-success" />
+                <input type="submit" value="Submit" style="float:right" class="btn btn-success" id="submitButton" disabled/>
             </form>
         </div>
     </div>

@@ -859,8 +859,8 @@ function getNotProgramSubjects($pProgramName) {
 }
 function getDBConnection() {
     $dsn = 'mysql:host=localhost;dbname=cis411_csaApp';
-    $username = 's_dmodonnell';
-    $password = 'Mysteriummmm06';
+    $username = 's_sgsmathers';
+    $password = 'password';
 
     try {
         $db = new PDO($dsn, $username, $password);

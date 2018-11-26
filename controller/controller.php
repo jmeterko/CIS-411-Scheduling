@@ -51,7 +51,7 @@ unQuote();          //make sure that magic_quotes_gpc added slashes are stripped
             include '../view/LoadingPage.php';
             break;
         case 'Login':
-            include '../view/LoginPage.php';
+            include '../view/loginPage.php';
             break;
         case 'StudentQuestion':
             AskQuestion();
@@ -87,11 +87,11 @@ unQuote();          //make sure that magic_quotes_gpc added slashes are stripped
         case 'StudentHistory':
             include '../view/StudentHistory.php';
             break;
+        case 'Settings':
+            include '../view/Settings.php';
+            break;
         case 'UpdateTermSettings':
             include '../view/updateTermSettings.php';
-            break;
-        case 'Wireframe':
-            include '../view/wireframe.php';
             break;
         default:
             include('../view/LoginPage.php');   // default
