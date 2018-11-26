@@ -2,6 +2,7 @@
 $title = "Result Page";
 require_once '../view/headerInclude.php';
 require_once '../model/model.php';
+unquote();
 
 //test data for filling table, vinnys early test data
 $student1 = array(
@@ -793,10 +794,10 @@ $student = $student3;
 //determine what year a student is
 function determineYear($credits){
     if ($credits < 30){
-        return "Freshman";
+        return "  Freshman";
     }
     else if ($credits < 60) {
-        return "Sophomore";
+        return " Sophomore";
     }
     else if ($credits <90 ) {
         return "Junior";
@@ -850,7 +851,15 @@ else if (isset($_POST['loadedSearch'])){
                 <td><?php echo $aResult['LOCATION']; // need location on this ?></td>
                 <td><?php echo $aResult['CURRENT']; ?></td>
                 <td><?php echo $aResult['Last_Term']; ?></td>
-                <td><?php echo $aResult['Total']; ?></td>
+                <td><?php
+                    if (strlen(($aResult['Total'])) == 1)
+                        echo '   ' . $aResult['Total'];
+                    else if (strlen(($aResult['Total'])) == 2)
+                        echo '  ' . $aResult['Total'];
+                    else if (strlen(($aResult['Total'])) == 3)
+                        echo ' ' . $aResult['Total'];
+                    else echo $aResult['Total'];
+                    ?></td>
                 <td><?php echo determineYear($aResult['Total']); //need year on this ?></td>
                 <td><?php echo $aResult['GPA']; ?></td>
 
