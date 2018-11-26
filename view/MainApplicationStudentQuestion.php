@@ -16,28 +16,7 @@ require '../view/headerInclude.php';
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown0" name="dropdown0" onchange="dropdownFreshlyChanged(this.id)">
-                        <?php $rebuild = false; if (isset($form) && !empty($form)) { $rebuild = true; } if ($rebuild) { ?>
-                            <option value="" selected disabled hidden>Select Category</option>
-                            <option value="Program"<?=$form->cat0 == 'Program' ? ' selected="selected"' : '';?>>Program</option>
-                            <option value="Location"<?=$form->cat0 == 'Location' ? ' selected="selected"' : '';?>>Location</option>
-                            <option value="courses" disabled><b>---COURSES---</b></option>
-                            <option value="Taking"<?=$form->cat0 == 'Taking' ? ' selected="selected"' : '';?>>Taking</option>
-                            <option value="Completed"<?=$form->cat0 == 'Completed' ? ' selected="selected"' : '';?>>Completed</option>
-                            <option value="Taking/Completed"<?=$form->cat0 == 'Taking/Completed' ? ' selected="selected"' : '';?>>Taking/Completed</option>
-                            <option value="Scheduled For"<?=$form->cat0 == 'Scheduled For' ? ' selected="selected"' : '';?>>Scheduled For</option>
-                            <option value="Not Taking"<?=$form->cat0 == 'Not Taking' ? ' selected="selected"' : '';?>>Not Taking</option>
-                            <option value="Not Completed"<?=$form->cat0 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
-                            <option value="Not Taking/Not Completed"<?=$form->cat0 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
-                            <option value="Not Scheduled For"<?=$form->cat0 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
-                        <?php if(!empty($results)){ ?>
-                            <option value="courses" disabled><b>---SAVED SEARCHES---</b></option>
-                            <?php         $i = 0;
-                            foreach ($results as $row) { $i++; ?>
-
-                            <option value="<?php echo $row['id'] ?>"><?php echo htmlspecialchars($row['name']) ?></option>
-                        <?php }} ?>
-
-                        <?php } else { ?>
+                        <?php  { ?>
                             <option value="" selected disabled hidden>Select Category</option>
                             <option value="Program">Program</option>
                             <option value="Location">Location</option>
