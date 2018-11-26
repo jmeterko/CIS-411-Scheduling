@@ -1170,6 +1170,8 @@ function RebuildQuestion(){
         //save the serial string into a variable to be unserialized
         $serial = constructSavedSearch($serialID);
         $form = unserialize($serial);
+        $user = $_SESSION['username'];
+        $results = getSerialsForUser($user);
 
         include '../view/MainApplicationStudentQuestion.php';
 

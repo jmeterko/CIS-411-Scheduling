@@ -29,6 +29,14 @@ require '../view/headerInclude.php';
                             <option value="Not Completed"<?=$form->cat0 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
                             <option value="Not Taking/Not Completed"<?=$form->cat0 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
                             <option value="Not Scheduled For"<?=$form->cat0 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+                        <?php if(!empty($results)){ ?>
+                            <option value="courses" disabled><b>---SAVED SEARCHES---</b></option>
+                            <?php         $i = 0;
+                            foreach ($results as $row) { $i++; ?>
+
+                            <option value="<?php echo $row['id'] ?>"><?php echo htmlspecialchars($row['name']) ?></option>
+                        <?php }} ?>
+
                         <?php } else { ?>
                             <option value="" selected disabled hidden>Select Category</option>
                             <option value="Program">Program</option>
