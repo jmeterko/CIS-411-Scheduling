@@ -1170,7 +1170,7 @@ function RebuildQuestion(){
         //save the serial string into a variable to be unserialized
         $serial = constructSavedSearch($serialID);
         $form = unserialize($serial);
-        askQuestion();
+        AskQuestion();
 
     } catch (Exception $e) {
         echo 'Caught exception: ',  $e->getMessage(), "\n";
