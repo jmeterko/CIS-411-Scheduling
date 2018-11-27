@@ -1018,6 +1018,7 @@ function getDBConnection() {
     }
     return $db;
 }
+
 function getLastInsertRow($columnName, $tableName){
 
     try {
@@ -1034,6 +1035,7 @@ function getLastInsertRow($columnName, $tableName){
         die;
     }
 }
+
 function getCurrentTerm(){
 
     try {
@@ -1052,7 +1054,24 @@ function getCurrentTerm(){
         die;
     }
 }
-//gets all the subjects associated with a certain user
+
+
+function CheckSearchName() {
+		$searchName = $_GET['searchName'];
+		$duplicate = FALSE;
+		$id = 0;
+		
+		$row = getSerialByName($searchName);
+		if ($row) {
+			$duplicate = TRUE;
+		}
+		
+		echo json_encode(array('id'=>$row['id'], 'searchName'=>$searchName, 'duplicate'=>$duplicate));
+		
+		return $row['id'];
+	}
+
+	//gets all the subjects associated with a certain user
 //important for our USER CONTEXT
 function getSubjectsForUser($pUser){
     try {
@@ -1141,6 +1160,22 @@ function updateCurrentTerm($pCurrentTerm)
         die;
     }
 }
+	
+	function RebuildQuestion(){
+		 $serialID = 0;
+		 try {
+			 if( isset($_GET['SerialID']) ) { $serialID = $_GET['SerialID']; }
+			 //save the serial string into a variable to be unserialized
+			 $serial = constructSavedSearch($serialID);
+			 $form = unserialize($serial);
+			 
+			 include '../view/MainApplicationStudentQuestion.php';
+			 
+			 } catch (Exception $e) {
+					 echo 'Caught exception: ',  $e->getMessage(), "\n";
+			 }
+	}
+
 function logSQLError($errorInfo) {
     $errorMessage = $errorInfo[2];
     include '../view/errorPage.php';
@@ -1155,6 +1190,7 @@ function constructSavedSearch($serialID){
         return $serial = $row["serial"];
     }
 }
+
 
 function AskQuestion(){
     $user = $_SESSION['username'];
@@ -1179,8 +1215,6 @@ function RebuildQuestion(){
         echo 'Caught exception: ',  $e->getMessage(), "\n";
     }
 }
-
-
 function combineJoinResults($pStudentArray){
     //convert Program to an array so we can merge later
     for ($i = 0; $i < count($pStudentArray); $i++) {

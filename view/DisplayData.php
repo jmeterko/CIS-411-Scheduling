@@ -938,6 +938,5 @@ else if (isset($_POST['loadedSearch'])){
         }
         ?>
 </div>
-
 </body>
 </html>

@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+#Ignore the project generated files in .idea directory
+#IDE metadata
+**.idea/**
+*.xml
+=======
 
 FileUploadPage.html
 #Ignore the project generated files in .idea directory
 #IDE metadata
 **.idea/**
 *.xml
+>>>>>>> David-ODonnell
