@@ -12,13 +12,14 @@ require '../view/headerInclude.php';
 <?php
 
 $studentID = $_GET['StudentHistoryID'];
+$studentName = $_GET['StudentHistoryName'];
 //echo 'student id is ' . $studentID;
 $studentCourseHistory = getCourseHistory($studentID);
 //print_r($studentCourseHistory);
 
 ?>
-<body>
-<h1> <center> History</h1></center>
+<body class="wowItLooksReallyNice">
+<h1> <center> <?php echo $studentName ?></h1></center>
 <center>
     <table class="history_table" id ="history_table">
         <tr>

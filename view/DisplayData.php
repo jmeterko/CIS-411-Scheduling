@@ -793,10 +793,10 @@ $student = $student3;
 //determine what year a student is
 function determineYear($credits){
     if ($credits < 30){
-        return "Freshman";
+        return "  Freshman";
     }
     else if ($credits < 60) {
-        return "Sophomore";
+        return " Sophomore";
     }
     else if ($credits <90 ) {
         return "Junior";
@@ -808,8 +808,20 @@ function determineYear($credits){
 ?>
 
 
-<body style="font-size: 20px; " onload="hideStuff()">
-<center><h1>Results Found: <?php echo count($student); ?></h1></center>
+<body style="font-size: 20px; " class="wowItLooksReallyNice" onload="hideStuff()">
+<h1><center>
+        <input type="button" value="Back"  class="btn btn-danger left"  onclick="window.history.back()"/>
+<?php
+if (isset($stdq->searchName) and $stdq->searchName != "" and $stdq->searchName != null){
+    echo ($stdq->searchName);
+}
+else if (isset($_POST['loadedSearch'])){
+    echo $_POST['loadedSearch'];
+}
+?>
+</h1></center>
+<center><br><h3>Results Found: <?php echo count($student); ?></h3></center>
+
 <center>
     <table class="result_table" id ="result_table">
         <tr>
@@ -838,18 +850,32 @@ function determineYear($credits){
                 <td><?php echo $aResult['LOCATION']; // need location on this ?></td>
                 <td><?php echo $aResult['CURRENT']; ?></td>
                 <td><?php echo $aResult['Last_Term']; ?></td>
-                <td><?php echo $aResult['Total']; ?></td>
+                <td><?php
+                    if (strlen(($aResult['Total'])) == 1)
+                        echo '   ' . $aResult['Total'];
+                    else if (strlen(($aResult['Total'])) == 2)
+                        echo '  ' . $aResult['Total'];
+                    else if (strlen(($aResult['Total'])) == 3)
+                        echo ' ' . $aResult['Total'];
+                    else echo $aResult['Total'];
+                    ?></td>
                 <td><?php echo determineYear($aResult['Total']); //need year on this ?></td>
-                <td><?php echo $aResult['GPA']; ?></td>
+                <td><?php echo ($aResult['GPA'] + 0); ?></td>
 
                 <td>    <?php
-                        foreach ($aResult['Plan'] as $program){
-                                echo $program . ',';
+                        foreach ($aResult['Plan'] as $program){ //for each program
+                            if (count($aResult['Plan']) == 1){  //if its the ONLY PROGRAM, no comma
+                                echo $program;
+                            }
+                            else if($aResult['Plan'][count($program) - 1] == $program){//if its the last program, NO COMMA
+                                    echo $program . ',';
+                            }
+                            else echo $program;//if we're here, we'll have more programs, so YES COMMA
                             } //need programs on this ?>
                 </td>
 
                 <td><?php echo $aResult['EagleMail_ID']; ?></td>
-                <td><button onclick = "displayClassHistory(<?php echo $aResult['ID'] ?>)" > History </button></td>
+                <td><button onclick = "displayClassHistory(<?php echo $aResult['ID'] . ',`' . $aResult['NAME'] . '`' ?>)" > History </button></td>
             </tr>
             <?php
         }
@@ -858,7 +884,8 @@ function determineYear($credits){
     </table></center>
 
 <!--this is a div that contains all the buttons the user can interact with-->
-<div id = "resultsButtons">
+<br>
+<div id = "resultsButtons"><center>
     <button onclick = "copyEmailsToClipboard()" > Copy Selected Emails to Clipboard </button>
     <button onclick = "selectAllResults()" > Check all </button>
     <button onclick = "deselectAllResults()" > Uncheck all </button>
@@ -867,7 +894,7 @@ function determineYear($credits){
 
     <!--this is where the list of emails is stored-->
     <input id="emailList" type="text" readonly>
-</div>
+    </center></div>
 
 
 <!--this here is where we hold the table that gets exported to excel sheet-->

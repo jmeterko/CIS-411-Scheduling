@@ -28,6 +28,13 @@ require '../view/headerInclude.php';
 						<option value="Not Completed"<?=$form->cat0 == 'Not Completed' ? ' selected="selected"' : '';?>>Not Completed</option>
 						<option value="Not Taking/Not Completed"<?=$form->cat0 == 'Not Taking/Not Completed' ? ' selected="selected"' : '';?>>Not Taking/Not Completed</option>
 						<option value="Not Scheduled For"<?=$form->cat0 == 'Not Scheduled For' ? ' selected="selected"' : '';?>>Not Scheduled For</option>
+						<?php if(!empty($results)){ ?>
+						<option value="courses" disabled><b>---SAVED SEARCHES---</b></option>
+					    <?php         $i = 0;
+						foreach ($results as $row) { $i++; ?>
+
+							<option value="<?php echo $row['id'] ?>"><?php echo htmlspecialchars($row['name']) ?></option>               
+					<?php }} ?> 
 					<?php } else { ?>
 						<option value="" selected disabled hidden>Select Category</option>
                         <option value="Program">Program</option>
@@ -450,9 +457,11 @@ require '../view/headerInclude.php';
                         <br/>
                     </div>
                 </div>
-                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../view/HomePage.html'"/>
-				<input type="submit" id="submitButton" name="AddSearch" style="float:right" class="btn btn-success" value="Submit" />
-
+				              <?php if($rebuild) {echo "<input hidden type = 'text' name='loadedSearch' id='loadedSearch' value='" . str_replace("'", '', $form->searchName) . "'>  </input>";} ?>
+                <input type="button" value="Back" style="float:left" class="btn btn-danger" onclick="window.location.href='../controller/controller.php?action=HomePage'"/>
+                <?php if ($rebuild) {echo '                <input type="submit" value="Submit" style="float:right" class="btn btn-success" id="submitButton"  />';}
+                else echo '<input type="submit" id="submitButton" name="AddSearch" style="float:right" class="btn btn-success" value="Submit" disabled />'?>
+								
 				<!-- Modal -->
 					<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">

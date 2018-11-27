@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `Last_Term` int(11) NOT NULL,
   `Current` varchar(1) NOT NULL,
   `Location` varchar(7) NOT NULL,
-  `Total` decimal(7,3) NOT NULL,
+  `Total` int NOT NULL,
   `GPA` decimal(5,3) NOT NULL,
   `Phone` varchar(14) NOT NULL,
   `EagleMail_ID` varchar(38) NOT NULL,
