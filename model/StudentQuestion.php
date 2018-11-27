@@ -22,7 +22,7 @@
 			
 	public $or0, $or1, $or2, $or3, $or4, $or5, $or6, $or7, $andCount, $startSeason, $endSeason = '';
 	
-	public $rankFR, $rankSO, $rankJR, $rankSR, $currentStudentsOnly, $startGPA, $startYear, $endGPA, $endYear, $searchName = '';
+	public $rankFR, $rankSO, $rankJR, $rankSR, $currentStudentsOnly, $startGPA, $startYear, $endGPA, $endYear, $searchName, $updateFlag = '';
 		
 	public function __construct() {
         //ONLY ASSIGN VARIABLES IF THEIR RESPECTIVE FORM ELEMENT WAS SET BY USER
@@ -69,6 +69,7 @@
 		
 		//OTHER VARIABLES
 		if (isset($_POST["searchName"])) { $this->searchName = $_POST['searchName']; }
+		if (isset($_POST["updateFlag"])) { $this->updateFlag = $_POST['updateFlag']; }
     }
 	
 		/*_set takes 2 parameters : the $name of the variable you want to create, and the $value to store there
@@ -266,11 +267,23 @@
 				include '../view/errorPage.php';			
 			}
 			
-			//user wants to save a provided a name 
+			//user wants to save under provided name 
 			else {//serialize and save to user profile under their given search name
 				$s = serialize($stdq); 			        //serialize the object, store string in $s
 				$user = $_SESSION['username'];          //see who the current user is
-				addSerial($user, $s, $stdq->searchName);//save the search under the saved name and user who created it. 
+				$action = '';							//action to determine if its a save or update
+				
+				//if(isset($_POST['UpdateSearch'])) { $action = $_POST['UpdateSearch']; }
+				//if(isset($_POST['AddSearch'])) { $action = $_POST['AddSearch']; }
+						
+				if(isset($_POST['UpdateSearch'])){//if the search was overriding an exisiting search
+					$previousRecordID = getSerialByName($stdq->searchName);
+					updateSerial($previousRecordID['id'], $user, $s);//update the search under the newly given name and user who changed it. 
+				}
+				
+				if(isset($_POST['AddSearch'])) {//if the search is newly created (no update)
+					addSerial($user, $s, $stdq->searchName);//save the search under the saved name and user who created it. 
+				}
 			}
 			
 			/**IMPORTANT* index.php is my current output page for testing my seriailzier. Instead of going here after the form is submitted, 
@@ -282,7 +295,7 @@
 			* 	$stdq->cat0 // accesses the value stored in the first category dropdown0 (see more examples in mainAppStudentQuestion.php)
 			*/
 			//include '../view/DisplayData.php';
-			include '../view/DisplayData.php';
+			include '../view/index.php';
 		}
 		//david testing stuff, can delete later
         //only do this if user did NOT save

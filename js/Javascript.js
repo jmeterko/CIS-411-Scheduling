@@ -26,9 +26,8 @@ var ajaxCompletedCount=0;
 const AJAX_CALL_TOTAL=4;
 var SubjectOptionsString = "<option value='CIS'>CIS</option><option value='DA'>DA</option>";
 
+
 var formRebuilt = false;
-//jerad's stuff, commented out
-//document.addEventListener("DOMContentLoaded", function(){getSerialsReady()});
 
 function incrementAjaxCompletionCounter(){
     ajaxCompletedCount++;
@@ -39,8 +38,14 @@ function incrementAjaxCompletionCounter(){
         getSerialsReady();
     }
 }
+
 function getSerialsReady() {
     document.getElementById("saveQuestion").addEventListener("change", toggleSaveQuestion);
+	
+	document.getElementById("updateSearch").addEventListener("click", function(){
+		document.getElementById("issueInputForm").submit();
+	});	
+	
     document.getElementById("dropdown0").addEventListener("change", function(){
         var dropdown = document.getElementById("dropdown0").value;
         if (dropdown > 0){
@@ -58,26 +63,44 @@ function getSerialsReady() {
         populateOrCompleted(formRebuilt);		  	console.log("Populate Completed");
         populateOrLocation(formRebuilt);
 
-
         finishBuild();
     }
 }
 
 function finishBuild(){
-    formRebuilt = true;
-    console.log("Finished");
+	formRebuilt = true;
+	console.log("Finished");
 }
 
-function toggleSaveQuestion(){
-    if( document.getElementById("saveQuestion").checked == true ) {
-        document.getElementById("searchName").classList.remove('hidden');
-        document.getElementById("searchName").required = true;
-    }
-    if( document.getElementById("saveQuestion").checked == false ) {
-        document.getElementById("searchName").classList.add('hidden');
-        document.getElementById("searchName").required = false;
-    }
+function checkSearchName(submitForm) {
+		$.getJSON("../controller/controller.php",
+			{	action: "CheckSearchNameExists",		
+				searchName: $('#searchName').val()
+			},
+			function(jsonReturned) {
+				if (jsonReturned.duplicate) {
+					$('#modal').modal('toggle');
+					document.getElementById('submitButton').disabled = true;
+					$('#searchName').select();
+				} else  {
+					document.getElementById('submitButton').disabled = false;
+				}
+			}
+		);
+	}
 
+function toggleSaveQuestion(){
+		if( document.getElementById("saveQuestion").checked == true ) { 
+			document.getElementById("searchName").classList.remove('hidden');
+			document.getElementById("searchName").required = true;
+			document.getElementById('submitButton').disabled = true;
+		}
+		if( document.getElementById("saveQuestion").checked == false ) { 
+			document.getElementById("searchName").classList.add('hidden'); 
+			document.getElementById("searchName").required = false;
+			document.getElementById('submitButton').disabled = false;
+		}	
+		
 }
 
 /* When the user clicks on the button,
@@ -102,964 +125,969 @@ window.onclick = function(event) {
 }
 
 function orValueChanged(){
-    if(and == 0){
-        or0 = getNumberOfChildren() + 1;
-    } else if (and == 1){
-        or1 = getNumberOfChildren() + 1;
-    } else if (and == 2){
-        or2 = getNumberOfChildren() + 1;
-    } else if (and == 3){
-        or3 = getNumberOfChildren() + 1;
-    } else if (and == 4){
-        or4 = getNumberOfChildren() + 1;
-    } else if (and == 5){
-        or5 = getNumberOfChildren() + 1;
-    } else if (and == 6){
-        or6 = getNumberOfChildren() + 1;
-    } else if (and == 7){
-        or7 = getNumberOfChildren() + 1;
-    }
-    updateORCounts();
+	if(and == 0){
+		or0 = getNumberOfChildren() + 1;
+	} else if (and == 1){
+		or1 = getNumberOfChildren() + 1;
+	} else if (and == 2){
+		or2 = getNumberOfChildren() + 1;
+	} else if (and == 3){
+		or3 = getNumberOfChildren() + 1;
+	} else if (and == 4){
+		or4 = getNumberOfChildren() + 1;
+	} else if (and == 5){
+		or5 = getNumberOfChildren() + 1;
+	} else if (and == 6){
+		or6 = getNumberOfChildren() + 1;
+	} else if (and == 7){
+		or7 = getNumberOfChildren() + 1;
+	} 
+	updateORCounts();
 }
 
 function setOrCounts(){
-    orCount0 = document.getElementById("orCount0").value;
-    orCount1 = document.getElementById("orCount1").value;
-    orCount2 = document.getElementById("orCount2").value;
-    orCount3 = document.getElementById("orCount3").value;
-    orCount4 = document.getElementById("orCount4").value;
-    orCount5 = document.getElementById("orCount5").value;
-    orCount6 = document.getElementById("orCount6").value;
-    orCount7 = document.getElementById("orCount7").value;
+	 orCount0 = document.getElementById("orCount0").value;
+	 orCount1 = document.getElementById("orCount1").value;
+	 orCount2 = document.getElementById("orCount2").value;
+	 orCount3 = document.getElementById("orCount3").value;
+	 orCount4 = document.getElementById("orCount4").value;
+	 orCount5 = document.getElementById("orCount5").value;
+	 orCount6 = document.getElementById("orCount6").value;
+	 orCount7 = document.getElementById("orCount7").value;
+}
+function changeFileDiv(pID){
+    var filename = $('#' + pID).val().replace('', '');
+    fileCounter=pID.replace( /[^0-9]/g, `` );
+    var currentFileDiv=$('#noFile' + fileCounter);
+    currentFileDiv.html(filename);
 }
 
-
 /***********  populateOrValues  ***************
- Need to maintain these Javascript functions? I'd like to apologize if you need to make changes to these, but I'll do my best to explain whats going on.
+	Need to maintain these Javascript functions? I'd like to apologize if you need to make changes to these, but I'll do my best to explain whats going on.
+	
+	NOTE: 10/28/18 - populateOrValues is getting broken out into their own functions based on dropdown value for each row. 
+		populateOrTaking, populateOrProgram, populateOrScheduledFor, etc. 
 
- NOTE: 10/28/18 - populateOrValues is getting broken out into their own functions based on dropdown value for each row.
- populateOrTaking, populateOrProgram, populateOrScheduledFor, etc.
-
- Description:
- This function helps enable the 'crude' passing of data from controller student class object, to javascript.
- It runs fast, but this code is far from optimal. Because the form AJAX calls respond when the dropdown onchange fires,
- it was difficult to get the values into the dropdowns without breaking javascript. This algorithm was ported from our controller file,
- as the loops we needed to generate these values also can read through them. Two pointers, x and loc, will determine which ID we need to set.
-
- *To not break javascript, this function uses several combinations of conditionals and loops to determine what the original value of the dropdown was,
- then check the appropriate id's. If ANY id returns null, all the form rebuild will break. So the amount of conditionals below is required.
-
- **There is probably a much easier way to let javascript know about the php object by converting the serial to JSON array, but the hidden elements
- populated from the loop in mainApplicationStudentQuestion.php were easy to access, since I was already accessing all of the count variables in this fashion.
- It just makes terrible, repeated code blocks.
-
- *NOTE: Maybe split into two Javascript files ? one for form controls and one for rebuild?
- - nice to have
-
- Algorithm:
- 1. The orCount values were placed onto the form by hidden input. Select by ID and store the count for later use.
-
- 2. Set up location variables as 'pointers' to which ID## we are at in each for loop.
-
- 3. Build the correct id and store it in the location variables. Generated by "name" + locationValue + xValue.
- *x is counter for loop, loc is counter for row
-
- 4. This is where the mess is. Because the dropdowns' value tells what or dropdowns to create, we must check for the dropdowns value,
- then set the appropriate names based on that.
- Example:
- If dropdown0 is "Program", the dropdown it generates on OR is MajorMinor00.
- So, we need to only loop through this row, outputting the values through MajorMinor0-X
- If dropdown1 is "Taking", the dropdowns it makes on OR are Subject10 and Catalog11
- So in this case, we need to loop through, setting values for all Subjects and Catalogs.
- If these aren't checked, any null document.getElementById will break the rebuild.
-
- 5. The rest of the code is repeated blocks of the same while loops, iterating for each row set in the GLOBAL and variable.
-
- KNOWN BUGS: all orCounts are being set in the and button click, this needs to be an on hover
- */
+	Description:
+		This function helps enable the 'crude' passing of data from controller student class object, to javascript.
+		It runs fast, but this code is far from optimal. Because the form AJAX calls respond when the dropdown onchange fires, 
+		it was difficult to get the values into the dropdowns without breaking javascript. This algorithm was ported from our controller file, 
+		as the loops we needed to generate these values also can read through them. Two pointers, x and loc, will determine which ID we need to set.
+		
+		*To not break javascript, this function uses several combinations of conditionals and loops to determine what the original value of the dropdown was,
+		then check the appropriate id's. If ANY id returns null, all the form rebuild will break. So the amount of conditionals below is required. 
+		
+		**There is probably a much easier way to let javascript know about the php object by converting the serial to JSON array, but the hidden elements
+		populated from the loop in mainApplicationStudentQuestion.php were easy to access, since I was already accessing all of the count variables in this fashion. 
+		It just makes terrible, repeated code blocks. 
+		
+		*NOTE: Maybe split into two Javascript files ? one for form controls and one for rebuild?
+			- nice to have
+		
+	Algorithm: 
+		1. The orCount values were placed onto the form by hidden input. Select by ID and store the count for later use.
+		
+		2. Set up location variables as 'pointers' to which ID## we are at in each for loop. 
+		
+		3. Build the correct id and store it in the location variables. Generated by "name" + locationValue + xValue. 
+			*x is counter for loop, loc is counter for row
+		
+		4. This is where the mess is. Because the dropdowns' value tells what or dropdowns to create, we must check for the dropdowns value,
+			then set the appropriate names based on that. 
+				Example:
+					If dropdown0 is "Program", the dropdown it generates on OR is MajorMinor00.
+					So, we need to only loop through this row, outputting the values through MajorMinor0-X
+					If dropdown1 is "Taking", the dropdowns it makes on OR are Subject10 and Catalog11
+					So in this case, we need to loop through, setting values for all Subjects and Catalogs. 
+					If these aren't checked, any null document.getElementById will break the rebuild. 
+					
+		5. The rest of the code is repeated blocks of the same while loops, iterating for each row set in the GLOBAL and variable.
+		
+	KNOWN BUGS: all orCounts are being set in the and button click, this needs to be an on hover
+*/
 function populateOrTaking(formRebuilt){
-    if(!formRebuilt){
-        //2. set up variables, and use counter and location variable to dynamically assign each value
-        var x = 0;
-        var loc = 0;
-        var dropdownVal = document.getElementById("dropdown0").value;
-        var subLocation = "";
-        var corLocation = "";
-        var pSub, pCor, select;
+		if(!formRebuilt){
+	//2. set up variables, and use counter and location variable to dynamically assign each value
+			var x = 0;
+			var loc = 0;
+			var dropdownVal = document.getElementById("dropdown0").value;
+				var subLocation = "";
+				var corLocation = "";
+				var pSub, pCor, select;
+				
+				//3. until all or's are accounted for, set values that were passed by stdq object
+				
+				//0
+				while (x < orCount0){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
 
-        //3. until all or's are accounted for, set values that were passed by stdq object
+					//4. assign values based on category, since different dropdowns have different names
+					
+					//=====[ TAKING || Subject + Catalog Combo - Row0 ]=====//		
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
+							//set the value from the hidden field to the dropdown value
+								pSub = document.getElementById("val" + subLocation).value;
+								pCor = document.getElementById("val" + corLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+						}										
+					x++;	
+				} // ** END Row0 ** //
 
-        //0
-        while (x < orCount0){
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
+				//increase loc to next row, reset x at starting position of that row.
+				loc++; x = 0; 	
+				dropdownVal = document.getElementById("dropdown1").value;
+				//1
+				while (x < orCount1){
 
-            //4. assign values based on category, since different dropdowns have different names
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
+							pSub = document.getElementById("val" + subLocation).value;
+							pCor = document.getElementById("val" + corLocation).value;
 
-            //=====[ TAKING || Subject + Catalog Combo - Row0 ]=====//
-            if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
-                dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
-                dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
-                //set the value from the hidden field to the dropdown value
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
+							if(pSub){
+								document.getElementById("Subject" + loc + x).value = pSub;					
+							}
+							
+							if(pCor){
+								select = document.getElementById("Catalog" + loc + x);
+								select.options[select.options.length] = new Option(pCor, pCor);
+								select.value = pCor;
+							}
+					} x++;	
+				} loc++; x = 0;			
+				dropdownVal = document.getElementById("dropdown2").value;
+				//2
+				while (x < orCount2){
 
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
+							pSub = document.getElementById("val" + subLocation).value;
+							pCor = document.getElementById("val" + corLocation).value;
+							console.log(corLocation);
 
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-            }
-            x++;
-        } // ** END Row0 ** //
+							if(pSub){
+								document.getElementById("Subject" + loc + x).value = pSub;					
+							}
+							
+							if(pCor){
+								select = document.getElementById("Catalog" + loc + x);
+								select.options[select.options.length] = new Option(pCor, pCor);
+								select.value = pCor;
+							}
+					} x++;	
+				} loc++; x = 0;			
+				dropdownVal = document.getElementById("dropdown3").value;
+				//3
+				while (x < orCount3){
 
-        //increase loc to next row, reset x at starting position of that row.
-        loc++; x = 0;
-        dropdownVal = document.getElementById("dropdown1").value;
-        //1
-        while (x < orCount1){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
+							pSub = document.getElementById("val" + subLocation).value;
+							pCor = document.getElementById("val" + corLocation).value;
 
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
+							if(pSub){
+								document.getElementById("Subject" + loc + x).value = pSub;					
+							}
+							
+							if(pCor){
+								select = document.getElementById("Catalog" + loc + x);
+								select.options[select.options.length] = new Option(pCor, pCor);
+								select.value = pCor;
+							}
+					} x++;	
+				} loc++; x = 0;	
+                dropdownVal = document.getElementById("dropdown4").value;
+				//4
+				while (x < orCount4){
 
-            if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
-                dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
-                dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
+							pSub = document.getElementById("val" + subLocation).value;
+							pCor = document.getElementById("val" + corLocation).value;
 
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
+							if(pSub){
+								document.getElementById("Subject" + loc + x).value = pSub;					
+							}
+							
+							if(pCor){
+								select = document.getElementById("Catalog" + loc + x);
+								select.options[select.options.length] = new Option(pCor, pCor);
+								select.value = pCor;
+							}
+					} x++;	
+				} loc++; x = 0;		
+				dropdownVal = document.getElementById("dropdown5").value;
+				//5
+				while (x < orCount5){
 
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-            } x++;
-        } loc++; x = 0;
-        dropdownVal = document.getElementById("dropdown2").value;
-        //2
-        while (x < orCount2){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
+							pSub = document.getElementById("val" + subLocation).value;
+							pCor = document.getElementById("val" + corLocation).value;
 
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
+							if(pSub){
+								document.getElementById("Subject" + loc + x).value = pSub;					
+							}
+							
+							if(pCor){
+								select = document.getElementById("Catalog" + loc + x);
+								select.options[select.options.length] = new Option(pCor, pCor);
+								select.value = pCor;
+							}
+					} x++;	
+				} loc++; x = 0;	
+				dropdownVal = document.getElementById("dropdown6").value;
+				//6
+				while (x < orCount6){
 
-            if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
-                dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
-                dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-                console.log(corLocation);
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
+							pSub = document.getElementById("val" + subLocation).value;
+							pCor = document.getElementById("val" + corLocation).value;
 
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
+							if(pSub){
+								document.getElementById("Subject" + loc + x).value = pSub;					
+							}
+							
+							if(pCor){
+								select = document.getElementById("Catalog" + loc + x);
+								select.options[select.options.length] = new Option(pCor, pCor);
+								select.value = pCor;
+							}
+					} x++;	
+				} loc++; x = 0;		
+				dropdownVal = document.getElementById("dropdown7").value;
+				//7
+				while (x < orCount7){
 
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-            } x++;
-        } loc++; x = 0;
-        dropdownVal = document.getElementById("dropdown3").value;
-        //3
-        while (x < orCount3){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
+					   dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
+					   dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
+							pSub = document.getElementById("val" + subLocation).value;
+							pCor = document.getElementById("val" + corLocation).value;
 
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
-                dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
-                dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-            } x++;
-        } loc++; x = 0;
-        dropdownVal = document.getElementById("dropdown4").value;
-        //4
-        while (x < orCount4){
-
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
-                dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
-                dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-            } x++;
-        } loc++; x = 0;
-        dropdownVal = document.getElementById("dropdown5").value;
-        //5
-        while (x < orCount5){
-
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
-                dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
-                dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-            } x++;
-        } loc++; x = 0;
-        dropdownVal = document.getElementById("dropdown6").value;
-        //6
-        while (x < orCount6){
-
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
-                dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
-                dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-            } x++;
-        } loc++; x = 0;
-        dropdownVal = document.getElementById("dropdown7").value;
-        //7
-        while (x < orCount7){
-
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            if(dropdownVal == "Taking" || dropdownVal == "Not Taking" ||
-                dropdownVal == "Scheduled For" || dropdownVal == "Not Scheduled For" ||
-                dropdownVal == "Not Taking/Not Completed" || dropdownVal == "Not Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-            } x++;
-        }
-    }}
+							if(pSub){
+								document.getElementById("Subject" + loc + x).value = pSub;					
+							}
+							
+							if(pCor){
+								select = document.getElementById("Catalog" + loc + x);
+								select.options[select.options.length] = new Option(pCor, pCor);
+								select.value = pCor;
+							}
+					} x++;	
+				} 				
+}}
 
 function populateOrLocation(formRebuilt){
-    if(!formRebuilt){
+	if(!formRebuilt){
 
-        var x = 0;
-        var loc = 0;
-        var locLocation = "";
-        var pLoc, select;
+			var x = 0;
+			var loc = 0;
+				var locLocation = "";
+				var pLoc, select;
 
-        //0
-        while (x < orCount0){
-            //this variable name happened by naming convention, but it's staying
-            locLocation = "loc" + loc + x;
+				//0
+				while (x < orCount0){
+					//this variable name happened by naming convention, but it's staying
+					locLocation = "loc" + loc + x;
+																			
+					//---- [ LOCATION - Row0 ] ----//
+					if(document.getElementById("dropdown0").value == "Location"){
+							//set the value from the hidden field to the dropdown value
+								pLoc = document.getElementById("val" + locLocation).value;
+							
+								if(pLoc){
+									document.getElementById("Location" + loc + x).value = pLoc;					
+								}
+					} x++; 	
+				} loc++; x = 0;
+				
+				//1
+				while (x < orCount1){
+					//this variable name happened by naming convention, but it's staying
+					locLocation = "loc" + loc + x;
+																			
+					//---- [ LOCATION - Row1 ] ----//
+					if(document.getElementById("dropdown1").value == "Location"){
+							//set the value from the hidden field to the dropdown value
+								pLoc = document.getElementById("val" + locLocation).value;
+ 								if(pLoc){
+									document.getElementById("Location" + loc + x).value = pLoc;					
+								}
+					} x++; 	
+				} loc++; x = 0;	
 
-            //---- [ LOCATION - Row0 ] ----//
-            if(document.getElementById("dropdown0").value == "Location"){
-                //set the value from the hidden field to the dropdown value
-                pLoc = document.getElementById("val" + locLocation).value;
-
-                if(pLoc){
-                    document.getElementById("Location" + loc + x).value = pLoc;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //1
-        while (x < orCount1){
-            //this variable name happened by naming convention, but it's staying
-            locLocation = "loc" + loc + x;
-
-            //---- [ LOCATION - Row1 ] ----//
-            if(document.getElementById("dropdown1").value == "Location"){
-                //set the value from the hidden field to the dropdown value
-                pLoc = document.getElementById("val" + locLocation).value;
-                if(pLoc){
-                    document.getElementById("Location" + loc + x).value = pLoc;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //2
-        while (x < orCount2){
-            //this variable name happened by naming convention, but it's staying
-            locLocation = "loc" + loc + x;
-
-            //---- [ LOCATION - Row2 ] ----//
-            if(document.getElementById("dropdown2").value == "Location"){
-                //set the value from the hidden field to the dropdown value
-                pLoc = document.getElementById("val" + locLocation).value;
-                if(pLoc){
-                    document.getElementById("Location" + loc + x).value = pLoc;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //3
-        while (x < orCount3){
-            //this variable name happened by naming convention, but it's staying
-            locLocation = "loc" + loc + x;
-
-            //---- [ LOCATION - Row3 ] ----//
-            if(document.getElementById("dropdown3").value == "Location"){
-                //set the value from the hidden field to the dropdown value
-                pLoc = document.getElementById("val" + locLocation).value;
-                if(pLoc){
-                    document.getElementById("Location" + loc + x).value = pLoc;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //4
-        while (x < orCount4){
-            //this variable name happened by naming convention, but it's staying
-            locLocation = "loc" + loc + x;
-
-            //---- [ LOCATION - Row4 ] ----//
-            if(document.getElementById("dropdown4").value == "Location"){
-                //set the value from the hidden field to the dropdown value
-                pLoc = document.getElementById("val" + locLocation).value;
-                if(pLoc){
-                    document.getElementById("Location" + loc + x).value = pLoc;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //5
-        while (x < orCount5){
-            //this variable name happened by naming convention, but it's staying
-            locLocation = "loc" + loc + x;
-
-            //---- [ LOCATION - Row5 ] ----//
-            if(document.getElementById("dropdown5").value == "Location"){
-                //set the value from the hidden field to the dropdown value
-                pLoc = document.getElementById("val" + locLocation).value;
-                if(pLoc){
-                    document.getElementById("Location" + loc + x).value = pLoc;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //6
-        while (x < orCount6){
-            //this variable name happened by naming convention, but it's staying
-            locLocation = "loc" + loc + x;
-
-            //---- [ LOCATION - Row6 ] ----//
-            if(document.getElementById("dropdown6").value == "Location"){
-                //set the value from the hidden field to the dropdown value
-                pLoc = document.getElementById("val" + locLocation).value;
-                if(pLoc){
-                    document.getElementById("Location" + loc + x).value = pLoc;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //7
-        while (x < orCount7){
-            //this variable name happened by naming convention, but it's staying
-            locLocation = "loc" + loc + x;
-
-            //---- [ LOCATION - Row7 ] ----//
-            if(document.getElementById("dropdown7").value == "Location"){
-                //set the value from the hidden field to the dropdown value
-                pLoc = document.getElementById("val" + locLocation).value;
-                if(pLoc){
-                    document.getElementById("Location" + loc + x).value = pLoc;
-                }
-            } x++;
-        } loc++; x = 0;
-    }
+				//2
+				while (x < orCount2){
+					//this variable name happened by naming convention, but it's staying
+					locLocation = "loc" + loc + x;
+																			
+					//---- [ LOCATION - Row2 ] ----//
+					if(document.getElementById("dropdown2").value == "Location"){
+							//set the value from the hidden field to the dropdown value
+								pLoc = document.getElementById("val" + locLocation).value;
+ 								if(pLoc){
+									document.getElementById("Location" + loc + x).value = pLoc;					
+								}
+					} x++; 	
+				} loc++; x = 0;				
+				
+				//3
+				while (x < orCount3){
+					//this variable name happened by naming convention, but it's staying
+					locLocation = "loc" + loc + x;
+																			
+					//---- [ LOCATION - Row3 ] ----//
+					if(document.getElementById("dropdown3").value == "Location"){
+							//set the value from the hidden field to the dropdown value
+								pLoc = document.getElementById("val" + locLocation).value;
+ 								if(pLoc){
+									document.getElementById("Location" + loc + x).value = pLoc;					
+								}
+					} x++; 	
+				} loc++; x = 0;
+				
+				//4
+				while (x < orCount4){
+					//this variable name happened by naming convention, but it's staying
+					locLocation = "loc" + loc + x;
+																			
+					//---- [ LOCATION - Row4 ] ----//
+					if(document.getElementById("dropdown4").value == "Location"){
+							//set the value from the hidden field to the dropdown value
+								pLoc = document.getElementById("val" + locLocation).value;
+ 								if(pLoc){
+									document.getElementById("Location" + loc + x).value = pLoc;					
+								}
+					} x++; 	
+				} loc++; x = 0;
+				
+				//5
+				while (x < orCount5){
+					//this variable name happened by naming convention, but it's staying
+					locLocation = "loc" + loc + x;
+																			
+					//---- [ LOCATION - Row5 ] ----//
+					if(document.getElementById("dropdown5").value == "Location"){
+							//set the value from the hidden field to the dropdown value
+								pLoc = document.getElementById("val" + locLocation).value;
+ 								if(pLoc){
+									document.getElementById("Location" + loc + x).value = pLoc;					
+								}
+					} x++; 	
+				} loc++; x = 0;
+				
+				//6
+				while (x < orCount6){
+					//this variable name happened by naming convention, but it's staying
+					locLocation = "loc" + loc + x;
+																			
+					//---- [ LOCATION - Row6 ] ----//
+					if(document.getElementById("dropdown6").value == "Location"){
+							//set the value from the hidden field to the dropdown value
+								pLoc = document.getElementById("val" + locLocation).value;
+ 								if(pLoc){
+									document.getElementById("Location" + loc + x).value = pLoc;					
+								}
+					} x++; 	
+				} loc++; x = 0;
+				
+				//7
+				while (x < orCount7){
+					//this variable name happened by naming convention, but it's staying
+					locLocation = "loc" + loc + x;
+																			
+					//---- [ LOCATION - Row7 ] ----//
+					if(document.getElementById("dropdown7").value == "Location"){
+							//set the value from the hidden field to the dropdown value
+								pLoc = document.getElementById("val" + locLocation).value;
+ 								if(pLoc){
+									document.getElementById("Location" + loc + x).value = pLoc;					
+								}
+					} x++; 	
+				} loc++; x = 0;
+	}
 }
 
 function populateOrProgram(formRebuilt){
-    if(!formRebuilt){
+	if(!formRebuilt){
 
-        var x = 0;
-        var loc = 0;
-        var majLocation = "";
-        var pMaj, select;
+			var x = 0;
+			var loc = 0;
+				var majLocation = "";
+				var pMaj, select;
 
-        //0
-        while (x < orCount0){
-            majLocation = "maj" + loc + x;
+				//0
+				while (x < orCount0){
+					majLocation = "maj" + loc + x;
+																			
+					//---- [ PROGRAM - Row0 ] ----//
+					if(document.getElementById("dropdown0").value == "Program"){
+							//set the value from the hidden field to the dropdown value
+								pMaj = document.getElementById("val" + majLocation).value;
+								if(pMaj){
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;					
+								}
+					} x++; 	
+				} loc++; x = 0;
 
-            //---- [ PROGRAM - Row0 ] ----//
-            if(document.getElementById("dropdown0").value == "Program"){
-                //set the value from the hidden field to the dropdown value
-                pMaj = document.getElementById("val" + majLocation).value;
-                if(pMaj){
-                    select = document.getElementById("MajorMinor" + loc + x);
-                    select.options[select.options.length] = new Option(pMaj, pMaj);
-                    select.value = pMaj;
-                    document.getElementById("MajorMinor" + loc + x).value = pMaj;
-                }
-            } x++;
-        } loc++; x = 0;
+				//1
+				while (x < orCount1){
+					majLocation = "maj" + loc + x;
+																			
+					//---- [ PROGRAM - Row1 ] ----//
+					if(document.getElementById("dropdown1").value == "Program"){
+							//set the value from the hidden field to the dropdown value
+								pMaj = document.getElementById("val" + majLocation).value;
 
-        //1
-        while (x < orCount1){
-            majLocation = "maj" + loc + x;
+								if(pMaj){
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
+								}
+					} x++; 	
+				} loc++; x = 0;
+			
+				//2
+				while (x < orCount2){
+					majLocation = "maj" + loc + x;
+																			
+					//---- [ PROGRAM - Row2 ] ----//
+					if(document.getElementById("dropdown2").value == "Program"){
+							//set the value from the hidden field to the dropdown value
+								pMaj = document.getElementById("val" + majLocation).value;
 
-            //---- [ PROGRAM - Row1 ] ----//
-            if(document.getElementById("dropdown1").value == "Program"){
-                //set the value from the hidden field to the dropdown value
-                pMaj = document.getElementById("val" + majLocation).value;
+								if(pMaj){
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
+								}
+					} x++; 	
+				} loc++; x = 0;			
 
-                if(pMaj){
-                    select = document.getElementById("MajorMinor" + loc + x);
-                    select.options[select.options.length] = new Option(pMaj, pMaj);
-                    select.value = pMaj;
-                    document.getElementById("MajorMinor" + loc + x).value = pMaj;
-                }
-            } x++;
-        } loc++; x = 0;
+				//3
+				while (x < orCount3){
+					majLocation = "maj" + loc + x;
+																			
+					//---- [ PROGRAM - Row3 ] ----//
+					if(document.getElementById("dropdown3").value == "Program"){
+							//set the value from the hidden field to the dropdown value
+								pMaj = document.getElementById("val" + majLocation).value;
 
-        //2
-        while (x < orCount2){
-            majLocation = "maj" + loc + x;
+								if(pMaj){
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
+								}
+					} x++; 	
+				} loc++; x = 0;		
 
-            //---- [ PROGRAM - Row2 ] ----//
-            if(document.getElementById("dropdown2").value == "Program"){
-                //set the value from the hidden field to the dropdown value
-                pMaj = document.getElementById("val" + majLocation).value;
+				//4
+				while (x < orCount4){
+					majLocation = "maj" + loc + x;
+																			
+					//---- [ PROGRAM - Row4 ] ----//
+					if(document.getElementById("dropdown4").value == "Program"){
+							//set the value from the hidden field to the dropdown value
+								pMaj = document.getElementById("val" + majLocation).value;
 
-                if(pMaj){
-                    select = document.getElementById("MajorMinor" + loc + x);
-                    select.options[select.options.length] = new Option(pMaj, pMaj);
-                    select.value = pMaj;
-                    document.getElementById("MajorMinor" + loc + x).value = pMaj;
-                }
-            } x++;
-        } loc++; x = 0;
+								if(pMaj){
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
+								}
+					} x++; 	
+				} loc++; x = 0;		
 
-        //3
-        while (x < orCount3){
-            majLocation = "maj" + loc + x;
+				//5
+				while (x < orCount5){
+					majLocation = "maj" + loc + x;
+																			
+					//---- [ PROGRAM - Row5 ] ----//
+					if(document.getElementById("dropdown5").value == "Program"){
+							//set the value from the hidden field to the dropdown value
+								pMaj = document.getElementById("val" + majLocation).value;
 
-            //---- [ PROGRAM - Row3 ] ----//
-            if(document.getElementById("dropdown3").value == "Program"){
-                //set the value from the hidden field to the dropdown value
-                pMaj = document.getElementById("val" + majLocation).value;
+								if(pMaj){
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
+								}
+					} x++; 	
+				} loc++; x = 0;
 
-                if(pMaj){
-                    select = document.getElementById("MajorMinor" + loc + x);
-                    select.options[select.options.length] = new Option(pMaj, pMaj);
-                    select.value = pMaj;
-                    document.getElementById("MajorMinor" + loc + x).value = pMaj;
-                }
-            } x++;
-        } loc++; x = 0;
+				//6
+				while (x < orCount6){
+					majLocation = "maj" + loc + x;
+																			
+					//---- [ PROGRAM - Row6 ] ----//
+					if(document.getElementById("dropdown6").value == "Program"){
+							//set the value from the hidden field to the dropdown value
+								pMaj = document.getElementById("val" + majLocation).value;
 
-        //4
-        while (x < orCount4){
-            majLocation = "maj" + loc + x;
+								if(pMaj){
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
+								}
+					} x++; 	
+				} loc++; x = 0;		
 
-            //---- [ PROGRAM - Row4 ] ----//
-            if(document.getElementById("dropdown4").value == "Program"){
-                //set the value from the hidden field to the dropdown value
-                pMaj = document.getElementById("val" + majLocation).value;
+				//7
+				while (x < orCount7){
+					majLocation = "maj" + loc + x;
+																			
+					//---- [ PROGRAM - Row7 ] ----//
+					if(document.getElementById("dropdown7").value == "Program"){
+							//set the value from the hidden field to the dropdown value
+								pMaj = document.getElementById("val" + majLocation).value;
 
-                if(pMaj){
-                    select = document.getElementById("MajorMinor" + loc + x);
-                    select.options[select.options.length] = new Option(pMaj, pMaj);
-                    select.value = pMaj;
-                    document.getElementById("MajorMinor" + loc + x).value = pMaj;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //5
-        while (x < orCount5){
-            majLocation = "maj" + loc + x;
-
-            //---- [ PROGRAM - Row5 ] ----//
-            if(document.getElementById("dropdown5").value == "Program"){
-                //set the value from the hidden field to the dropdown value
-                pMaj = document.getElementById("val" + majLocation).value;
-
-                if(pMaj){
-                    select = document.getElementById("MajorMinor" + loc + x);
-                    select.options[select.options.length] = new Option(pMaj, pMaj);
-                    select.value = pMaj;
-                    document.getElementById("MajorMinor" + loc + x).value = pMaj;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //6
-        while (x < orCount6){
-            majLocation = "maj" + loc + x;
-
-            //---- [ PROGRAM - Row6 ] ----//
-            if(document.getElementById("dropdown6").value == "Program"){
-                //set the value from the hidden field to the dropdown value
-                pMaj = document.getElementById("val" + majLocation).value;
-
-                if(pMaj){
-                    select = document.getElementById("MajorMinor" + loc + x);
-                    select.options[select.options.length] = new Option(pMaj, pMaj);
-                    select.value = pMaj;
-                    document.getElementById("MajorMinor" + loc + x).value = pMaj;
-                }
-            } x++;
-        } loc++; x = 0;
-
-        //7
-        while (x < orCount7){
-            majLocation = "maj" + loc + x;
-
-            //---- [ PROGRAM - Row7 ] ----//
-            if(document.getElementById("dropdown7").value == "Program"){
-                //set the value from the hidden field to the dropdown value
-                pMaj = document.getElementById("val" + majLocation).value;
-
-                if(pMaj){
-                    select = document.getElementById("MajorMinor" + loc + x);
-                    select.options[select.options.length] = new Option(pMaj, pMaj);
-                    select.value = pMaj;
-                    document.getElementById("MajorMinor" + loc + x).value = pMaj;
-                }
-            } x++;
-        } loc++; x = 0;
-    }
+								if(pMaj){
+									select = document.getElementById("MajorMinor" + loc + x);
+									select.options[select.options.length] = new Option(pMaj, pMaj);
+									select.value = pMaj;
+									document.getElementById("MajorMinor" + loc + x).value = pMaj;	
+								}
+					} x++; 	
+				} loc++; x = 0;				
+		}
 }
 
 function populateOrCompleted(formRebuilt){
-    if(!formRebuilt){
-        var x = 0;
-        var loc = 0;
-        var subLocation = "";
-        var corLocation = "";
-        var graLocation = "";
-        var pSub, pCor, pGra, select;
+	if(!formRebuilt){
+			var x = 0;
+			var loc = 0;
+				var subLocation = "";
+				var corLocation = "";
+				var graLocation = "";
+				var pSub, pCor, pGra, select;
+								
+				//0
+				while (x < orCount0){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row0 ]=====//		
+					if(document.getElementById("dropdown0").value == "Completed" || document.getElementById("dropdown0").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;
+				
+				//1
+				while (x < orCount1){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row1 ]=====//		
+					if(document.getElementById("dropdown1").value == "Completed" || document.getElementById("dropdown1").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;		
 
-        //0
-        while (x < orCount0){
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
+				//2
+				while (x < orCount2){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row2 ]=====//		
+					if(document.getElementById("dropdown2").value == "Completed" || document.getElementById("dropdown2").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;		
 
-            //=====[ COMPLETED - Row0 ]=====//
-            if(document.getElementById("dropdown0").value == "Completed" || document.getElementById("dropdown0").value == "Taking/Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-                pGra = document.getElementById("val" + graLocation).value;
+				//3
+				while (x < orCount3){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row3 ]=====//		
+					if(document.getElementById("dropdown3").value == "Completed" || document.getElementById("dropdown3").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;
 
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
+				//4
+				while (x < orCount4){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row4 ]=====//		
+					if(document.getElementById("dropdown4").value == "Completed" || document.getElementById("dropdown4").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;				
+		
+				//5
+				while (x < orCount5){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row5 ]=====//		
+					if(document.getElementById("dropdown5").value == "Completed" || document.getElementById("dropdown5").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;	
 
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-
-                if(pGra){
-                    select = document.getElementById("MinGrade" + loc + x);
-                    select.options[select.options.length] = new Option(pGra, pGra);
-                    select.value = pGra;
-                }
-            }
-            x++;
-        } loc++; x = 0;
-
-        //1
-        while (x < orCount1){
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            //=====[ COMPLETED - Row1 ]=====//
-            if(document.getElementById("dropdown1").value == "Completed" || document.getElementById("dropdown1").value == "Taking/Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-                pGra = document.getElementById("val" + graLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-
-                if(pGra){
-                    select = document.getElementById("MinGrade" + loc + x);
-                    select.options[select.options.length] = new Option(pGra, pGra);
-                    select.value = pGra;
-                }
-            }
-            x++;
-        } loc++; x = 0;
-
-        //2
-        while (x < orCount2){
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            //=====[ COMPLETED - Row2 ]=====//
-            if(document.getElementById("dropdown2").value == "Completed" || document.getElementById("dropdown2").value == "Taking/Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-                pGra = document.getElementById("val" + graLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-
-                if(pGra){
-                    select = document.getElementById("MinGrade" + loc + x);
-                    select.options[select.options.length] = new Option(pGra, pGra);
-                    select.value = pGra;
-                }
-            }
-            x++;
-        } loc++; x = 0;
-
-        //3
-        while (x < orCount3){
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            //=====[ COMPLETED - Row3 ]=====//
-            if(document.getElementById("dropdown3").value == "Completed" || document.getElementById("dropdown3").value == "Taking/Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-                pGra = document.getElementById("val" + graLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-
-                if(pGra){
-                    select = document.getElementById("MinGrade" + loc + x);
-                    select.options[select.options.length] = new Option(pGra, pGra);
-                    select.value = pGra;
-                }
-            }
-            x++;
-        } loc++; x = 0;
-
-        //4
-        while (x < orCount4){
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            //=====[ COMPLETED - Row4 ]=====//
-            if(document.getElementById("dropdown4").value == "Completed" || document.getElementById("dropdown4").value == "Taking/Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-                pGra = document.getElementById("val" + graLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-
-                if(pGra){
-                    select = document.getElementById("MinGrade" + loc + x);
-                    select.options[select.options.length] = new Option(pGra, pGra);
-                    select.value = pGra;
-                }
-            }
-            x++;
-        } loc++; x = 0;
-
-        //5
-        while (x < orCount5){
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            //=====[ COMPLETED - Row5 ]=====//
-            if(document.getElementById("dropdown5").value == "Completed" || document.getElementById("dropdown5").value == "Taking/Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-                pGra = document.getElementById("val" + graLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-
-                if(pGra){
-                    select = document.getElementById("MinGrade" + loc + x);
-                    select.options[select.options.length] = new Option(pGra, pGra);
-                    select.value = pGra;
-                }
-            }
-            x++;
-        } loc++; x = 0;
-
-        //6
-        while (x < orCount6){
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            //=====[ COMPLETED - Row6 ]=====//
-            if(document.getElementById("dropdown6").value == "Completed" || document.getElementById("dropdown6").value == "Taking/Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-                pGra = document.getElementById("val" + graLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-
-                if(pGra){
-                    select = document.getElementById("MinGrade" + loc + x);
-                    select.options[select.options.length] = new Option(pGra, pGra);
-                    select.value = pGra;
-                }
-            }
-            x++;
-        } loc++; x = 0;
-
-        //7
-        while (x < orCount7){
-            subLocation = "sub" + loc + x;
-            corLocation = "cor" + loc + x;
-            graLocation = "gra" + loc + x;
-
-            //=====[ COMPLETED - Row7 ]=====//
-            if(document.getElementById("dropdown7").value == "Completed" || document.getElementById("dropdown7").value == "Taking/Completed"){
-                pSub = document.getElementById("val" + subLocation).value;
-                pCor = document.getElementById("val" + corLocation).value;
-                pGra = document.getElementById("val" + graLocation).value;
-
-                if(pSub){
-                    document.getElementById("Subject" + loc + x).value = pSub;
-                }
-
-                if(pCor){
-                    select = document.getElementById("Catalog" + loc + x);
-                    select.options[select.options.length] = new Option(pCor, pCor);
-                    select.value = pCor;
-                }
-
-                if(pGra){
-                    select = document.getElementById("MinGrade" + loc + x);
-                    select.options[select.options.length] = new Option(pGra, pGra);
-                    select.value = pGra;
-                }
-            }
-            x++;
-        } loc++; x = 0;
-    }
+				//6
+				while (x < orCount6){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row6 ]=====//		
+					if(document.getElementById("dropdown6").value == "Completed" || document.getElementById("dropdown6").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;
+				
+				//7
+				while (x < orCount7){
+					subLocation = "sub" + loc + x; 
+					corLocation = "cor" + loc + x; 
+					graLocation = "gra" + loc + x;
+					
+					//=====[ COMPLETED - Row7 ]=====//		
+					if(document.getElementById("dropdown7").value == "Completed" || document.getElementById("dropdown7").value == "Taking/Completed"){
+						pSub = document.getElementById("val" + subLocation).value;
+						pCor = document.getElementById("val" + corLocation).value;
+						pGra = document.getElementById("val" + graLocation).value;
+								
+								if(pSub){
+									document.getElementById("Subject" + loc + x).value = pSub;					
+								}
+								
+								if(pCor){
+									select = document.getElementById("Catalog" + loc + x);
+									select.options[select.options.length] = new Option(pCor, pCor);
+									select.value = pCor;
+								}
+								
+								if(pGra){
+									select = document.getElementById("MinGrade" + loc + x);
+									select.options[select.options.length] = new Option(pGra, pGra);
+									select.value = pGra;
+								}
+						}										
+					x++;	
+				} loc++; x = 0;						
+		}
 }
 
 function updateORCounts(){
-    document.getElementById("orCount0").value = or0;
-    document.getElementById("orCount1").value = or1;
-    document.getElementById("orCount2").value = or2;
-    document.getElementById("orCount3").value = or3;
-    document.getElementById("orCount4").value = or4;
-    document.getElementById("orCount5").value = or5;
-    document.getElementById("orCount6").value = or6;
-    document.getElementById("orCount7").value = or7;
+	document.getElementById("orCount0").value = or0;
+	document.getElementById("orCount1").value = or1;
+	document.getElementById("orCount2").value = or2;
+	document.getElementById("orCount3").value = or3;
+	document.getElementById("orCount4").value = or4;
+	document.getElementById("orCount5").value = or5;
+	document.getElementById("orCount6").value = or6;
+	document.getElementById("orCount7").value = or7;
 }
 
 function populateElements(formRebuild){
-    if(!formRebuild){
-        var andCount = document.getElementById("andCount").value;
-        var x = 0;
+	if(!formRebuild){
+	var andCount = document.getElementById("andCount").value;
+	var x = 0;
+	
+	//if the count variable is set, generate the correct number of AND's + OR's
+	if (andCount > 0){
+		while (x < andCount){
+			rebuildDivs();
+			x++;
+		} x = 0;
+	}
+	
+	//0
+	if (orCount0 > 0){ and = 0; or = 0;
+		while (x < orCount0){
+			orButtonPressedRebuild();
+			x++;
+		} x = 0;
+	}
+	
+	//1
+	if (orCount1 > 0){ and = 1; or = 0;
+		while (x < orCount1){
+			orButtonPressedRebuild();
+			x++;
+		} x = 0;
+	}
 
-        //if the count variable is set, generate the correct number of AND's + OR's
-        if (andCount > 0){
-            while (x < andCount){
-                rebuildDivs();
-                x++;
-            } x = 0;
-        }
-
-        //0
-        if (orCount0 > 0){ and = 0; or = 0;
-            while (x < orCount0){
-                orButtonPressedRebuild();
-                x++;
-            } x = 0;
-        }
-
-        //1
-        if (orCount1 > 0){ and = 1; or = 0;
-            while (x < orCount1){
-                orButtonPressedRebuild();
-                x++;
-            } x = 0;
-        }
-
-        //2
-        if (orCount2 > 0){ and = 2; or = 0;
-            while (x < orCount2){
-                orButtonPressedRebuild();
-                x++;
-            } x = 0;
-        }
-
-        //3
-        if (orCount3 > 0){ and = 3; or = 0;
-            while (x < orCount3){
-                orButtonPressedRebuild();
-                x++;
-            } x = 0;
-        }
-
-        //4
-        if (orCount4 > 0){ and = 4; or = 0;
-            while (x < orCount4){
-                orButtonPressedRebuild();
-                x++;
-            } x = 0;
-        }
-
-        //5
-        if (orCount5 > 0){ and = 5; or = 0;
-            while (x < orCount5){
-                orButtonPressedRebuild();
-                x++;
-            } x = 0;
-        }
-
-        //6
-        if (orCount6 > 0){ and = 6; or = 0;
-            while (x < orCount6){
-                orButtonPressedRebuild();
-                x++;
-            } x = 0;
-        }
-
-        //7
-        if (orCount7 > 0){ and = 7; or = 0;
-            while (x < orCount7){
-                orButtonPressedRebuild();
-                x++;
-            } x = 0;
-        }
-    }
+	//2
+	if (orCount2 > 0){ and = 2; or = 0;
+		while (x < orCount2){
+			orButtonPressedRebuild();
+			x++;
+		} x = 0;
+	}	
+	
+	//3
+	if (orCount3 > 0){ and = 3; or = 0;
+		while (x < orCount3){
+			orButtonPressedRebuild();
+			x++;
+		} x = 0;
+	}
+	
+	//4
+	if (orCount4 > 0){ and = 4; or = 0;
+		while (x < orCount4){
+			orButtonPressedRebuild();
+			x++;
+		} x = 0;
+	}	
+	
+	//5
+	if (orCount5 > 0){ and = 5; or = 0;
+		while (x < orCount5){
+			orButtonPressedRebuild();
+			x++;
+		} x = 0;
+	}	
+	
+	//6
+	if (orCount6 > 0){ and = 6; or = 0;
+		while (x < orCount6){
+			orButtonPressedRebuild();
+			x++;
+		} x = 0;
+	}	
+	
+	//7
+	if (orCount7 > 0){ and = 7; or = 0;
+		while (x < orCount7){
+			orButtonPressedRebuild();
+			x++;
+		} x = 0;
+	}
+  }
 }
 
 function makeDivVisibleAnd2(){
-    if (and < 7) { and++; }
-    document.getElementById("andCount").value = and;
+	if (and < 7) { and++; }
+	document.getElementById("andCount").value = and;
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
     document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
 }
 
 function rebuildDivs(){
-    if(and == 0){
-        or0 = getNumberOfChildren();
-    } else if (and == 1){
-        or1 = getNumberOfChildren();
-    } else if (and == 2){
-        or2 = getNumberOfChildren();
-    } else if (and == 3){
-        or3 = getNumberOfChildren();
-    } else if (and == 4){
-        or4 = getNumberOfChildren();
-    } else if (and == 5){
-        or5 = getNumberOfChildren();
-    } else if (and == 6){
-        or6 = getNumberOfChildren();
-    } else if (and == 7){
-        or7 = getNumberOfChildren();
-    }
-
-    if (and < 7) { and++; }
-    document.getElementById("andCount").value = and;
+	if(and == 0){
+		or0 = getNumberOfChildren();
+	} else if (and == 1){
+		or1 = getNumberOfChildren();
+	} else if (and == 2){
+		or2 = getNumberOfChildren();
+	} else if (and == 3){
+		or3 = getNumberOfChildren();
+	} else if (and == 4){
+		or4 = getNumberOfChildren();
+	} else if (and == 5){
+		or5 = getNumberOfChildren();
+	} else if (and == 6){
+		or6 = getNumberOfChildren();
+	} else if (and == 7){
+		or7 = getNumberOfChildren();
+	} 
+	
+	if (and < 7) { and++; }
+	document.getElementById("andCount").value = and;
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
-    document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
+	document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
 }
 
 function makeDivVisibleAnd(pID){
@@ -1067,14 +1095,13 @@ function makeDivVisibleAnd(pID){
     and=pID.replace( /[^0-9]/g, `` );
     and++;
     $('#dropdown' + and).prop('disabled', false);
-    document.getElementById("andCount").value = and;
+	document.getElementById("andCount").value = and;
     document.getElementById("divAnd" + and).removeAttribute("class","hiddenDiv");
     document.getElementById("divAnd" + and).setAttribute("class","visibleDiv");
 }
 
 function makeDivInvisible(pID){
     var attachID=`attach` + pID.replace( /[^0-9]/g, `` );
-    var ID_Only_Numerics = pID.replace( /[^0-9]/g, `` );
     //alert(attachID);
     while(document.getElementById(attachID).firstChild) {
         document.getElementById(attachID).removeChild(document.getElementById(attachID).firstChild);
@@ -1084,31 +1111,30 @@ function makeDivInvisible(pID){
             return this.defaultSelected;
         });
     });
-    document.getElementById("divAnd" + ID_Only_Numerics).removeAttribute("class","visibleDiv");
-    document.getElementById("divAnd" + ID_Only_Numerics).setAttribute("class","hiddenDiv");
+    document.getElementById("divAnd" + and).removeAttribute("class","visibleDiv");
+    document.getElementById("divAnd" + and).setAttribute("class","hiddenDiv");
     if(and>0)
         and--;
 }
 
 function removeOrDiv(pID){
     var orTemp = or;
-    let subOffset = 0;  //if we do reduce the OR value by 1, we set this to 1 before subtracting
     var placeholder=pID.replace( /[^0-9]/g, `` );
     and = placeholder.charAt(0);
     or = placeholder.charAt(1);
-    var attachDiv=document.getElementById('attach' + and);
+    var attachDiv=document.getElementById('attach'+and);
     if (or == 0 && attachDiv.children.length > 1){
-        attachDiv.removeChild(attachDiv.childNodes[ 0 ]);
+        attachDiv.removeChild(attachDiv.childNodes[ 1 ]);
     }
     else{
         if (or > attachDiv.children.length)
             or = attachDiv.children.length;
         if(attachDiv.children.length > 1) {
             attachDiv.removeChild(attachDiv.childNodes[ or - 1 ]);
-            subOffset = 1;
+            or--;
         }
     }
-    or = (orTemp - subOffset);//will be 0 or 1, where we used to use or--, we now use subOffset = 1
+    or = orTemp;
 }
 
 function howManyChildren(){
@@ -1120,6 +1146,7 @@ function getNumberOfChildren(){
     var attachDiv=document.getElementById('attach'+and);
     return attachDiv.children.length;
 }
+
 function makeDivVisibleOr(){
     //loadDoc("../model/getCoursesUsingAjax.php", loadCoursesUsingAjax);  //AJAX call
     //getSubjectsAndCatalogsForDropdown();

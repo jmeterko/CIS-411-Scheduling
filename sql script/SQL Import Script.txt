@@ -469,6 +469,16 @@ CREATE TABLE IF NOT EXISTS `studentclass` (
 -- Database: `cis411_csaapp`
 --
 
+  CREATE TABLE IF NOT EXISTS `serials` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `serial` varchar(5000) NOT NULL,
+  `name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;  
+  
+CREATE TABLE IF NOT EXISTS `acad_program` (
+  `Plan` varchar(10) NOT NULL,
+  `Plan_Descr` varchar(30) DEFAULT NULL,
 -- --------------------------------------------------------
 
 

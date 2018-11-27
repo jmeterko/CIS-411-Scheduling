@@ -40,6 +40,9 @@
 			if (userIsAuthorized("SecurityManageRoles")) {  ?>
 				<a class="left" href="../security/index.php?action=SecurityManageRoles">Manage Roles</a> &nbsp;
 		<?php }
+			if (userIsAuthorized("SecurityManageSearches")) {  ?>
+				<a class="left" href="../security/index.php?action=SecurityManageSearches">Manage Searches</a> &nbsp;
+		<?php }
 			if (loggedIn()) {  ?>
 				<a class="left" href="../security/index.php?action=SecurityLogOut">Logout</a>
 		<?php } else { 

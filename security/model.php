@@ -14,7 +14,7 @@
         } else if(!isset($_SESSION["UserID"])) {  // If no current user and don't have access as a guest
                 $authorized = false;
         } else {                  
-            $userID = $_SESSION["UserID"];       // Get current userid from session variable to check access.
+            $userID = $_SESSION["UserID"];        // Get current userid from session variable to check access.
 
             try {
                 $db = connectToMySQL();
@@ -555,6 +555,35 @@
             displayError($e->getMessage());
         }
     }
+
+	function updateSerial($id, $user, $serial){
+        try {
+            $db = connectToMySQL();
+			$query = 'UPDATE serials SET serial = :s WHERE id = :id AND username = :user';
+      
+            $statement = $db->prepare($query);
+            $statement->bindValue(':id', $id);
+            $statement->bindValue(':user', $user);
+            $statement->bindValue(':s', $serial);
+			$success = $statement->execute();
+			$statement->closeCursor();
+
+			if ($success) {
+				return $db->lastInsertId(); // Get generated ID
+			} else {
+				logSQLError($statement->errorInfo());  // Log error to debug
+			}		
+        } catch (PDOException $e) {
+            displayError($e->getMessage());
+        }
+    }	
+	
+		
+	/*function updateSerial($oldID, $user, $serial, $name){
+        try {
+            deleteSearch($oldID);
+			addSerial($user, $serial, $name);
+    }	*/
 	
 	    function getSerial($serialID){
         try {
@@ -571,7 +600,7 @@
         }
     }
 	
-		function getSerialsForUser($user){
+	function getSerialsForUser($user){
         try {
             $db = getDBConnection();
             $query = 'select * from serials where username = :user';
@@ -579,6 +608,21 @@
             $statement->bindValue(':user', $user);
             $statement->execute();
             $results = $statement->fetchAll();  
+            $statement->closeCursor();
+            return $results;
+        } catch (PDOException $e) {
+            displayDBError($e->getMessage());
+        }
+    }
+	
+	function getSerialByName($name){
+        try {
+            $db = getDBConnection();
+            $query = 'select id, name from serials where name = :name';
+            $statement = $db->prepare($query);
+            $statement->bindValue(':name', $name);
+            $statement->execute();
+            $results = $statement->fetch();  
             $statement->closeCursor();
             return $results;
         } catch (PDOException $e) {
