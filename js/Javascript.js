@@ -67,6 +67,22 @@ function finishBuild(){
     formRebuilt = true;
     console.log("Finished");
 }
+function checkSearchName(submitForm) {
+    $.getJSON("../controller/controller.php",
+        {	action: "CheckSearchNameExists",
+            searchName: $('#searchName').val()
+        },
+        function(jsonReturned) {
+            if (jsonReturned.duplicate) {
+                $('#modal').modal('toggle');
+                document.getElementById('submitButton').disabled = true;
+                $('#searchName').select();
+            } else  {
+                document.getElementById('submitButton').disabled = false;
+            }
+        }
+    );
+}
 
 function toggleSaveQuestion(){
     if( document.getElementById("saveQuestion").checked == true ) {
