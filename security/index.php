@@ -62,11 +62,23 @@
             case 'SecurityFunctionDelete':
                 FunctionDelete();
                 break;
+            case 'SecuritySearchDelete':
+                SearchDelete();
+                break;
+            case 'SecuritySearchEdit':
+                SearchEdit();
+                break;
+            case 'SecurityProcessSearchEdit':
+                ProcessSearchEdit();
+                break;
             case 'SecurityProcessFunctionAddEdit':
                 ProcessFunctionAddEdit();
                 break;
             case 'SecurityManageRoles':
                 ManageRoles();
+                break;
+            case 'SecurityManageSearches':
+                ManageSearches();
                 break;
             case 'SecurityRoleAdd':
                 RoleAdd();
@@ -329,7 +341,97 @@
 		
 		echo json_encode(array('id'=>$id, 'username'=>$username, 'duplicate'=>$duplicate));
 	}
+function ManageSearches(){
+    $user = $_SESSION['username'];           //see who the current user is
+    $results = getSerialsForUser($user);	 //get all their searches
+    //print_r($results);
+    include('../security/manage_searches_form.php');//include output page to display all searches
+}
+function SearchDelete() {
+    if(isset($_POST["numListed"]))
+    {
+        $numListed = $_POST["numListed"];
+        for($i = 0; $i < $numListed; ++$i)
+        {
+            if(isset($_POST["record$i"]))
+            {
+                deleteSearch($_POST["record$i"]);
+            }
+        }
+    }
 
+    ManageSearches();
+}
+
+function deleteSearch($id) {
+    try{
+        $db = getDBConnection();
+        $query = "DELETE FROM serials WHERE id = :id";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+        $success = $statement->execute();
+        $statement->closeCursor();
+
+        if ($success) {
+            return $statement->rowCount(); // Number of rows affected
+        } else {
+            logSQLError($statement->errorInfo());  // Log error
+        }
+    } catch (PDOException $e) {
+        displayDBError($e->getMessage());
+    }
+}
+
+
+function SearchEdit() {
+    $id = $_GET["id"];
+    if (empty($id)) {
+        displayError("An ID is required for this function.");
+    } else {
+        $row = getSerial($id);
+        if ($row == false) {
+            displayError("<p>Saved Search ID is not on file.</p> ");
+        } else {
+            $id = $row["id"];
+            $name = $row["name"];
+            include('../security/modify_search_form.php');
+        }
+    }
+}
+function ProcessSearchEdit() {
+    $errors = "";
+    if(empty($_POST["Name"])){
+        $errors .= "<li>Error, field \"Name\" is blank.</li>";
+    }
+
+    if($errors == "") {
+        $id = "";
+        if (isset($_POST["SearchID"])){ $id = $_POST["SearchID"]; }
+        $name = $_POST["Name"];
+        updateSearchName($id, $name);
+        ManageSearches();
+    } else {
+        displayError($errors);
+    }
+}
+function updateSearchName($id, $name){
+    try {
+        $db = connectToMySQL();
+        $query = 'UPDATE serials SET name = :name WHERE id = :id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+        $statement->bindValue(':name', $name);
+        $success = $statement->execute();
+        $statement->closeCursor();
+        if ($success) {
+            return $statement->rowCount();         // Number of rows affected
+        } else {
+            logSQLError($statement->errorInfo());  // Log error to debug
+        }
+    } catch (PDOException $e) {
+        displayError($e->getMessage());
+    }
+}
 ?>
 
 
