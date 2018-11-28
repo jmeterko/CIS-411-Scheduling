@@ -7,7 +7,7 @@ require '../security/headerInclude.php';
 
     <table border>
         <tr>
-            <!--<td><b>&nbsp;Search ID&nbsp;</b></td>--> <td><b>&nbsp;Search Name&nbsp;</b></td> <!--<td>&nbsp;Rename&nbsp;</td>--> <td>&nbsp;Delete&nbsp;</td>
+            <!--<td><b>&nbsp;Search ID&nbsp;</b></td>--> <td><b>&nbsp;Search Name&nbsp;</b></td> <td>&nbsp;Rename&nbsp;</td> <td>&nbsp;Delete&nbsp;</td>
         </tr>
         <?php
         $j = 0;
@@ -18,7 +18,7 @@ require '../security/headerInclude.php';
             echo "<tr>";
            /* echo "<td>&nbsp;$id</td>";*/
             echo "<td>&nbsp;$name</td>";
-            /*echo "<td>&nbsp;<a href=\"../security/index.php?action=SecuritySearchEdit&id=$id\">Edit</a></td>";*/
+            echo "<td>&nbsp;<a href=\"../security/index.php?action=SecuritySearchEdit&id=$id\">Edit</a></td>";
             echo "<td>&nbsp;<input type=\"checkbox\" name=\"record$j\" value=\"$id\"/></td>";
             echo "</tr>\n";
             ++$j;
