@@ -1,6 +1,6 @@
 <?php
 	$title = "Control Panel - Modify User";
-	require '../security/headerInclude.php';
+	require_once '../security/headerInclude.php';
 ?>
 
 	<?php

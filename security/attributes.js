@@ -1,6 +1,6 @@
-window.onload = function(){
+/*window.onload = function(){
 	document.getElementById('main').style.padding = "10px";
-}
+}*/
 function selectAll(id)
 {
 	s = document.getElementById(id);

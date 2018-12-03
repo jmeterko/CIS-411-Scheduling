@@ -265,15 +265,29 @@
 				//should never reach this code. Make search name a required field if SaveQuestion is checked. 
 				include '../view/errorPage.php';			
 			}
-			
-			//user wants to save a provided a name 
-			else {//serialize and save to user profile under their given search name
-				$s = serialize($stdq); 			        //serialize the object, store string in $s
-				$user = $_SESSION['username'];          //see who the current user is
-				addSerial($user, $s, $stdq->searchName);//save the search under the saved name and user who created it. 
-			}
-			
-			/**IMPORTANT* index.php is my current output page for testing my seriailzier. Instead of going here after the form is submitted, 
+
+            //user wants to save under provided name
+            else {//serialize and save to user profile under their given search name
+                $s = serialize($stdq); 			        //serialize the object, store string in $s
+                $user = $_SESSION['username'];          //see who the current user is
+                //$action = '';							//action to determine if its a save or update
+
+                //if(isset($_POST['UpdateSearch'])) { $action = $_POST['UpdateSearch']; }
+                //if(isset($_POST['AddSearch'])) { $action = $_POST['AddSearch']; }
+
+                if(isset($_POST['UpdateSearch'])){//if the search was overriding an exisiting search
+                    $previousRecordID = getSerialByNameAndUser($stdq->searchName, $user);
+                    echo $previousRecordID . "is the previous record ID.<br>";
+                    updateSerial($previousRecordID['id'], $user, $s);//update the search under the newly given name and user who changed it.
+                }
+
+                if(isset($_POST['AddSearch'])) {//if the search is newly created (no update)
+                    addSerial($user, $s, $stdq->searchName);//save the search under the saved name and user who created it.
+                }
+            }
+
+
+            /**IMPORTANT* index.php is my current output page for testing my seriailzier. Instead of going here after the form is submitted,
 			*   you will include the resultspage.php or some kind of executeStudentQuestion function instead.
 			*	If you are including a page, you dont need to pass the object. On your included page, just access variables as normal.
 			*   If you are running a function here, you must pass $stdq as an arguement in order to access it there. 
@@ -281,7 +295,13 @@
 			*	Accessing StudentQuestion class properties:
 			* 	$stdq->cat0 // accesses the value stored in the first category dropdown0 (see more examples in mainAppStudentQuestion.php)
 			*/
-			include '../view/index.php';			
+			//include '../view/DisplayData.php';
+			include '../view/DisplayData.php';
 		}
+		//david testing stuff, can delete later
+        //only do this if user did NOT save
+        if(!$saveQuestion){
+		    include '../view/DisplayData.php';
+        }
 	}
 ?>

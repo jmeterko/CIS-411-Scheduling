@@ -1,14 +1,18 @@
 <?php
-$title = "Modify Program";
+$title = "ModifyAcadProgram";
 require '../view/headerInclude.php';
 ?>
 <?php
     $acadPrograms = getAllAcademicPrograms();
 ?>
-<body onload="loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON)" >
-$acadPrograms = getAllAcademicPrograms();
-?>
-    <body onload="loadDoc('../model/getProgramsUsingJSON.php', getProgramsUsingJSON)" >
+<?php if (isset($programSubjectsDump)) {echo "<pre style='font-size:18px;'>" . $programSubjectsDump . "</pre>";} ?>
+<div style="
+  width: 550px;
+  margin:  auto;
+  background-color: #becccc;"
+
+     id = "body">
+<body style="background-color: #becccc;" >
     <form enctype="multipart/form-data"
           action="../controller/controller.php?action=ProcessModifyAcadProgram" onsubmit="selectAll('hasSubjectsSelect')" method="post">
         <h3>Modify a program:</h3>
@@ -23,8 +27,8 @@ $acadPrograms = getAllAcademicPrograms();
         </select>
         &nbsp;
         <select name="hasSubjects[]" id="hasSubjectsSelect" size="10" multiple="multiple">
-            <option >Has these subjects:</option>
-            <option ></option>
+            <option disabled>Has these subjects:</option>
+            <option disabled></option>
             <td>
                 <input type="button" value=">>" onclick="for (let i=0; i<200; i++){swap('hasSubjectsSelect','hasNotSubjectsSelect')}">
 
@@ -33,8 +37,8 @@ $acadPrograms = getAllAcademicPrograms();
         </select>
         &nbsp;
         <select name="hasNotSubjects" id="hasNotSubjectsSelect" size="10" multiple>
-            <option >Does not have:</option>
-            <option ></option>
+            <option disabled>Does not have:</option>
+            <option disabled></option>
 
 
         </select>

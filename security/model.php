@@ -210,6 +210,25 @@
             displayError($e->getMessage());
         }
     }
+
+    function updateUserToReader($userID){
+        try{
+        $db = connectToMySQL();
+            $query = "INSERT IGNORE INTO userroles (UserID, RoleID) VALUES (:UserID, 3)";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':UserID', $userID);
+            $success = $statement->execute();
+        $statement->closeCursor();
+        if ($success) {
+            return $statement->rowCount();         // Number of rows affected
+        } else {
+            logSQLError($statement->errorInfo());  // Log error to debug
+        }
+    } catch (PDOException $e) {
+        displayError($e->getMessage());
+        }
+    }
+
     function updateUser($userID, $firstName, $lastName, $userName, $password, $email, $hasAttributes){
         try {
             $db = connectToMySQL();
@@ -278,7 +297,7 @@
 				logSQLError($statement->errorInfo());  // Log error 
 			}		
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
 
@@ -292,7 +311,7 @@
             $statement->closeCursor();
             return $results;
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
     function getFunction($FunctionID){
@@ -306,7 +325,7 @@
             $statement->closeCursor();
             return $result;
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
     function addFunction($name, $desc){
@@ -366,7 +385,7 @@
 				logSQLError($statement->errorInfo());  // Log error 
 			}		
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
 
@@ -380,7 +399,7 @@
             $statement->closeCursor();
             return $results;
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
     function getRole($RoleID){
@@ -394,7 +413,7 @@
             $statement->closeCursor();
             return $result;
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
     function addRole($name, $desc){
@@ -472,7 +491,7 @@
 				logSQLError($statement->errorInfo());  // Log error 
 			}		
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
     function getRoleFunctions($ID) {
@@ -489,7 +508,7 @@
             $statement->closeCursor();
             return $results;
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
     function getNotRoleFunctions($ID) {
@@ -508,7 +527,7 @@
             $statement->closeCursor();
             return $results;
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
 	
@@ -548,7 +567,7 @@
             $statement->closeCursor();
             return $result;
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
 	
@@ -563,7 +582,72 @@
             $statement->closeCursor();
             return $results;
         } catch (PDOException $e) {
-            displayDBError($e->getMessage());
+            displayError($e->getMessage());
         }
     }
+function updateSerial($id, $user, $serial){
+    try {
+        echo "Updating serial... called in model<br>";
+        echo "ID is $id<br>";
+        echo "User is $user<br>";
+        echo "Serial is $serial<br>";
+        $db = connectToMySQL();
+        $query = 'UPDATE serials SET serial = :s WHERE id = :id AND username = :user';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+        $statement->bindValue(':user', $user);
+        $statement->bindValue(':s', $serial);
+        echo "<br><br>Our query is:<br> $query <br>";
+        $success = $statement->execute();
+        $statement->closeCursor();
+        if ($success) {
+            echo "The number of rows affected is " . $statement->rowCount();
+            return $db->lastInsertId(); // Get generated ID
+        } else {
+            logSQLError($statement->errorInfo());  // Log error to debug
+        }
+    } catch (PDOException $e) {
+        displayError($e->getMessage());
+    }
+}
+
+
+/*function updateSerial($oldID, $user, $serial, $name){
+    try {
+        deleteSearch($oldID);
+        addSerial($user, $serial, $name);
+}	*/
+
+
+
+
+function getSerialByName($name){
+    try {
+        $db = getDBConnection();
+        $query = 'select id, name from serials where name = :name';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':name', $name);
+        $statement->execute();
+        $results = $statement->fetch();
+        $statement->closeCursor();
+        return $results;//returns an array 11/28 11:31 am
+    } catch (PDOException $e) {
+        displayError($e->getMessage());
+    }
+}
+function getSerialByNameAndUser($name, $user){
+    try {
+        $db = getDBConnection();
+        $query = 'select id, name from serials where name = :name and username = :user';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':name', $name);
+        $statement->bindValue(':user', $user);
+        $statement->execute();
+        $results = $statement->fetch();
+        $statement->closeCursor();
+        return $results;//returns an array 11/28 11:31 am
+    } catch (PDOException $e) {
+        displayError($e->getMessage());
+    }
+}
 ?>

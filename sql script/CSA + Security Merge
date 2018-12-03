@@ -1,0 +1,863 @@
+
+
+-- Drops everything and creates CSA tables, then security, then UserPrograms, then Serials
+
+   DROP TABLE IF EXISTS studentclass;
+   DROP TABLE IF EXISTS studentmajor;
+   DROP TABLE IF EXISTS courseoffering;
+   DROP TABLE IF EXISTS course;
+   DROP TABLE IF EXISTS student;
+   DROP TABLE IF EXISTS userroles;
+   DROP TABLE IF EXISTS rolefunctions;
+   DROP TABLE IF EXISTS userprograms;
+   DROP TABLE IF EXISTS programsubject;
+   DROP TABLE IF EXISTS users;
+   DROP TABLE IF EXISTS roles;
+   DROP TABLE IF EXISTS functions;
+   DROP TABLE IF EXISTS serials;
+
+CREATE TABLE IF NOT EXISTS `course` (
+  `Subject` varchar(4) NOT NULL,
+  `Catalog` varchar(5) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `Acad_Org` varchar(4) NOT NULL,
+  constraint PK_course Primary Key (Subject, Catalog )
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS`courseoffering` (
+  `Term` int(11) NOT NULL,
+  `Session` varchar(3) NOT NULL,
+  `Subject` varchar(4) NOT NULL,
+  `Catalog` varchar(5) NOT NULL,
+  `Section` varchar(4) NOT NULL,
+  `InstructorName` varchar(22) NOT NULL,
+  `Count_ID` int(11) NOT NULL,
+  `Start_Time` varchar(5) DEFAULT NULL,
+  `End_Time` varchar(5) DEFAULT NULL,
+  `Days` varchar(5) DEFAULT NULL,
+  `Cap_Enrl` int(11) NOT NULL,
+  constraint PK_courseoffering Primary Key (Term, Session, Subject, Catalog, Section),
+  constraint FK_courseoffering_course Foreign Key (Subject, Catalog) references course(Subject, Catalog)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `student` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `Last_Term` int(11) NOT NULL,
+  `Current` varchar(1) NOT NULL,
+  `Location` varchar(7) NOT NULL,
+  `Total` decimal(7,3) NOT NULL,
+  `GPA` decimal(5,3) NOT NULL,
+  `Phone` varchar(14) NOT NULL,
+  `EagleMail_ID` varchar(38) NOT NULL,
+  `Advisor_1` varchar(27) DEFAULT NULL,
+  `Advisor_1_Email` varchar(24) DEFAULT NULL,
+  `Advisor_2` varchar(22) DEFAULT NULL,
+  `Advisor_2_Email` varchar(24) DEFAULT NULL,
+  `Degree_Term` int(11) DEFAULT NULL,
+  `Degree` varchar(4) DEFAULT NULL,
+  `Graduated_Plan_1` varchar(10) DEFAULT NULL,
+  `Graduated_Plan_2` varchar(10) DEFAULT NULL,
+  `Graduated_Plan_3` varchar(10) DEFAULT NULL,
+  `Graduated_Plan_4` varchar(10) DEFAULT NULL,
+  `Graduated_Plan_5` varchar(30) DEFAULT NULL,
+   constraint PK_student Primary Key (ID)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `studentclass` (
+  `ID` int(11) NOT NULL,
+  `Term` int(11) NOT NULL,
+  `Session` varchar(3) NOT NULL,
+  `Subject` varchar(4) NOT NULL,
+  `Catalog` varchar(5) NOT NULL,
+  `Section` varchar(4) NOT NULL,
+  `Grade` varchar(2) NOT NULL,
+  `Descr` varchar(30),
+  constraint PK_studentclass Primary Key (ID, Term, Session, Subject, Catalog, Section),
+  constraint FK_studentclass_student Foreign Key (ID) references student(ID)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+  CREATE INDEX IDX_STUDENTCLASS
+  ON studentclass (Subject, Catalog);
+
+CREATE TABLE IF NOT EXISTS `acad_program` (
+  `Plan` varchar(10) NOT NULL,
+  `Plan_Descr` varchar(30) DEFAULT NULL,
+
+  constraint PK_acad_program Primary Key (Plan)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS`studentmajor` (
+  `ID` int(11) NOT NULL,
+  `Plan` varchar(10) NOT NULL,
+
+  constraint PK_studentmajor Primary Key (ID, Plan),
+  constraint FK_studentmajor_student Foreign Key (ID) references student(ID),
+  constraint FK_studentmajor_acad_program Foreign Key (Plan) references acad_program(Plan)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `Oldest_Term` int(4) NOT NULL,
+  `Current_Term` int(4) NOT NULL,
+  `Latest_Term` int(4) NOT NULL,
+  `Last_Import_Date` date NOT NULL,
+  constraint PK_settings Primary Key (Oldest_Term)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `subject` (
+  `Subject` varchar(4) NOT NULL,
+
+  constraint PK_subject Primary Key (Subject)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `programsubject` (
+  `Plan` varchar(10) NOT NULL,
+  `Subject` varchar(4) NOT NULL,
+
+  constraint PK_programsubject Primary Key (Subject, Plan),
+  constraint FK_programsubject_subject Foreign Key (Subject) references subject(Subject),
+  constraint FK_programsubject_acad_program Foreign Key (Plan) references acad_program(Plan)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+-- why isn't our CREATE working for our student ID FK?
+-- for now, we add the INDEX after creating the table
+-- Need to fix our CREATE statement before shipping, this is some janky shit
+
+CREATE TABLE `functions` (
+  `FunctionID` int(11) NOT NULL,
+  `Name` varchar(64) NOT NULL,
+  `Description` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `functions`
+--
+
+INSERT INTO `functions` (`FunctionID`, `Name`, `Description`) VALUES
+(1, 'SecurityManageUsers', 'Allows for reading users and interface to add, change, and delete.'),
+(2, 'SecurityUserAdd', 'Allows for adding of users by enabling link on manage form.'),
+(3, 'SecurityUserEdit', 'Allows for editing of users by enabling link on manage form.'),
+(4, 'SecurityUserDelete', 'Allows for deleting of users by enabling checkbox on manage form.'),
+(5, 'SecurityProcessUserAddEdit', 'Required to process an add, change, or delete of users.'),
+(6, 'SecurityManageFunctions', 'Allows for reading functions and interface to add, change, and delete.'),
+(7, 'SecurityFunctionAdd', 'Allows for adding of functions by enabling link on manage form.'),
+(8, 'SecurityFunctionEdit', 'Allows for editing of functions by enabling link on manage form.'),
+(9, 'SecurityFunctionDelete', 'Allows for deleting of functions by enabling checkbox on manage form.'),
+(10, 'SecurityProcessFunctionAddEdit', 'Required to process an add, change, or delete of functions.'),
+(11, 'SecurityManageRoles', 'Allows for reading roles and interface to add, change, and delete.'),
+(12, 'SecurityRoleAdd', 'Allows for adding of roles by enabling link on manage form.'),
+(13, 'SecurityRoleEdit', 'Allows for editing of roles by enabling link on manage form.'),
+(14, 'SecurityRoleDelete', 'Allows for deleting of roles by enabling checkbox on manage form.'),
+(15, 'SecurityProcessRoleAddEdit', 'Required to process an add, change, or delete of roles.'),
+(16, 'SecurityLogin', 'Provide Username and Password'),
+(17, 'SecurityLogOut', 'Exit the application.'),
+(18, 'SecurityProcessLogin', 'Try to authorize a user login.'),
+(19, 'SecurityHome', 'Default security page with login button.'),
+(20, 'About', 'Describes our site'),
+(21, 'AddData', 'Adds new data to SQL table'),
+(22, 'Backstory', 'Describes our backstory of the book'),
+(23, 'Construction', 'Current page is under development'),
+(24, 'CurrentNewsletter', 'Shows this month\'s newsletter'),
+(25, 'currentTextFiles', 'Shows current records of reviews and quotes text files'),
+(26, 'DeleteData', 'Deletes current SQL entry on screen'),
+(27, 'DisplayBook', 'Displays currently selected SQL entry'),
+(28, 'EditData', 'Allows modification of current SQL entry'),
+(29, 'fileManagement', 'Allows for new text, img, and newsletter files to be uploaded to site'),
+(30, 'Grading', 'Shows current grade table for assignment'),
+(31, 'Home', 'Takes user to home page'),
+(32, 'Ideas', 'Page that describes design inspiration and ideas of where they came from'),
+(33, 'ListData', 'Shows all current data to user'),
+(34, 'processAddEdit', 'Function to add or edit specific SQL entries'),
+(35, 'processFileUpload', 'Function to validate the file upload mechanism'),
+(36, 'processLogoUpload', 'Function to validate the file upload mechanism'),
+(37, 'processNewsletterUpload', 'Function to validate the file upload mechanism'),
+(38, 'Purchase', 'Shows user where they can buy the book online'),
+(39, 'Sales', 'Shows user current number of sales'),
+(40, 'SearchSales', 'Allows user to search through different sale data entries'),
+(41, 'sendEmail', 'Function to send monthly newsletter to all registered users'),
+(42, 'SearchData', 'Allows user to search through sales history based on their criteria'),
+(43, 'Location', 'Shows user current location of our printing company'),
+(44, 'ProcessRegister', 'Function to validate the registration of a new user on the email list'),
+(45, 'Register', 'Shows user current sign-up form page'),
+(46, 'Reviews', 'Shows user current reviews posted on Amazon'),
+(47, 'SecurityCheckUserNameExists', 'Check to see if username already exists before adding it to new users'),
+(48, 'StudentQuestion', 'Allows user to search student records'),
+(49, 'ProcessStudentQuestion', 'Allows user to search students'),
+(50, 'ProcessDisplaySerials', 'Test function to show the user serial strings / saved search links'),
+(51, 'RebuildQuestion', 'Builds a student question from a serial string'),
+(52, 'ProcessImportData', 'Allows user to import student and class data'),
+(53, 'CourseQuestion', 'Ask a Course Question and receive Course Results'),
+(54, 'DisplayData', 'Display the result set for a StudentQuestion'),
+(55, 'ImportData', 'Import students, classes, and students-classes files into database'),
+(59, 'ModifyAcadProgram', 'Associate Subjects with Academic Programs'),
+(60, 'ModifyUserProgram', 'Associate Users with Academic Programs'),
+(61, 'ProcessImportData', 'Process the files imported for our database'),
+(62, 'StudentHistory', 'Display the results of a single students\' course history'),
+(63, 'UpdateTermSettings', 'Update the \"CURRENT TERM\" in our database\'s saved settings'),
+(64, 'ProcessModifyAcadProgram', 'Process the selections made when associating subjects with programs'),
+(65, 'ProcessModifyUserProgram', 'Process the selections made when associating users with programs'),
+(66, 'HomePage', 'Standard navigation page'),
+(67, 'Settings', 'Manage User Programs, Progam Subjects, and Current Term');
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rolefunctions`
+--
+
+CREATE TABLE `rolefunctions` (
+  `RoleID` int(11) NOT NULL,
+  `FunctionID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rolefunctions`
+--
+
+INSERT INTO `rolefunctions` (`RoleID`, `FunctionID`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12),
+(1, 13),
+(1, 14),
+(1, 15),
+(2, 1),
+(2, 6),
+(2, 7),
+(2, 8),
+(2, 9),
+(2, 10),
+(2, 11),
+(2, 12),
+(2, 13),
+(2, 14),
+(2, 15),
+(3, 1),
+(3, 6),
+(3, 11),
+(4, 11),
+(4, 16),
+(4, 17),
+(4, 18),
+(4, 19),
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12),
+(1, 13),
+(1, 14),
+(1, 15),
+(2, 1),
+(2, 6),
+(2, 7),
+(2, 8),
+(1, 47),
+(1, 48),
+(1, 49),
+(1, 50),
+(1, 51),
+(1, 52),
+(1, 53),
+(1, 54),
+(1, 55),
+(1, 56),
+(1, 57),
+(1, 58),
+(1, 59),
+(1, 60),
+(1, 61),
+(1, 62),
+(1, 63),
+(1, 64),
+(3, 48),
+(3, 49),
+(3, 50),
+(3, 51),
+(3, 53),
+(3, 54),
+(3, 62),
+(3, 66),
+(1, 66),
+(1, 67);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `RoleID` int(11) NOT NULL,
+  `Name` varchar(32) NOT NULL,
+  `Description` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`RoleID`, `Name`, `Description`) VALUES
+(1, 'admin', 'Full privileges.'),
+(2, 'updater', 'Update/Read privileges.'),
+(3, 'reader', 'Read-only privileges.'),
+(4, 'guest', 'Features available to all visitors without logging in.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userroles`
+--
+
+CREATE TABLE `userroles` (
+  `UserID` int(11) NOT NULL,
+  `RoleID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userroles`
+--
+
+INSERT INTO `userroles` (`UserID`, `RoleID`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(11, 1),
+(13, 1),
+(5, 1),
+(6, 1),
+(7, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `UserID` int(11) NOT NULL,
+  `FirstName` varchar(32) NOT NULL,
+  `LastName` varchar(32) NOT NULL,
+  `UserName` varchar(32) UNIQUE NOT NULL,
+  `Password` varchar(40) NOT NULL,
+  `Email` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `UserName`, `Password`, `Email`) VALUES
+(1, 'Jon', 'ODonnell', 'admin', 'admin', 'jodonnell@clarion.edu'),
+(2, 'Bill', 'Updater', 'bill', 'c692d6a10598e0a801576fdd4ecf3c37e45bfbc4', 'bill@localhost'),
+(3, 'Joe', 'Reader', 'joe', '16a9a54ddf4259952e3c118c763138e83693d7fd', 'joe@localhost'),
+(4, 'guest', 'guest', 'guest', '35675e68f4b5af7b995d9205ad0fc43842f16450', 'guest@localhost'),
+(11, 'David', 'O\'Donnell', 'DavidTheAdmin', '', 'd.m.odonnell@eagle.clarion.edu'),
+(13, 'David', 'O\'Donnell', 'Admin_All_Programs', '', 'd.m.odonnell@eagle.clarion.edu'),
+(5, 'David', 'ODonnell', 's_dmodonnell', 'admin', 's_dmodonnell@clarion.edu'),
+(6, 'Jon', 'ODonnell', 'jodonnell', 'admin', 'jodonnell@clarion.edu'),
+(7, 'Katy', 'ODonnell', 'kodonnell', 'admin', 'kodonnell@clarion.edu');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `functions`
+--
+ALTER TABLE `functions`
+  ADD PRIMARY KEY (`FunctionID`);
+
+--
+-- Indexes for table `rolefunctions`
+--
+ALTER TABLE `rolefunctions`
+  ADD KEY `RoleID` (`RoleID`),
+  ADD KEY `FunctionID` (`FunctionID`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`RoleID`);
+
+--
+-- Indexes for table `userroles`
+--
+ALTER TABLE `userroles`
+  ADD KEY `UserID` (`UserID`),
+  ADD KEY `RoleID` (`RoleID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`UserID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `functions`
+--
+ALTER TABLE `functions`
+  MODIFY `FunctionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `RoleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `rolefunctions`
+--
+
+--
+-- Constraints for table `userroles`
+--
+ALTER TABLE `userroles`
+  ADD CONSTRAINT `userroles_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `userroles_ibfk_2` FOREIGN KEY (`RoleID`) REFERENCES `roles` (`RoleID`) ON DELETE CASCADE;
+
+  CREATE TABLE IF NOT EXISTS `userprograms` (
+    `UserID` int(11) NOT NULL,
+    `Plan` varchar(10) NOT NULL,
+    `UserName` varchar(32) NOT NULL,
+    constraint PK_userprograms Primary Key (UserID, Plan),
+    constraint FK_userprograms_acad_program Foreign Key (Plan) references acad_program(Plan)
+  ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT IGNORE INTO `acad_program` (`Plan`, `Plan_Descr`) VALUES
+('AA ASAA', 'Assoc of Arts, Arts And Sci AA'),
+('AS BSAD AM', 'Bus Admin: Gen Management AS'),
+('AS CRJT', 'Criminal Justice AS'),
+('AS ECH', 'Early Childhood Educ AS'),
+('AS LBS', 'Legal Business Studies AS'),
+('AS PLS', 'Paralegal Studies AS'),
+('AS PNUR', 'Pre-Nursing AS'),
+('AS RHSE', 'Rehabilitative Services AS'),
+('ASN NURS', 'Nursing ASN'),
+('BA ANTH', 'Anthropology BA'),
+('BA ART', 'Art BA'),
+('BA ECN', 'Economics (A&S) BA'),
+('BA ENG', 'English BA'),
+('BA FR', 'World Languages: French BA'),
+('BA HIST', 'History BA'),
+('BA PHIL', 'Philosophy BA'),
+('BA PS', 'Political Science BA'),
+('BA PS CJ', 'Political Sc: Criminal Justice'),
+('BA PSY', 'Psychology BA'),
+('BA SOC', 'Sociology BA'),
+('BA SOCP', 'Sociology/Psychology BA'),
+('BA SPAN', 'World Languages: Spanish BA'),
+('BA THE', 'Theatre BA'),
+('BFA ART', 'Art BFA'),
+('BFA ART GA', 'Art: Graphic Design BFA'),
+('BFA THE AC', 'Theatre: Acting BFA'),
+('BFA THE DT', 'Theatre: Design Tech Dir BFA'),
+('BFA THE MT', 'Theatre: Musical Theatre BFA'),
+('BS ASUB', 'A & S Exploratory Business BS'),
+('BS BIOL', 'Biology BS'),
+('BS BIOL EC', 'Biology: Ecology/Evol BS'),
+('BS CHEM', 'Chemistry BS'),
+('BS CHEM BC', 'Chemistry: Biochemistry BS'),
+('BS CHEM CO', 'Chemistry: Coop Engineering BS'),
+('BS CJA', 'Criminal Justice Admin'),
+('BS COMM DM', 'Comm: Digital Media BS'),
+('BS COMM JR', 'Comm: Journalism BS'),
+('BS COMM SC', 'Comm: PR/Adv/Corp Comm BS'),
+('BS CS', 'Computer Science BS'),
+('BS EBIO', 'Environmental Biology BS'),
+('BS EVGO', 'Environmental Geoscience BS'),
+('BS IS', 'Information Systems BS'),
+('BS LS', 'Liberal Studies BS'),
+('BS LS ATH', 'Lib Studies: Ath Training BS'),
+('BS LS COMM', 'Liberal Studies: Comm BS'),
+('BS LS EDU', 'Liberal Studies: Education BS'),
+('BS LS EN', 'Liberal Studies: English BS'),
+('BS LS GU', 'Liberal Studies: Global Und BS'),
+('BS LS LIB', 'Lib Studies: Library Sci BS'),
+('BS LS SM', 'Lib Studies: Sport Mgmt BS'),
+('BS LS WRI', 'Liberal Studies: Writing BS'),
+('BS MATH', 'Mathematics BS'),
+('BS MATH FM', 'Mathematics: Fin Math & Ac Sci'),
+('BS MBIO', 'Molecular Biology/Biotech BS'),
+('BS MEDI', 'Medical Imaging Sciences BS'),
+('BS MMCS', 'Mass Media Arts, Journalism BS'),
+('BS MMCS AD', 'Communication: Advertising BS'),
+('BS MMCS BD', 'Communication: Broadcasting BS'),
+('BS MMCS CC', 'Communication: Corp Comm BS'),
+('BS MMCS FM', 'Communication: Film BS'),
+('BS MMCS JR', 'Communication: Journalism BS'),
+('BS MMCS PR', 'Communication: Public Rel BS'),
+('BS MT', 'Medical Technology BS'),
+('BS NU FIT', 'Nutrition & Fitness BS'),
+('BS PHY', 'Physics BS'),
+('BS PHY APH', 'Physics: Astrophysics BS'),
+('BS PNUR', 'Pre-Nursing BS'),
+('BS PSY', 'Psychology BS'),
+('BS RHSC', 'Rehabilitative Sciences BS'),
+('BS SP', 'Speech Path & Audiology BS'),
+('BS UND', 'Undecided/Exploratory BS'),
+('BSBA ACNT', 'Accounting BSBA'),
+('BSBA BECO', 'Business Economics BSBA'),
+('BSBA FIN', 'Finance BSBA'),
+('BSBA IBUS', 'International Business BSBA'),
+('BSBA INDR', 'Human Resource Management BSBA'),
+('BSBA MGMT', 'Management BSBA'),
+('BSBA MKTG', 'Marketing BSBA'),
+('BSBA RE', 'Real Estate BSBA'),
+('BSED ECH', 'Early Childhood Educ BSE'),
+('BSED ECSP', 'Early Child/Special Educ BSE'),
+('BSED ELCH', 'Elem Educ/Early Childhood BSE'),
+('BSED ELED', 'Elementary Education BSE'),
+('BSED ELSE', 'Elem Educ/Spec Educ BSE'),
+('BSED LSCI', 'Library Science BSE'),
+('BSED MLMA', 'Middle Level Ed Math Conc BSE'),
+('BSED MLRL', 'Middle Level Ed Read Conc BSE'),
+('BSED MLSS', 'Middle Level Ed Soc St Con BSE'),
+('BSED MSRL', 'Mid Level Special Ed Read BSE'),
+('BSED MUED', 'Music Education BSE'),
+('BSED SBIO', 'Sec Ed, Biology BSE'),
+('BSED SENG', 'Sec Ed, English BSE'),
+('BSED SFRN', 'Sec Ed, French BSE'),
+('BSED SMAT', 'Sec Ed, Mathematics BSE'),
+('BSED SPDIS', 'Special Ed Dual Pre K-8/7-12'),
+('BSED SPED', 'Special Education BSE'),
+('BSED SSPN', 'Sec Ed, Spanish BSE'),
+('BSED SSTU', 'Sec Ed, Social Studies BSE'),
+('BSN NURS4Y', 'Nursing 4 year BSN'),
+('CER APS', 'Advanced Paralegal Studies CER'),
+('CER OTS', 'Opioid Treatment Specialst CER'),
+('COACH PROG', 'Ath Coaching Program'),
+('HON PROG', 'Honors Program'),
+('MBA BSAD', 'Business Administration MBA'),
+('MN 2D ART', 'Minor Art: 2 D Studio'),
+('MN 3D ART', 'Minor Art: 3 D Studio'),
+('MN ACTG', 'Minor Accounting'),
+('MN ACTING', 'Minor Theatre: Acting'),
+('MN ANC MED', 'Minor Ancient Mediterranean'),
+('MN ANTHRO', 'Minor Anthropology'),
+('MN ART', 'Minor Art'),
+('MN ART HIS', 'Minor Art: Art History'),
+('MN ART INT', 'Minor Art: Intermedia Studio'),
+('MN ATH COH', 'Minor Athletic Coaching'),
+('MN BIOTECH', 'Minor Molecular, Cell, Org Bio'),
+('MN BU PMBA', 'Minor Bus Admin-Pre MBA Track'),
+('MN BUSADM', 'Minor Business Admin-Trad Trac'),
+('MN CHEM', 'Minor Chemistry'),
+('MN COMP SC', 'Minor Computer Science'),
+('MN CR WRIT', 'Minor English: Creat Writing'),
+('MN DANCE', 'Minor Theatre Emphasis Danc'),
+('MN ECON', 'Minor Economics'),
+('MN FILM', 'Minor Film Studies'),
+('MN FIN', 'Minor Finance'),
+('MN FRENCH', 'Minor French'),
+('MN GEOG', 'Minor Geography'),
+('MN GERMAN', 'Minor German'),
+('MN GIS', 'Minor Geographic Info Science'),
+('MN HBS', 'Minor History: Black Studies'),
+('MN HISTORY', 'Minor History'),
+('MN INF SYS', 'Minor Information Systems'),
+('MN INT BUS', 'Minor International Business'),
+('MN LAT AM', 'Minor Latin Am & Caribbean'),
+('MN LDR ENT', 'Minor Leadership Entrepreneur'),
+('MN LDRSHIP', 'Minor Leadership'),
+('MN LIT', 'Minor English: Literature'),
+('MN MATH', 'Minor Mathematics'),
+('MN MATH ST', 'Minor Mathematics Conc Stats'),
+('MN MKTG', 'Minor Marketing'),
+('MN MUSIC', 'Minor Music'),
+('MN PHIL', 'Minor Philosophy'),
+('MN PHYS', 'Minor Physics'),
+('MN POL SCI', 'Minor Political Science'),
+('MN PROF WR', 'Minor English: Prof. Writing'),
+('MN PSYCH', 'Minor Psychology'),
+('MN SOC', 'Minor Sociology'),
+('MN SOC WRK', 'Minor Social Work'),
+('MN SP COMM', 'Minor Speech Communication'),
+('MN SPANISH', 'Minor Spanish'),
+('MN SPED', 'Minor Special Education'),
+('MN SPT MED', 'Minor Sports Media'),
+('MN SPT MGT', 'Minor Sports Management'),
+('MN TECH TH', 'Minor Theatre: Technical Th'),
+('MN WEB DEV', 'Minor Web Development'),
+('MN WGS', 'Minor Women & Gender Study'),
+('MN WRITING', 'Minor English: Writing'),
+('MS DA', 'Applied Data Analytics MS'),
+('MS MMAJ', 'Mass Media Arts & Journ MS'),
+('ND LSCI', 'Library Science ND'),
+('PRE DENT', 'Pre-Dentistry'),
+('PRE LAW', 'Pre-Law'),
+('PRE MBA', 'Pre-Mba'),
+('PRE MED', 'Pre-Medicine'),
+('PRE OPT', 'Pre-Optometry'),
+('PRE PHARM', 'Pre-Pharmacy'),
+('PRE VET', 'Pre-Veterinary Medicine'),
+('UN UND', 'Undecided UN');
+
+
+INSERT IGNORE INTO `userprograms` (`UserID`, `Plan`, `UserName`) VALUES
+(1, 'BS CS', 'admin'),
+(1, 'BS IS', 'admin'),
+(1, 'MN COMP SC', 'admin'),
+(1, 'MN INF SYS', 'admin'),
+(1, 'MS DA', 'admin'),
+(2, 'AA ASAA', 'bill'),
+(2, 'AS BSAD AM', 'bill'),
+(2, 'AS CRJT', 'bill'),
+(2, 'AS ECH', 'bill'),
+(11, 'BA ENG', 'DavidTheAdmin'),
+(11, 'BA FR', 'DavidTheAdmin'),
+(11, 'BA SPAN', 'DavidTheAdmin'),
+(11, 'BS CS', 'DavidTheAdmin'),
+(13, 'AA ASAA', 'Admin_All_Programs'),
+(13, 'AS BSAD AM', 'Admin_All_Programs'),
+(13, 'AS CRJT', 'Admin_All_Programs'),
+(13, 'AS ECH', 'Admin_All_Programs'),
+(13, 'AS LBS', 'Admin_All_Programs'),
+(13, 'AS PLS', 'Admin_All_Programs'),
+(13, 'AS PNUR', 'Admin_All_Programs'),
+(13, 'AS RHSE', 'Admin_All_Programs'),
+(13, 'ASN NURS', 'Admin_All_Programs'),
+(13, 'BA ANTH', 'Admin_All_Programs'),
+(13, 'BA ART', 'Admin_All_Programs'),
+(13, 'BA ECN', 'Admin_All_Programs'),
+(13, 'BA ENG', 'Admin_All_Programs'),
+(13, 'BA FR', 'Admin_All_Programs'),
+(13, 'BA HIST', 'Admin_All_Programs'),
+(13, 'BA PHIL', 'Admin_All_Programs'),
+(13, 'BA PS', 'Admin_All_Programs'),
+(13, 'BA PS CJ', 'Admin_All_Programs'),
+(13, 'BA PSY', 'Admin_All_Programs'),
+(13, 'BA SOC', 'Admin_All_Programs'),
+(13, 'BA SOCP', 'Admin_All_Programs'),
+(13, 'BA SPAN', 'Admin_All_Programs'),
+(13, 'BA THE', 'Admin_All_Programs'),
+(13, 'BFA ART', 'Admin_All_Programs'),
+(13, 'BFA ART GA', 'Admin_All_Programs'),
+(13, 'BFA THE AC', 'Admin_All_Programs'),
+(13, 'BFA THE DT', 'Admin_All_Programs'),
+(13, 'BFA THE MT', 'Admin_All_Programs'),
+(13, 'BS ASUB', 'Admin_All_Programs'),
+(13, 'BS BIOL', 'Admin_All_Programs'),
+(13, 'BS BIOL EC', 'Admin_All_Programs'),
+(13, 'BS CHEM', 'Admin_All_Programs'),
+(13, 'BS CHEM BC', 'Admin_All_Programs'),
+(13, 'BS CHEM CO', 'Admin_All_Programs'),
+(13, 'BS CJA', 'Admin_All_Programs'),
+(13, 'BS COMM DM', 'Admin_All_Programs'),
+(13, 'BS COMM JR', 'Admin_All_Programs'),
+(13, 'BS COMM SC', 'Admin_All_Programs'),
+(13, 'BS CS', 'Admin_All_Programs'),
+(13, 'BS EBIO', 'Admin_All_Programs'),
+(13, 'BS EVGO', 'Admin_All_Programs'),
+(13, 'BS IS', 'Admin_All_Programs'),
+(13, 'BS LS', 'Admin_All_Programs'),
+(13, 'BS LS ATH', 'Admin_All_Programs'),
+(13, 'BS LS COMM', 'Admin_All_Programs'),
+(13, 'BS LS EDU', 'Admin_All_Programs'),
+(13, 'BS LS EN', 'Admin_All_Programs'),
+(13, 'BS LS GU', 'Admin_All_Programs'),
+(13, 'BS LS LIB', 'Admin_All_Programs'),
+(13, 'BS LS SM', 'Admin_All_Programs'),
+(13, 'BS LS WRI', 'Admin_All_Programs'),
+(13, 'BS MATH', 'Admin_All_Programs'),
+(13, 'BS MATH FM', 'Admin_All_Programs'),
+(13, 'BS MBIO', 'Admin_All_Programs'),
+(13, 'BS MEDI', 'Admin_All_Programs'),
+(13, 'BS MMCS', 'Admin_All_Programs'),
+(13, 'BS MMCS AD', 'Admin_All_Programs'),
+(13, 'BS MMCS BD', 'Admin_All_Programs'),
+(13, 'BS MMCS CC', 'Admin_All_Programs'),
+(13, 'BS MMCS FM', 'Admin_All_Programs'),
+(13, 'BS MMCS JR', 'Admin_All_Programs'),
+(13, 'BS MMCS PR', 'Admin_All_Programs'),
+(13, 'BS MT', 'Admin_All_Programs'),
+(13, 'BS NU FIT', 'Admin_All_Programs'),
+(13, 'BS PHY', 'Admin_All_Programs'),
+(13, 'BS PHY APH', 'Admin_All_Programs'),
+(13, 'BS PNUR', 'Admin_All_Programs'),
+(13, 'BS PSY', 'Admin_All_Programs'),
+(13, 'BS RHSC', 'Admin_All_Programs'),
+(13, 'BS SP', 'Admin_All_Programs'),
+(13, 'BS UND', 'Admin_All_Programs'),
+(13, 'BSBA ACNT', 'Admin_All_Programs'),
+(13, 'BSBA BECO', 'Admin_All_Programs'),
+(13, 'BSBA FIN', 'Admin_All_Programs'),
+(13, 'BSBA IBUS', 'Admin_All_Programs'),
+(13, 'BSBA INDR', 'Admin_All_Programs'),
+(13, 'BSBA MGMT', 'Admin_All_Programs'),
+(13, 'BSBA MKTG', 'Admin_All_Programs'),
+(13, 'BSBA RE', 'Admin_All_Programs'),
+(13, 'BSED ECH', 'Admin_All_Programs'),
+(13, 'BSED ECSP', 'Admin_All_Programs'),
+(13, 'BSED ELCH', 'Admin_All_Programs'),
+(13, 'BSED ELED', 'Admin_All_Programs'),
+(13, 'BSED ELSE', 'Admin_All_Programs'),
+(13, 'BSED LSCI', 'Admin_All_Programs'),
+(13, 'BSED MLMA', 'Admin_All_Programs'),
+(13, 'BSED MLRL', 'Admin_All_Programs'),
+(13, 'BSED MLSS', 'Admin_All_Programs'),
+(13, 'BSED MSRL', 'Admin_All_Programs'),
+(13, 'BSED MUED', 'Admin_All_Programs'),
+(13, 'BSED SBIO', 'Admin_All_Programs'),
+(13, 'BSED SENG', 'Admin_All_Programs'),
+(13, 'BSED SFRN', 'Admin_All_Programs'),
+(13, 'BSED SMAT', 'Admin_All_Programs'),
+(13, 'BSED SPDIS', 'Admin_All_Programs'),
+(13, 'BSED SPED', 'Admin_All_Programs'),
+(13, 'BSED SSPN', 'Admin_All_Programs'),
+(13, 'BSED SSTU', 'Admin_All_Programs'),
+(13, 'BSN NURS4Y', 'Admin_All_Programs'),
+(13, 'CER APS', 'Admin_All_Programs'),
+(13, 'CER OTS', 'Admin_All_Programs'),
+(13, 'COACH PROG', 'Admin_All_Programs'),
+(13, 'HON PROG', 'Admin_All_Programs'),
+(13, 'MBA BSAD', 'Admin_All_Programs'),
+(13, 'MN 2D ART', 'Admin_All_Programs'),
+(13, 'MN 3D ART', 'Admin_All_Programs'),
+(13, 'MN ACTG', 'Admin_All_Programs'),
+(13, 'MN ACTING', 'Admin_All_Programs'),
+(13, 'MN ANC MED', 'Admin_All_Programs'),
+(13, 'MN ANTHRO', 'Admin_All_Programs'),
+(13, 'MN ART', 'Admin_All_Programs'),
+(13, 'MN ART HIS', 'Admin_All_Programs'),
+(13, 'MN ART INT', 'Admin_All_Programs'),
+(13, 'MN ATH COH', 'Admin_All_Programs'),
+(13, 'MN BIOTECH', 'Admin_All_Programs'),
+(13, 'MN BU PMBA', 'Admin_All_Programs'),
+(13, 'MN BUSADM', 'Admin_All_Programs'),
+(13, 'MN CHEM', 'Admin_All_Programs'),
+(13, 'MN COMP SC', 'Admin_All_Programs'),
+(13, 'MN CR WRIT', 'Admin_All_Programs'),
+(13, 'MN DANCE', 'Admin_All_Programs'),
+(13, 'MN ECON', 'Admin_All_Programs'),
+(13, 'MN FILM', 'Admin_All_Programs'),
+(13, 'MN FIN', 'Admin_All_Programs'),
+(13, 'MN FRENCH', 'Admin_All_Programs'),
+(13, 'MN GEOG', 'Admin_All_Programs'),
+(13, 'MN GERMAN', 'Admin_All_Programs'),
+(13, 'MN GIS', 'Admin_All_Programs'),
+(13, 'MN HBS', 'Admin_All_Programs'),
+(13, 'MN HISTORY', 'Admin_All_Programs'),
+(13, 'MN INF SYS', 'Admin_All_Programs'),
+(13, 'MN INT BUS', 'Admin_All_Programs'),
+(13, 'MN LAT AM', 'Admin_All_Programs'),
+(13, 'MN LDR ENT', 'Admin_All_Programs'),
+(13, 'MN LDRSHIP', 'Admin_All_Programs'),
+(13, 'MN LIT', 'Admin_All_Programs'),
+(13, 'MN MATH', 'Admin_All_Programs'),
+(13, 'MN MATH ST', 'Admin_All_Programs'),
+(13, 'MN MKTG', 'Admin_All_Programs'),
+(13, 'MN MUSIC', 'Admin_All_Programs'),
+(13, 'MN PHIL', 'Admin_All_Programs'),
+(13, 'MN PHYS', 'Admin_All_Programs'),
+(13, 'MN POL SCI', 'Admin_All_Programs'),
+(13, 'MN PROF WR', 'Admin_All_Programs'),
+(13, 'MN PSYCH', 'Admin_All_Programs'),
+(13, 'MN SOC', 'Admin_All_Programs'),
+(13, 'MN SOC WRK', 'Admin_All_Programs'),
+(13, 'MN SP COMM', 'Admin_All_Programs'),
+(13, 'MN SPANISH', 'Admin_All_Programs'),
+(13, 'MN SPED', 'Admin_All_Programs'),
+(13, 'MN SPT MED', 'Admin_All_Programs'),
+(13, 'MN SPT MGT', 'Admin_All_Programs'),
+(13, 'MN TECH TH', 'Admin_All_Programs'),
+(13, 'MN WEB DEV', 'Admin_All_Programs'),
+(13, 'MN WGS', 'Admin_All_Programs'),
+(13, 'MN WRITING', 'Admin_All_Programs'),
+(13, 'MS DA', 'Admin_All_Programs'),
+(13, 'MS MMAJ', 'Admin_All_Programs'),
+(13, 'ND LSCI', 'Admin_All_Programs'),
+(13, 'PRE DENT', 'Admin_All_Programs'),
+(13, 'PRE LAW', 'Admin_All_Programs'),
+(13, 'PRE MBA', 'Admin_All_Programs'),
+(13, 'PRE MED', 'Admin_All_Programs'),
+(13, 'PRE OPT', 'Admin_All_Programs'),
+(13, 'PRE PHARM', 'Admin_All_Programs'),
+(13, 'PRE VET', 'Admin_All_Programs'),
+(13, 'UN UND', 'Admin_All_Programs'),
+(5, 'BS CS', 's_dmodonnell'),
+(5, 'BA ENG', 's_dmodonnell'),
+(5, 'BA SPAN', 's_dmodonnell'),
+(5, 'BA FR', 's_dmodonnell');
+
+CREATE TABLE IF NOT EXISTS `subject` (
+  `Subject` varchar(4) NOT NULL,
+
+  constraint PK_subject Primary Key (Subject)
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT IGNORE INTO `subject` (`Subject`) VALUES
+('CIS'),
+('DA'),
+('ENG'),
+('ENGL'),
+('SPAN'),
+('FR'),
+('CHIN');
+
+INSERT IGNORE INTO `programsubject` (`Plan`, `Subject`) VALUES
+('BS CS', 'CIS'),
+('BS CS', 'DA'),
+('BA ENG', 'ENG'),
+('BA ENG', 'ENGL'),
+('BA SPAN', 'SPAN'),
+('BA FR', 'FR');
+
+
+CREATE TABLE IF NOT EXISTS `serials` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `serial` varchar(5000) NOT NULL,
+  `name` varchar(21) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `serials` (`id`, `username`, `serial`, `name`) VALUES
+(191, 'Admin_All_Programs', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:16:\"Taking/Completed\";s:4:\"cat1\";s:17:\"Not Scheduled For\";s:4:\"cat2\";N;s:4:\"cat3\";N;s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"1\";s:3:\"or1\";s:1:\"1\";s:3:\"or2\";s:1:\"0\";s:3:\"or3\";s:1:\"0\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"1\";s:11:\"startSeason\";s:6:\"Summer\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"2.0\";s:9:\"startYear\";s:4:\"2010\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:16:\"Needs Algorithms\";s:4:\"data\";a:5:{s:5:\"sub00\";s:3:\"CIS\";s:5:\"cor00\";s:3:\"254\";s:5:\"gra00\";s:6:\"Passed\";s:5:\"sub10\";s:3:\"CIS\";s:5:\"cor10\";s:3:\"356\";}}', 'Needs Algorithms'),
+(192, 'Admin_All_Programs', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:16:\"Taking/Completed\";s:4:\"cat1\";s:16:\"Taking/Completed\";s:4:\"cat2\";s:17:\"Not Scheduled For\";s:4:\"cat3\";s:17:\"Not Scheduled For\";s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"3\";s:3:\"or1\";s:1:\"1\";s:3:\"or2\";s:1:\"1\";s:3:\"or3\";s:1:\"1\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"3\";s:11:\"startSeason\";s:6:\"Summer\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"2.0\";s:9:\"startYear\";s:4:\"2007\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:25:\"English Freshman Template\";s:4:\"data\";a:16:{s:5:\"sub00\";s:3:\"ENG\";s:5:\"cor00\";s:3:\"111\";s:5:\"gra00\";s:6:\"Passed\";s:5:\"sub01\";s:4:\"ENGL\";s:5:\"cor01\";s:3:\"111\";s:5:\"gra01\";s:6:\"Passed\";s:5:\"sub10\";s:3:\"ENG\";s:5:\"cor10\";s:4:\"200s\";s:5:\"gra10\";s:6:\"Passed\";s:5:\"sub11\";s:4:\"ENGL\";s:5:\"cor11\";s:4:\"200s\";s:5:\"gra11\";s:6:\"Passed\";s:5:\"sub20\";s:3:\"ENG\";s:5:\"cor20\";s:4:\"300s\";s:5:\"sub30\";s:4:\"ENGL\";s:5:\"cor30\";s:4:\"300s\";}}', 'English Freshman Tem'),
+(194, 'Admin_All_Programs', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:9:\"Completed\";s:4:\"cat1\";N;s:4:\"cat2\";N;s:4:\"cat3\";N;s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"2\";s:3:\"or1\";s:1:\"0\";s:3:\"or2\";s:1:\"0\";s:3:\"or3\";s:1:\"0\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"0\";s:11:\"startSeason\";s:6:\"Spring\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"0.0\";s:9:\"startYear\";s:4:\"2007\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:8:\"CIS & DA\";s:4:\"data\";a:6:{s:5:\"sub00\";s:3:\"CIS\";s:5:\"cor00\";s:3:\"202\";s:5:\"gra00\";s:1:\"A\";s:5:\"sub01\";s:2:\"DA\";s:5:\"cor01\";s:4:\"500s\";s:5:\"gra01\";s:1:\"B\";}}', 'CIS & DA'),
+(204, 'Admin_All_Programs', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:7:\"Program\";s:4:\"cat1\";N;s:4:\"cat2\";N;s:4:\"cat3\";N;s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"3\";s:3:\"or1\";s:1:\"0\";s:3:\"or2\";s:1:\"0\";s:3:\"or3\";s:1:\"0\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"1\";s:11:\"startSeason\";s:6:\"Spring\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"0.0\";s:9:\"startYear\";s:4:\"2007\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:16:\"CS,IS, DA Majors\";s:4:\"data\";a:3:{s:5:\"maj00\";s:5:\"BS CS\";s:5:\"maj01\";s:5:\"BS IS\";s:5:\"maj02\";s:5:\"MS DA\";}}', 'CS,IS, DA Majors'),
+(206, 'admin', 'O:15:\"StudentQuestion\":30:{s:4:\"cat0\";s:7:\"Program\";s:4:\"cat1\";s:16:\"Taking/Completed\";s:4:\"cat2\";s:24:\"Not Taking/Not Completed\";s:4:\"cat3\";N;s:4:\"cat4\";N;s:4:\"cat5\";N;s:4:\"cat6\";N;s:4:\"cat7\";s:0:\"\";s:3:\"or0\";s:1:\"1\";s:3:\"or1\";s:1:\"1\";s:3:\"or2\";s:1:\"1\";s:3:\"or3\";s:1:\"0\";s:3:\"or4\";s:1:\"0\";s:3:\"or5\";s:1:\"0\";s:3:\"or6\";s:1:\"0\";s:3:\"or7\";s:1:\"0\";s:8:\"andCount\";s:1:\"2\";s:11:\"startSeason\";s:6:\"Spring\";s:9:\"endSeason\";s:4:\"Fall\";s:6:\"rankFR\";s:2:\"FR\";s:6:\"rankSO\";s:2:\"SO\";s:6:\"rankJR\";s:2:\"JR\";s:6:\"rankSR\";s:2:\"SR\";s:19:\"currentStudentsOnly\";s:2:\"on\";s:8:\"startGPA\";s:3:\"0.0\";s:9:\"startYear\";s:4:\"2007\";s:6:\"endGPA\";s:3:\"4.0\";s:7:\"endYear\";s:4:\"2018\";s:10:\"searchName\";s:9:\"Needs 356\";s:4:\"data\";a:6:{s:5:\"maj00\";s:5:\"BS CS\";s:5:\"sub10\";s:3:\"CIS\";s:5:\"cor10\";s:3:\"254\";s:5:\"gra10\";s:6:\"Passed\";s:5:\"sub20\";s:3:\"CIS\";s:5:\"cor20\";s:3:\"356\";}}', 'Needs 356');
+
+ALTER TABLE `serials`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `serials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
