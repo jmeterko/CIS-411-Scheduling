@@ -26,9 +26,9 @@ if (!userIsAuthorized($action)) {
 
 
     switch ($action) {
-        case 'CheckSearchNameExists':
-            CheckSearchName();
-            break;
+		case 'CheckSearchNameExists':
+			CheckSearchName();
+			break;
         case 'CourseQuestion':
             include '../view/MainApplicationCourseQuestion.php';
             break;

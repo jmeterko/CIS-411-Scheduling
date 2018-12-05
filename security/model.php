@@ -585,42 +585,6 @@
             displayError($e->getMessage());
         }
     }
-function updateSerial($id, $user, $serial){
-    try {
-        echo "Updating serial... called in model<br>";
-        echo "ID is $id<br>";
-        echo "User is $user<br>";
-        echo "Serial is $serial<br>";
-        $db = connectToMySQL();
-        $query = 'UPDATE serials SET serial = :s WHERE id = :id AND username = :user';
-        $statement = $db->prepare($query);
-        $statement->bindValue(':id', $id);
-        $statement->bindValue(':user', $user);
-        $statement->bindValue(':s', $serial);
-        echo "<br><br>Our query is:<br> $query <br>";
-        $success = $statement->execute();
-        $statement->closeCursor();
-        if ($success) {
-            echo "The number of rows affected is " . $statement->rowCount();
-            return $db->lastInsertId(); // Get generated ID
-        } else {
-            logSQLError($statement->errorInfo());  // Log error to debug
-        }
-    } catch (PDOException $e) {
-        displayError($e->getMessage());
-    }
-}
-
-
-/*function updateSerial($oldID, $user, $serial, $name){
-    try {
-        deleteSearch($oldID);
-        addSerial($user, $serial, $name);
-}	*/
-
-
-
-
 function getSerialByName($name){
     try {
         $db = getDBConnection();

@@ -838,20 +838,66 @@ function minimizeGrade($pGrade){
     return $result;
 
 }
-function CheckSearchName() {
-    $searchName = $_GET['searchName'];
-    $duplicate = FALSE;
-    $id = 0;
-
-    $row = getSerialByName($searchName);
-    if ($row) {
-        $duplicate = TRUE;
-    }
-
-    echo json_encode(array('id'=>$row['id'], 'searchName'=>$searchName, 'duplicate'=>$duplicate));
-
-    return $row['id'];
+function getSerialByUserAndID($name, $id){
+        try {
+            $db = getDBConnection();
+            $query = 'select id, name from serials where name = :name, id = :id';
+            $statement = $db->prepare($query);
+            $statement->bindValue(':name', $name);
+            $statement->bindValue(':id', $id);
+            $statement->execute();
+            $results = $statement->fetch();  
+            $statement->closeCursor();
+            return $results;
+        } catch (PDOException $e) {
+            displayDBError($e->getMessage());
+        }
 }
+function updateSerial($id, $user, $serial){
+    try {
+        echo "FILE UPDATED 12/4/18 - Updating serial... called in model<br>";
+        echo "ID is $id<br>";
+        echo "User is $user<br>";
+        echo "Serial is $serial<br>";
+        $db = connectToMySQL();
+        $query = 'UPDATE serials SET serial = :s WHERE id = :id AND username = :user';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+        $statement->bindValue(':user', $user);
+        $statement->bindValue(':s', $serial);
+        echo "<br><br>Our query is:<br> $query <br>";
+        $success = $statement->execute();
+        $statement->closeCursor();
+        if ($success) {
+            echo "The number of rows affected is " . $statement->rowCount();
+            return $db->lastInsertId(); // Get generated ID
+        } else {
+            logSQLError($statement->errorInfo());  // Log error to debug
+        }
+    } catch (PDOException $e) {
+        displayError($e->getMessage());
+    }
+}
+function CheckSearchName() {
+		$searchName = $_GET['searchName'];
+		$duplicate = false;
+		$id = 0;
+		$idToUpdate = 0;//needed for the database to know which search to update
+		
+		$row = getSerialByName($searchName);
+		if ($row) {
+			$duplicate = true;
+			echo json_encode(array('id'=>$row['id'], 'searchName'=>$searchName, 'duplicate'=>$duplicate));
+			$idToUpdate = $row['id'];
+		}
+		
+		 else {
+			 echo json_encode(array('id'=>$idToUpdate, 'searchName'=>$searchName, 'duplicate'=>$duplicate));
+		 }
+		
+		
+		return $idToUpdate;
+	}
 ////////////////////////////////////////
 function getAllSubjects() {
     try {
