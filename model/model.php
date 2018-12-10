@@ -151,6 +151,36 @@ function addNewSubject($Subject) {
         die;
     }
 }
+
+//Instructor,Name,Term,Session,Subject,Catalog,Section,Descr,Count ID,Acad Org,Start Time,End Time,Days,Cap Enrl
+function addNewInstructor($InstructorID, $InstructorName) {
+    try {
+        $db = getDBConnection();
+        $query = "INSERT INTO `cis411_csaApp`.`instructor` 
+                      ( `InstructorID`, `InstructorName`) 
+                      VALUES (:instructorid, :instructorname)";
+        $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
+        $statement->bindValue(':instructorid', "$InstructorID");
+        $statement->bindValue(':instructorname', "$InstructorName");
+        $statement->execute();
+        $statement->closeCursor();
+        //$statement->debugDumpParams();
+        //echo(getLastInsertRow("Name", "course"));
+        $errorCode = $statement->errorCode();
+        if ($statement->rowCount() < 1)
+            echo "Row was not inserted for: " . $InstructorName . " Error code: " . $errorCode . "<br>";
+        if ($errorCode != "00000")
+            echo "Error code $errorCode:  Attempted to insert duplicate Primary Key:   "
+                . $InstructorName . "<br>"
+                . "Duplicate subject found in import file. <br><br>";
+        return $statement->rowCount();         // Number of rows affected
+    } catch (PDOException $e) {
+        $errorMessage = $e->getMessage();
+        include '../view/errorPage.php';
+        die;
+    }
+}
+
 //rowtotal is just for debugging info
 function addNewProgram($rowTotal, $Plan, $PlanDescr) {
     try {

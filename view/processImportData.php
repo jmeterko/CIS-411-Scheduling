@@ -396,6 +396,7 @@ function loadClasses()
     //some classes have multiple spellings ("Intro To Java" and "Intro to Java")
     $courseArray = array(); //hash table implementation
     $subjectArray = array();
+    $instructorArray = array();
     //$courseToAdd = array();
     while (($data = fgetcsv($file)) !== FALSE) { //loop through the file one step at a time
         //file headings:       //Subject    Catalog       Name         Descr       Acad_Org
@@ -403,10 +404,12 @@ function loadClasses()
         $courseItemStringValue = $data[4]."|".str_replace(' ', '', $data[5])."|".$data[7]."|".$data[9]; //SUBJ|CATA|DESCR|ACADORG //string unique to course
         $courseItemStringKey = $data[4]."|".str_replace(' ', '', $data[5]);
         $subjectItem = $data[4];
+        $instructorItem = $data[0] . "|" . $data[1];
         //remove whitespace from catalog     ^^^
         //$courseArray[$courseItemString] = 3;      //add it as a key to the AssociativeArray, key value is meaningless
         $courseArray[strtoupper($courseItemStringKey)] = $courseItemStringValue;      //add it as a key to the AssociativeArray, value is original format, key is UPPERCASE
         $subjectArray[strtoupper($subjectItem)] = $subjectItem;
+        $instructorArray[strtoupper($instructorItem)] = $instructorItem;
         //^^^unique ID:case-insensitive string...  value:case-sensitive
         //so, we're saving each class only once, spelling it the way it is spelled the last time we find it
         //echo "courseItemString is " . $courseItemString . "<br>";
@@ -437,6 +440,19 @@ function loadClasses()
         $testingCount++;
         echo "Iteration: " . $testingCount . "   Subjects inserted: " . $rowCount .
             "... " . $subjectValue . "<br>";
+    }
+
+
+    //process instructorArrays with a ForEach loop, add to database
+    $rowCount = 0;
+    $testingCount = 0;
+    echo sizeof($instructorArray) . " unique instructors found in Courses file, attempting to add to instructor table:<br>";
+    foreach ($instructorArray as $instructorKey => $instructorValue){
+        $instructorToAdd = explode("|", $instructorValue);
+        $rowCount += addNewInstructor($instructorToAdd[0], $instructorToAdd[1]);
+        $testingCount++;
+        echo "Iteration: " . $testingCount . "   Instructors inserted: " . $rowCount .
+            "... " . $instructorValue . "<br>";
     }
 
 

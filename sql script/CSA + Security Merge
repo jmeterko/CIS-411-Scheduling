@@ -14,7 +14,6 @@
    DROP TABLE IF EXISTS users;
    DROP TABLE IF EXISTS roles;
    DROP TABLE IF EXISTS functions;
-   DROP TABLE IF EXISTS serials;
 
 CREATE TABLE IF NOT EXISTS `course` (
   `Subject` varchar(4) NOT NULL,
@@ -30,16 +29,26 @@ CREATE TABLE IF NOT EXISTS`courseoffering` (
   `Subject` varchar(4) NOT NULL,
   `Catalog` varchar(5) NOT NULL,
   `Section` varchar(4) NOT NULL,
-  `InstructorName` varchar(22) NOT NULL,
   `Count_ID` int(11) NOT NULL,
   `Start_Time` varchar(5) DEFAULT NULL,
   `End_Time` varchar(5) DEFAULT NULL,
   `Days` varchar(5) DEFAULT NULL,
   `Cap_Enrl` int(11) NOT NULL,
-  constraint PK_courseoffering Primary Key (Term, Session, Subject, Catalog, Section),
+  `InstructorID` int(11) NOT NULL,
+  constraint PK_courseoffering Primary Key (Term, Session, Subject, Catalog, Section, InstructorID),
   constraint FK_courseoffering_course Foreign Key (Subject, Catalog) references course(Subject, Catalog)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+CREATE TABLE IF NOT EXISTS `instructor` (
+  `InstructorID` int(11) NOT NULL,
+  `InstructorName` varchar(30) NOT NULL,
+  constraint PK_instructor Primary Key (InstructorID)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+ALTER TABLE `courseoffering`
+  ADD CONSTRAINT `FK_instructor_co` FOREIGN KEY (`InstructorID`) REFERENCES `instructor` (`InstructorID`) ON DELETE CASCADE;
 
 CREATE TABLE IF NOT EXISTS `student` (
   `ID` int(11) NOT NULL,
