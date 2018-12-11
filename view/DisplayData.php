@@ -819,7 +819,112 @@ else if (isset($_POST['loadedSearch'])){
     echo $_POST['loadedSearch'];
 }
 ?>
+
 </h1></center>
+
+<h5>Class Ranks: <?php
+    if (isset($stdq->rankFR)) {
+        echo "FR ";
+    }
+    if (isset($stdq->rankSO)){
+        echo "SO ";
+    }
+    if (isset($stdq->rankJR)){
+        echo "JR ";
+    }
+    if (isset($stdq->rankSR)){
+        echo "SR";
+    }
+    ?>
+    <br>
+    <?php
+    $value0 = " ";
+    $value1 = " ";
+    $value2 = " ";
+    $value3 = " ";
+    $value4 = " ";
+    $value5 = " ";
+    $value6 = " ";
+    $value7 = " ";
+    $questionData = $stdq->data;
+    foreach ($questionData as $item=>$value){
+        if (substr($item,-2) <= '09') {
+            $value0 .= $value." ";
+        }
+        if (substr($item,-2) <= '19' && substr($item,-2) >'09') {
+            $value1 .= $value." ";
+        }
+        if (substr($item,-2) <= '29' && substr($item,-2) >'19') {
+            $value2 .= $value." ";
+        }
+        if (substr($item,-2) <= '39' && substr($item,-2) >'29') {
+            $value3 .= $value." ";
+        }
+        if (substr($item,-2) <= '49' && substr($item,-2) >'39') {
+            $value4 .= $value." ";
+        }
+        if (substr($item,-2) <= '59' && substr($item,-2) >'49') {
+            $value5 .= $value." ";
+        }
+        if (substr($item,-2) <= '69' && substr($item,-2) >'59') {
+            $value6 .= $value." ";
+        }
+        if (substr($item,-2) <= '79' && substr($item,-2) >'69') {
+            $value7 .= $value." ";
+        }
+
+
+    }
+
+    if (isset($stdq->cat0)){
+        echo $stdq->cat0.":".$value0;
+    }
+    ?>
+    <br>
+    <?php
+    if (isset($stdq->cat1)){
+        echo $stdq->cat1.":".$value1;
+    }
+    ?>
+    <br>
+    <?php
+    if (isset($stdq->cat2)){
+        echo $stdq->cat2.":".$value2;
+    }
+    ?>
+    <br>
+    <?php
+    if (isset($stdq->cat3)){
+        echo $stdq->cat3.":".$value3;
+    }
+    ?>
+    <br>
+    <?php
+    if (isset($stdq->cat4)){
+        echo $stdq->cat4.":".$value4;
+    }
+    ?>
+    <br>
+    <?php
+    if (isset($stdq->cat5)){
+        echo $stdq->cat5.":".$value5;
+    }
+    ?>
+    <br>
+    <?php
+    if (isset($stdq->cat6)){
+        echo $stdq->cat6.":".$value6;
+    }
+    ?>
+    <br>
+    <?php
+    if (isset($stdq->cat7)){
+        echo $stdq->cat7.":".$value7;
+    }
+    ?>
+
+</h5>
+
 <center><br><h3>Results Found: <?php echo count($student); ?></h3></center>
 
 <center>
