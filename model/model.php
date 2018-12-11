@@ -29,16 +29,16 @@ function addNewCourse($Subject, $Catalog, $Name, $Acad_Org) {
         die;
     }
 }
-function addNewCourseOffering($rowTotal, $Instructor, $InstructorName, $Term, $Session, $Subject, $Catalog, $Section, $Descr, $Count_ID, $Acad_Org, $Start_Time, $End_Time, $Days, $Cap_Enrl) {
+function addNewCourseOffering($rowTotal, $InstructorID, $InstructorName, $Term, $Session, $Subject, $Catalog, $Section, $Descr, $Count_ID, $Acad_Org, $Start_Time, $End_Time, $Days, $Cap_Enrl) {
     try {
         $db = getDBConnection();
         $query = "INSERT INTO `cis411_csaApp`.`courseoffering` 
-                      ( `Term`, `Session`, `Subject`, `Catalog`, `Section`, `InstructorName`, `Count_ID`,`Start_Time`, `End_Time`, `Days`, `Cap_Enrl`) 
-                      VALUES (:term, :session, :subject, :catalog, :section,:instructorname, :count_id, :start_time, :end_time, :days, :cap_enrl)";
+                      ( `Term`, `Session`, `Subject`, `Catalog`, `Section`, `Count_ID`,`Start_Time`, `End_Time`, `Days`, `Cap_Enrl`, `InstructorID`) 
+                      VALUES (:term, :session, :subject, :catalog, :section, :count_id, :start_time, :end_time, :days, :cap_enrl, :instructorid)";
         $statement = $db->prepare($query);  //do we need a NULL value first?  ^^
         //echo $query;
         //$statement->bindValue(':instructor', "$InstructorName");
-        $statement->bindValue(':instructorname', "$InstructorName");
+        //$statement->bindValue(':instructorname', "$InstructorName");
         $statement->bindValue(':term', "$Term");
         $statement->bindValue(':session', "$Session");
         $statement->bindValue(':subject', "$Subject");
@@ -51,6 +51,7 @@ function addNewCourseOffering($rowTotal, $Instructor, $InstructorName, $Term, $S
         $statement->bindValue(':end_time', "$End_Time");
         $statement->bindValue(':days', "$Days");
         $statement->bindValue(':cap_enrl', "$Cap_Enrl");
+        $statement->bindValue(':instructorid', "$InstructorID");
         $statement->execute();
         //echo "\nPDO::errorCode(): " . $statement->errorCode() . "<br>";  //print errorcode
         $errorCode = $statement->errorCode();

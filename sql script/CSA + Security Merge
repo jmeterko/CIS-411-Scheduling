@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS`courseoffering` (
   `Days` varchar(5) DEFAULT NULL,
   `Cap_Enrl` int(11) NOT NULL,
   `InstructorID` int(11) NOT NULL,
-  constraint PK_courseoffering Primary Key (Term, Session, Subject, Catalog, Section, InstructorID),
+  constraint PK_courseoffering Primary Key (Term, Session, Subject, Catalog, Section),
   constraint FK_courseoffering_course Foreign Key (Subject, Catalog) references course(Subject, Catalog)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
