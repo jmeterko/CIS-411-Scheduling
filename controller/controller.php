@@ -3,6 +3,7 @@ session_start();
 /*$_SESSION['username'] = "s_dmodonnell";  //jeradstuff, comment or delete this later*/
 require_once("../security/model.php");
 require_once("../model/StudentQuestion.php");
+require_once("../model/CourseQuestion.php");
 require_once '../model/model.php';//require the functions from the model.php file
 unQuote();          //make sure that magic_quotes_gpc added slashes are stripped back out if they are enabled.
 
@@ -59,6 +60,9 @@ if (!userIsAuthorized($action)) {
             break;
         case 'ProcessStudentQuestion':
             ProcessStudentQuestion();
+            break;
+        case 'ProcessCourseQuestion':
+            ProcessCourseQuestion();
             break;
         case 'ProcessDisplaySerials':
             ProcessDisplaySerials();

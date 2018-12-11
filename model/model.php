@@ -849,6 +849,40 @@ function convertRangeToTerm($pSeason, $pYear){
     $finalResult = $yearToTerm . $seasonResult; // = 2185
     return $finalResult;
 }
+
+function convertTermToSeason($pTerm){
+    $season = '';
+    if (substr($pTerm, 3, 1) == '1')
+        $season = 'Spring';
+    if (substr($pTerm, 3, 1) == '5')
+        $season = 'Summer';
+    if (substr($pTerm, 3, 1) == '8')
+        $season = 'Fall';
+    if (substr($pTerm, 3, 1) == '9')
+        $season = 'Winter';
+    return $season;
+}
+
+function convertTermToSemester($pTerm){
+    //first, get the year
+    $termToYear = substr($pTerm, 0, 3);
+    if (substr($termToYear, 0, 1) == 2)
+        $termToYear = substr($termToYear, 0, 1) . '0' . substr($termToYear, 1, 2);
+    else if (substr($termToYear, 0, 1) == 1)
+        $termToYear = substr($termToYear, 0, 1) . '9' . substr($termToYear, 1, 2);
+    //now we have the year, so we just need the season added on
+    $season = '';
+    if (substr($pTerm, 3, 1) == '1')
+        $season = 'Spring';
+    if (substr($pTerm, 3, 1) == '5')
+        $season = 'Summer';
+    if (substr($pTerm, 3, 1) == '8')
+        $season = 'Fall';
+    if (substr($pTerm, 3, 1) == '9')
+        $season = 'Winter';
+    $termToYear = $termToYear . ', ' . $season;
+    return $termToYear;
+}
 //saves some room in our student question
 function minimizeGrade($pGrade){
     $result = "";
@@ -1271,6 +1305,14 @@ function RebuildQuestion(){
     }
 }
 
+function convertTermsForCourseQuestionResults($pCourseArray){
+
+    for ($i = 0; $i < count($pCourseArray); $i++) {
+        $pCourseArray[$i]['Term'] = convertTermToSemester($pCourseArray[$i]['Term']);
+        $pCourseArray[$i]['Season'] = convertTermToSeason($pCourseArray[$i]['Season']);
+    }
+    return $pCourseArray;
+}
 
 function combineJoinResults($pStudentArray){
     //convert Program to an array so we can merge later

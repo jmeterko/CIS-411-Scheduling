@@ -3,10 +3,6 @@
 -	COURSEQuestion Object    -
 \*****************************
 
- *
- * THIS FILE IS NOT COMPLETE
- * IN FACT IT HAS NOTHING IN IT EXCEPT FOR THE STUDENTQUESTION CLASS CODE
- * I THOUGHT I SHOULD ADD THE FILE TO GIT FOR THE COURSEQUESTION COMMIT
  */
 
 /* Just kidding this is the course question */
@@ -18,7 +14,7 @@ class CourseQuestion {
 
     public $or0, $or1, $or2, $or3, $or4, $or5, $or6, $or7, $andCount, $startSeason, $endSeason = '';
 
-    public $rankFR, $rankSO, $rankJR, $rankSR, $currentStudentsOnly, $startGPA, $startYear, $endGPA, $endYear, $searchName = '';
+    public $seasonSP, $seasonSU, $seasonFA, $seasonWI, $startYear, $endYear = '';
 
     public function __construct() {
         //ONLY ASSIGN VARIABLES IF THEIR RESPECTIVE FORM ELEMENT WAS SET BY USER
@@ -45,26 +41,19 @@ class CourseQuestion {
         if (isset($_POST["andCount"])) { $this->andCount = $_POST['andCount']; }
 
         //YEAR
-        if (isset($_POST["currentStudentsOnly"])) { $this->currentStudentsOnly = $_POST['currentStudentsOnly']; }
         if (isset($_POST["startYear"])) { $this->startYear = $_POST['startYear']; }
         if (isset($_POST["endYear"])) { $this->endYear = $_POST['endYear']; }
         if (isset($_POST["startSeason"])) { $this->startSeason = $_POST['startSeason']; }
         if (isset($_POST["endSeason"])) { $this->endSeason = $_POST['endSeason']; }
-        if (isset($_POST["startGPA"])) { $this->startGPA = $_POST['startGPA']; }
-        if (isset($_POST["endGPA"])) { $this->endGPA = $_POST['endGPA']; }
 
-        //RANK
-        if (isset($_POST["FR"])) { $this->rankFR = $_POST['FR']; }
-        if (isset($_POST["SO"])) { $this->rankSO = $_POST['SO']; }
-        if (isset($_POST["JR"])) { $this->rankJR = $_POST['JR']; }
-        if (isset($_POST["SR"])) { $this->rankSR = $_POST['SR']; }
-
-        //GPA
-        if (isset($_POST["startGPA"])) { $this->startGPA = $_POST['startGPA']; }
-        if (isset($_POST["endGPA"])) { $this->endGPA = $_POST['endGPA']; }
+        //SEASON
+        if (isset($_POST["SP"])) { $this->seasonSP = $_POST['SP']; }
+        if (isset($_POST["SU"])) { $this->seasonSU = $_POST['SU']; }
+        if (isset($_POST["FA"])) { $this->seasonFA = $_POST['FA']; }
+        if (isset($_POST["WI"])) { $this->seasonWI = $_POST['WI']; }
 
         //OTHER VARIABLES
-        if (isset($_POST["searchName"])) { $this->searchName = $_POST['searchName']; }
+            //empty for now
     }
 
     /*_set takes 2 parameters : the $name of the variable you want to create, and the $value to store there
@@ -82,32 +71,13 @@ class CourseQuestion {
     }
 }
 
-//Debugging function that will display all saved searches for the current username
-function ProcessDisplaySerials(){
-    $user = $_SESSION['username'];
-    $results = getSerialsForUser($user);
-
-    if (count($results) == 0) {
-        $errorMessage = "No data found.";
-        include '../view/errorPage.php';
-    } else if (count($results) == 1) {
-        $onlyRow = $results[0];
-        include '../view/index.php';
-    } else {
-        include '../view/index.php';
-    }
-}
-
 //echo $stdq->rankFR; // $StudentQuestion->propertyYoureAccessing - how to access a student question object property
-function ProcessStudentQuestion() {
+function ProcessCourseQuestion() {
 
-    //The $saveQuestion flag will determine if we should serialize and save this search
-    $saveQuestion = false;
+    //The $saveQuestion flag will dete
 
-    if (isset($_POST["saveQuestion"])) { $saveQuestion = true; }
-
-    //create a StudentQuestion object, stdq, and begin to assign the orCount values and any dynamically added filters
-    $stdq = new StudentQuestion();
+    //create a CourseQuestion object, crdq, and begin to assign the orCount values and any dynamically added filters
+    $crdq = new CourseQuestion();
 
     if (isset($_POST["orCount0"])) { $row0 = $_POST['orCount0']; }
     if (isset($_POST["orCount1"])) { $row1 = $_POST['orCount1']; }
@@ -134,15 +104,15 @@ function ProcessStudentQuestion() {
             $subLocation = "sub" . $loc . $x;
             $corLocation = "cor" . $loc . $x;
             $graLocation = "gra" . $loc . $x;
-            $majLocation = "maj" . $loc . $x;
+            $insLocation = "ins" . $loc . $x;
             $locLocation = "loc" . $loc . $x;
 
-            //Check to see what Subjects, Catalogs, Grades, Major/Minor, and Locations were set. If one was set in this row, add it to the stdq data array
-            if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
-            if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-            if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
-            if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}
-            if (isset($_POST["Location" . $loc . $x])) { $stdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
+            //Check to see what Subjects, Catalogs, Grades, Major/Minor, and Locations were set. If one was set in this row, add it to the crdq data array
+            if (isset($_POST["Subject" . $loc . $x])) { $crdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+            if (isset($_POST["Catalog" . $loc . $x])) { $crdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+            if (isset($_POST["MinGrade" . $loc . $x])) { $crdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
+            if (isset($_POST["Instructor" . $loc . $x])) { $crdq->__set($insLocation, $_POST["Instructor" . $loc . $x]);}
+            if (isset($_POST["Location" . $loc . $x])) { $crdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
 
             //increment counter variables, then repeat the same algorithm for rows 1-7
             $x++;
@@ -153,12 +123,12 @@ function ProcessStudentQuestion() {
             $x = 0;
             while ($x <= $row1){
                 $subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
-                $majLocation = "maj" . $loc . $x; $locLocation = "loc" . $loc . $x;
-                if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
-                if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-                if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
-                if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}
-                if (isset($_POST["Location" . $loc . $x])) { $stdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
+                $insLocation = "ins" . $loc . $x; $locLocation = "loc" . $loc . $x;
+                if (isset($_POST["Subject" . $loc . $x])) { $crdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+                if (isset($_POST["Catalog" . $loc . $x])) { $crdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+                if (isset($_POST["MinGrade" . $loc . $x])) { $crdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
+                if (isset($_POST["Instructor" . $loc . $x])) { $crdq->__set($insLocation, $_POST["Instructor" . $loc . $x]);}
+                if (isset($_POST["Location" . $loc . $x])) { $crdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
                 $x++;
             } $loc++;
         }
@@ -168,12 +138,12 @@ function ProcessStudentQuestion() {
             $x = 0;
             while ($x <= $row2){
                 $subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
-                $majLocation = "maj" . $loc . $x; $locLocation = "loc" . $loc . $x;
-                if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
-                if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-                if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
-                if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}
-                if (isset($_POST["Location" . $loc . $x])) { $stdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
+                $insLocation = "ins" . $loc . $x; $locLocation = "loc" . $loc . $x;
+                if (isset($_POST["Subject" . $loc . $x])) { $crdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+                if (isset($_POST["Catalog" . $loc . $x])) { $crdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+                if (isset($_POST["MinGrade" . $loc . $x])) { $crdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
+                if (isset($_POST["Instructor" . $loc . $x])) { $crdq->__set($insLocation, $_POST["Instructor" . $loc . $x]);}
+                if (isset($_POST["Location" . $loc . $x])) { $crdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
                 $x++;
             } $loc++;
         }
@@ -183,12 +153,12 @@ function ProcessStudentQuestion() {
             $x = 0;
             while ($x <= $row3){
                 $subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
-                $majLocation = "maj" . $loc . $x; $locLocation = "loc" . $loc . $x;
-                if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
-                if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-                if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
-                if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}
-                if (isset($_POST["Location" . $loc . $x])) { $stdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
+                $insLocation = "ins" . $loc . $x; $locLocation = "loc" . $loc . $x;
+                if (isset($_POST["Subject" . $loc . $x])) { $crdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+                if (isset($_POST["Catalog" . $loc . $x])) { $crdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+                if (isset($_POST["MinGrade" . $loc . $x])) { $crdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
+                if (isset($_POST["Instructor" . $loc . $x])) { $crdq->__set($insLocation, $_POST["Instructor" . $loc . $x]);}
+                if (isset($_POST["Location" . $loc . $x])) { $crdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
                 $x++;
             } $loc++;
         }
@@ -198,12 +168,12 @@ function ProcessStudentQuestion() {
             $x = 0;
             while ($x <= $row4){
                 $subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
-                $majLocation = "maj" . $loc . $x; $locLocation = "loc" . $loc . $x;
-                if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
-                if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-                if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
-                if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}
-                if (isset($_POST["Location" . $loc . $x])) { $stdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
+                $insLocation = "ins" . $loc . $x; $locLocation = "loc" . $loc . $x;
+                if (isset($_POST["Subject" . $loc . $x])) { $crdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+                if (isset($_POST["Catalog" . $loc . $x])) { $crdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+                if (isset($_POST["MinGrade" . $loc . $x])) { $crdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
+                if (isset($_POST["Instructor" . $loc . $x])) { $crdq->__set($insLocation, $_POST["Instructor" . $loc . $x]);}
+                if (isset($_POST["Location" . $loc . $x])) { $crdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
                 $x++;
             } $loc++;
         }
@@ -213,12 +183,12 @@ function ProcessStudentQuestion() {
             $x = 0;
             while ($x <= $row5){
                 $subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
-                $majLocation = "maj" . $loc . $x; $locLocation = "loc" . $loc . $x;
-                if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
-                if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-                if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
-                if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}
-                if (isset($_POST["Location" . $loc . $x])) { $stdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
+                $insLocation = "ins" . $loc . $x; $locLocation = "loc" . $loc . $x;
+                if (isset($_POST["Subject" . $loc . $x])) { $crdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+                if (isset($_POST["Catalog" . $loc . $x])) { $crdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+                if (isset($_POST["MinGrade" . $loc . $x])) { $crdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
+                if (isset($_POST["Instructor" . $loc . $x])) { $crdq->__set($insLocation, $_POST["Instructor" . $loc . $x]);}
+                if (isset($_POST["Location" . $loc . $x])) { $crdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
                 $x++;
             } $loc++;
         }
@@ -228,12 +198,12 @@ function ProcessStudentQuestion() {
             $x = 0;
             while ($x <= $row6){
                 $subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
-                $majLocation = "maj" . $loc . $x; $locLocation = "loc" . $loc . $x;
-                if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
-                if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-                if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
-                if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}
-                if (isset($_POST["Location" . $loc . $x])) { $stdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
+                $insLocation = "ins" . $loc . $x; $locLocation = "loc" . $loc . $x;
+                if (isset($_POST["Subject" . $loc . $x])) { $crdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+                if (isset($_POST["Catalog" . $loc . $x])) { $crdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+                if (isset($_POST["MinGrade" . $loc . $x])) { $crdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
+                if (isset($_POST["Instructor" . $loc . $x])) { $crdq->__set($insLocation, $_POST["Instructor" . $loc . $x]);}
+                if (isset($_POST["Location" . $loc . $x])) { $crdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
                 $x++;
             } $loc++;
         }
@@ -243,61 +213,18 @@ function ProcessStudentQuestion() {
             $x = 0;
             while ($x <= $row7){
                 $subLocation = "sub" . $loc . $x; $corLocation = "cor" . $loc . $x; $graLocation = "gra" . $loc . $x;
-                $majLocation = "maj" . $loc . $x; $locLocation = "loc" . $loc . $x;
-                if (isset($_POST["Subject" . $loc . $x])) { $stdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
-                if (isset($_POST["Catalog" . $loc . $x])) { $stdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
-                if (isset($_POST["MinGrade" . $loc . $x])) { $stdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
-                if (isset($_POST["MajorMinor" . $loc . $x])) { $stdq->__set($majLocation, $_POST["MajorMinor" . $loc . $x]);}
-                if (isset($_POST["Location" . $loc . $x])) { $stdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
+                $insLocation = "ins" . $loc . $x; $locLocation = "loc" . $loc . $x;
+                if (isset($_POST["Subject" . $loc . $x])) { $crdq->__set($subLocation, $_POST["Subject" . $loc . $x]);}
+                if (isset($_POST["Catalog" . $loc . $x])) { $crdq->__set($corLocation, $_POST["Catalog" . $loc . $x]);}
+                if (isset($_POST["MinGrade" . $loc . $x])) { $crdq->__set($graLocation, $_POST["MinGrade" . $loc . $x]);}
+                if (isset($_POST["Instructor" . $loc . $x])) { $crdq->__set($insLocation, $_POST["Instructor" . $loc . $x]);}
+                if (isset($_POST["Location" . $loc . $x])) { $crdq->__set($locLocation, $_POST["Location" . $loc . $x]);}
                 $x++;
             } $loc++;
         }
 
     }
 
-    if($saveQuestion){//if user checked the box to save
-        if(empty($stdq->searchName)){//user did not provide a name for the search
-            $errorMessage = "No search name provided.";
-            //should never reach this code. Make search name a required field if SaveQuestion is checked.
-            include '../view/errorPage.php';
-        }
-
-        //user wants to save under provided name
-        else {//serialize and save to user profile under their given search name
-            $s = serialize($stdq); 			        //serialize the object, store string in $s
-            $user = $_SESSION['username'];          //see who the current user is
-            //$action = '';							//action to determine if its a save or update
-
-            //if(isset($_POST['UpdateSearch'])) { $action = $_POST['UpdateSearch']; }
-            //if(isset($_POST['AddSearch'])) { $action = $_POST['AddSearch']; }
-
-            if(isset($_POST['UpdateSearch'])){//if the search was overriding an exisiting search
-                $previousRecordID = getSerialByNameAndUser($stdq->searchName, $user);
-                echo $previousRecordID . "is the previous record ID.<br>";
-                updateSerial($previousRecordID['id'], $user, $s);//update the search under the newly given name and user who changed it.
-            }
-
-            if(isset($_POST['AddSearch'])) {//if the search is newly created (no update)
-                addSerial($user, $s, $stdq->searchName);//save the search under the saved name and user who created it.
-            }
-        }
-
-
-        /**IMPORTANT* index.php is my current output page for testing my seriailzier. Instead of going here after the form is submitted,
-         *   you will include the resultspage.php or some kind of executeStudentQuestion function instead.
-         *	If you are including a page, you dont need to pass the object. On your included page, just access variables as normal.
-         *   If you are running a function here, you must pass $stdq as an arguement in order to access it there.
-         *
-         *	Accessing StudentQuestion class properties:
-         * 	$stdq->cat0 // accesses the value stored in the first category dropdown0 (see more examples in mainAppStudentQuestion.php)
-         */
-        //include '../view/DisplayData.php';
-        include '../view/DisplayData.php';
-    }
-    //david testing stuff, can delete later
-    //only do this if user did NOT save
-    if(!$saveQuestion){
-        include '../view/DisplayData.php';
-    }
+    include '../view/DisplayDataCourseQuestion.php';
 }
 ?>

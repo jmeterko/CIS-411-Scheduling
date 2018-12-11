@@ -7,7 +7,7 @@ require '../view/headerInclude.php';
     <div class="container" style="margin: 0px auto">
             <h1>New Course Question</h1>
         <div class="jumbotron" style="margin:0px auto">
-            <form id="issueInputForm" action="../controller/controller.php?action=ProcessStudentQuestion" method="post">
+            <form id="issueInputForm" action="../controller/controller.php?action=ProcessCourseQuestion" method="post">
                 <div class="form-group" style="margin:0px auto" id="divAnd0">
                     <label>Category</label>
                     <select class="form-control, dropdownboxWidth" id="dropdown0" name="dropdown0" onchange="dropdownFreshlyChangedCourseQuestion(this.id)">
@@ -150,16 +150,17 @@ require '../view/headerInclude.php';
                                     <option value="Winter">Winter</option>
                             </select>
 
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange2" name="startYear" style="width:65px;">
                             </select>
                             -
                             <select class="form-control, dropdownboxWidth" id="dropdownRange3" name="endSeason" style="width:65px;">
-                                    <option value="Spring" selected>Spring</option>
+                                    <option value="Spring">Spring</option>
                                     <option value="Summer">Summer</option>
-                                    <option value="Fall">Fall</option>
+                                    <option value="Fall" selected>Fall</option>
                                     <option value="Winter">Winter</option>
                             </select>
-                            <select class="form-control, dropdownboxWidth" id="dropdownRange4" style="width:65px;">
+                            <select class="form-control, dropdownboxWidth" id="dropdownRange4" name="endYear" style="width:65px;">
+
                             </select>
                         </div>
                         <br/>
