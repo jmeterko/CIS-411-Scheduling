@@ -149,3 +149,15 @@ WHERE subject IN
          	(SELECT PLAN FROM USERPROGRAMS
              	WHERE USERNAME = 'admin')
      );  /* SHOW ME ALL THE SUBJECTS FOR A GIVEN USER */
+
+
+Example of Course Question:
+
+
+SELECT I.InstructorName as 'Instructor', Term as 'Term', 0 + Term as 'Season', Session, O.subject as 'Subject', O.Catalog as 'Course No.', Section, Name as 'Description', Cap_Enrl as 'Capacity', Count_ID as '# Enrolled'
+FROM `courseoffering` O
+inner join course C on C.subject = O.subject and C.Catalog = O.Catalog
+inner join instructor I on I.InstructorID = O.InstructorID
+
+
+
